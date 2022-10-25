@@ -9,6 +9,7 @@ export default {
   props: {},
 
   created() {},
+
   methods: {},
 };
 </script>
