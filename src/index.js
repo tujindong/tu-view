@@ -1,7 +1,7 @@
-import TButton from './t-button'
+import Button from '../packages/button'
 
 const components = [
-    TButton
+    Button
 ]
 
 const install = function (Vue) {

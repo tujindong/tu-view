@@ -1,12 +1,25 @@
 {
-    "name": "heima-ui",
+    "name": "tu-view",
     "version": "0.1.0",
-    "private": true,
+    "description": "一款有触觉的UI组件",
+    "main": "dist/t-view.umd.js",
+    "keywords": [
+        "t-view",
+        "tView",
+        "tview",
+        "UI",
+        "ui",
+        "vue"
+    ],
+    "author": "tujindong",
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint",
-        "lib": "vue-cli-service build --target lib packages/index.js"
+        "lib": "vue-cli-service build --target lib src/index.js"
     },
     "dependencies": {
         "core-js": "^3.6.5",
