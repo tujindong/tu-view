@@ -1,10 +1,10 @@
 <template>
-  <button>按钮</button>
+  <button class="tu-button">按钮12333</button>
 </template>
 
 <script>
 export default {
-  name: "tButton",
+  name: "tuButton",
 
   props: {},
 
@@ -14,4 +14,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import url("./style/button.scss");
+</style>

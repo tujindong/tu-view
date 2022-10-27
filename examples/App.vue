@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <t-button type="primary">组件按钮</t-button>
+    <tu-button type="primary">组件按钮</tu-button>
   </div>
 </template>
 
@@ -11,7 +11,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-#app {
-}
-</style>
+<style lang="scss"></style>

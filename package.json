@@ -1,8 +1,8 @@
 {
     "name": "tu-view",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "一款有触觉的UI组件",
-    "main": "dist/t-view.umd.js",
+    "main": "dist/tu-view.umd.js",
     "keywords": [
         "t-view",
         "tView",
