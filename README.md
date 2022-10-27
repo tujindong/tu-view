@@ -1,6 +1,4 @@
-# tView
-
-一款有触觉的 UI 组件
+# mooc-ui 组件库
 
 ### 快速开始
 
@@ -16,6 +14,7 @@ npm i tu-view
 
 ```javascript
 // 全部引入
+import "t-mooc-ui/dist/css/index.css";
 import TuView from "tu-view";
 Vue.use(TuView);
 ```
