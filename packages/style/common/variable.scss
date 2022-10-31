@@ -1,16 +1,19 @@
-/* 默认颜色值 */
-$common-white: #fff;
-$main-color-style: #ff6353;
-$mian-gray-color: #999;
+/* Transition
+-------------------------- */
+$--all-transition: all .3s cubic-bezier(.645, .045, .355, 1) !default;
+$--fade-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) !default;
+$--fade-linear-transition: opacity 200ms linear !default;
+$--md-fade-transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) !default;
+$--border-transition-base: border-color .2s cubic-bezier(.645, .045, .355, 1) !default;
+$--color-transition-base: color .2s cubic-bezier(.645, .045, .355, 1) !default;
 
-/* 字体大小 */
-$font-size-xs: 12px;
-$font-size-s: 14px;
-$font-size-m: 16px;
-$font-size-l: 18px;
-
-/* 按钮颜色值 */
-$button-primary: #07c160;
-$button-danger: #ee0a24;
-$button-warning: #ff976a;
-$button-info: #1989fa;
+/* Color
+-------------------------- */
+$--color-primary-light: #8abdff;
+$--color-primary: #6d5dfc;
+$--color-primary-dark: #5b0eeb;
+$--color-white: #ffffff;
+$--color-greyLight-1: #E4EBF5;
+$--color-greyLight-2: #c8d0e7;
+$--color-greyLight-3: #bec8e4;
+$--color-greyDark: #9baacf;

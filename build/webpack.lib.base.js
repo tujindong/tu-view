@@ -5,7 +5,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-    // 我们打包组件库时不需要把Vue打包进去
+    // 打包组件库时不需要把Vue打包进去
     externals: {
         'vue': {
             root: 'Vue',
