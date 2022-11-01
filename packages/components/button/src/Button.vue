@@ -4,6 +4,10 @@
     :class="[
       type ? `tu-button--${type}` : '',
       size ? `tu-button--${size}` : '',
+      {
+        'is-round': round,
+        'is-circle': circle,
+      },
     ]"
     @click="handleClick"
   >
@@ -12,6 +16,11 @@
 </template>
 
 <script>
+/**
+ * button 按钮
+ * @description Button 按钮
+ * @property {String} size: small | middle | large 按钮的大小
+ */
 export default {
   name: "tu-button",
 

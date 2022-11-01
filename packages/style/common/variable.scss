@@ -9,9 +9,31 @@ $--color-transition-base: color .2s cubic-bezier(.645, .045, .355, 1) !default;
 
 /* Color
 -------------------------- */
+/*primary color*/
 $--color-primary-light: #8abdff;
 $--color-primary: #6d5dfc;
 $--color-primary-dark: #5b0eeb;
+
+/*success color*/
+$--color-success-light: #93e769;
+$--color-success: #6bc43f;
+$--color-success-dark: #488f24;
+
+/* info color */
+$--color-info-light: #c5c5c5;
+$--color-info: #909399;
+$--color-info-dark: #54585f;
+
+/* warning color*/
+$--color-warning-light: #ffc979;
+$--color-warning: #e6a23c;
+$--color-warning-dark: #c58422;
+
+/* danger color*/
+$--color-danger-light: #ff9f9f;
+$--color-danger: #f56c6c;
+$--color-danger-dark: #c44444;
+
 $--color-white: #ffffff;
 $--color-greyLight-1: #E4EBF5;
 $--color-greyLight-2: #c8d0e7;
