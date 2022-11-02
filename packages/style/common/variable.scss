@@ -7,17 +7,17 @@ $--md-fade-transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), opacity 3
 $--border-transition-base: border-color .2s cubic-bezier(.645, .045, .355, 1) !default;
 $--color-transition-base: color .2s cubic-bezier(.645, .045, .355, 1) !default;
 
-/* Color
+/* color
 -------------------------- */
 /*primary color*/
 $--color-primary-light: #8abdff;
 $--color-primary: #6d5dfc;
-$--color-primary-dark: #5b0eeb;
+$--color-primary-dark: #510ccf;
 
 /*success color*/
 $--color-success-light: #93e769;
 $--color-success: #6bc43f;
-$--color-success-dark: #488f24;
+$--color-success-dark: #3d8618;
 
 /* info color */
 $--color-info-light: #c5c5c5;
@@ -27,7 +27,7 @@ $--color-info-dark: #54585f;
 /* warning color*/
 $--color-warning-light: #ffc979;
 $--color-warning: #e6a23c;
-$--color-warning-dark: #c58422;
+$--color-warning-dark: #b67617;
 
 /* danger color*/
 $--color-danger-light: #ff9f9f;
@@ -39,3 +39,45 @@ $--color-greyLight-1: #E4EBF5;
 $--color-greyLight-2: #c8d0e7;
 $--color-greyLight-3: #bec8e4;
 $--color-greyDark: #9baacf;
+
+/* Typography
+-------------------------- */
+$--font-size-extra-large: 20px;
+$--font-size-large: 18px;
+$--font-size-medium: 16px;
+$--font-size-base: 14px;
+$--font-size-small: 13px;
+$--font-size-extra-small: 12px;
+
+$--font-weight-primary: 500;
+$--font-weight-secondary: 400;
+
+$--font-line-height-primary: 24px;
+$--font-line-height-secondary: 16px;
+
+/* Border
+-------------------------- */
+$--border-radius-large: 6px;
+$--border-radius-base: 4px;
+$--border-radius-small: 2px;
+
+/* Button
+-------------------------- */
+/*中等*/
+$--button-font-size: $--font-size-base;
+$--button-font-weight: $--font-weight-primary;
+$--button-border-radius: $--border-radius-base;
+$--button-padding-vertical: 10px;
+$--button-padding-horizontal: 18px;
+/*较小*/
+$--button-small-font-size: $--font-size-small;
+$--button-small-font-weight: $--font-weight-primary;
+$--button-small-border-radius: $--border-radius-small;
+$--button-small-padding-vertical: 6px;
+$--button-small-padding-horizontal: 10px;
+/*较大*/
+$--button-large-font-size: $--font-size-base;
+$--button-large-font-weight: $--font-weight-primary;
+$--button-large-border-radius: $--border-radius-large;
+$--button-large-padding-vertical: 14px;
+$--button-large-padding-horizontal: 22px;

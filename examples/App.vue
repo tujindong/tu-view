@@ -13,6 +13,10 @@
       <tu-button class="demo-button" size="large" type="default"
         >大号按钮</tu-button
       >
+
+      <tu-button class="demo-button" type="default" round>圆角按钮</tu-button>
+
+      <tu-button class="demo-button" type="default" circle>圆</tu-button>
     </div>
   </div>
 </template>

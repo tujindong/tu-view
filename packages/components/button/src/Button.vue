@@ -19,7 +19,7 @@
 /**
  * button 按钮
  * @description Button 按钮
- * @property {String} size: small | middle | large 按钮的大小
+ * @property {String} size: small | medium | large 按钮的大小
  */
 export default {
   name: "tu-button",
@@ -44,4 +44,3 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
