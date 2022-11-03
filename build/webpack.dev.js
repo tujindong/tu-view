@@ -16,7 +16,8 @@ module.exports = merge(webpackCommonConfig, {
                 test: /\.(scss|sass)$/,
                 use: [
                     {
-                        loader: 'style-loader', // 开发环境还是使用style-loader，不然无法及时响应样式变化
+                        // 开发环境还是使用style-loader，不然无法及时响应样式变化
+                        loader: 'style-loader',
                     },
                     {
                         loader: 'css-loader',

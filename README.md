@@ -14,7 +14,7 @@ npm i tu-view
 
 ```javascript
 // 全部引入
-import "t-mooc-ui/dist/css/index.css";
 import TuView from "tu-view";
+import "tu-view/lib/tuview.css";
 Vue.use(TuView);
 ```

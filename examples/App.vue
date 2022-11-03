@@ -16,7 +16,12 @@
 
       <tu-button class="demo-button" type="default" round>圆角按钮</tu-button>
 
-      <tu-button class="demo-button" type="default" circle>圆</tu-button>
+      <tu-button
+        class="demo-button"
+        size="large"
+        type="default"
+        circle
+      ></tu-button>
     </div>
   </div>
 </template>
@@ -30,7 +35,7 @@ export default {};
 .container {
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
-  background: #e4ebf5;
+  /* background: #e4ebf5; */
 
   .demo-button-wrapper {
     padding-top: 20px;

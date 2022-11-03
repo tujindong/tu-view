@@ -1,0 +1,13 @@
+@import "./function.scss";
+@import "./variable.scss";
+
+/* BEM [block]__[element]--[modifier]
+ -------------------------- */
+$namespace: 'tu';
+
+@mixin b($block) {
+
+    .#{$namespace} {
+        @content;
+    }
+}

@@ -64,20 +64,24 @@ $--border-radius-small: 2px;
 /* Button
 -------------------------- */
 /*中等*/
+
 $--button-font-size: $--font-size-base;
 $--button-font-weight: $--font-weight-primary;
 $--button-border-radius: $--border-radius-base;
 $--button-padding-vertical: 10px;
 $--button-padding-horizontal: 18px;
+$--button-circle-size: 32px;
 /*较小*/
 $--button-small-font-size: $--font-size-small;
 $--button-small-font-weight: $--font-weight-primary;
 $--button-small-border-radius: $--border-radius-small;
 $--button-small-padding-vertical: 6px;
 $--button-small-padding-horizontal: 10px;
+$--button-small-circle-size: 28px;
 /*较大*/
 $--button-large-font-size: $--font-size-base;
 $--button-large-font-weight: $--font-weight-primary;
 $--button-large-border-radius: $--border-radius-large;
 $--button-large-padding-vertical: 14px;
 $--button-large-padding-horizontal: 22px;
+$--button-large-circle-size: 36px;

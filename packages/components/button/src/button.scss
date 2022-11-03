@@ -1,4 +1,4 @@
-@import "../../../style/common/variable.scss";
+@import "~@packages/style/common/mixin.scss";
 
 @mixin button-filled($color-light, $color-normal, $color-dark) {
     transition: 0.1s ease;
@@ -17,6 +17,7 @@
         box-shadow: inset 2px 2px 10px $color-dark, inset -2px -2px 10px $color-light;
     }
 }
+
 
 .tu-button {
     display: inline-block;
@@ -76,5 +77,9 @@
 
     &.is-round {
         border-radius: 40px;
+    }
+
+    &.is-circle {
+        border-radius: 50%;
     }
 }
