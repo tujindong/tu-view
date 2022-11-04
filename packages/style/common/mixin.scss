@@ -3,11 +3,10 @@
 
 /* BEM [block]__[element]--[modifier]
  -------------------------- */
-$namespace: 'tu';
-
 @mixin b($block) {
+    $B: $namespace +'-'+$block  !global;
 
-    .#{$namespace} {
+    .#{$B} {
         @content;
     }
 }

@@ -31,7 +31,7 @@ export default {};
 </script>
 
 <style lang="scss">
-@import url("../packages/style/index.scss");
+/* @import url("../packages/style/index.scss"); */
 .container {
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
