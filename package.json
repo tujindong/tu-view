@@ -1,6 +1,6 @@
 {
     "name": "tu-view",
-    "version": "0.1.7",
+    "version": "0.1.9",
     "description": "一款有触觉的UI组件",
     "main": "lib/tuview.js",
     "scripts": {

@@ -3,7 +3,11 @@ module.exports = {
     configList: [
         {
             name: 'button',
-            author: 'tuu'
+            author: 'tu'
+        },
+        {
+            name: 'icon',
+            author: 'tu'
         },
     ]
 }

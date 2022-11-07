@@ -19,7 +19,7 @@
 }
 
 
-.tu-button {
+@include b(button) {
     display: inline-block;
     cursor: pointer;
     box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
@@ -32,6 +32,7 @@
 
     &--default {
         color: $--color-greyDark;
+        background: transparent;
 
         &:hover {
             color: $--color-primary;

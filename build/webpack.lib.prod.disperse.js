@@ -26,7 +26,7 @@ module.exports = merge(webpackLibBaseConfig, {
         // 打包后生成的js文件
         // 解释下这个[name]是怎么来的，它是根据你的entry命名来的，入口叫啥，出口的[name]就叫啥
         filename: "[name]/index.js",
-        // 我这儿目前还没有资源引用
+        // 目前还没有资源引用
         publicPath: "/",
         library: '[name]',
         libraryTarget: 'umd',

@@ -1,4 +1,5 @@
 // 库打包的主要配置
+const path = require("path");
 // 引入vue-loader插件
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 // 引入清除打包后文件的插件（最新版的需要解构，不然会报不是构造函数的错，而且名字必须写CleanWebpackPlugin）
@@ -51,7 +52,22 @@ module.exports = {
                         }
                     }
                 ]
-            }
+            },
+            {
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            publicPath: './',
+                            limit: 5120,
+                            esModule: false,
+                            fallback: 'file-loader',
+                            name: 'fonts/[name].[hash:4].[ext]'
+                        }
+                    }
+                ]
+            },
         ]
     },
     plugins: [
@@ -61,6 +77,8 @@ module.exports = {
     resolve: {
         alias: {
             'vue$': 'vue/dist/vue.runtime.esm.js',
+            '@': path.resolve(__dirname, '../examples'),
+            '@packages': path.resolve(__dirname, '../packages')
         },
         extensions: ['*', '.js', '.vue']
     }

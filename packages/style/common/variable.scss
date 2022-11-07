@@ -9,6 +9,12 @@ $--color-transition-base: color .2s cubic-bezier(.645, .045, .355, 1) !default;
 
 /* color
 -------------------------- */
+$--color-white: #ffffff;
+$--color-greyLight-1: #E4EBF5;
+$--color-greyLight-2: #c8d0e7;
+$--color-greyLight-3: #bec8e4;
+$--color-greyDark: #9baacf;
+
 /*primary color*/
 $--color-primary-light: #8abdff;
 $--color-primary: #6d5dfc;
@@ -33,12 +39,6 @@ $--color-warning-dark: #b67617;
 $--color-danger-light: #ff9f9f;
 $--color-danger: #f56c6c;
 $--color-danger-dark: #c44444;
-
-$--color-white: #ffffff;
-$--color-greyLight-1: #E4EBF5;
-$--color-greyLight-2: #c8d0e7;
-$--color-greyLight-3: #bec8e4;
-$--color-greyDark: #9baacf;
 
 /* Typography
 -------------------------- */
