@@ -46,8 +46,8 @@ $--font-size-extra-large: 20px;
 $--font-size-large: 18px;
 $--font-size-medium: 16px;
 $--font-size-base: 14px;
-$--font-size-small: 13px;
-$--font-size-extra-small: 12px;
+$--font-size-small: 12px;
+$--font-size-extra-small: 10px;
 
 $--font-weight-primary: 500;
 $--font-weight-secondary: 400;
@@ -63,25 +63,25 @@ $--border-radius-small: 2px;
 
 /* Button
 -------------------------- */
+$--button-disabled-font-color: $--color-greyDark;
 /*中等*/
-
 $--button-font-size: $--font-size-base;
 $--button-font-weight: $--font-weight-primary;
 $--button-border-radius: $--border-radius-base;
-$--button-padding-vertical: 10px;
+$--button-padding-vertical: 12px;
 $--button-padding-horizontal: 18px;
 $--button-circle-size: 32px;
 /*较小*/
 $--button-small-font-size: $--font-size-small;
 $--button-small-font-weight: $--font-weight-primary;
 $--button-small-border-radius: $--border-radius-small;
-$--button-small-padding-vertical: 6px;
+$--button-small-padding-vertical: 8px;
 $--button-small-padding-horizontal: 10px;
 $--button-small-circle-size: 28px;
 /*较大*/
 $--button-large-font-size: $--font-size-base;
 $--button-large-font-weight: $--font-weight-primary;
 $--button-large-border-radius: $--border-radius-large;
-$--button-large-padding-vertical: 14px;
+$--button-large-padding-vertical: 16px;
 $--button-large-padding-horizontal: 22px;
 $--button-large-circle-size: 36px;

@@ -16,21 +16,68 @@
     &:active {
         box-shadow: inset 2px 2px 10px $color-dark, inset -2px -2px 10px $color-light;
     }
+
+    &.is-disabled {
+        cursor: not-allowed;
+        position: relative;
+
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+            background: $color-normal;
+            box-shadow: inset 2px 2px 10px $color-light,
+                inset -2px -2px 10px $color-dark,
+                3px 3px 6px $--color-greyLight-2,
+                -2px -2px 5px $--color-white;
+            color: $--color-greyLight-1;
+
+            &::before {
+                content: ' ';
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: rgba(255, 255, 255, 0.25);
+            }
+        }
+    }
+}
+
+@mixin button-size($padding-vertical, $padding-horizontal, $font-size) {
+    padding: $padding-vertical $padding-horizontal;
+    font-size: $font-size;
 }
 
 
 @include b(button) {
     display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
     cursor: pointer;
     box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
-    cursor: pointer;
     transition: $--all-transition;
     padding: $--button-padding-vertical $--button-padding-horizontal;
     font-size: $--font-size-base;
     border-radius: $--button-border-radius;
     border: none;
 
-    &--default {
+    @include when(round) {
+        border-radius: 40px;
+    }
+
+    @include when(circle) {
+        border-radius: 50%;
+        padding: $--button-padding-vertical;
+
+        &>i {
+            display: block;
+        }
+    }
+
+    @include m(default) {
         color: $--color-greyDark;
         background: transparent;
 
@@ -41,46 +88,70 @@
         &:active {
             box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
         }
+
+        &.is-disabled {
+            cursor: not-allowed;
+            position: relative;
+
+            &,
+            &:hover,
+            &:focus,
+            &:active {
+                color: $--color-greyDark;
+                box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+
+                &::before {
+                    content: ' ';
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background: rgba(255, 255, 255, 0.25);
+                }
+            }
+        }
     }
 
-    &--primary {
-        @include button-filled($--color-primary-light, $--color-primary, $--color-primary-dark)
+    @include m(primary) {
+        @include button-filled($--color-primary-light, $--color-primary, $--color-primary-dark);
     }
 
-    &--success {
-        @include button-filled($--color-success-light, $--color-success, $--color-success-dark)
+    @include m(success) {
+        @include button-filled($--color-success-light, $--color-success, $--color-success-dark);
     }
 
-    &--info {
-        @include button-filled($--color-info-light, $--color-info, $--color-info-dark)
+    @include m(info) {
+        @include button-filled($--color-info-light, $--color-info, $--color-info-dark);
     }
 
-    &--warning {
-        @include button-filled($--color-warning-light, $--color-warning, $--color-warning-dark)
+    @include m(warning) {
+        @include button-filled($--color-warning-light, $--color-warning, $--color-warning-dark);
     }
 
-    &--danger {
-        @include button-filled($--color-danger-light, $--color-danger, $--color-danger-dark)
+    @include m(danger) {
+        @include button-filled($--color-danger-light, $--color-danger, $--color-danger-dark);
     }
 
-    &--small {
-        padding: $--button-small-padding-vertical $--button-small-padding-horizontal;
-        font-size: $--font-size-small;
+    @include m(small) {
+        @include button-size($--button-small-padding-vertical, $--button-small-padding-horizontal, $--font-size-small);
+
+        @include when(circle) {
+            padding: $--button-small-padding-vertical;
+        }
     }
 
-    &--medium {
-        padding: $--button-padding-vertical $--button-padding-horizontal;
+    @include m(medium) {
+        @include button-size($--button-padding-vertical, $--button-padding-horizontal, $--font-size-base);
     }
 
-    &--large {
-        padding: $--button-large-padding-vertical $--button-large-padding-horizontal;
-    }
+    @include m(large) {
+        @include button-size($--button-large-padding-vertical, $--button-large-padding-horizontal, $--font-size-base);
 
-    &.is-round {
-        border-radius: 40px;
-    }
-
-    &.is-circle {
-        border-radius: 50%;
+        @include when(circle) {
+            padding: $--button-large-padding-vertical;
+            font-size: $--font-size-large;
+        }
     }
 }

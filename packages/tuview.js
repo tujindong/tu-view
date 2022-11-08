@@ -3,11 +3,13 @@
 // 导入主样式文件（用于注册所有组件时使用）
 import Button from './components/button';
 import Icon from './components/icon'
+import Radio from './components/radio'
 
 // 定义组件列表
 const componentsList = [
     Button,
-    Icon
+    Icon,
+    Radio
 ];
 
 const install = function (Vue) {
@@ -24,7 +26,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
     install,
-    Button,
-    Icon
+    ...componentsList
 }
 

@@ -9,5 +9,9 @@ module.exports = {
             name: 'icon',
             author: 'tu'
         },
+        {
+            name: 'radio',
+            author: 'tu'
+        },
     ]
 }
