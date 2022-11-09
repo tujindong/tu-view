@@ -7,7 +7,7 @@
         inset -2px -2px 10px $color-dark,
         3px 3px 6px $--color-greyLight-2,
         -2px -2px 5px $--color-white;
-    color: $--color-greyLight-1;
+    color: $--button-font-color;
 
     &:hover {
         color: $--color-white;
@@ -30,7 +30,7 @@
                 inset -2px -2px 10px $color-dark,
                 3px 3px 6px $--color-greyLight-2,
                 -2px -2px 5px $--color-white;
-            color: $--color-greyLight-1;
+            color: $--button-font-color;
 
             &::before {
                 content: ' ';

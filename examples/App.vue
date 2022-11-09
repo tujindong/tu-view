@@ -54,13 +54,19 @@
     </div>
 
     <div class="demo-radio-wrapper">
-      <tu-radio></tu-radio>
+      <tu-radio v-model="radio" label="1">备选项</tu-radio>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      radio: 1,
+    };
+  },
+};
 </script>
 
 <style lang="scss">

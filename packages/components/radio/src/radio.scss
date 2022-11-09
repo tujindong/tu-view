@@ -1,3 +1,41 @@
-.tu {
-    color: red;
+@import "~@packages/style/common/mixin.scss";
+@import "~@packages/style/common/utils.scss";
+
+@include b(radio) {
+    color: $--radio-font-color;
+    font-weight: $--radio-font-weight;
+    line-height: 1;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    white-space: nowrap;
+    outline: none;
+    font-size: $--font-size-base;
+    margin-right: 30px;
+    @include utils-user-select(none);
+}
+
+@include e(input) {}
+
+@include e(inner) {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 10px;
+    height: 10px;
+    box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+    position: relative;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+@include e(original) {
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
 }

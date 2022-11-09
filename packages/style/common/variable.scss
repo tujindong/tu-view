@@ -14,6 +14,15 @@ $--color-greyLight-1: #E4EBF5;
 $--color-greyLight-2: #c8d0e7;
 $--color-greyLight-3: #bec8e4;
 $--color-greyDark: #9baacf;
+$--color-text-primary: #303133;
+$--color-text-regular: #606266;
+$--color-text-secondary: #909399;
+$--color-text-placeholder: #C0C4CC;
+$--border-color-base: #DCDFE6;
+$--border-color-light: #E4E7ED;
+$--border-color-lighter: #EBEEF5;
+$--border-color-extra-light: #F2F6FC;
+
 
 /*primary color*/
 $--color-primary-light: #8abdff;
@@ -64,6 +73,7 @@ $--border-radius-small: 2px;
 /* Button
 -------------------------- */
 $--button-disabled-font-color: $--color-greyDark;
+$--button-font-color: $--color-greyLight-1;
 /*中等*/
 $--button-font-size: $--font-size-base;
 $--button-font-weight: $--font-weight-primary;
@@ -85,3 +95,9 @@ $--button-large-border-radius: $--border-radius-large;
 $--button-large-padding-vertical: 16px;
 $--button-large-padding-horizontal: 22px;
 $--button-large-circle-size: 36px;
+
+/* Radio
+-------------------------- */
+$--radio-font-size: $--font-size-base;
+$--radio-font-color: $--color-greyDark;
+$--radio-font-weight: $--font-weight-primary;
