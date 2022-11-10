@@ -25,16 +25,19 @@
             &:focus,
             &:active {
                 &::after {
-                    background: $--color-greyDark;
+                    background: $--color-greyLight-3;
                 }
             }
         }
 
+        @include e(label) {
+            color: $--color-greyLight-3;
+        }
 
         @include when(checked) {
             @include e(inner) {
                 &::after {
-                    background: $--color-primary;
+                    background: mix($--color-primary, $--color-white, 70%);
                 }
             }
         }
