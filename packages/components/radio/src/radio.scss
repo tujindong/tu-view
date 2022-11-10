@@ -13,29 +13,97 @@
     font-size: $--font-size-base;
     margin-right: 30px;
     @include utils-user-select(none);
-}
 
-@include e(input) {}
+    @include when(disabled) {
+        cursor: not-allowed;
+        position: relative;
 
-@include e(inner) {
-    display: inline-block;
-    box-sizing: border-box;
-    width: 10px;
-    height: 10px;
-    box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
-    position: relative;
-    cursor: pointer;
-    border-radius: 50%;
-}
+        @include e(inner) {
 
-@include e(original) {
-    opacity: 0;
-    outline: none;
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0;
+            &,
+            &:hover,
+            &:focus,
+            &:active {
+                &::after {
+                    background: $--color-greyDark;
+                }
+            }
+        }
+
+
+        @include when(checked) {
+            @include e(inner) {
+                &::after {
+                    background: $--color-primary;
+                }
+            }
+        }
+    }
+
+    @include when(checked) {
+        @include e(inner) {
+            box-shadow: inset 2px 2px 4px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+
+            &::after {
+                background: $--color-primary;
+            }
+        }
+    }
+
+    @include e(input) {
+        white-space: nowrap;
+        cursor: pointer;
+        outline: none;
+        display: inline-block;
+        line-height: 1;
+        position: relative;
+        vertical-align: middle;
+    }
+
+    @include e(inner) {
+        display: inline-block;
+        box-sizing: border-box;
+        width: $--radio-input-width;
+        height: $--radio-input-height;
+        box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+        position: relative;
+        cursor: pointer;
+        border-radius: 50%;
+
+        &:hover {
+            &::after {
+                background: $--color-primary;
+            }
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            width: 36%;
+            height: 36%;
+            background: $--color-greyDark;
+            border-radius: 50%;
+            transition: 0.3s ease;
+        }
+    }
+
+    @include e(original) {
+        opacity: 0;
+        outline: none;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+    }
+
+    @include e(label) {
+        font-size: $--radio-font-size;
+        padding-left: 8px;
+    }
 }

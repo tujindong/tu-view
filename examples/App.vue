@@ -54,7 +54,13 @@
     </div>
 
     <div class="demo-radio-wrapper">
-      <tu-radio v-model="radio" label="1">备选项</tu-radio>
+      <tu-radio class="demo-radio" v-model="radio" :label="1" disabled
+        >备选项1</tu-radio
+      >
+      <tu-radio class="demo-radio" v-model="radio" :label="2">备选项2</tu-radio>
+      <tu-radio class="demo-radio" v-model="radio" :label="3" disabled
+        >禁用</tu-radio
+      >
     </div>
   </div>
 </template>
@@ -78,6 +84,13 @@ export default {
   .demo-button-wrapper {
     padding-top: 20px;
     .demo-button {
+      margin-left: 30px;
+      margin-bottom: 10px;
+    }
+  }
+  .demo-radio-wrapper {
+    padding-top: 20px;
+    .demo-radio {
       margin-left: 30px;
       margin-bottom: 10px;
     }
