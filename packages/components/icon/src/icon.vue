@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "tu-icon",
+  name: "TuIcon",
 
   props: {
     name: String,

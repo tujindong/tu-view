@@ -29,7 +29,7 @@
  * @property {Boolean} circle: 是否圆形按钮
  */
 export default {
-  name: "tu-button",
+  name: "TuButton",
 
   props: {
     type: {

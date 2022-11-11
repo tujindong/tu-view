@@ -74,13 +74,6 @@ $--border-radius-small: 2px;
 -------------------------- */
 $--button-disabled-font-color: $--color-greyDark;
 $--button-font-color: $--color-greyLight-1;
-/*中等*/
-$--button-font-size: $--font-size-base;
-$--button-font-weight: $--font-weight-primary;
-$--button-border-radius: $--border-radius-base;
-$--button-padding-vertical: 12px;
-$--button-padding-horizontal: 18px;
-$--button-circle-size: 32px;
 /*较小*/
 $--button-small-font-size: $--font-size-small;
 $--button-small-font-weight: $--font-weight-primary;
@@ -88,18 +81,47 @@ $--button-small-border-radius: $--border-radius-small;
 $--button-small-padding-vertical: 8px;
 $--button-small-padding-horizontal: 10px;
 $--button-small-circle-size: 28px;
+/*中等*/
+$--button-font-size: $--font-size-base;
+$--button-font-weight: $--font-weight-primary;
+$--button-border-radius: $--border-radius-base;
+$--button-padding-vertical: 12px;
+$--button-padding-horizontal: 18px;
+$--button-circle-size: 32px;
 /*较大*/
 $--button-large-font-size: $--font-size-base;
 $--button-large-font-weight: $--font-weight-primary;
 $--button-large-border-radius: $--border-radius-large;
-$--button-large-padding-vertical: 16px;
+$--button-large-padding-vertical: 15px;
 $--button-large-padding-horizontal: 22px;
 $--button-large-circle-size: 36px;
 
 /* Radio
 -------------------------- */
-$--radio-font-size: $--font-size-base;
 $--radio-font-color: $--color-greyDark;
 $--radio-font-weight: $--font-weight-primary;
-$--radio-input-height: 22px;
-$--radio-input-width: 22px;
+/*超小*/
+$--radio-mini-font-size: $--font-size-extra-small;
+$--radio-mini-input-height: 14px;
+$--radio-mini-input-width: 14px;
+$--radio-mini-bordered-padding-vertical: 3px;
+$--radio-mini-bordered-padding-horizontal: 3px;
+/*较小*/
+$--radio-small-font-size: $--font-size-small;
+$--radio-small-input-height: 16px;
+$--radio-small-input-width: 16px;
+$--radio-small-bordered-padding-vertical: 6px;
+$--radio-small-bordered-padding-horizontal: 6px;
+/*中等*/
+$--radio-font-size: $--font-size-base;
+$--radio-input-height: 20px;
+$--radio-input-width: 20px;
+$--radio-font-size: $--font-size-base;
+$--radio-bordered-padding-vertical: 9px;
+$--radio-bordered-padding-horizontal: 9px;
+/*较大*/
+$--radio-large-font-size: $--font-size-base;
+$--radio-large-input-height: 22px;
+$--radio-large-input-width: 22px;
+$--radio-large-bordered-padding-vertical: 11px;
+$--radio-large-bordered-padding-horizontal: 15px;

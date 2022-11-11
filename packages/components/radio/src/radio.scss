@@ -7,12 +7,39 @@
     line-height: 1;
     position: relative;
     cursor: pointer;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     white-space: nowrap;
     outline: none;
     font-size: $--font-size-base;
     margin-right: 30px;
     @include utils-user-select(none);
+
+    @include when(bordered) {
+        /**边框阴影会造成视觉上位置偏移，故阴影处增加1px，发光处减少1px*/
+        padding: calc(#{$--radio-bordered-padding-vertical} + 1px) calc(#{$--radio-bordered-padding-horizontal} + 6px) calc(#{$--radio-bordered-padding-vertical} - 1px) $--radio-bordered-padding-horizontal;
+        color: $--color-greyDark;
+        background: transparent;
+        box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+        box-sizing: border-box;
+        border-radius: $--border-radius-base;
+
+        @include e(inner) {
+            box-shadow: none;
+        }
+
+        @include e(label) {
+            padding-left: 0;
+        }
+
+        @include when(checked) {
+            box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+
+            @include e(inner) {
+                box-shadow: none;
+            }
+        }
+    }
 
     @include when(disabled) {
         cursor: not-allowed;
@@ -53,6 +80,60 @@
         }
     }
 
+    @include when(focus) {
+        @include e(inner) {
+            &::after {
+                background: $--color-primary;
+                box-shadow: 0 0 3px $--color-primary-light;
+            }
+        }
+    }
+
+    @include m(mini) {
+        &.is-bordered {
+            padding: calc(#{$--radio-mini-bordered-padding-vertical}) calc(#{$--radio-mini-bordered-padding-horizontal} + 6px) calc(#{$--radio-mini-bordered-padding-vertical}) $--radio-mini-bordered-padding-horizontal;
+
+            @include e(inner) {
+                width: $--radio-mini-input-width;
+                height: $--radio-mini-input-height;
+            }
+
+            @include e(label) {
+                font-size: $--radio-mini-font-size;
+            }
+        }
+    }
+
+    @include m(small) {
+        &.is-bordered {
+            padding: calc(#{$--radio-small-bordered-padding-vertical}) calc(#{$--radio-small-bordered-padding-horizontal} + 6px) calc(#{$--radio-small-bordered-padding-vertical}) $--radio-small-bordered-padding-horizontal;
+
+            @include e(inner) {
+                width: $--radio-small-input-width;
+                height: $--radio-small-input-height;
+            }
+
+            @include e(label) {
+                font-size: $--radio-small-font-size;
+            }
+        }
+    }
+
+    @include m(large) {
+        &.is-bordered {
+            padding: calc(#{$--radio-large-bordered-padding-vertical}) calc(#{$--radio-large-bordered-padding-horizontal} + 6px) calc(#{$--radio-large-bordered-padding-vertical}) $--radio-large-bordered-padding-horizontal;
+
+            @include e(inner) {
+                width: $--radio-large-input-width;
+                height: $--radio-large-input-height;
+            }
+
+            @include e(label) {
+                font-size: $--radio-large-font-size;
+            }
+        }
+    }
+
     @include e(input) {
         white-space: nowrap;
         cursor: pointer;
@@ -64,7 +145,9 @@
     }
 
     @include e(inner) {
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         box-sizing: border-box;
         width: $--radio-input-width;
         height: $--radio-input-height;
@@ -82,9 +165,6 @@
         &::after {
             content: "";
             position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%) scale(1);
             width: 36%;
             height: 36%;
             background: $--color-greyDark;

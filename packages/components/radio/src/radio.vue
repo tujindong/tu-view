@@ -2,7 +2,9 @@
   <label
     class="tu-radio"
     :class="[
+      border && radioSize ? `tu-radio--${radioSize}` : '',
       { 'is-disabled': isDisabled },
+      { 'is-focus': focus },
       { 'is-checked': model === label },
       { 'is-bordered': border },
     ]"
@@ -24,6 +26,8 @@
         :value="label"
         :name="name"
         :disabled="isDisabled"
+        @focus="focus = true"
+        @blur="focus = false"
         @change="handleChange"
       />
     </span>
@@ -36,7 +40,7 @@
 
 <script>
 export default {
-  name: "tu-radio",
+  name: "TuRadio",
 
   props: {
     value: {},
@@ -44,10 +48,13 @@ export default {
     disabled: Boolean,
     name: String,
     border: Boolean,
+    size: String,
   },
 
   data() {
-    return {};
+    return {
+      focus: false,
+    };
   },
 
   computed: {
@@ -64,6 +71,9 @@ export default {
     },
     isDisabled() {
       return this.disabled;
+    },
+    radioSize() {
+      return this.size;
     },
   },
 
