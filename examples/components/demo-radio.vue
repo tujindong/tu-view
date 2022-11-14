@@ -11,7 +11,7 @@
     >
 
     <tu-radio class="demo-radio" v-model="radio" :label="4" border
-      >按钮备选4</tu-radio
+      >按钮单选4</tu-radio
     >
 
     <tu-radio class="demo-radio" v-model="radio" :label="5" border disabled
@@ -19,21 +19,29 @@
     >
 
     <tu-radio class="demo-radio" v-model="radio" :label="8" border size="mini"
-      >超小按钮</tu-radio
+      >超小单选</tu-radio
     >
 
     <tu-radio class="demo-radio" v-model="radio" :label="6" border size="small"
-      >小按钮</tu-radio
+      >小按钮单选</tu-radio
     >
 
     <tu-radio class="demo-radio" v-model="radio" :label="7" border size="large"
-      >大按钮</tu-radio
+      >大按钮单选</tu-radio
     >
 
     <tu-radio-group v-model="radioGroup">
       <tu-radio :label="3">备选项</tu-radio>
       <tu-radio :label="6">备选项</tu-radio>
       <tu-radio :label="9">备选项</tu-radio>
+    </tu-radio-group>
+
+    <br />
+
+    <tu-radio-group size="small" v-model="radioGroup">
+      <tu-radio :label="3" border>备选项</tu-radio>
+      <tu-radio :label="6" border>备选项</tu-radio>
+      <tu-radio :label="9" border>备选项</tu-radio>
     </tu-radio-group>
   </div>
 </template>

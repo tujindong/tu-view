@@ -64,10 +64,14 @@ export default {
     //radio数据模型
     model: {
       get() {
-        return this.value;
+        return this.isGroup ? this._radioGroup.value : this.value;
       },
       set(val) {
-        this.$emit("input", val);
+        if (this.isGroup) {
+          this.dispatch("TuRadioGroup", "input", [val]);
+        } else {
+          this.$emit("input", val);
+        }
         this.$refs.radio &&
           (this.$refs.radio.checked = this.model === this.label);
       },
@@ -76,7 +80,7 @@ export default {
       return this.disabled;
     },
     radioSize() {
-      return this.size;
+      return this.isGroup ? this._radioGroup.radioGroupSize : this.size;
     },
     isGroup() {
       let parent = this.$parent;

@@ -25,6 +25,9 @@ export default {
       if (!tag || tag === "component") tag = "div";
       return tag;
     },
+    radioGroupSize() {
+      return this.size;
+    },
   },
 
   watch: {},
