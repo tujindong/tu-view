@@ -1,0 +1,77 @@
+@import "~@packages/style/common/mixin.scss";
+@import "~@packages/style/common/utils.scss";
+
+@include b(checkbox) {
+    color: $--checkbox-font-color;
+    font-weight: $--checkbox-font-weight;
+    font-size: $--font-size-base;
+    margin-right: 30px;
+
+    @include when(bordered) {}
+
+    @include when(disabled) {}
+
+    @include when(checked) {}
+
+    @include when(focus) {}
+
+    @include m(mini) {}
+
+    @include m(small) {}
+
+    @include m(large) {}
+
+    @include e(input) {
+        white-space: nowrap;
+        cursor: pointer;
+        outline: none;
+        display: inline-block;
+        line-height: 1;
+        position: relative;
+        vertical-align: middle;
+
+        @include e(inner) {
+            display: inline-block;
+            position: relative;
+            box-sizing: border-box;
+            cursor: pointer;
+            width: $--checkbox-input-width;
+            height: $--checkbox-input-height;
+            border-radius: $--checkbox-border-radius;
+            box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+
+
+            &::after {
+                box-sizing: content-box;
+                content: "";
+                border: 2px solid $--checkbox-icon-color;
+                border-left: 0;
+                border-top: 0;
+                height: 10px;
+                left: 7px;
+                position: absolute;
+                top: 3px;
+                transform: rotate(45deg) scaleY(1);
+                width: 4px;
+                transition: transform .15s ease-in .05s;
+                transform-origin: center;
+            }
+        }
+
+        @include e(original) {
+            opacity: 0;
+            outline: none;
+            position: absolute;
+            margin: 0;
+            width: 0;
+            height: 0;
+            z-index: -1;
+        }
+    }
+
+    @include e(label) {
+        display: inline-block;
+        font-size: $--radio-font-size;
+        padding-left: 8px;
+    }
+}

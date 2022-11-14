@@ -5,13 +5,15 @@ import Button from './components/button';
 import Icon from './components/icon';
 import Radio from './components/radio';
 import RadioGroup from './components/radio-group';
+import checkbox from './components/checkbox';
 
 // 定义组件列表
 const componentsList = [
     Button,
     Icon,
     Radio,
-    RadioGroup
+    RadioGroup,
+    checkbox
 ];
 
 const install = function (Vue) {

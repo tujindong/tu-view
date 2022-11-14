@@ -38,7 +38,7 @@
 
     <br />
 
-    <tu-radio-group size="small" v-model="radioGroup">
+    <tu-radio-group v-model="radioGroup">
       <tu-radio :label="3" border>备选项</tu-radio>
       <tu-radio :label="6" border>备选项</tu-radio>
       <tu-radio :label="9" border>备选项</tu-radio>

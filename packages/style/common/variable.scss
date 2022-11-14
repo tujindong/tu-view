@@ -125,3 +125,21 @@ $--radio-large-input-height: 22px;
 $--radio-large-input-width: 22px;
 $--radio-large-bordered-padding-vertical: 11px;
 $--radio-large-bordered-padding-horizontal: 15px;
+
+/* Checkbox
+-------------------------- */
+$--checkbox-font-color: $--color-greyDark;
+$--checkbox-font-weight: $--font-weight-primary;
+$--checkbox-icon-color: $--color-greyDark;
+$--checkbox-checked-icon-color: $--color-primary;
+/*超小*/
+$--checkbox-mini-font-size: $--font-size-extra-small;
+/*较小*/
+$--checkbox-small-font-size: $--font-size-small;
+/*中等*/
+$--checkbox-font-size: $--font-size-base;
+$--checkbox-input-height: 20px;
+$--checkbox-input-width: 20px;
+$--checkbox-border-radius: $--border-radius-small;
+/*较大*/
+$--checkbox-large-font-size: $--font-size-base;

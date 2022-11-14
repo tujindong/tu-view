@@ -17,5 +17,9 @@ module.exports = {
             name: 'radio-group',
             author: 'tu'
         },
+        {
+            name: 'checkbox',
+            author: 'tu'
+        },
     ]
 }
