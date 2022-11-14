@@ -29,6 +29,12 @@
     <tu-radio class="demo-radio" v-model="radio" :label="7" border size="large"
       >大按钮</tu-radio
     >
+
+    <tu-radio-group v-model="radioGroup">
+      <tu-radio :label="3">备选项</tu-radio>
+      <tu-radio :label="6">备选项</tu-radio>
+      <tu-radio :label="9">备选项</tu-radio>
+    </tu-radio-group>
   </div>
 </template>
 
@@ -39,6 +45,7 @@ export default {
   data() {
     return {
       radio: 1,
+      radioGroup: 3,
     };
   },
 };

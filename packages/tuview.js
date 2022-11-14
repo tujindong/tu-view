@@ -2,14 +2,16 @@
 
 // 导入主样式文件（用于注册所有组件时使用）
 import Button from './components/button';
-import Icon from './components/icon'
-import Radio from './components/radio'
+import Icon from './components/icon';
+import Radio from './components/radio';
+import RadioGroup from './components/radio-group';
 
 // 定义组件列表
 const componentsList = [
     Button,
     Icon,
-    Radio
+    Radio,
+    RadioGroup
 ];
 
 const install = function (Vue) {

@@ -13,5 +13,9 @@ module.exports = {
             name: 'radio',
             author: 'tu'
         },
+        {
+            name: 'radio-group',
+            author: 'tu'
+        },
     ]
 }

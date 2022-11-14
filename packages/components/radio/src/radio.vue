@@ -39,8 +39,11 @@
 </template>
 
 <script>
+import Emitter from "@packages/src/mixins/emitter";
 export default {
   name: "TuRadio",
+
+  mixins: [Emitter],
 
   props: {
     value: {},
@@ -75,12 +78,27 @@ export default {
     radioSize() {
       return this.size;
     },
+    isGroup() {
+      let parent = this.$parent;
+      while (parent) {
+        if (parent.$options.componentName !== "TuRadioGroup") {
+          parent = parent.$parent;
+        } else {
+          this._radioGroup = parent;
+          return true;
+        }
+      }
+      return false;
+    },
   },
 
   methods: {
     handleChange() {
       this.$nextTick(() => {
         this.$emit("change", this.model);
+        //按钮组情况
+        this.isGroup &&
+          this.dispatch("TuRadioGroup", "handleChange", this.model);
       });
     },
   },

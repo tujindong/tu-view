@@ -1,5 +1,5 @@
 <template>
-  <component>
+  <component :is="_tuTag" @keydown="handleKeydown">
     <slot></slot>
   </component>
 </template>
@@ -16,6 +16,27 @@ export default {
   props: {
     value: {},
     size: String,
+    disabled: Boolean,
+  },
+
+  computed: {
+    _tuTag() {
+      let { tag = "" } = this.$vnode.data;
+      if (!tag || tag === "component") tag = "div";
+      return tag;
+    },
+  },
+
+  watch: {},
+
+  created() {
+    this.$on("handleChange", (value) => {
+      this.$emit("change", value);
+    });
+  },
+
+  methods: {
+    handleKeydown(e) {},
   },
 };
 </script>
