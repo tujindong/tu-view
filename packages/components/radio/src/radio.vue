@@ -76,12 +76,15 @@ export default {
           (this.$refs.radio.checked = this.model === this.label);
       },
     },
+
     isDisabled() {
       return this.disabled;
     },
+
     radioSize() {
       return this.isGroup ? this._radioGroup.radioGroupSize : this.size;
     },
+
     isGroup() {
       let parent = this.$parent;
       while (parent) {

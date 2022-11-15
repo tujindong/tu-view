@@ -1,6 +1,25 @@
 @import "~@packages/style/common/mixin.scss";
 @import "~@packages/style/common/utils.scss";
 
+@mixin sizeMixin($radio-bordered-padding-vertical,
+    $radio-bordered-padding-horizontal,
+    $radio-input-width,
+    $radio-input-height,
+    $radio-font-size ) {
+    &.is-bordered {
+        padding: $radio-bordered-padding-vertical calc(#{$radio-bordered-padding-horizontal} + 6px) $radio-bordered-padding-vertical $radio-bordered-padding-horizontal;
+
+        @include e(inner) {
+            width: $radio-input-width;
+            height: $radio-input-height;
+        }
+
+        @include e(label) {
+            font-size: $radio-font-size;
+        }
+    }
+}
+
 @include b(radio) {
     color: $--radio-font-color;
     font-weight: $--radio-font-weight;
@@ -16,11 +35,13 @@
     @include utils-user-select(none);
 
     @include when(bordered) {
-        /**边框阴影会造成视觉上位置偏移，故阴影处增加1px，发光处减少1px*/
-        padding: calc(#{$--radio-bordered-padding-vertical} + 1px) calc(#{$--radio-bordered-padding-horizontal} + 6px) calc(#{$--radio-bordered-padding-vertical} - 1px) $--radio-bordered-padding-horizontal;
+        display: inline-flex;
+        align-items: center;
+        padding: $--radio-bordered-padding-vertical calc(#{$--radio-bordered-padding-horizontal} + 6px) $--radio-bordered-padding-vertical $--radio-bordered-padding-horizontal;
         color: $--color-greyDark;
         background: transparent;
-        box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+        box-shadow: 3px 3px 6px $--color-greyLight-2,
+            -2px -2px 5px $--color-white;
         box-sizing: border-box;
         border-radius: $--border-radius-base;
 
@@ -90,61 +111,28 @@
     }
 
     @include m(mini) {
-        &.is-bordered {
-            padding: calc(#{$--radio-mini-bordered-padding-vertical}) calc(#{$--radio-mini-bordered-padding-horizontal} + 6px) calc(#{$--radio-mini-bordered-padding-vertical}) $--radio-mini-bordered-padding-horizontal;
-
-            @include e(inner) {
-                width: $--radio-mini-input-width;
-                height: $--radio-mini-input-height;
-            }
-
-            @include e(label) {
-                font-size: $--radio-mini-font-size;
-            }
-        }
+        @include sizeMixin($--radio-mini-bordered-padding-vertical, $--radio-mini-bordered-padding-horizontal, $--radio-mini-input-width, $--radio-mini-input-height, $--radio-mini-font-size);
     }
 
     @include m(small) {
-        &.is-bordered {
-            padding: calc(#{$--radio-small-bordered-padding-vertical}) calc(#{$--radio-small-bordered-padding-horizontal} + 6px) calc(#{$--radio-small-bordered-padding-vertical}) $--radio-small-bordered-padding-horizontal;
-
-            @include e(inner) {
-                width: $--radio-small-input-width;
-                height: $--radio-small-input-height;
-            }
-
-            @include e(label) {
-                font-size: $--radio-small-font-size;
-            }
-        }
+        @include sizeMixin($--radio-small-bordered-padding-vertical, $--radio-small-bordered-padding-horizontal, $--radio-small-input-width, $--radio-small-input-height, $--radio-small-font-size);
     }
 
     @include m(large) {
-        &.is-bordered {
-            padding: calc(#{$--radio-large-bordered-padding-vertical}) calc(#{$--radio-large-bordered-padding-horizontal} + 6px) calc(#{$--radio-large-bordered-padding-vertical}) $--radio-large-bordered-padding-horizontal;
-
-            @include e(inner) {
-                width: $--radio-large-input-width;
-                height: $--radio-large-input-height;
-            }
-
-            @include e(label) {
-                font-size: $--radio-large-font-size;
-            }
-        }
+        @include sizeMixin($--radio-large-bordered-padding-vertical, $--radio-large-bordered-padding-horizontal, $--radio-large-input-width, $--radio-large-input-height, $--radio-large-font-size);
     }
 
     @include e(input) {
         white-space: nowrap;
         cursor: pointer;
         outline: none;
-        display: inline-block;
+        display: inline-flex;
         line-height: 1;
         position: relative;
         vertical-align: middle;
 
         @include e(inner) {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             box-sizing: border-box;
@@ -164,8 +152,8 @@
             &::after {
                 content: "";
                 position: absolute;
-                width: 36%;
-                height: 36%;
+                width: 35%;
+                height: 35%;
                 background: $--color-greyDark;
                 border-radius: 50%;
                 transition: 0.3s ease;

@@ -21,5 +21,9 @@ module.exports = {
             name: 'checkbox',
             author: 'tu'
         },
+        {
+            name: 'checkbox-group',
+            author: 'tu'
+        },
     ]
 }

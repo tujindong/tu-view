@@ -5,7 +5,8 @@ import Button from './components/button';
 import Icon from './components/icon';
 import Radio from './components/radio';
 import RadioGroup from './components/radio-group';
-import checkbox from './components/checkbox';
+import Checkbox from './components/checkbox';
+import CheckboxGroup from './components/checkbox-group';
 
 // 定义组件列表
 const componentsList = [
@@ -13,7 +14,8 @@ const componentsList = [
     Icon,
     Radio,
     RadioGroup,
-    checkbox
+    Checkbox,
+    CheckboxGroup
 ];
 
 const install = function (Vue) {

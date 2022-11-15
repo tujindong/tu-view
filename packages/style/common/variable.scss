@@ -134,12 +134,26 @@ $--checkbox-icon-color: $--color-greyDark;
 $--checkbox-checked-icon-color: $--color-primary;
 /*超小*/
 $--checkbox-mini-font-size: $--font-size-extra-small;
+$--checkbox-mini-input-height: 14px;
+$--checkbox-mini-input-width: 14px;
+$--checkbox-mini-bordered-padding-vertical: 3px;
+$--checkbox-mini-bordered-padding-horizontal: 3px;
 /*较小*/
 $--checkbox-small-font-size: $--font-size-small;
+$--checkbox-small-input-height: 16px;
+$--checkbox-small-input-width: 16px;
+$--checkbox-small-bordered-padding-vertical: 6px;
+$--checkbox-small-bordered-padding-horizontal: 6px;
 /*中等*/
 $--checkbox-font-size: $--font-size-base;
 $--checkbox-input-height: 20px;
 $--checkbox-input-width: 20px;
 $--checkbox-border-radius: $--border-radius-small;
+$--checkbox-bordered-padding-vertical: 9px;
+$--checkbox-bordered-padding-horizontal: 9px;
 /*较大*/
 $--checkbox-large-font-size: $--font-size-base;
+$--checkbox-large-input-height: 22px;
+$--checkbox-large-input-width: 22px;
+$--checkbox-large-bordered-padding-vertical: 11px;
+$--checkbox-large-bordered-padding-horizontal: 15px;
