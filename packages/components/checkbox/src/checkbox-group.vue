@@ -16,7 +16,10 @@ export default {
   props: {
     value: {},
     size: String,
+    border: Boolean,
     disabled: Boolean,
+    min: Number,
+    max: Number,
   },
 
   computed: {

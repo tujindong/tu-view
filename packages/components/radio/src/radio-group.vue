@@ -16,6 +16,7 @@ export default {
   props: {
     value: {},
     size: String,
+    border: Boolean,
     disabled: Boolean,
   },
 

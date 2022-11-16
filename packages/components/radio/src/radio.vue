@@ -2,15 +2,16 @@
   <label
     class="tu-radio"
     :class="[
-      border && radioSize ? `tu-radio--${radioSize}` : '',
+      isBorder && radioSize ? `tu-radio--${radioSize}` : '',
       { 'is-disabled': isDisabled },
       { 'is-focus': focus },
       { 'is-checked': model === label },
-      { 'is-bordered': border },
+      { 'is-bordered': isBorder },
     ]"
     role="radio"
     :aria-checked="model === label"
     :aria-disabled="isDisabled"
+    :tabindex="tabIndex"
     @keydown.space.stop.prevent="model = isDisabled ? model : label"
   >
     <span class="tu-radio__input">
@@ -77,12 +78,16 @@ export default {
       },
     },
 
-    isDisabled() {
-      return this.disabled;
-    },
-
     radioSize() {
       return this.isGroup ? this._radioGroup.radioGroupSize : this.size;
+    },
+
+    isDisabled() {
+      return this.isGroup ? this._radioGroup.disabled : this.disabled;
+    },
+
+    isBorder() {
+      return this.isGroup ? this._radioGroup.border : this.border;
     },
 
     isGroup() {
@@ -97,10 +102,17 @@ export default {
       }
       return false;
     },
+
+    tabIndex() {
+      return this.isDisabled || (this.isGroup && this.model !== this.label)
+        ? -1
+        : 0;
+    },
   },
 
   methods: {
-    handleChange() {
+    handleChange(e) {
+      //   const value = e.target.value;
       this.$nextTick(() => {
         this.$emit("change", this.model);
         //按钮组情况

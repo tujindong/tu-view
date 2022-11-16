@@ -1,5 +1,6 @@
 <template>
   <div class="demo-radio-wrapper">
+    <h2>单选按钮</h2>
     <tu-radio class="demo-radio" v-model="radio" :label="1" disabled
       >备选项1</tu-radio
     >
@@ -30,26 +31,48 @@
       >大按钮单选</tu-radio
     >
 
-    <tu-radio-group v-model="radioGroup">
+    <br />
+    <p>按钮组</p>
+    <tu-radio-group v-model="radioGroup1">
       <tu-radio :label="3">备选项</tu-radio>
       <tu-radio :label="6">备选项</tu-radio>
       <tu-radio :label="9">备选项</tu-radio>
     </tu-radio-group>
 
     <br />
+    <p>按钮组 内部边框</p>
 
-    <tu-radio-group v-model="radioGroup">
+    <tu-radio-group v-model="radioGroup2">
       <tu-radio :label="3" border>备选项</tu-radio>
       <tu-radio :label="6" border>备选项</tu-radio>
       <tu-radio :label="9" border>备选项</tu-radio>
     </tu-radio-group>
 
     <br />
+    <p>按钮组 边框 小</p>
 
-    <tu-radio-group v-model="radioGroup" size="small">
-      <tu-radio :label="3" border>小备选项</tu-radio>
-      <tu-radio :label="6" border>小备选项</tu-radio>
-      <tu-radio :label="9" border>小备选项</tu-radio>
+    <tu-radio-group v-model="radioGroup3" border size="small">
+      <tu-radio :label="3">小备选项</tu-radio>
+      <tu-radio :label="6">小备选项</tu-radio>
+      <tu-radio :label="9">小备选项</tu-radio>
+    </tu-radio-group>
+
+    <br />
+    <p>按钮组 边框 超小 禁用</p>
+
+    <tu-radio-group v-model="radioGroup4" border size="mini" disabled>
+      <tu-radio :label="3">小备选项</tu-radio>
+      <tu-radio :label="6">小备选项</tu-radio>
+      <tu-radio :label="9">小备选项</tu-radio>
+    </tu-radio-group>
+
+    <br />
+    <p>单选框组 value change操作</p>
+
+    <tu-radio-group v-model="radioGroup5" @change="handleChangeGroup">
+      <tu-radio :label="1">小备选项</tu-radio>
+      <tu-radio :label="2">小备选项</tu-radio>
+      <tu-radio :label="3">小备选项</tu-radio>
     </tu-radio-group>
   </div>
 </template>
@@ -61,8 +84,19 @@ export default {
   data() {
     return {
       radio: 1,
-      radioGroup: 3,
+      radioGroup1: 3,
+      radioGroup2: 3,
+      radioGroup3: 3,
+      radioGroup4: 3,
+      radioGroup5: 3,
     };
+  },
+
+  methods: {
+    handleChangeGroup(e) {
+      console.log("框组", e);
+      this.radioGroup5 = e;
+    },
   },
 };
 </script>

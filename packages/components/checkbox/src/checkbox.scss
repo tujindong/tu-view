@@ -21,15 +21,25 @@
 }
 
 @include b(checkbox) {
+    display: inline-flex;
+    align-items: center;
     color: $--checkbox-font-color;
     font-weight: $--checkbox-font-weight;
     font-size: $--font-size-base;
+    white-space: nowrap;
+    outline: none;
     cursor: pointer;
     margin-right: 30px;
 
+    &:hover {
+        @include e(inner) {
+            &::after {
+                border-color: $--checkbox-checked-icon-color;
+            }
+        }
+    }
+
     @include when(bordered) {
-        display: inline-flex;
-        align-items: center;
         padding: $--checkbox-bordered-padding-vertical calc(#{$--checkbox-bordered-padding-horizontal} + 6px) $--checkbox-bordered-padding-vertical $--checkbox-bordered-padding-horizontal;
         color: $--color-greyDark;
         background: transparent;
@@ -132,12 +142,6 @@
             height: $--checkbox-input-height;
             border-radius: $--checkbox-border-radius;
             box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
-
-            &:hover {
-                &::after {
-                    border-color: $--checkbox-checked-icon-color;
-                }
-            }
 
             &::after {
                 box-sizing: content-box;
