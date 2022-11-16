@@ -73,7 +73,7 @@
     <br />
     <p>按钮组 最多 最少数量选择</p>
 
-    <tu-checkbox-group v-model="checkList2">
+    <tu-checkbox-group v-model="checkList2" :min="1" :max="2">
       <tu-checkbox label="1">选项1</tu-checkbox>
       <tu-checkbox label="2">选项2</tu-checkbox>
       <tu-checkbox label="3">选项3</tu-checkbox>

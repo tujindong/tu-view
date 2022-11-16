@@ -69,7 +69,8 @@ export default {
       },
       set(val) {
         if (this.isGroup) {
-          this.dispatch("TuCheckboxGroup", "input", [val]);
+          this.isLimitExceeded(val.length) === false &&
+            this.dispatch("TuCheckboxGroup", "input", [val]);
         } else {
           this.$emit("input", val);
         }
@@ -93,10 +94,6 @@ export default {
       return this.isGroup ? this._checkboxGroup.border : this.border;
     },
 
-    isDisabled() {
-      return this.isGroup ? this._checkboxGroup.disabled : this.disabled;
-    },
-
     isGroup() {
       let parent = this.$parent;
       while (parent) {
@@ -109,6 +106,22 @@ export default {
       }
       return false;
     },
+
+    isLimitDisabled() {
+      const { max, min } = this._checkboxGroup;
+      if (!!(max || min)) {
+        return (
+          (this.model.length >= max && !this.isChecked) ||
+          (this.model.length <= min && this.isChecked)
+        );
+      }
+    },
+
+    isDisabled() {
+      return this.isGroup
+        ? this._checkboxGroup.disabled || this.isLimitDisabled
+        : this.disabled;
+    },
   },
 
   watch: {},
@@ -120,6 +133,17 @@ export default {
   mounted() {},
 
   methods: {
+    isLimitExceeded(length) {
+      const { min, max } = this._checkboxGroup;
+      if (min !== undefined && length < min) {
+        return true;
+      }
+      if (max !== undefined && length > max) {
+        return true;
+      }
+      return false;
+    },
+
     addToModel() {
       if (Array.isArray(this.model) && this.model.indexOf(this.label) === -1) {
         this.model.push(this.label);
