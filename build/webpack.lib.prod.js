@@ -1,11 +1,7 @@
-// 打包所有
-// node.js里面自带的操作路径的模块
 const path = require("path");
 const merge = require('webpack-merge');
 const webpackLibBaseConfig = require('./webpack.lib.base.js');
-// 用于提取css到文件中
 const miniCssExtractPlugin = require('mini-css-extract-plugin');
-// 用于压缩css代码
 const optimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
 
 module.exports = merge(webpackLibBaseConfig, {
@@ -15,9 +11,7 @@ module.exports = merge(webpackLibBaseConfig, {
         tuview: path.resolve(__dirname, "../packages/tuview.js")
     },
     output: {
-        // 打包过后的文件的输出的路径
         path: path.resolve(__dirname, "../lib"),
-        // 打包后生成的js文件
         filename: "[name].js",
         publicPath: "/",
         library: 'tuview',
@@ -31,7 +25,7 @@ module.exports = merge(webpackLibBaseConfig, {
                 test: /\.(scss|sass)$/,
                 use: [
                     {
-                        loader: miniCssExtractPlugin.loader, // 使用miniCssExtractPlugin.loader代替style-loader
+                        loader: miniCssExtractPlugin.loader,
                     },
                     {
                         loader: 'css-loader',
@@ -50,11 +44,9 @@ module.exports = merge(webpackLibBaseConfig, {
         ]
     },
     plugins: [
-        // 新建miniCssExtractPlugin实例并配置
         new miniCssExtractPlugin({
             filename: '[name].css'
         }),
-        // 压缩css
         new optimizeCssnanoPlugin({
             sourceMap: true,
             cssnanoOptions: {

@@ -1,0 +1,36 @@
+@import "~@packages/style/common/mixin.scss";
+@import "~@packages/style/common/utils.scss";
+
+@include b(input) {
+    position: relative;
+    font-size: $--font-size-base;
+    display: inline-block;
+    width: 100%;
+
+    @include when(disabled) {}
+
+    @include m(mini) {}
+
+    @include m(small) {}
+
+    @include m(large) {}
+
+    @include e(inner) {
+        -webkit-appearance: none;
+        background-color: $--input-background-color;
+        background-image: none;
+        border-radius: $--input-border-radius;
+        box-sizing: border-box;
+        display: inline-block;
+        font-size: inherit;
+        line-height: $--input-height;
+        outline: none;
+        padding: 0 16px;
+        transition: $--border-transition-base;
+        width: 100%;
+
+        &::-ms-reveal {
+            display: none;
+        }
+    }
+}

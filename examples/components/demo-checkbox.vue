@@ -92,7 +92,7 @@
 
 <script>
 export default {
-  name: "deme-icon",
+  name: "deme-checkbox",
 
   data() {
     return {

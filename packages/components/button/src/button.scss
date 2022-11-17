@@ -1,6 +1,6 @@
 @import "~@packages/style/common/mixin.scss";
 
-@mixin button-filled($color-light, $color-normal, $color-dark) {
+@mixin buttonFilled($color-light, $color-normal, $color-dark) {
     transition: 0.1s ease;
     background: $color-normal;
     box-shadow: inset 2px 2px 10px $color-light,
@@ -46,7 +46,7 @@
     }
 }
 
-@mixin button-size($padding-vertical, $padding-horizontal, $font-size) {
+@mixin buttonSize($padding-vertical, $padding-horizontal, $font-size) {
     padding: $padding-vertical $padding-horizontal;
     font-size: $font-size;
 }
@@ -115,27 +115,27 @@
     }
 
     @include m(primary) {
-        @include button-filled($--color-primary-light, $--color-primary, $--color-primary-dark);
+        @include buttonFilled($--color-primary-light, $--color-primary, $--color-primary-dark);
     }
 
     @include m(success) {
-        @include button-filled($--color-success-light, $--color-success, $--color-success-dark);
+        @include buttonFilled($--color-success-light, $--color-success, $--color-success-dark);
     }
 
     @include m(info) {
-        @include button-filled($--color-info-light, $--color-info, $--color-info-dark);
+        @include buttonFilled($--color-info-light, $--color-info, $--color-info-dark);
     }
 
     @include m(warning) {
-        @include button-filled($--color-warning-light, $--color-warning, $--color-warning-dark);
+        @include buttonFilled($--color-warning-light, $--color-warning, $--color-warning-dark);
     }
 
     @include m(danger) {
-        @include button-filled($--color-danger-light, $--color-danger, $--color-danger-dark);
+        @include buttonFilled($--color-danger-light, $--color-danger, $--color-danger-dark);
     }
 
     @include m(small) {
-        @include button-size($--button-small-padding-vertical, $--button-small-padding-horizontal, $--font-size-small);
+        @include buttonSize($--button-small-padding-vertical, $--button-small-padding-horizontal, $--font-size-small);
 
         @include when(circle) {
             padding: $--button-small-padding-vertical;
@@ -143,15 +143,15 @@
     }
 
     @include m(medium) {
-        @include button-size($--button-padding-vertical, $--button-padding-horizontal, $--font-size-base);
+        @include buttonSize($--button-padding-vertical, $--button-padding-horizontal, $--font-size-base);
     }
 
     @include m(large) {
-        @include button-size($--button-large-padding-vertical, $--button-large-padding-horizontal, $--font-size-base);
+        @include buttonSize($--button-large-padding-vertical, $--button-large-padding-horizontal, $--font-size-base);
 
         @include when(circle) {
-            padding: $--button-large-padding-vertical;
-            font-size: $--font-size-large;
+            padding: calc(#{$--button-large-padding-vertical} - 2px);
+            font-size: $--button-large-font-size;
         }
     }
 }
