@@ -28,6 +28,6 @@ export default {
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
   background: #e4ebf5;
-  padding: 10px;
+  padding: 10px 10px 200px;
 }
 </style>

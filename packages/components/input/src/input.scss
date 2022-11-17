@@ -1,36 +1,71 @@
 @import "~@packages/style/common/mixin.scss";
 @import "~@packages/style/common/utils.scss";
 
+@mixin sizeMixin($input-height, $input-font-size, $input-padding-horizontal) {
+    @include e(inner) {
+        line-height: $input-height;
+        height: $input-height;
+        font-size: $input-font-size;
+        padding: 0 $input-padding-horizontal;
+    }
+}
+
 @include b(input) {
     position: relative;
-    font-size: $--font-size-base;
     display: inline-block;
     width: 100%;
 
     @include when(disabled) {}
 
-    @include m(mini) {}
+    @include m(mini) {
+        @include sizeMixin($--input-mini-height, $--input-mini-font-size, $--input-mini-padding-horizontal)
+    }
 
-    @include m(small) {}
+    @include m(small) {
+        @include sizeMixin($--input-small-height, $--input-small-font-size, $--input-small-padding-horizontal)
+    }
 
-    @include m(large) {}
+    @include m(large) {
+        @include sizeMixin($--input-large-height, $--input-large-font-size, $--input-large-padding-horizontal)
+    }
 
     @include e(inner) {
         -webkit-appearance: none;
-        background-color: $--input-background-color;
+        background-color: transparent;
         background-image: none;
         border-radius: $--input-border-radius;
+        border: none;
         box-sizing: border-box;
         display: inline-block;
-        font-size: inherit;
+        padding: 0 $--input-padding-horizontal;
+        font-size: $--font-size-base;
         line-height: $--input-height;
+        height: $--input-height;
         outline: none;
-        padding: 0 16px;
         transition: $--border-transition-base;
         width: 100%;
+        color: $--input-font-color;
+        box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+
+        &::-moz-placeholder {
+            color: $--input-placeholder-font-color;
+        }
+
+        &:-ms-input-placeholder {
+            color: $--input-placeholder-font-color;
+        }
+
+        &::placeholder {
+            color: $--input-placeholder-font-color;
+        }
 
         &::-ms-reveal {
             display: none;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
         }
     }
 }

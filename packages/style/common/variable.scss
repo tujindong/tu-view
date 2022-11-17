@@ -1,5 +1,5 @@
 /**
-    large: 40px | medium: 32px | small: 28px | mini: 20px
+    large: 40px | medium: 32px | small: 28px | mini: 22px
 */
 /* Transition
 -------------------------- */
@@ -107,7 +107,7 @@ $--radio-font-weight: $--font-weight-primary;
 $--radio-mini-font-size: $--font-size-extra-small;
 $--radio-mini-input-height: 14px;
 $--radio-mini-input-width: 14px;
-$--radio-mini-bordered-padding-vertical: 3px;
+$--radio-mini-bordered-padding-vertical: 4px;
 $--radio-mini-bordered-padding-horizontal: 3px;
 /*较小*/
 $--radio-small-font-size: $--font-size-small;
@@ -139,7 +139,7 @@ $--checkbox-checked-icon-color: $--color-primary;
 $--checkbox-mini-font-size: $--font-size-extra-small;
 $--checkbox-mini-input-height: 14px;
 $--checkbox-mini-input-width: 14px;
-$--checkbox-mini-bordered-padding-vertical: 2px;
+$--checkbox-mini-bordered-padding-vertical: 3px;
 $--checkbox-mini-bordered-padding-horizontal: 4px;
 /*较小*/
 $--checkbox-small-font-size: $--font-size-small;
@@ -165,18 +165,23 @@ $--checkbox-large-bordered-padding-horizontal: 13px;
 /* Input
 -------------------------- */
 $--input-font-color: $--color-greyDark;
+$--input-placeholder-font-color: $--color-greyLight-3;
 $--input-font-weight: $--font-weight-primary;
 $--input-border-radius: $--border-radius-base;
 $--input-background-color: $--color-white;
 /*超小*/
 $--input-mini-font-size: $--font-size-extra-small;
-$--input-mini-height: 20px;
+$--input-mini-height: 22px;
+$--input-mini-padding-horizontal: 12px;
 /*较小*/
-$--input-mini-font-size: $--font-size-small;
+$--input-small-font-size: $--font-size-small;
 $--input-small-height: 28px;
+$--input-small-padding-horizontal: 12px;
 /*中等*/
-$--input-mini-font-size: $--font-size-base;
-$--input-height: 38px;
+$--input-font-size: $--font-size-base;
+$--input-height: 32px;
+$--input-padding-horizontal: 12px;
 /*较大*/
-$--input-mini-font-size: $--font-size-base;
-$--input-large-height: 44px;
+$--input-large-font-size: $--font-size-base;
+$--input-large-height: 40px;
+$--input-large-padding-horizontal: 12px;
