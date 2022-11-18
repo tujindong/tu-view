@@ -8,6 +8,10 @@
         font-size: $input-font-size;
         padding: 0 $input-padding-horizontal;
     }
+
+    @include e(suffix) {
+        font-size: $input-font-size;
+    }
 }
 
 @include b(input) {
@@ -15,18 +19,35 @@
     display: inline-block;
     width: 100%;
 
-    @include when(disabled) {}
+    @include when(disabled) {
+        cursor: not-allowed;
 
-    @include m(mini) {
-        @include sizeMixin($--input-mini-height, $--input-mini-font-size, $--input-mini-padding-horizontal)
-    }
+        @include e(inner) {
+            cursor: not-allowed;
 
-    @include m(small) {
-        @include sizeMixin($--input-small-height, $--input-small-font-size, $--input-small-padding-horizontal)
-    }
+            &::-moz-placeholder {
+                color: $--input-placeholder-disabled-font-color;
+            }
 
-    @include m(large) {
-        @include sizeMixin($--input-large-height, $--input-large-font-size, $--input-large-padding-horizontal)
+            &:-ms-input-placeholder {
+                color: $--input-placeholder-disabled-font-color;
+            }
+
+            &::placeholder {
+                color: $--input-placeholder-disabled-font-color;
+            }
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: not-allowed;
+        }
     }
 
     @include e(inner) {
@@ -36,7 +57,7 @@
         border-radius: $--input-border-radius;
         border: none;
         box-sizing: border-box;
-        display: inline-block;
+        display: block;
         padding: 0 $--input-padding-horizontal;
         font-size: $--font-size-base;
         line-height: $--input-height;
@@ -46,6 +67,7 @@
         width: 100%;
         color: $--input-font-color;
         box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+        transition: 0.3s ease;
 
         &::-moz-placeholder {
             color: $--input-placeholder-font-color;
@@ -68,4 +90,50 @@
             box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
         }
     }
+
+    @include e(prefix) {
+        position: absolute;
+    }
+
+    @include e(suffix) {
+        position: absolute;
+        height: 100%;
+        right: 8px;
+        top: 0;
+        text-align: center;
+        color: $--input-placeholder-font-color;
+        transition: 0.3s ease;
+        pointer-events: none;
+        font-size: $--input-font-size;
+
+        @include e(suffix-inner) {
+            display: inline-flex;
+            align-items: center;
+            pointer-events: all;
+            height: 100%;
+        }
+
+        @include e(icon) {
+            cursor: pointer;
+            transition: 0.3s ease;
+
+            &:hover {
+                color: $--input-font-color;
+            }
+        }
+    }
+
+    @include m(mini) {
+        @include sizeMixin($--input-mini-height, $--input-mini-font-size, $--input-mini-padding-horizontal)
+    }
+
+    @include m(small) {
+        @include sizeMixin($--input-small-height, $--input-small-font-size, $--input-small-padding-horizontal)
+    }
+
+    @include m(large) {
+        @include sizeMixin($--input-large-height, $--input-large-font-size, $--input-large-padding-horizontal)
+    }
+
+
 }
