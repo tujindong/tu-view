@@ -42,8 +42,50 @@
     <tu-input
       v-model="input1"
       placeholder="请输入密码"
+      clearable
       show-password
     ></tu-input>
+
+    <br />
+    <p>前置内容 带 icon 的输入框</p>
+    <tu-input
+      placeholder="请选择日期"
+      prefix-icon="tu-icon-calendar"
+      v-model="input1"
+    >
+    </tu-input>
+
+    <br />
+    <p>前置内容 带 icon 的输入框 slot</p>
+    <tu-input placeholder="请输入内容" v-model="input1">
+      <i slot="prefix" class="tu-icon-search"></i>
+    </tu-input>
+
+    <br />
+    <p>后置内容 带 icon 的输入框</p>
+    <tu-input
+      placeholder="请选择日期"
+      suffix-icon="tu-icon-calendar"
+      v-model="input1"
+      clearable
+    >
+    </tu-input>
+
+    <br />
+    <p>后置内容 带 icon 的输入框 slot</p>
+    <tu-input placeholder="请选择日期" v-model="input1" clearable>
+      <i slot="suffix" class="tu-icon-calendar" style="font-size: 20px"></i>
+    </tu-input>
+
+    <br />
+    <p>最大字数限制</p>
+    <tu-input
+      placeholder="请输入字数"
+      v-model="input2"
+      maxlength="10"
+      show-word-limit
+    >
+    </tu-input>
   </div>
 </template>
 
@@ -57,6 +99,7 @@ export default {
       inputDisabled1: "",
       inputDisabled2: "禁用带输入值",
       input1: "",
+      input2: "",
     };
   },
 };

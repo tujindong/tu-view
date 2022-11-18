@@ -3,7 +3,12 @@
     :class="[
       'tu-input',
       inputSize ? `tu-input--${inputSize}` : '',
-      { 'is-disabled': isDisabled },
+      {
+        'is-disabled': isDisabled,
+        'is-exceed': isExceed,
+        'tu-input--prefix': $slots.prefix || prefixIcon,
+        'tu-input--suffix': $slots.suffix || suffixIcon,
+      },
     ]"
     @mouseenter="hovering = true"
     @mouseleave="hovering = false"
@@ -13,7 +18,7 @@
       class="tu-input__inner"
       v-bind="$attrs"
       :tabindex="tabindex"
-      :type="type"
+      :type="inputType"
       :disabled="isDisabled"
       :readonly="readonly"
       :aria-label="label"
@@ -26,16 +31,44 @@
       @blur="handleBlur"
     />
     <!-- 前置内容 -->
-    <span class="tu-input__prefix"></span>
+    <span v-if="$slots.prefix || prefixIcon" class="tu-input__prefix">
+      <span class="tu-input__prefix-inner">
+        <span v-if="$slots.prefix" class="tu-input__icon-slot">
+          <slot name="prefix"></slot>
+        </span>
+        <i v-if="prefixIcon" class="tu-input__icon" :class="prefixIcon"></i>
+      </span>
+    </span>
     <!-- 后置内容 -->
     <span class="tu-input__suffix">
       <span class="tu-input__suffix-inner">
         <i
           v-if="showClear"
-          class="tu-input__icon tu-icon-close-circle-fill tu-input__clear"
+          class="tu-input__icon tu-icon-close-circle-fill tu-input__hover"
           @mousedown.prevent
           @click="handleClear"
         ></i>
+        <i
+          v-if="showPassword"
+          :class="[
+            'tu-input__icon',
+            `tu-icon-${isPasswordVisible ? 'eye' : 'eyeclose'}-fill`,
+            'tu-input__hover',
+          ]"
+          @mousedown.prevent
+          @click="isPasswordVisible = !isPasswordVisible"
+        ></i>
+        <template v-if="$slots.suffix || suffixIcon">
+          <span v-if="$slots.suffix" class="tu-input__icon-slot">
+            <slot name="suffix"></slot>
+          </span>
+          <i v-if="suffixIcon" class="tu-input__icon" :class="suffixIcon"></i>
+        </template>
+        <span v-if="isWordLimitVisible" class="tu-input__count">
+          <span class="tu-input__count-inner">
+            {{ textLength }}/{{ upperLimit }}
+          </span>
+        </span>
       </span>
     </span>
   </div>
@@ -56,6 +89,8 @@ export default {
     readonly: Boolean,
     label: String,
     tabindex: String,
+    prefixIcon: String,
+    suffixIcon: String,
     type: {
       type: String,
       default: "text",
@@ -68,6 +103,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    showWordLimit: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data() {
@@ -75,12 +114,25 @@ export default {
       hovering: false,
       focused: false,
       isComposing: false,
+      isPasswordVisible: false,
     };
   },
 
   computed: {
     inputSize() {
       return this.size;
+    },
+    nativeInputValue() {
+      return this.value !== null || this.value !== undefined
+        ? String(this.value)
+        : "";
+    },
+    inputType() {
+      return this.showPassword
+        ? this.isPasswordVisible
+          ? "text"
+          : "password"
+        : this.type;
     },
     isDisabled() {
       return this.disabled;
@@ -94,10 +146,25 @@ export default {
         (this.focused || this.hovering)
       );
     },
-    nativeInputValue() {
-      return this.value !== null || this.value !== undefined
-        ? String(this.value)
-        : "";
+    isWordLimitVisible() {
+      return (
+        this.showWordLimit &&
+        this.$attrs.maxlength &&
+        !this.isDisabled &&
+        !this.readonly &&
+        !this.showPassword
+      );
+    },
+    upperLimit() {
+      return this.$attrs.maxlength;
+    },
+    textLength() {
+      return typeof this.value === "number"
+        ? String(this.value).length
+        : (this.value || "").length;
+    },
+    isExceed() {
+      return this.isWordLimitVisible && this.textLength >= this.upperLimit;
     },
   },
 
