@@ -34,6 +34,15 @@
     ></tu-input>
 
     <br />
+    <p>只读</p>
+    <tu-input
+      v-model="inputDisabled1"
+      readonly
+      placeholder="请输入内容"
+    ></tu-input>
+    <br />
+
+    <br />
     <p>可清空</p>
     <tu-input v-model="input1" placeholder="请输入内容" clearable></tu-input>
 
@@ -86,6 +95,22 @@
       show-word-limit
     >
     </tu-input>
+
+    <br />
+    <p>多行输入 autosize</p>
+    <tu-textarea
+      autosize
+      v-model="textarea"
+      placeholder="请输入内容"
+    ></tu-textarea>
+
+    <br />
+    <p>多行输入 ausize maxRows minRows</p>
+    <tu-textarea
+      :autosize="{ minRows: 2, maxRows: 4 }"
+      v-model="textarea"
+      placeholder="请输入内容"
+    ></tu-textarea>
   </div>
 </template>
 
@@ -100,6 +125,7 @@ export default {
       inputDisabled2: "禁用带输入值",
       input1: "",
       input2: "",
+      textarea: "",
     };
   },
 };

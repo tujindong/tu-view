@@ -1,0 +1,52 @@
+@import "~@packages/style/common/mixin.scss";
+@import "~@packages/style/common/utils.scss";
+
+@include b(textarea) {
+    position: relative;
+    display: inline-flex;
+    vertical-align: bottom;
+    width: 100%;
+
+    @include when(disabled) {}
+
+    @include e(inner) {
+        display: block;
+        resize: vertical;
+        background-color: transparent;
+        background-image: none;
+        border-radius: $--input-border-radius;
+        border: none;
+        padding: 5px 15px;
+        height: $--input-height;
+        line-height: 1.5;
+        box-sizing: border-box;
+        width: 100%;
+        font-size: $--font-size-base;
+        color: $--input-font-color;
+        box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+        outline: none;
+        font-weight: 500;
+        font-family: '';
+
+        &::-moz-placeholder {
+            color: $--input-placeholder-font-color;
+        }
+
+        &:-ms-input-placeholder {
+            color: $--input-placeholder-font-color;
+        }
+
+        &::placeholder {
+            color: $--input-placeholder-font-color;
+        }
+
+        &::-ms-reveal {
+            display: none;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+        }
+    }
+}

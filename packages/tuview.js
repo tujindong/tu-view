@@ -6,6 +6,7 @@ import RadioGroup from './components/radio-group';
 import Checkbox from './components/checkbox';
 import CheckboxGroup from './components/checkbox-group';
 import Input from './components/input';
+import Textarea from './components/textarea';
 
 const componentsList = [
     Button,
@@ -14,7 +15,8 @@ const componentsList = [
     RadioGroup,
     Checkbox,
     CheckboxGroup,
-    Input
+    Input,
+    Textarea
 ];
 
 const install = function (Vue) {

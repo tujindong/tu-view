@@ -65,7 +65,6 @@
         line-height: $--input-height;
         height: $--input-height;
         outline: none;
-        transition: $--border-transition-base;
         width: 100%;
         color: $--input-font-color;
         box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
@@ -159,6 +158,10 @@
             @include e(icon-slot) {
                 width: 25px;
                 line-height: 1;
+            }
+
+            @include e(count) {
+                font-size: $--font-size-extra-small;
             }
         }
     }

@@ -29,5 +29,9 @@ module.exports = {
             name: 'input',
             author: 'tu'
         },
+        {
+            name: 'textarea',
+            author: 'tu'
+        },
     ]
 }
