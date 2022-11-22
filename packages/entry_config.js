@@ -33,5 +33,9 @@ module.exports = {
             name: 'textarea',
             author: 'tu'
         },
+        {
+            name: 'switch',
+            author: 'tu'
+        },
     ]
 }

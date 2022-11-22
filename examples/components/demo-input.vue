@@ -111,6 +111,17 @@
       v-model="textarea"
       placeholder="请输入内容"
     ></tu-textarea>
+
+    <br />
+    <p>多行输入 最大字数限制</p>
+    <tu-textarea
+      placeholder="请输入字数"
+      :autosize="{ minRows: 1, maxRows: 4 }"
+      v-model="textarea1"
+      maxlength="10"
+      show-word-limit
+    >
+    </tu-textarea>
   </div>
 </template>
 
@@ -126,6 +137,7 @@ export default {
       input1: "",
       input2: "",
       textarea: "",
+      textarea1: "",
     };
   },
 };

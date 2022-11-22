@@ -7,6 +7,7 @@ import Checkbox from './components/checkbox';
 import CheckboxGroup from './components/checkbox-group';
 import Input from './components/input';
 import Textarea from './components/textarea';
+import Switch from './components/switch'
 
 const componentsList = [
     Button,
@@ -16,7 +17,8 @@ const componentsList = [
     Checkbox,
     CheckboxGroup,
     Input,
-    Textarea
+    Textarea,
+    Switch
 ];
 
 const install = function (Vue) {

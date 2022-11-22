@@ -5,6 +5,7 @@
     <DemoRadio />
     <DemoCheckbox />
     <DemoInput />
+    <DemoSwitch />
   </div>
 </template>
 
@@ -14,8 +15,16 @@ import DemoIcon from "./components/demo-icon.vue";
 import DemoRadio from "./components/demo-radio.vue";
 import DemoCheckbox from "./components/demo-checkbox.vue";
 import DemoInput from "./components/demo-input.vue";
+import DemoSwitch from "./components/demo-switch.vue";
 export default {
-  components: { DemoButton, DemoIcon, DemoRadio, DemoCheckbox, DemoInput },
+  components: {
+    DemoButton,
+    DemoIcon,
+    DemoRadio,
+    DemoCheckbox,
+    DemoInput,
+    DemoSwitch,
+  },
 
   data() {
     return {};

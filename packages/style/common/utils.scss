@@ -1,3 +1,5 @@
+@import "./variable.scss";
+
 @mixin utils-user-select($value) {
     -moz-user-select: $value;
     -webkit-user-select: $value;
@@ -38,4 +40,32 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+@mixin utils-scroll {
+    &::-webkit-scrollbar-track-piece {
+        background-color: transparent;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $--color-greyLight-2;
+        background-clip: padding-box;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        transition: 0.3s ease;
+        z-index: 100;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: $--color-greyLight-3;
+        cursor: pointer;
+    }
 }

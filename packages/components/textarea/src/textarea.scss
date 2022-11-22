@@ -27,6 +27,9 @@
         outline: none;
         font-weight: 500;
         font-family: '';
+        scroll-behavior: smooth;
+        cursor: unset;
+        @include utils-scroll;
 
         &::-moz-placeholder {
             color: $--input-placeholder-font-color;
@@ -48,5 +51,13 @@
             outline: none;
             box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
         }
+    }
+
+    @include e(count) {
+        position: absolute;
+        font-size: $--font-size-extra-small;
+        color: $--input-placeholder-font-color;
+        bottom: 7px;
+        right: 6px;
     }
 }

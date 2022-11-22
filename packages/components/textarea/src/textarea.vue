@@ -17,6 +17,9 @@
       @focus="handleFocus"
       @blur="handleBlur"
     ></textarea>
+    <span v-if="isWordLimitVisible" class="tu-textarea__count">
+      {{ textLength }}/{{ upperLimit }}
+    </span>
   </div>
 </template>
 
@@ -72,6 +75,23 @@ export default {
     },
     textareaStyle() {
       return merge({}, this.textareaCalcStyle, { resize: this.resize });
+    },
+    isWordLimitVisible() {
+      return (
+        this.showWordLimit &&
+        this.$attrs.maxlength &&
+        !this.isDisabled &&
+        !this.readonly &&
+        !this.showPassword
+      );
+    },
+    upperLimit() {
+      return this.$attrs.maxlength;
+    },
+    textLength() {
+      return typeof this.value === "number"
+        ? String(this.value).length
+        : (this.value || "").length;
     },
   },
 

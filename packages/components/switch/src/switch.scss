@@ -1,0 +1,24 @@
+@import "~@packages/style/common/mixin.scss";
+@import "~@packages/style/common/utils.scss";
+
+@include b(switch) {
+    @include when(disabled) {}
+
+    @include e(input) {
+
+        @include e(core) {
+            display: block;
+            width: 10px;
+            height: 10px;
+            background: red;
+        }
+
+        @include e(original) {
+            position: absolute;
+            width: 0;
+            height: 0;
+            opacity: 0;
+            margin: 0;
+        }
+    }
+}
