@@ -1,17 +1,29 @@
 @import "~@packages/style/common/mixin.scss";
 @import "~@packages/style/common/utils.scss";
 
-@mixin sizeMixin($switch-width, $switch-height, $switch-button-margin, $switch-button-size) {
+@mixin sizeMixin($switch-width, $switch-height, $switch-button-padding, $switch-button-size, $switch-font-size, $switch-label-padding) {
     @include e(input) {
         @include e(core) {
             width: $switch-width;
             height: $switch-height;
 
             &::after {
-                top: $switch-button-margin;
-                left: $switch-button-margin;
+                top: $switch-button-padding;
+                left: $switch-button-padding;
                 width: $switch-button-size;
                 height: $switch-button-size;
+            }
+        }
+
+        @include e(label) {
+            font-size: $switch-font-size;
+
+            @include m(active) {
+                left: $switch-label-padding;
+            }
+
+            @include m(inactive) {
+                right: $switch-label-padding;
             }
         }
     }
@@ -20,7 +32,7 @@
         @include e(core) {
             &::after {
                 left: 100%;
-                margin-left: -$switch-button-size - $switch-button-margin;
+                margin-left: -$switch-button-size - $switch-button-padding;
             }
         }
     }
@@ -71,17 +83,17 @@
                 left: 0;
                 border-radius: 20px;
                 background: linear-gradient(330deg, $--color-primary-dark 0%, $--color-primary 50%, $--color-primary-light 100%);
-                transition: all 0.4s ease;
+                transition: all .4s ease;
                 opacity: 0;
             }
 
             &::after {
                 content: "";
                 position: absolute;
-                top: $--switch-button-margin;
-                left: $--switch-button-margin;
+                top: $--switch-button-padding;
+                left: $--switch-button-padding;
                 border-radius: 50%;
-                transition: all 0.4s ease;
+                transition: all .4s ease;
                 width: $--switch-button-size;
                 height: $--switch-button-size;
                 background-color: $--color-greyDark;
@@ -93,14 +105,17 @@
             font-size: $--switch-font-size;
             cursor: pointer;
             background: transparent;
+            width: 20px;
+            text-align: center;
+            transition: all .4s;
 
-            @include m(left) {
-                left: 8px;
+            @include m(active) {
+                left: $--switch-label-padding;
                 color: $--switch-on-font-color;
             }
 
-            @include m(right) {
-                right: 8px;
+            @include m(inactive) {
+                right: $--switch-label-padding;
                 color: $--switch-off-font-color;
             }
         }
@@ -123,17 +138,17 @@
 
             &::after {
                 left: 100%;
-                margin-left: -$--switch-button-size - $--switch-button-margin;
+                margin-left: -$--switch-button-size - $--switch-button-padding;
                 background: $--color-greyLight-1;
             }
         }
     }
 
     @include m(small) {
-        @include sizeMixin($--switch-small-width, $--switch-small-height, $--switch-small-button-margin, $--switch-small-button-size);
+        @include sizeMixin($--switch-small-width, $--switch-small-height, $--switch-small-button-padding, $--switch-small-button-size, $--switch-small-font-size, $--switch-small-label-padding);
     }
 
     @include m(large) {
-        @include sizeMixin($--switch-large-width, $--switch-large-height, $--switch-large-button-margin, $--switch-large-button-size);
+        @include sizeMixin($--switch-large-width, $--switch-large-height, $--switch-large-button-padding, $--switch-large-button-size, $--switch-large-font-size, $--switch-large-label-padding);
     }
 }

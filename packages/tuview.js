@@ -8,6 +8,7 @@ import CheckboxGroup from './components/checkbox-group';
 import Input from './components/input';
 import Textarea from './components/textarea';
 import Switch from './components/switch'
+import InputNumber from './components/input-number'
 
 const componentsList = [
     Button,
@@ -18,7 +19,8 @@ const componentsList = [
     CheckboxGroup,
     Input,
     Textarea,
-    Switch
+    Switch,
+    InputNumber
 ];
 
 const install = function (Vue) {

@@ -24,18 +24,20 @@
         @change="handleChange"
         @keydown.enter="handleValueSwitch"
       />
-      <span
-        v-if="($slots.activeLabel || activeLabel) && checked"
-        :class="['tu-switch__label', 'tu-switch__label--left']"
-      >
-        <span v-if="activeLabel">{{ activeLabel }}</span>
-      </span>
       <span class="tu-switch__core" ref="core"></span>
       <span
+        v-if="($slots.activeLabel || activeLabel) && checked"
+        :class="['tu-switch__label', 'tu-switch__label--active']"
+      >
+        <span v-if="activeLabel">{{ activeLabel }}</span>
+        <slot v-if="$slots.activeLabel" name="activeLabel"></slot>
+      </span>
+      <span
         v-if="($slots.inactiveLabel || inactiveLabel) && !checked"
-        :class="['tu-switch__label', 'tu-switch__label--right']"
+        :class="['tu-switch__label', 'tu-switch__label--inactive']"
       >
         <span v-if="inactiveLabel">{{ inactiveLabel }}</span>
+        <slot v-if="$slots.inactiveLabel" name="inactiveLabel"></slot>
       </span>
     </div>
   </div>

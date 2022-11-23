@@ -37,5 +37,9 @@ module.exports = {
             name: 'switch',
             author: 'tu'
         },
+        {
+            name: 'inputNumber',
+            author: 'tu'
+        },
     ]
 }

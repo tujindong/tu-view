@@ -24,7 +24,28 @@
 
     <br />
     <p>图标</p>
+    <tu-switch v-model="value" activeLabel="1" inactiveLabel="0"></tu-switch>
+
     <tu-switch v-model="value" activeLabel="开" inactiveLabel="关"></tu-switch>
+    <tu-switch
+      v-model="value"
+      activeLabel="开"
+      inactiveLabel="关"
+      size="small"
+    ></tu-switch>
+    <tu-switch
+      v-model="value"
+      activeLabel="开"
+      inactiveLabel="关"
+      size="large"
+    ></tu-switch>
+
+    <br />
+    <p>图标 slot</p>
+    <tu-switch v-model="value">
+      <i slot="activeLabel" class="tu-icon-check"></i>
+      <i slot="inactiveLabel" class="tu-icon-close"></i>
+    </tu-switch>
   </div>
 </template>
 
