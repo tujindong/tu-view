@@ -1,16 +1,108 @@
 @import "~@packages/style/common/mixin.scss";
 @import "~@packages/style/common/utils.scss";
 
+@mixin sizeMixin($switch-width, $switch-height, $switch-button-margin, $switch-button-size) {
+    @include e(input) {
+        @include e(core) {
+            width: $switch-width;
+            height: $switch-height;
+
+            &::after {
+                top: $switch-button-margin;
+                left: $switch-button-margin;
+                width: $switch-button-size;
+                height: $switch-button-size;
+            }
+        }
+    }
+
+    @include when(checked) {
+        @include e(core) {
+            &::after {
+                left: 100%;
+                margin-left: -$switch-button-size - $switch-button-margin;
+            }
+        }
+    }
+}
+
 @include b(switch) {
-    @include when(disabled) {}
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    font-size: $--switch-font-size;
+    line-height: $--switch-height;
+    vertical-align: middle;
+
+    @include when(disabled) {
+        @include e(core) {
+            cursor: not-allowed;
+
+            &::before {
+                background: mix($--color-primary, $--color-white, 60%);
+            }
+
+            &::after {
+                background-color: $--color-greyLight-3;
+            }
+        }
+    }
 
     @include e(input) {
+        display: inline-flex;
+        align-items: center;
 
         @include e(core) {
-            display: block;
-            width: 10px;
-            height: 10px;
-            background: red;
+            display: inline-flex;
+            align-items: center;
+            width: $--switch-width;
+            height: $--switch-height;
+            border-radius: 40px;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+
+            &::before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                border-radius: 20px;
+                background: linear-gradient(330deg, $--color-primary-dark 0%, $--color-primary 50%, $--color-primary-light 100%);
+                transition: all 0.4s ease;
+                opacity: 0;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: $--switch-button-margin;
+                left: $--switch-button-margin;
+                border-radius: 50%;
+                transition: all 0.4s ease;
+                width: $--switch-button-size;
+                height: $--switch-button-size;
+                background-color: $--color-greyDark;
+            }
+        }
+
+        @include e(label) {
+            position: absolute;
+            font-size: $--switch-font-size;
+            cursor: pointer;
+            background: transparent;
+
+            @include m(left) {
+                left: 8px;
+                color: $--switch-on-font-color;
+            }
+
+            @include m(right) {
+                right: 8px;
+                color: $--switch-off-font-color;
+            }
         }
 
         @include e(original) {
@@ -20,5 +112,28 @@
             opacity: 0;
             margin: 0;
         }
+    }
+
+    @include when(checked) {
+        @include e(core) {
+
+            &::before {
+                opacity: 1;
+            }
+
+            &::after {
+                left: 100%;
+                margin-left: -$--switch-button-size - $--switch-button-margin;
+                background: $--color-greyLight-1;
+            }
+        }
+    }
+
+    @include m(small) {
+        @include sizeMixin($--switch-small-width, $--switch-small-height, $--switch-small-button-margin, $--switch-small-button-size);
+    }
+
+    @include m(large) {
+        @include sizeMixin($--switch-large-width, $--switch-large-height, $--switch-large-button-margin, $--switch-large-button-size);
     }
 }

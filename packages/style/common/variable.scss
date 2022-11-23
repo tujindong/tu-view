@@ -26,7 +26,6 @@ $--border-color-light: #E4E7ED;
 $--border-color-lighter: #EBEEF5;
 $--border-color-extra-light: #F2F6FC;
 
-
 /*primary color*/
 $--color-primary-light: #8abdff;
 $--color-primary: #6d5dfc;
@@ -52,6 +51,7 @@ $--color-danger-light: #ff9f9f;
 $--color-danger: #f56c6c;
 $--color-danger-dark: #c44444;
 
+
 /* Typography
 -------------------------- */
 $--font-size-extra-large: 20px;
@@ -67,31 +67,33 @@ $--font-weight-secondary: 400;
 $--font-line-height-primary: 24px;
 $--font-line-height-secondary: 16px;
 
+
 /* Border
 -------------------------- */
 $--border-radius-large: 6px;
 $--border-radius-base: 4px;
 $--border-radius-small: 2px;
 
+
 /* Button
 -------------------------- */
 $--button-disabled-font-color: $--color-greyDark;
 $--button-font-color: $--color-greyLight-1;
-/*较小*/
+/*较小 small*/
 $--button-small-font-size: $--font-size-small;
 $--button-small-font-weight: $--font-weight-primary;
 $--button-small-border-radius: $--border-radius-small;
 $--button-small-padding-vertical: 8px;
 $--button-small-padding-horizontal: 10px;
 $--button-small-circle-size: 28px;
-/*中等*/
+/*中等 medium*/
 $--button-font-size: $--font-size-base;
 $--button-font-weight: $--font-weight-primary;
 $--button-border-radius: $--border-radius-base;
 $--button-padding-vertical: 9px;
 $--button-padding-horizontal: 15px;
 $--button-circle-size: 32px;
-/*较大*/
+/*较大 large*/
 $--button-large-font-size: $--font-size-large;
 $--button-large-font-weight: $--font-weight-primary;
 $--button-large-border-radius: $--border-radius-large;
@@ -99,30 +101,31 @@ $--button-large-padding-vertical: 13px;
 $--button-large-padding-horizontal: 19px;
 $--button-large-circle-size: 36px;
 
+
 /* Radio
 -------------------------- */
 $--radio-font-color: $--color-greyDark;
 $--radio-font-weight: $--font-weight-primary;
-/*超小*/
+/*超小 mini*/
 $--radio-mini-font-size: $--font-size-extra-small;
 $--radio-mini-input-height: 14px;
 $--radio-mini-input-width: 14px;
 $--radio-mini-bordered-padding-vertical: 4px;
 $--radio-mini-bordered-padding-horizontal: 3px;
-/*较小*/
+/*较小 small*/
 $--radio-small-font-size: $--font-size-small;
 $--radio-small-input-height: 16px;
 $--radio-small-input-width: 16px;
 $--radio-small-bordered-padding-vertical: 6px;
 $--radio-small-bordered-padding-horizontal: 6px;
-/*中等*/
+/*中等 medium*/
 $--radio-font-size: $--font-size-base;
 $--radio-input-height: 20px;
 $--radio-input-width: 20px;
 $--radio-font-size: $--font-size-base;
 $--radio-bordered-padding-vertical: 6px;
 $--radio-bordered-padding-horizontal: 6px;
-/*较大*/
+/*较大 large*/
 $--radio-large-font-size: $--font-size-base;
 $--radio-large-input-height: 22px;
 $--radio-large-input-width: 22px;
@@ -135,26 +138,26 @@ $--checkbox-font-color: $--color-greyDark;
 $--checkbox-font-weight: $--font-weight-primary;
 $--checkbox-icon-color: $--color-greyDark;
 $--checkbox-checked-icon-color: $--color-primary;
-/*超小*/
+/*超小 mini*/
 $--checkbox-mini-font-size: $--font-size-extra-small;
 $--checkbox-mini-input-height: 14px;
 $--checkbox-mini-input-width: 14px;
 $--checkbox-mini-bordered-padding-vertical: 3px;
 $--checkbox-mini-bordered-padding-horizontal: 4px;
-/*较小*/
+/*较小 small*/
 $--checkbox-small-font-size: $--font-size-small;
 $--checkbox-small-input-height: 16px;
 $--checkbox-small-input-width: 16px;
 $--checkbox-small-bordered-padding-vertical: 6px;
 $--checkbox-small-bordered-padding-horizontal: 8px;
-/*中等*/
+/*中等 medium*/
 $--checkbox-font-size: $--font-size-base;
 $--checkbox-input-height: 20px;
 $--checkbox-input-width: 20px;
 $--checkbox-border-radius: $--border-radius-small;
 $--checkbox-bordered-padding-vertical: 6px;
 $--checkbox-bordered-padding-horizontal: 8px;
-/*较大*/
+/*较大 large*/
 $--checkbox-large-font-size: $--font-size-base;
 $--checkbox-large-input-height: 22px;
 $--checkbox-large-input-width: 22px;
@@ -170,19 +173,43 @@ $--input-placeholder-disabled-font-color: $--color-greyLight-2;
 $--input-font-weight: $--font-weight-primary;
 $--input-border-radius: $--border-radius-base;
 $--input-background-color: $--color-white;
-/*超小*/
+/*超小 mini*/
 $--input-mini-font-size: $--font-size-extra-small;
 $--input-mini-height: 22px;
 $--input-mini-padding-horizontal: 12px;
-/*较小*/
+/*较小 small*/
 $--input-small-font-size: $--font-size-small;
 $--input-small-height: 28px;
 $--input-small-padding-horizontal: 12px;
-/*中等*/
+/*中等 medium*/
 $--input-font-size: $--font-size-base;
 $--input-height: 32px;
 $--input-padding-horizontal: 12px;
-/*较大*/
+/*较大 large*/
 $--input-large-font-size: $--font-size-base;
 $--input-large-height: 40px;
 $--input-large-padding-horizontal: 12px;
+
+/* Switch
+-------------------------- */
+$--switch-on-font-color: $--color-white;
+$--switch-off-font-color: $--color-greyDark;
+
+/*较小 small*/
+$--switch-small-width: 28px;
+$--switch-small-height: 16px;
+$--switch-small-font-size: $--font-size-extra-small;
+$--switch-small-button-size: 12px;
+$--switch-small-button-margin: 2px;
+/*中等 medium*/
+$--switch-width: 44px;
+$--switch-height: 22px;
+$--switch-font-size: $--font-size-small;
+$--switch-button-size: 16px;
+$--switch-button-margin: 3px;
+/*较大 large*/
+$--switch-large-width: 60px;
+$--switch-large-height: 28px;
+$--switch-large-font-size: $--font-size-base;
+$--switch-large-button-size: 20px;
+$--switch-large-button-margin: 4px;
