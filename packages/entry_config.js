@@ -38,7 +38,7 @@ module.exports = {
             author: 'tu'
         },
         {
-            name: 'inputNumber',
+            name: 'input-number',
             author: 'tu'
         },
     ]
