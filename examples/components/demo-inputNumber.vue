@@ -13,6 +13,14 @@
     ></tu-input-number>
 
     <br />
+    <p>禁用</p>
+    <tu-input-number
+      placeholder="请输入"
+      v-model="num"
+      :disabled="true"
+    ></tu-input-number>
+
+    <br />
     <p>步数</p>
     <tu-input-number v-model="num2" :step="2"></tu-input-number>
 
@@ -26,6 +34,50 @@
       v-model="num4"
       :precision="2"
       :step="0.1"
+      :max="10"
+    ></tu-input-number>
+
+    <br />
+    <p>超小</p>
+    <tu-input-number
+      placeholder="请输入"
+      v-model="num"
+      size="mini"
+    ></tu-input-number>
+
+    <br />
+    <p>较小</p>
+    <tu-input-number
+      placeholder="请输入"
+      v-model="num"
+      size="small"
+    ></tu-input-number>
+
+    <br />
+    <p>大</p>
+    <tu-input-number
+      placeholder="请输入"
+      v-model="num"
+      size="large"
+    ></tu-input-number>
+
+    <br />
+    <p>不使用控制按钮</p>
+    <tu-input-number
+      v-model="num"
+      :controls="false"
+      @change="handleChange"
+      :min="1"
+      :max="10"
+    ></tu-input-number>
+
+    <br />
+    <p>按钮位置</p>
+    <tu-input-number
+      v-model="num"
+      controls-position="right"
+      @change="handleChange"
+      :min="1"
       :max="10"
     ></tu-input-number>
   </div>

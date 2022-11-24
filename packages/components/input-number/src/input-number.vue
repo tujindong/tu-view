@@ -1,26 +1,33 @@
 <template>
   <div
+    @dragstart.prevent
     :class="[
       'tu-input-number',
       inputNumberSize ? `el-input-number--${inputNumberSize}` : '',
       { 'is-disabled': isDisabled },
+      { 'is-without-controls': !controls },
+      { 'is-controls-right': controlsAtRight },
     ]"
   >
     <span
+      v-if="controls"
       :class="['tu-input-number__decrease', { 'is-disabled': minDisabled }]"
       role="button"
+      @mousedown.prevent
       v-repeat-click="handleDecrease"
       @keydown.enter="handleDecrease"
     >
-      <i :class="`tu-icon-minus`"></i>
+      <i :class="`tu-icon-${controlsAtRight ? 'down' : 'minus'}`"></i>
     </span>
     <span
-      class="tu-input-number__increase"
+      v-if="controls"
+      :class="['tu-input-number__increase', { 'is-disabled': maxDisabled }]"
       role="button"
+      @mousedown.prevent
       v-repeat-click="handleIncrease"
       @keydown.enter="handleIncrease"
     >
-      <i :class="`tu-icon-plus`"></i>
+      <i :class="`tu-icon-${controlsAtRight ? 'up' : 'plus'}`"></i>
     </span>
     <tu-input
       ref="input"
@@ -28,6 +35,10 @@
       :placeholder="placeholder"
       :name="name"
       :label="label"
+      :disabled="isDisabled"
+      :size="inputNumberSize"
+      :max="max"
+      :min="min"
       @keydown.up.native.prevent="handleIncrease"
       @keydown.down.native.prevent="handleDecrease"
       @blur="handleBlur"
@@ -79,6 +90,14 @@ export default {
         return val >= 0 && val === parseInt(val, 10);
       },
     },
+    controls: {
+      type: Boolean,
+      default: true,
+    },
+    controlsPosition: {
+      type: String,
+      default: "",
+    },
   },
 
   data() {
@@ -92,8 +111,22 @@ export default {
     displayValue() {
       if (this.inputValue !== null) return this.inputValue;
       let currentValue = this.currentValue;
-
+      if (typeof currentValue === "undefined") currentValue = "";
+      if (isNaN(currentValue)) currentValue = "";
       if (typeof currentValue === "number") {
+        if (this.stepStrictly) {
+          const stepPrecision = this.getPrecision(this.step);
+          const precisionFactor = Math.pow(10, stepPrecision);
+          currentValue =
+            (Math.round(currentValue / this.step) *
+              precisionFactor *
+              this.step) /
+            precisionFactor;
+        }
+
+        if (this.precision !== undefined) {
+          currentValue = currentValue.toFixed(this.precision);
+        }
       }
       return currentValue;
     },
@@ -122,6 +155,9 @@ export default {
       } else {
         return Math.max(getPrecision(value), stepPrecision);
       }
+    },
+    controlsAtRight() {
+      return this.controls && this.controlsPosition === "right";
     },
   },
 
