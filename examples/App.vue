@@ -9,6 +9,7 @@
     <DemoInputNumber />
     <DemoTabs />
     <DemoSelect />
+    <DemoCard />
   </div>
 </template>
 
@@ -22,6 +23,7 @@ import DemoSwitch from "./components/demo-switch.vue";
 import DemoInputNumber from "./components/demo-inputNumber.vue";
 import DemoTabs from "./components/demo-tabs.vue";
 import DemoSelect from "./components/demo-select.vue";
+import DemoCard from "./components/demo-card.vue";
 export default {
   components: {
     DemoButton,
@@ -33,6 +35,7 @@ export default {
     DemoInputNumber,
     DemoTabs,
     DemoSelect,
+    DemoCard,
   },
 
   data() {

@@ -49,5 +49,9 @@ module.exports = {
             name: 'select',
             author: 'tu'
         },
+        {
+            name: 'card',
+            author: 'tu'
+        },
     ]
 }

@@ -11,6 +11,7 @@ import Switch from './components/switch'
 import InputNumber from './components/input-number'
 import Tabs from './components/tabs'
 import Select from './components/select'
+import Card from './components/card'
 
 const componentsList = [
     Button,
@@ -24,7 +25,8 @@ const componentsList = [
     Switch,
     InputNumber,
     Tabs,
-    Select
+    Select,
+    Card
 ];
 
 const install = function (Vue) {
