@@ -9,6 +9,8 @@ import Input from './components/input';
 import Textarea from './components/textarea';
 import Switch from './components/switch'
 import InputNumber from './components/input-number'
+import Tabs from './components/tabs'
+import Select from './components/select'
 
 const componentsList = [
     Button,
@@ -20,7 +22,9 @@ const componentsList = [
     Input,
     Textarea,
     Switch,
-    InputNumber
+    InputNumber,
+    Tabs,
+    Select
 ];
 
 const install = function (Vue) {

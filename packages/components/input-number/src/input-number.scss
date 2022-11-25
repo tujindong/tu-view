@@ -37,6 +37,7 @@
 
         &:hover {
             color: $--color-primary;
+            font-weight: $--font-weight-bold;
         }
 
         @include when(disabled) {
@@ -114,6 +115,7 @@
 
         @include e((increase, decrease)) {
             line-height: calc((#{$--input-height} - 2px) / 2);
+            height: calc((#{$--input-height} - 2px) / 2);
 
             [class*=tu-icon] {
                 transform: scale(.8);

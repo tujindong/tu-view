@@ -41,5 +41,13 @@ module.exports = {
             name: 'input-number',
             author: 'tu'
         },
+        {
+            name: 'tabs',
+            author: 'tu'
+        },
+        {
+            name: 'select',
+            author: 'tu'
+        },
     ]
 }

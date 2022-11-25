@@ -7,6 +7,8 @@
     <DemoInput />
     <DemoSwitch />
     <DemoInputNumber />
+    <DemoTabs />
+    <DemoSelect />
   </div>
 </template>
 
@@ -18,6 +20,8 @@ import DemoCheckbox from "./components/demo-checkbox.vue";
 import DemoInput from "./components/demo-input.vue";
 import DemoSwitch from "./components/demo-switch.vue";
 import DemoInputNumber from "./components/demo-inputNumber.vue";
+import DemoTabs from "./components/demo-tabs.vue";
+import DemoSelect from "./components/demo-select.vue";
 export default {
   components: {
     DemoButton,
@@ -27,6 +31,8 @@ export default {
     DemoInput,
     DemoSwitch,
     DemoInputNumber,
+    DemoTabs,
+    DemoSelect,
   },
 
   data() {

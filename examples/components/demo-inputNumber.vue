@@ -41,7 +41,7 @@
     <p>超小</p>
     <tu-input-number
       placeholder="请输入"
-      v-model="num"
+      v-model="num3"
       size="mini"
     ></tu-input-number>
 
@@ -49,7 +49,7 @@
     <p>较小</p>
     <tu-input-number
       placeholder="请输入"
-      v-model="num"
+      v-model="num3"
       size="small"
     ></tu-input-number>
 
@@ -57,7 +57,7 @@
     <p>大</p>
     <tu-input-number
       placeholder="请输入"
-      v-model="num"
+      v-model="num3"
       size="large"
     ></tu-input-number>
 
