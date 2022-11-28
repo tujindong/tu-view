@@ -1,0 +1,7 @@
+@import "~@packages/style/common/mixin.scss";
+
+
+[class*="tu-col-"] {
+    float: left;
+    box-sizing: border-box;
+}

@@ -53,5 +53,13 @@ module.exports = {
             name: 'card',
             author: 'tu'
         },
+        {
+            name: 'row',
+            author: 'tu'
+        },
+        {
+            name: 'Col',
+            author: 'tu'
+        },
     ]
 }

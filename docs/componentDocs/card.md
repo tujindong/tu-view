@@ -4,8 +4,6 @@
 
 ### 示例
 
-<m-card imgSrc="/java.png" summary="test"/>
-
 ### 代码
 
 ```html
