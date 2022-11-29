@@ -9,6 +9,47 @@
         ><div class="grid-content bg-purple-light"></div
       ></tu-col>
     </tu-row>
+
+    <tu-row>
+      <tu-col :span="12"><div class="grid-content bg-purple"></div></tu-col>
+      <tu-col :span="12"
+        ><div class="grid-content bg-purple-light"></div
+      ></tu-col>
+    </tu-row>
+    <tu-row>
+      <tu-col :span="8"><div class="grid-content bg-purple"></div></tu-col>
+      <tu-col :span="8"
+        ><div class="grid-content bg-purple-light"></div
+      ></tu-col>
+      <tu-col :span="8"><div class="grid-content bg-purple"></div></tu-col>
+    </tu-row>
+    <tu-row>
+      <tu-col :span="6"><div class="grid-content bg-purple"></div></tu-col>
+      <tu-col :span="6"
+        ><div class="grid-content bg-purple-light"></div
+      ></tu-col>
+      <tu-col :span="6"><div class="grid-content bg-purple"></div></tu-col>
+      <tu-col :span="6"
+        ><div class="grid-content bg-purple-light"></div
+      ></tu-col>
+    </tu-row>
+    <tu-row>
+      <tu-col :span="4"><div class="grid-content bg-purple"></div></tu-col>
+      <tu-col :span="4"
+        ><div class="grid-content bg-purple-light"></div
+      ></tu-col>
+      <tu-col :span="4"><div class="grid-content bg-purple"></div></tu-col>
+      <tu-col :span="4"
+        ><div class="grid-content bg-purple-light"></div
+      ></tu-col>
+      <tu-col :span="4"><div class="grid-content bg-purple"></div></tu-col>
+      <tu-col :span="4"
+        ><div class="grid-content bg-purple-light"></div
+      ></tu-col>
+    </tu-row>
+
+    <br />
+    <p>分栏设置</p>
   </div>
 </template>
 
@@ -27,10 +68,10 @@ export default {
   background: #99a9bf;
 }
 .bg-purple {
-  background: #d9ff9d;
+  background: #e6ffbd;
 }
 .bg-purple-light {
-  background: #f5ccff;
+  background: #f8dbff;
 }
 .grid-content {
   border-radius: 4px;
