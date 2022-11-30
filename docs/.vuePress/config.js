@@ -3,6 +3,7 @@ module.exports = {
     description: '一款有触觉的UI组件库',
     base: '/tu-view/', //打包时候打开
     themeConfig: {
+        search: true,
         nav: [
             { text: '指南', link: '/guide/' },
             {
@@ -20,12 +21,30 @@ module.exports = {
             '/guide/': [
                 ['', '快速开始'],
                 {
-                    title: '组件',
+                    title: '基础组件',
                     collapsable: false,
                     children: [
                         ['../guide/Layout.md', 'Layout 布局'],
                         ['../guide/Button.md', 'Button 按钮'],
+                    ]
+                },
+                {
+                    title: '表单组件',
+                    collapsable: false,
+                    children: [
+                        ['../guide/Radio.md', 'Radio 单选框'],
+                        ['../guide/Checkbox.md', 'Checkbox 多选框'],
                         ['../guide/Input.md', 'Input 输入框'],
+                        ['../guide/Textarea.md', 'Textarea 多行输入框'],
+                        ['../guide/Input-number.md', 'InputNumber 计数器'],
+                        ['../guide/Switch.md', 'Switch 开关'],
+                    ]
+                },
+                {
+                    title: '其他组件',
+                    collapsable: false,
+                    children: [
+                        ['../guide/Card.md', 'Card 卡片'],
                     ]
                 }
             ]

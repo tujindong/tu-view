@@ -119,7 +119,7 @@ export default {
 
     isDisabled() {
       return this.isGroup
-        ? this._checkboxGroup.disabled || this.isLimitDisabled
+        ? this._checkboxGroup.disabled || this.disabled || this.isLimitDisabled
         : this.disabled;
     },
   },

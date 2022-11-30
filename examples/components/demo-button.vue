@@ -46,6 +46,11 @@
       circle
       icon="home-fill"
     ></tu-button>
+
+    <br />
+    <p>文字按钮</p>
+    <tu-button type="text">文字按钮</tu-button>
+    <tu-button type="text" disabled>文字按钮</tu-button>
   </div>
 </template>
 

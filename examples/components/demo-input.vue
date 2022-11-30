@@ -105,6 +105,15 @@
     ></tu-textarea>
 
     <br />
+    <p>多行输入 禁用</p>
+    <tu-textarea
+      disabled
+      autosize
+      v-model="textarea"
+      placeholder="请输入内容"
+    ></tu-textarea>
+
+    <br />
     <p>多行输入 ausize maxRows minRows</p>
     <tu-textarea
       :autosize="{ minRows: 2, maxRows: 4 }"

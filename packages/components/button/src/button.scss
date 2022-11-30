@@ -154,4 +154,32 @@
             font-size: $--button-large-font-size;
         }
     }
+
+    @include m(text) {
+        border-color: transparent;
+        color: $--color-primary;
+        background: transparent;
+        box-shadow: none;
+
+        &:hover,
+        &:focus {
+            color: mix($--color-white, $--color-primary, 20%);
+            border-color: transparent;
+            background-color: transparent;
+        }
+
+        &:active {
+            color: mix($--color-black, $--color-primary, 10%);
+            border-color: transparent;
+            background-color: transparent;
+        }
+
+        &.is-disabled,
+        &.is-disabled:hover,
+        &.is-disabled:focus {
+            cursor: not-allowed;
+            border-color: transparent;
+            color: $--color-greyLight-3;
+        }
+    }
 }

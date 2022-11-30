@@ -13,6 +13,7 @@ $--color-transition-base: color .2s cubic-bezier(.645, .045, .355, 1) !default;
 /* color
 -------------------------- */
 $--color-white: #ffffff;
+$--color-black: #000000;
 $--color-greyLight-1: #E4EBF5;
 $--color-greyLight-2: #c8d0e7;
 $--color-greyLight-3: #bec8e4;
@@ -217,6 +218,31 @@ $--switch-large-font-size: $--font-size-base;
 $--switch-large-button-size: 20px;
 $--switch-large-button-padding: 4px;
 $--switch-large-label-padding: 11px;
+
+/* Card
+-------------------------- */
+$--card-font-color: $--color-greyDark;
+/*较小 small*/
+$--card-small-font-size: $--font-size-small;
+$--card-small-border-radius: $--border-radius-small;
+$--card-small-header-padding-vertical: 8px;
+$--card-small-header-padding-horizontal: 12px;
+$--card-small-body-padding-vertical: 8px;
+$--card-small-body-padding-horizontal: 12px;
+/*中等 medium*/
+$--card-font-size: $--font-size-base;
+$--card-border-radius: $--border-radius-base;
+$--card-header-padding-vertical: 12px;
+$--card-header-padding-horizontal: 16px;
+$--card-body-padding-vertical: 12px;
+$--card-body-padding-horizontal: 16px;
+/*较大 large*/
+$--card-large-font-size: $--font-size-base;
+$--card-large-border-radius: $--border-radius-large;
+$--card-large-header-padding-vertical: 16px;
+$--card-large-header-padding-horizontal: 20px;
+$--card-large-body-padding-vertical: 16px;
+$--card-large-body-padding-horizontal: 20px;
 
 
 /* Break-point

@@ -50,6 +50,12 @@
 
     <br />
     <p>分栏设置</p>
+    <tu-row :gutter="20">
+      <tu-col :span="6"><div class="grid-content bg-purple"></div></tu-col>
+      <tu-col :span="6"><div class="grid-content bg-purple"></div></tu-col>
+      <tu-col :span="6"><div class="grid-content bg-purple"></div></tu-col>
+      <tu-col :span="6"><div class="grid-content bg-purple"></div></tu-col>
+    </tu-row>
   </div>
 </template>
 
@@ -68,13 +74,12 @@ export default {
   background: #99a9bf;
 }
 .bg-purple {
-  background: #e6ffbd;
+  background: #9baacf;
 }
 .bg-purple-light {
-  background: #f8dbff;
+  background: #bec8e4;
 }
 .grid-content {
-  border-radius: 4px;
   min-height: 36px;
 }
 .row-bg {

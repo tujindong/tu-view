@@ -22,7 +22,7 @@
 
     <tu-checkbox-group v-model="checkList">
       <tu-checkbox label="复选框A"></tu-checkbox>
-      <tu-checkbox label="复选框B"></tu-checkbox>
+      <tu-checkbox label="复选框B" disabled></tu-checkbox>
     </tu-checkbox-group>
 
     <br />
@@ -80,6 +80,12 @@
       <tu-checkbox label="4">选项4</tu-checkbox>
     </tu-checkbox-group>
 
+    <tu-checkbox-group v-model="checkedFruits" :min="1" :max="2">
+      <tu-checkbox v-for="fruit in fruitOptions" :label="fruit" :key="fruit">{{
+        fruit
+      }}</tu-checkbox>
+    </tu-checkbox-group>
+
     <br />
     <p>按钮组 change value</p>
 
@@ -95,6 +101,7 @@ export default {
   name: "deme-checkbox",
 
   data() {
+    const fruitOptions = ["苹果", "香蕉", "西瓜", "橘子"];
     return {
       checked1: false,
       checked2: false,
@@ -104,6 +111,8 @@ export default {
       checkList1: ["1", "2"],
       checkList2: [],
       checkList3: [],
+      checkedFruits: ["苹果", "香蕉"],
+      fruitOptions,
     };
   },
 

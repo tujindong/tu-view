@@ -113,7 +113,8 @@ module.exports = {
         alias: {
             'vue$': 'vue/dist/vue.runtime.esm.js',
             '@': path.resolve(__dirname, '../examples'),
-            '@packages': path.resolve(__dirname, '../packages')
+            '@packages': path.resolve(__dirname, '../packages'),
+            '@lib': path.resolve(__dirname, '../lib')
         },
         // 添加一个 resolve.extensions 属性，方便引入依赖或者文件的时候可以省略后缀
         // 引入文件时可以这样写 import api from '@/api/api'。
