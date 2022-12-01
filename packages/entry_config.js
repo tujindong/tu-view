@@ -3,63 +3,83 @@ module.exports = {
     configList: [
         {
             name: 'button',
-            author: 'tu'
+            author: 'tujindong'
         },
         {
             name: 'icon',
-            author: 'tu'
+            author: 'tujindong'
         },
         {
             name: 'radio',
-            author: 'tu'
+            author: 'tujindong'
         },
         {
             name: 'radio-group',
-            author: 'tu'
+            author: 'tujindong'
         },
         {
             name: 'checkbox',
-            author: 'tu'
+            author: 'tujindong'
         },
         {
             name: 'checkbox-group',
-            author: 'tu'
+            author: 'tujindong'
         },
         {
             name: 'input',
-            author: 'tu'
+            author: 'tujindong'
         },
         {
             name: 'textarea',
-            author: 'tu'
+            author: 'tujindong'
         },
         {
             name: 'switch',
-            author: 'tu'
+            author: 'tujindong'
         },
         {
             name: 'input-number',
-            author: 'tu'
+            author: 'tujindong'
         },
         {
             name: 'tabs',
-            author: 'tu'
+            author: 'tujindong'
         },
         {
             name: 'select',
-            author: 'tu'
+            author: 'tujindong'
         },
         {
             name: 'card',
-            author: 'tu'
+            author: 'tujindong'
         },
         {
             name: 'row',
-            author: 'tu'
+            author: 'tujindong'
         },
         {
             name: 'Col',
-            author: 'tu'
+            author: 'tujindong'
+        },
+        {
+            name: 'Tag',
+            author: 'tujindong'
+        },
+        {
+            name: 'Table',
+            author: 'tujindong'
+        },
+        {
+            name: 'Progress',
+            author: 'tujindong'
+        },
+        {
+            name: 'Pagination',
+            author: 'tujindong'
+        },
+        {
+            name: 'Tooltip',
+            author: 'tujindong'
         },
     ]
 }

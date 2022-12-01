@@ -12,5 +12,5 @@ features:
     details: 众多组件覆盖开发过程中各个需求，组件功能丰富，快速集成。
   - title: 主题
     details: 多种主题动态配置。
-footer: MIT Licensed | Copyright © 2022-present Tuu
+footer: MIT Licensed | Copyright © 2022-present Tujindong
 ---

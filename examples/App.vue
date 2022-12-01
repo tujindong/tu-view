@@ -7,10 +7,15 @@
     <DemoInput />
     <DemoSwitch />
     <DemoInputNumber />
+    <DemoCard />
+    <DemoTooltip />
     <DemoTabs />
     <DemoSelect />
-    <DemoCard />
     <DemoLayout />
+    <DemoTag />
+    <DemoTable />
+    <DemoProgress />
+    <DemoPagination />
   </div>
 </template>
 
@@ -26,6 +31,11 @@ import DemoTabs from "./components/demo-tabs.vue";
 import DemoSelect from "./components/demo-select.vue";
 import DemoCard from "./components/demo-card.vue";
 import DemoLayout from "./components/demo-layout.vue";
+import DemoTag from "./components/demo-tag.vue";
+import DemoTable from "./components/demo-table.vue";
+import DemoProgress from "./components/demo-progress.vue";
+import DemoPagination from "./components/demo-pagination.vue";
+import DemoTooltip from "./components/demo-tooltip.vue";
 export default {
   components: {
     DemoButton,
@@ -39,6 +49,11 @@ export default {
     DemoSelect,
     DemoCard,
     DemoLayout,
+    DemoTag,
+    DemoTable,
+    DemoProgress,
+    DemoPagination,
+    DemoTooltip,
   },
 
   data() {

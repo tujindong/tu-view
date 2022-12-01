@@ -93,6 +93,9 @@
       <tu-checkbox label="1">选项1</tu-checkbox>
       <tu-checkbox label="2">选项2</tu-checkbox>
     </tu-checkbox-group>
+
+    <br />
+    <p>按钮组 change value</p>
   </div>
 </template>
 

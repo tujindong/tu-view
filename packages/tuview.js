@@ -14,6 +14,11 @@ import Select from './components/select'
 import Card from './components/card'
 import Row from './components/row'
 import Col from './components/col'
+import Tag from './components/tag'
+import Table from './components/table'
+import Progress from './components/progress'
+import Pagination from './components/pagination'
+import Tooltip from './components/tooltip'
 
 const componentsList = [
     Button,
@@ -30,7 +35,12 @@ const componentsList = [
     Select,
     Card,
     Row,
-    Col
+    Col,
+    Tag,
+    Table,
+    Progress,
+    Pagination,
+    Tooltip
 ];
 
 const install = function (Vue) {
