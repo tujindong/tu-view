@@ -37,6 +37,8 @@
         "@babel/plugin-syntax-dynamic-import": "^7.7.4",
         "@babel/preset-env": "^7.7.5",
         "@intervolga/optimize-cssnano-plugin": "^1.0.6",
+        "@vue/babel-helper-vue-jsx-merge-props": "^1.4.0",
+        "@vue/babel-preset-jsx": "^1.4.0",
         "autoprefixer": "^9.7.3",
         "babel-loader": "^8.0.6",
         "babel-plugin-component": "^1.1.1",
