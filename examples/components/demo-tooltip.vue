@@ -110,6 +110,31 @@
         </tu-tooltip>
       </div>
     </div>
+
+    <br />
+    <p>更多内容</p>
+    <tu-tooltip placement="top">
+      <div slot="content">多行信息<br />第二行信息</div>
+      <tu-button>Top center</tu-button>
+    </tu-tooltip>
+
+    <br />
+    <p>light</p>
+    <tu-tooltip content="Bottom center" placement="left" effect="light">
+      <tu-button>Light</tu-button>
+    </tu-tooltip>
+
+    <br />
+    <p>手动关闭</p>
+    <tu-tooltip
+      :disabled="disabled"
+      content="点击关闭 tooltip 功能"
+      placement="bottom"
+    >
+      <tu-button @click="disabled = !disabled"
+        >点击{{ disabled ? "开启" : "关闭" }} tooltip 功能</tu-button
+      >
+    </tu-tooltip>
   </div>
 </template>
 
@@ -118,7 +143,9 @@ export default {
   name: "deme-tabs",
 
   data() {
-    return {};
+    return {
+      disabled: false,
+    };
   },
 };
 </script>
@@ -151,8 +178,8 @@ export default {
       margin: 4px;
     }
 
-    .left .el-tooltip__popper,
-    .right .el-tooltip__popper {
+    .left .tu-tooltip__popper,
+    .right .tu-tooltip__popper {
       padding: 8px 10px;
     }
   }

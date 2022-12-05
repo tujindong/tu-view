@@ -1,1 +1,83 @@
 @import "~@packages/style/common/mixin.scss";
+
+@include b(tag) {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;
+    white-space: nowrap;
+    color: $--tag-font-color;
+    padding: $--tag-padding-vertical $--tag-padding-horizontal;
+    font-size: $--tag-font-size;
+    line-height: 1;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    border-radius: $--tag-border-radius;
+
+
+    @include m(light) {
+        border: 1px solid $--color-greyDark;
+    }
+
+    @include m(dark) {
+        background: $--tag-color-fill;
+        color: $--color-white;
+        border: 1px solid $--tag-color-fill;
+    }
+
+    @include m(plain) {
+        color: $--tag-color-fill;
+        border: 1px solid $--tag-color-fill;
+
+        .tu-tag__close {
+            color: $--tag-color-fill;
+        }
+
+        &::after {
+            content: ' ';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            mix-blend-mode: soft-light;
+            background-color: var(--color);
+        }
+    }
+
+    @include m(shadow) {
+        box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+    }
+
+    @include m(small) {
+        font-size: $--tag-small-font-size;
+        padding: $--tag-small-padding-vertical $--tag-small-padding-horizontal;
+        border-radius: $--tag-small-border-radius;
+    }
+
+    @include m(large) {
+        font-size: $--tag-large-font-size;
+        padding: $--tag-large-padding-vertical $--tag-large-padding-horizontal;
+        border-radius: $--tag-large-border-radius;
+    }
+
+    .tu-tag__close {
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-left: 3px;
+        margin-top: 2px;
+
+        &:hover {
+            color: $--color-primary;
+        }
+
+        &::after {
+            height: $--tag-font-size;
+        }
+    }
+
+    &:last-child {
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+}

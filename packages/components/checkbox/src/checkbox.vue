@@ -6,14 +6,20 @@
       { 'is-disabled': isDisabled },
       { 'is-checked': isChecked },
       { 'is-bordered': isBorder },
+      { 'is-indeterminate': indeterminate },
     ]"
   >
-    <span class="tu-checkbox__input">
+    <span
+      class="tu-checkbox__input"
+      :tabindex="indeterminate ? 0 : false"
+      :role="indeterminate ? 'checkbox' : false"
+      :aria-checked="indeterminate ? 'mixed' : false"
+    >
       <span class="tu-checkbox__inner"></span>
       <input
         class="tu-checkbox__original"
         type="checkbox"
-        :aria-hidden="false"
+        :aria-hidden="indeterminate ? 'true' : 'false'"
         :name="name"
         :disabled="isDisabled"
         :value="label"
@@ -42,11 +48,13 @@ export default {
   props: {
     value: {},
     label: {},
+    indeterminate: Boolean,
     disabled: Boolean,
     checked: Boolean,
     name: String,
     border: Boolean,
     size: String,
+    controls: String,
   },
 
   data() {
@@ -130,7 +138,11 @@ export default {
     this.checked && this.addToModel();
   },
 
-  mounted() {},
+  mounted() {
+    if (this.indeterminate) {
+      this.$el.setAttribute("aria-controls", this.controls);
+    }
+  },
 
   methods: {
     isLimitExceeded(length) {

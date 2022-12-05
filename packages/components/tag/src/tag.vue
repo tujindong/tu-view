@@ -1,6 +1,3 @@
-<template>
-  <div class="tu-tag">标签</div>
-</template>
 
 <script>
 export default {
@@ -8,6 +5,77 @@ export default {
 
   components: {},
 
-  props: {},
+  props: {
+    disableTransitions: Boolean,
+    closable: Boolean,
+    color: String,
+    size: String,
+    effect: {
+      type: String,
+      default: "light",
+      validator(val) {
+        return ["dark", "light", "plain", "shadow"].indexOf(val) !== -1;
+      },
+    },
+  },
+
+  computed: {
+    tagSize() {
+      return this.size;
+    },
+    tagStyle() {
+      const style = {};
+      style.borderColor = this.color;
+      if (this.effect === "light") {
+        style.color = this.color;
+      }
+      if (this.effect === "dark") {
+        style.background = this.color;
+      }
+      if (this.effect === "plain") {
+        style.color = this.color;
+        style["--color"] = this.color;
+      }
+      return style;
+    },
+  },
+
+  methods: {
+    handleClick(evt) {
+      this.$emit("click", evt);
+    },
+
+    handleClose(evt) {
+      this.$emit("close", evt);
+    },
+  },
+
+  render(h) {
+    const { effect, closable, tagSize, tagStyle } = this;
+    const tagEl = (
+      <span
+        class={[
+          "tu-tag",
+          tagSize ? `tu-tag--${tagSize}` : "",
+          effect ? `tu-tag--${effect}` : "",
+        ]}
+        style={tagStyle}
+        onClick={this.handleClick}
+      >
+        {this.$slots.default}
+        {closable && (
+          <i class="tu-tag__close tu-icon-close" onClick={this.handleClose}></i>
+        )}
+      </span>
+    );
+
+    return this.disableTransitions ? (
+      tagEl
+    ) : (
+      <transition name="tu-zoom-in-center">{tagEl}</transition>
+    );
+  },
 };
 </script>
+<style lang="scss" scoped>
+</style>

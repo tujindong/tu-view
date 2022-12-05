@@ -52,6 +52,12 @@ $--color-danger-light: #ff9f9f;
 $--color-danger: #f56c6c;
 $--color-danger-dark: #c44444;
 
+/* z-index
+-------------------------- */
+$--index-normal: 1;
+$--index-top: 1000;
+$--index-popper: 2000;
+
 
 /* Typography
 -------------------------- */
@@ -243,6 +249,38 @@ $--card-large-header-padding-vertical: 16px;
 $--card-large-header-padding-horizontal: 20px;
 $--card-large-body-padding-vertical: 16px;
 $--card-large-body-padding-horizontal: 20px;
+
+
+/* Tooltip
+-------------------------- */
+$--tooltip-fill: $--color-greyLight-3;
+$--tooltip-color: $--color-white;
+$--tooltip-font-size: 12px;
+$--tooltip-border-color: $--color-greyDark;
+$--tooltip-arrow-size: 4px;
+$--tooltip-padding: 10px;
+
+/* Tag
+-------------------------- */
+$--tag-font-color: $--color-greyDark;
+$--tag-color-fill: $--color-greyLight-3;
+/*较小 small*/
+$--tag-small-font-size: 10px;
+$--tag-small-padding-vertical: 2px;
+$--tag-small-padding-horizontal: 4px;
+$--tag-small-border-radius: 2px;
+
+/*中等 medium*/
+$--tag-font-size: 12px;
+$--tag-padding-vertical: 4px;
+$--tag-padding-horizontal: 6px;
+$--tag-border-radius: 3px;
+/*较大 large*/
+$--tag-large-font-size: 13px;
+$--tag-large-padding-vertical: 6px;
+$--tag-large-padding-horizontal: 8px;
+$--tag-large-border-radius: 4px;
+
 
 
 /* Break-point

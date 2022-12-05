@@ -144,6 +144,7 @@
             box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
 
             &::after {
+                position: absolute;
                 box-sizing: content-box;
                 content: "";
                 border: 2px solid $--checkbox-icon-color;
@@ -172,5 +173,26 @@
         display: inline-block;
         font-size: $--checkbox-font-size;
         padding-left: 8px;
+    }
+
+    @include when(indeterminate) {
+        @include e(inner) {
+            width: $--checkbox-input-width;
+            height: $--checkbox-input-height;
+
+            &::after {
+                box-sizing: content-box;
+                content: "";
+                position: absolute;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background: $--checkbox-checked-icon-color;
+                border: none;
+                height: 4px;
+                width: 100%;
+                transform: scale(.5);
+            }
+        }
     }
 }

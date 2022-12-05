@@ -44,6 +44,7 @@ module.exports = {
                     title: '其他组件',
                     collapsable: false,
                     children: [
+                        ['../guide/Tooltip.md', 'Tooltip 文字提示'],
                         ['../guide/Card.md', 'Card 卡片'],
                     ]
                 }

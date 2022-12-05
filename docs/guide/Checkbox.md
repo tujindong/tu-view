@@ -108,6 +108,48 @@
 
 :::
 
+### indeterminate 状态
+
+`indeterminate` 属性用以表示 checkbox 的不确定状态，一般用于实现全选的效果
+
+:::demo
+
+```html
+<template>
+	<tu-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</tu-checkbox>
+	<div style="margin: 15px 0;"></div>
+	<tu-checkbox-group v-model="checkedFruits" @change="handleCheckedFruitsChange">
+		<tu-checkbox v-for="fruit in fruits" :label="fruit" :key="fruit">{{fruit}}</tu-checkbox>
+	</tu-checkbox-group>
+</template>
+<script>
+	const fruitOptions = ["苹果", "香蕉", "西瓜", "橘子"];
+	export default {
+		data() {
+			return {
+				checkAll: false,
+				checkedFruits: ["苹果", "香蕉"],
+				fruits: fruitOptions,
+				isIndeterminate: true,
+			};
+		},
+		methods: {
+			handleCheckAllChange(val) {
+				this.checkedFruits = val ? fruitOptions : [];
+				this.isIndeterminate = false;
+			},
+			handleCheckedFruitsChange(value) {
+				let checkedCount = value.length;
+				this.checkAll = checkedCount === this.fruits.length;
+				this.isIndeterminate = checkedCount > 0 && checkedCount < this.fruits.length;
+			},
+		},
+	};
+</script>
+```
+
+:::
+
 ### 带有边框
 
 :::demo 设置`border`属性可以渲染为带有边框的多选框。
