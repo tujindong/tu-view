@@ -15,6 +15,7 @@
     <tu-tag size="large">大标签</tu-tag>
     <tu-tag>标签</tu-tag>
     <tu-tag size="small">小标签</tu-tag>
+    <tu-tag size="medium">标签</tu-tag>
 
     <br />
     <p>类型</p>
@@ -34,7 +35,7 @@
     <p>类型</p>
     <tu-tag effect="light" color="#2db7f5">深色</tu-tag>
     <tu-tag effect="dark" color="#2db7f5">深色</tu-tag>
-    <tu-tag effect="plain" color="#2db7f5">深色</tu-tag>
+    <tu-tag effect="plain" color="#2db7f5" closable>深色</tu-tag>
     <tu-tag effect="plain" color="#e6a23c">深色</tu-tag>
     <tu-tag effect="shadow" color="#2db7f5">深色</tu-tag>
   </div>

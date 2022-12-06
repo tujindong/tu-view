@@ -1,1 +1,8 @@
 @import "~@packages/style/common/mixin.scss";
+@import "./select-dropdown.scss";
+
+@include b(select) {
+    display: inline-flex;
+    position: relative;
+    width: 100%;
+}

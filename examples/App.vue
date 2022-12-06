@@ -16,6 +16,7 @@
     <DemoTable />
     <DemoProgress />
     <DemoPagination />
+    <DemoScrollbar />
   </div>
 </template>
 
@@ -36,6 +37,7 @@ import DemoTable from "./components/demo-table.vue";
 import DemoProgress from "./components/demo-progress.vue";
 import DemoPagination from "./components/demo-pagination.vue";
 import DemoTooltip from "./components/demo-tooltip.vue";
+import DemoScrollbar from "./components/demo-scrollbar.vue";
 export default {
   components: {
     DemoButton,
@@ -54,6 +56,7 @@ export default {
     DemoProgress,
     DemoPagination,
     DemoTooltip,
+    DemoScrollbar,
   },
 
   data() {

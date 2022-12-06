@@ -30,12 +30,15 @@
         border: 1px solid $--tag-color-fill;
 
         .tu-tag__close {
-            color: $--tag-color-fill;
+            position: relative;
+            color: var(--color);
+            z-index: 100;
         }
 
         &::after {
             content: ' ';
             position: absolute;
+            z-index: 10;
             top: 0;
             left: 0;
             width: 100%;
@@ -46,6 +49,7 @@
     }
 
     @include m(shadow) {
+        padding: calc(#{$--tag-padding-vertical} + 1px) calc(#{$--tag-padding-horizontal} + 1px);
         box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
     }
 
@@ -65,7 +69,7 @@
         cursor: pointer;
         transition: all 0.3s ease;
         margin-left: 3px;
-        margin-top: 2px;
+        transform: translateY(1px);
 
         &:hover {
             color: $--color-primary;

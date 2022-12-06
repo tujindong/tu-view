@@ -51,6 +51,13 @@
     <p>文字按钮</p>
     <tu-button type="text">文字按钮</tu-button>
     <tu-button type="text" disabled>文字按钮</tu-button>
+
+    <br />
+    <p>加载中</p>
+    <tu-button class="demo-button" type="primary" :loading="true"
+      >加载中</tu-button
+    >
+    <tu-button class="demo-button" :loading="true">加载中</tu-button>
   </div>
 </template>
 

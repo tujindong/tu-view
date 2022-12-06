@@ -50,6 +50,10 @@ module.exports = {
             author: 'tujindong'
         },
         {
+            name: 'option',
+            author: 'tujindong'
+        },
+        {
             name: 'card',
             author: 'tujindong'
         },
@@ -79,6 +83,10 @@ module.exports = {
         },
         {
             name: 'Tooltip',
+            author: 'tujindong'
+        },
+        {
+            name: 'Scrollbar',
             author: 'tujindong'
         },
     ]

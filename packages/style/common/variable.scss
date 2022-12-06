@@ -251,6 +251,17 @@ $--card-large-body-padding-vertical: 16px;
 $--card-large-body-padding-horizontal: 20px;
 
 
+/* Popover
+-------------------------- */
+$--popover-background-color: $--color-white;
+$--popover-font-size: $--font-size-base;
+$--popover-border-color: $--border-color-lighter;
+$--popover-arrow-size: 6px;
+$--popover-padding: 12px;
+$--popover-padding-large: 18px 20px;
+$--popover-title-font-size: 16px;
+$--popover-title-font-color: $--color-text-primary;
+
 /* Tooltip
 -------------------------- */
 $--tooltip-fill: $--color-greyLight-3;
@@ -259,6 +270,11 @@ $--tooltip-font-size: 12px;
 $--tooltip-border-color: $--color-greyDark;
 $--tooltip-arrow-size: 4px;
 $--tooltip-padding: 10px;
+
+/* Scrollbar
+--------------------------*/
+$--scrollbar-background-color: rgba($--color-greyDark, 0.5);
+$--scrollbar-hover-background-color: rgba($--color-greyDark, 0.8);
 
 /* Tag
 -------------------------- */

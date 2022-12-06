@@ -9,10 +9,12 @@
         'is-disabled': buttonDisabled,
         'is-round': round,
         'is-circle': circle,
+        'is-loading': loading,
       },
     ]"
     @click="handleClick"
   >
+    <i class="tu-icon__loading tu-icon-reload" v-if="loading"></i>
     <i :class="`tu-icon-${icon}`" v-if="icon"></i>
     <template v-if="$slots.default"><slot></slot></template>
   </button>
@@ -41,6 +43,7 @@ export default {
       type: String,
       default: "",
     },
+    loading: Boolean,
     round: Boolean,
     circle: Boolean,
     disabled: Boolean,

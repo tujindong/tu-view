@@ -41,6 +41,13 @@ module.exports = {
                     ]
                 },
                 {
+                    title: '数据组件',
+                    collapsable: false,
+                    children: [
+                        ['../guide/Tag.md', 'Tag 标签'],
+                    ]
+                },
+                {
                     title: '其他组件',
                     collapsable: false,
                     children: [

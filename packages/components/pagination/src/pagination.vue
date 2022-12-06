@@ -1,5 +1,5 @@
 <template>
-  <div>进度条</div>
+  <div>分页器</div>
 </template>
 
 <script>

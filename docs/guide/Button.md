@@ -95,6 +95,21 @@
 
 :::
 
+### 加载中
+
+点击按钮后进行数据加载操作，在按钮上显示加载状态。
+
+:::demo 要设置为 loading 状态，只要设置`loading`属性为`true`即可。
+
+```html
+<tu-row>
+	<tu-button :loading="true">加载中</tu-button>
+	<tu-button type="primary" :loading="true">加载中</tu-button>
+</tu-row>
+```
+
+:::
+
 ### 不同尺寸
 
 Button 组件提供除了默认值以外的三种尺寸，可以在不同场景下选择合适的按钮尺寸。
@@ -108,14 +123,14 @@ Button 组件提供除了默认值以外的三种尺寸，可以在不同场景�
 	<tu-button size="small">小型按钮</tu-button>
 </tu-row>
 <tu-row>
-	<tu-button round>大型按钮</tu-button>
+	<tu-button size="large" round>大型按钮</tu-button>
 	<tu-button size="medium" round>中等按钮</tu-button>
 	<tu-button size="small" round>小型按钮</tu-button>
 </tu-row>
 <tu-row>
+	<tu-button size="large" icon="home-fill" circle></tu-button>
 	<tu-button icon="home-fill" circle></tu-button>
-	<tu-button icon="home-fill" size="medium" circle></tu-button>
-	<tu-button icon="home-fill" size="small" circle></tu-button>
+	<tu-button size="small" icon="home-fill" circle></tu-button>
 </tu-row>
 ```
 

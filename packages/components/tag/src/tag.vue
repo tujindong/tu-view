@@ -36,6 +36,9 @@ export default {
         style.color = this.color;
         style["--color"] = this.color;
       }
+      if (this.effect === "shadow") {
+        style.color = this.color;
+      }
       return style;
     },
   },
@@ -77,5 +80,3 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
-</style>

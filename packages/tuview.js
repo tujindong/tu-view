@@ -11,6 +11,7 @@ import Switch from './components/switch'
 import InputNumber from './components/input-number'
 import Tabs from './components/tabs'
 import Select from './components/select'
+import Option from './components/option'
 import Card from './components/card'
 import Row from './components/row'
 import Col from './components/col'
@@ -19,6 +20,7 @@ import Table from './components/table'
 import Progress from './components/progress'
 import Pagination from './components/pagination'
 import Tooltip from './components/tooltip'
+import Scrollbar from './components/scrollbar';
 
 const componentsList = [
     Button,
@@ -33,6 +35,7 @@ const componentsList = [
     InputNumber,
     Tabs,
     Select,
+    Option,
     Card,
     Row,
     Col,
@@ -40,7 +43,8 @@ const componentsList = [
     Table,
     Progress,
     Pagination,
-    Tooltip
+    Tooltip,
+    Scrollbar
 ];
 
 const install = function (Vue) {
