@@ -8,6 +8,10 @@ export default {
 
   componentName: "TuOption",
 
-  props: {},
+  props: {
+    value: {
+      required: true,
+    },
+  },
 };
 </script>

@@ -1,4 +1,8 @@
-# Tu-view 组件库
+<p align="center">
+    <img alt="logo" src="https://github.com/tujindong/tu-view/blob/main/docs/.vuePress/public/logo.png" width="120" height="120" style="margin-bottom: 10px;">
+</p>
+<h3 align="center" style="margin: 30px 0 30px;font-weight: bold;font-size:40px;">TuView</h3>
+<h3 align="center">一款有触觉的UI组件库</h3>
 
 ### 快速开始
 

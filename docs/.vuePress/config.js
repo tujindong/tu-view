@@ -53,6 +53,7 @@ module.exports = {
                     children: [
                         ['../guide/Tooltip.md', 'Tooltip 文字提示'],
                         ['../guide/Card.md', 'Card 卡片'],
+                        ['../guide/Scrollbar.md', 'Scrollbar 区域滚动']
                     ]
                 }
             ]

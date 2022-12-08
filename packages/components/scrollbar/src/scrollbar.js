@@ -13,8 +13,8 @@ export default {
         native: Boolean,
         wrapStyle: {}, // wrap的内联样式,支持数组和字符串两种格式
         wrapClass: {}, // 自定义wrap的类名
-        viewClass: {}, // 自定义view的类名
         viewStyle: {}, // 自定义view的行内样式
+        viewClass: {}, // 自定义view的类名
         noresize: Boolean, // 如果 container 尺寸不会发生变化，最好设置它可以优化性能
         tag: {
             type: String,

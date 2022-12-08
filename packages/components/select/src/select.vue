@@ -33,9 +33,12 @@
       <tu-select-dropdown
         ref="popper"
         :append-to-body="popperAppendToBody"
-        v-show="visible"
+        v-show="true"
       >
-        <tu-option></tu-option>
+        <tu-scrollbar tag="ul" ref="scrollbar">
+          <tu-option value=""></tu-option>
+          <slot></slot>
+        </tu-scrollbar>
       </tu-select-dropdown>
     </transition>
   </div>
@@ -43,6 +46,7 @@
 
 <script>
 import TuInput from "@packages/components/input";
+import TuScrollbar from "@packages/components/scrollbar";
 import TuSelectDropdown from "./select-dropdown.vue";
 import TuOption from "./option.vue";
 export default {
@@ -50,7 +54,7 @@ export default {
 
   componentName: "TuSelect",
 
-  components: { TuInput, TuSelectDropdown, TuOption },
+  components: { TuInput, TuScrollbar, TuSelectDropdown, TuOption },
 
   props: {
     name: String,
@@ -74,6 +78,7 @@ export default {
   data() {
     return {
       options: [],
+      query: "",
       selectedLabel: "",
       visible: false,
     };
