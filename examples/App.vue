@@ -8,7 +8,7 @@
     <DemoSwitch />
     <DemoInputNumber />
     <DemoCard />
-    <DemoTooltip />
+    <!-- <DemoTooltip /> -->
     <DemoTabs />
     <DemoSelect />
     <DemoLayout />

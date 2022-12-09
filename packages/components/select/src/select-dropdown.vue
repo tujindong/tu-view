@@ -1,5 +1,9 @@
 <template>
-  <div class="tu-select-dropdown tu-popper">
+  <div
+    class="tu-select-dropdown tu-popper"
+    :class="[{ 'is-multiple': $parent.multiple }, popperClass]"
+    :style="{ minWidth: minWidth }"
+  >
     <slot></slot>
   </div>
 </template>
@@ -31,12 +35,30 @@ export default {
     },
 
     visibleArrow: {
-      default: true,
+      default: false,
     },
 
     appendToBody: {
       type: Boolean,
       default: true,
+    },
+  },
+
+  data() {
+    return {
+      minWidth: "",
+    };
+  },
+
+  computed: {
+    popperClass() {
+      return this.$parent.popperClass;
+    },
+  },
+
+  watch: {
+    "$parent.inputWidth"() {
+      this.minWidth = this.$parent.$el.getBoundingClientRect().width + "px";
     },
   },
 
@@ -48,8 +70,7 @@ export default {
     });
     this.$on("destroyPopper", this.destroyPopper);
   },
+
+  methods: {},
 };
 </script>
-
-<style>
-</style>

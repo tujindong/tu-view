@@ -12,6 +12,18 @@
       >
       </tu-option>
     </tu-select>
+
+    <br />
+    <p>设置宽度</p>
+    <tu-select style="width: 300px" v-model="value" placeholder="请选择">
+      <tu-option
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value"
+      >
+      </tu-option>
+    </tu-select>
   </div>
 </template>
 

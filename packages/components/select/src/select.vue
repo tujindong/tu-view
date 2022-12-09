@@ -1,5 +1,15 @@
 <template>
   <div class="tu-select">
+    <input
+      ref="input"
+      type="text"
+      class="tu-select__input"
+      @focus="handleFocus"
+      @blur="softFocus = false"
+      @compositionstart="handleComposition"
+      @compositionupdate="handleComposition"
+      @compositionend="handleComposition"
+    />
     <!-- 单选 -->
     <tu-input
       :class="{ 'is-focus': visible }"
@@ -29,11 +39,15 @@
       </template>
     </tu-input>
 
-    <transition name="tu-zoom-in-top">
+    <transition
+      name="tu-zoom-in-top"
+      @beforeEnter="handleMenuEnter"
+      @after-leave="handleMenuLeave"
+    >
       <tu-select-dropdown
         ref="popper"
         :append-to-body="popperAppendToBody"
-        v-show="true"
+        v-show="visible"
       >
         <tu-scrollbar tag="ul" ref="scrollbar">
           <tu-option value=""></tu-option>
@@ -45,14 +59,21 @@
 </template>
 
 <script>
+import Emitter from "@packages/src/mixins/emitter";
 import TuInput from "@packages/components/input";
 import TuScrollbar from "@packages/components/scrollbar";
 import TuSelectDropdown from "./select-dropdown.vue";
 import TuOption from "./option.vue";
+import {
+  addResizeListener,
+  removeResizeListener,
+} from "@packages/src/utils/resize-event";
 export default {
   name: "TuSelect",
 
   componentName: "TuSelect",
+
+  mixins: [Emitter],
 
   components: { TuInput, TuScrollbar, TuSelectDropdown, TuOption },
 
@@ -77,10 +98,12 @@ export default {
 
   data() {
     return {
+      inputWidth: 0,
       options: [],
       query: "",
       selectedLabel: "",
       visible: false,
+      softFocus: false,
     };
   },
 
@@ -93,15 +116,44 @@ export default {
     },
   },
 
+  watch: {
+    visible(val) {
+      if (!val) {
+        this.broadcast("TuSelectDropdown", "destroyPopper");
+      } else {
+        this.broadcast("TuSelectDropdown", "updatePopper");
+      }
+    },
+  },
+
+  mounted() {
+    addResizeListener(this.$el, this.handleResize);
+  },
+
+  beforeDestroy() {
+    removeResizeListener(this.$el, this.handleResize);
+  },
+
   methods: {
     handleFocus(evt) {
-      this.visible = true;
-      this.$emit("focus", evt);
+      if (!this.softFocus) {
+        this.visible = true;
+        this.$emit("focus", evt);
+      } else {
+        this.softFocus = false;
+      }
+    },
+
+    blur() {
+      this.visible = false;
+      this.$refs.reference.blur();
     },
 
     handleBlur(evt) {
-      this.visible = false;
-      this.$emit("blur", evt);
+      setTimeout(() => {
+        this.$emit("blur", evt);
+      }, 50);
+      this.softFocus = false;
     },
 
     handleComposition() {},
@@ -111,6 +163,16 @@ export default {
     handleComposition() {},
 
     handleInputClear() {},
+
+    handleResize() {
+      this.inputWidth = this.$refs.reference.$el.getBoundingClientRect().width;
+    },
+
+    handleMenuEnter() {},
+
+    handleMenuLeave() {
+      this.$refs.popper && this.$refs.popper.doDestroy();
+    },
   },
 };
 </script>
