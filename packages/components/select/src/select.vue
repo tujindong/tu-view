@@ -1,35 +1,34 @@
 <template>
-  <div class="tu-select">
-    <input
-      ref="input"
-      type="text"
-      class="tu-select__input"
-      @focus="handleFocus"
-      @blur="softFocus = false"
-      @compositionstart="handleComposition"
-      @compositionupdate="handleComposition"
-      @compositionend="handleComposition"
-    />
-    <!-- 单选 -->
+  <div class="tu-select" v-clickoutside="handleClose">
     <tu-input
       :class="{ 'is-focus': visible }"
       ref="reference"
       type="text"
       v-model="selectedLabel"
-      :disabled="selectDisabled"
       :name="name"
       :id="id"
+      :placeholder="placeholder"
+      :disabled="isDisabled"
       @focus="handleFocus"
       @blur="handleBlur"
       @compositionstart="handleComposition"
       @compositionupdate="handleComposition"
       @compositionend="handleComposition"
+      @mouseenter.native="inputHovering = true"
+      @mouseleave.native="inputHovering = false"
     >
       <template slot="prefix" v-if="$slots.prefix">
         <slot name="prefix"></slot>
       </template>
       <template slot="suffix">
-        <i v-show="!showClose"></i>
+        <i
+          v-show="!showClose"
+          :class="[
+            'tu-select__caret',
+            'tu-input__icon',
+            `tu-icon-${iconDirect}`,
+          ]"
+        ></i>
         <i
           class="tu-select__caret tu-icon-close-circle-fill"
           v-if="showClose"
@@ -49,8 +48,12 @@
         :append-to-body="popperAppendToBody"
         v-show="visible"
       >
-        <tu-scrollbar tag="ul" ref="scrollbar">
-          <tu-option value=""></tu-option>
+        <tu-scrollbar
+          tag="ul"
+          wrap-class="tu-select-dropdown__wrap"
+          view-class="tu-select-dropdown__list"
+          ref="scrollbar"
+        >
           <slot></slot>
         </tu-scrollbar>
       </tu-select-dropdown>
@@ -60,6 +63,7 @@
 
 <script>
 import Emitter from "@packages/src/mixins/emitter";
+import Clickoutside from "@packages/src/utils/clickoutside";
 import TuInput from "@packages/components/input";
 import TuScrollbar from "@packages/components/scrollbar";
 import TuSelectDropdown from "./select-dropdown.vue";
@@ -68,6 +72,7 @@ import {
   addResizeListener,
   removeResizeListener,
 } from "@packages/src/utils/resize-event";
+import { getValueByPath, valueEquals } from "@packages/src/utils/util";
 export default {
   name: "TuSelect",
 
@@ -77,11 +82,23 @@ export default {
 
   components: { TuInput, TuScrollbar, TuSelectDropdown, TuOption },
 
+  directives: { Clickoutside },
+
+  provide() {
+    return {
+      select: this,
+    };
+  },
+
   props: {
     name: String,
     id: String,
     multiple: Boolean,
     disabled: Boolean,
+    clearable: Boolean,
+    value: {
+      required: true,
+    },
     multipleLimit: {
       type: Number,
       default: 0,
@@ -98,12 +115,14 @@ export default {
 
   data() {
     return {
-      inputWidth: 0,
       options: [],
+      cachedOptions: [],
+      inputWidth: 0,
       query: "",
       selectedLabel: "",
       visible: false,
       softFocus: false,
+      inputHovering: false,
     };
   },
 
@@ -111,8 +130,19 @@ export default {
     selectDisabled() {
       return this.disabled;
     },
+
     showClose() {
-      return true;
+      const hasValue =
+        this.value !== undefined && this.value !== null && this.value !== "";
+      return this.clearable && this.inputHovering && hasValue;
+    },
+
+    iconDirect() {
+      return this.visible ? "up is-reverse" : "up";
+    },
+
+    isDisabled() {
+      return this.disabled;
     },
   },
 
@@ -124,14 +154,26 @@ export default {
         this.broadcast("TuSelectDropdown", "updatePopper");
       }
     },
+
+    value(val, oldVal) {
+      this.setSelected();
+    },
+  },
+
+  created() {
+    this.$on("handleOptionClick", this.handleOptionClick);
+    this.$on("setSelected", this.setSelected);
   },
 
   mounted() {
+    this.setSelected();
     addResizeListener(this.$el, this.handleResize);
   },
 
   beforeDestroy() {
-    removeResizeListener(this.$el, this.handleResize);
+    if (this.$el && this.handleResize) {
+      removeResizeListener(this.$el, this.handleResize);
+    }
   },
 
   methods: {
@@ -162,7 +204,9 @@ export default {
 
     handleComposition() {},
 
-    handleInputClear() {},
+    handleInputClear(evt) {
+      this.removeSelected(evt);
+    },
 
     handleResize() {
       this.inputWidth = this.$refs.reference.$el.getBoundingClientRect().width;
@@ -172,6 +216,42 @@ export default {
 
     handleMenuLeave() {
       this.$refs.popper && this.$refs.popper.doDestroy();
+    },
+
+    handleOptionClick(option, byClick) {
+      this.$emit("input", option.value);
+      this.emitChange(option.value);
+      this.visible = false;
+    },
+
+    handleClose() {
+      this.visible = false;
+    },
+
+    emitChange(val) {
+      if (!valueEquals(this.value, val)) {
+        this.$emit("change", val);
+      }
+    },
+
+    setSelected() {
+      if (this.value) {
+        const targetOption = this.options.find((i) => i.value == this.value);
+        if (targetOption) {
+          this.selectedLabel = targetOption.label;
+        }
+      } else {
+        this.selectedLabel = "";
+      }
+    },
+
+    removeSelected(evt) {
+      evt.stopPropagation();
+      const value = "";
+      this.$emit("input", value);
+      this.emitChange(value);
+      this.visible = false;
+      this.$emit("clear");
     },
   },
 };

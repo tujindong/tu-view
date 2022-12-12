@@ -78,6 +78,7 @@ export default {
             const gutterStyle = `
                 margin-bottom: ${gutterWidth};
                 margin-right: ${gutterWidth};
+                height: calc(100% + ${gutter}px);
             `
             if (Array.isArray(this.wrapClass)) {
                 style = toObject(this.wrapStyle);

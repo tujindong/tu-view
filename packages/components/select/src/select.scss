@@ -1,18 +1,14 @@
 @import "~@packages/style/common/mixin.scss";
 @import "./select-dropdown.scss";
+@import "./option.scss";
 
 @include b(select) {
     display: inline-block;
     position: relative;
+    width: 100%;
 
     .tu-select__tags>span {
         display: contents;
-    }
-
-    &:hover {
-        .tu-input__inner {
-            border-color: $--select-border-color-hover;
-        }
     }
 
     .tu-input__inner {
@@ -52,10 +48,6 @@
         &.is-disabled {
             & .tu-input__inner {
                 cursor: not-allowed;
-
-                &:hover {
-                    border-color: $--select-disabled-border;
-                }
             }
         }
 

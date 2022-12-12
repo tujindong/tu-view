@@ -4,11 +4,10 @@
 @include b(select-dropdown) {
     position: absolute;
     z-index: #{$--index-top + 1};
-    border: $--select-dropdown-border;
     border-radius: $--border-radius-base;
-    background-color: $--select-dropdown-background;
-    box-shadow: $--select-dropdown-shadow;
     box-sizing: border-box;
+    box-shadow: 3px 3px 6px $--color-greyLight-2,
+        -2px -2px 5px $--color-white;
     margin: 0 0 5px;
 
     @include when(multiple) {
@@ -52,7 +51,6 @@
 
 @include b(select-dropdown__wrap) {
     max-height: $--select-dropdown-max-height;
-    background: red;
 }
 
 @include b(select-dropdown__list) {

@@ -1,8 +1,9 @@
 <template>
   <div
+    ref="dropdown"
     class="tu-select-dropdown tu-popper"
     :class="[{ 'is-multiple': $parent.multiple }, popperClass]"
-    :style="{ minWidth: minWidth }"
+    :style="{ minWidth: minWidth, background: background }"
   >
     <slot></slot>
   </div>
@@ -10,6 +11,7 @@
 
 <script>
 import Popper from "@packages/src/utils/vue-popper";
+import { getBackground } from "@packages/src/utils/get-background";
 export default {
   name: "TuSelectDropdown",
 
@@ -47,6 +49,7 @@ export default {
   data() {
     return {
       minWidth: "",
+      background: "",
     };
   },
 
@@ -69,8 +72,14 @@ export default {
       if (this.$parent.visible) this.updatePopper();
     });
     this.$on("destroyPopper", this.destroyPopper);
+    this.setBackground(this.referenceElm);
   },
 
-  methods: {},
+  methods: {
+    setBackground() {
+      const background = getBackground(this.referenceElm);
+      this.$refs.dropdown.style.background = background;
+    },
+  },
 };
 </script>

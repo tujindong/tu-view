@@ -1,0 +1,37 @@
+@import "~@packages/style/common/mixin.scss";
+
+@include b(select-dropdown) {
+    @include e(item) {
+        font-size: $--select-font-size;
+        padding: 0 20px;
+        position: relative;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: $--select-option-color;
+        height: $--select-option-height;
+        line-height: $--select-option-height;
+        box-sizing: border-box;
+        transition: all .3s ease;
+        cursor: pointer;
+
+        @include when(disabled) {
+            color: $--select-option-disabled-color;
+            cursor: not-allowed;
+
+            &:hover {
+                background-color: transparent;
+            }
+        }
+
+        &.hover,
+        &:hover {
+            background: rgba($--color-greyDark, 0.25);
+        }
+
+        &.selected {
+            color: $--color-primary;
+            font-weight: bold;
+        }
+    }
+}
