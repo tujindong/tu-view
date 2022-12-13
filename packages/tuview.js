@@ -12,6 +12,7 @@ import InputNumber from './components/input-number'
 import Tabs from './components/tabs'
 import Select from './components/select'
 import Option from './components/option'
+import OptionGroup from './components/option-group'
 import Card from './components/card'
 import Row from './components/row'
 import Col from './components/col'
@@ -36,6 +37,7 @@ const componentsList = [
     Tabs,
     Select,
     Option,
+    OptionGroup,
     Card,
     Row,
     Col,

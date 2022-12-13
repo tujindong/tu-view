@@ -309,7 +309,6 @@ $--select-multiple-input-color: #666;
 $--select-input-focus-border-color: $--color-primary;
 
 $--select-input-font-size: 14px;
-
 $--select-option-color: $--color-greyDark;
 $--select-option-disabled-color: $--color-greyLight-3;
 $--select-option-disabled-background: $--color-white;
@@ -320,17 +319,22 @@ $--select-option-hover-background: $--color-greyLight-2;
 $--select-option-selected-font-color: $--color-primary;
 $--select-option-selected-hover: $--color-greyLight-2;
 
-$--select-group-color: $--color-info;
+$--select-group-color: $--color-greyLight-3;
 $--select-group-height: 30px;
 $--select-group-font-size: 12px;
 
 $--select-dropdown-background: $--color-white;
-$--select-dropdown-empty-color: #999;
+$--select-dropdown-empty-color: $--color-greyLight-3;
 
 $--select-dropdown-max-height: 274px;
 $--select-dropdown-padding: 6px 0;
 $--select-dropdown-empty-padding: 10px 0;
 $--select-dropdown-border: solid 1px $--border-color-light;
+
+/*超小 mini*/
+/*较小 small*/
+/*中等 medium*/
+/*较大 large*/
 
 
 

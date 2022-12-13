@@ -1,5 +1,6 @@
 @import "~@packages/style/common/mixin.scss";
 @import "./select-dropdown.scss";
+@import "./option-group.scss";
 @import "./option.scss";
 
 @include b(select) {

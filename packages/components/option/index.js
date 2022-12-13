@@ -1,7 +1,7 @@
-import TuOption from '../select/src/option.vue';
+import Option from '../select/src/option.vue';
 
-TuOption.install = function (Vue) {
-    Vue.component(TuOption.name, TuOption);
+Option.install = function (Vue) {
+    Vue.component(Option.name, Option);
 };
 
-export default TuOption;
+export default Option;

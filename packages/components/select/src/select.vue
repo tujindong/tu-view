@@ -1,5 +1,9 @@
 <template>
-  <div class="tu-select" v-clickoutside="handleClose">
+  <div
+    class="tu-select"
+    v-clickoutside="handleClose"
+    @click.stop="handleDropdownToggle"
+  >
     <tu-input
       :class="{ 'is-focus': visible }"
       ref="reference"
@@ -7,15 +11,22 @@
       v-model="selectedLabel"
       :name="name"
       :id="id"
-      :placeholder="placeholder"
+      :placeholder="currentPlaceholder"
       :disabled="isDisabled"
+      :readonly="readonly"
+      :size="selectSize"
       @focus="handleFocus"
       @blur="handleBlur"
+      @input="debounceInput"
+      @mouseenter.native="inputHovering = true"
+      @mouseleave.native="inputHovering = false"
+      @keydown.native.down.stop.prevent="handleNavigate('next')"
+      @keydown.native.up.stop.prevent="handleNavigate('prev')"
+      @keydown.native.esc.stop.prevent="visible = false"
+      @keydown.native.enter.prevent="handleSelectEnter"
       @compositionstart="handleComposition"
       @compositionupdate="handleComposition"
       @compositionend="handleComposition"
-      @mouseenter.native="inputHovering = true"
-      @mouseleave.native="inputHovering = false"
     >
       <template slot="prefix" v-if="$slots.prefix">
         <slot name="prefix"></slot>
@@ -26,13 +37,12 @@
           :class="[
             'tu-select__caret',
             'tu-input__icon',
-            `tu-icon-${iconDirect}`,
+            `tu-icon-${iconDirection}`,
           ]"
         ></i>
         <i
           class="tu-select__caret tu-icon-close-circle-fill"
           v-if="showClose"
-          @mousedown.prevent
           @click="handleInputClear"
         ></i>
       </template>
@@ -50,35 +60,47 @@
       >
         <tu-scrollbar
           tag="ul"
+          v-show="options.length && !loading"
           wrap-class="tu-select-dropdown__wrap"
           view-class="tu-select-dropdown__list"
           ref="scrollbar"
+          :class="{
+            'is-empty': query && filteredOptionsCount === 0,
+          }"
         >
           <slot></slot>
         </tu-scrollbar>
+        <!-- 空状态 -->
+        <template v-if="emptyText">
+          <slot name="empty" v-if="$slots.empty"></slot>
+          <p class="tu-select-dropdown__empty" v-else>{{ emptyText }}</p>
+        </template>
       </tu-select-dropdown>
     </transition>
   </div>
 </template>
 
 <script>
-import Emitter from "@packages/src/mixins/emitter";
-import Clickoutside from "@packages/src/utils/clickoutside";
 import TuInput from "@packages/components/input";
 import TuScrollbar from "@packages/components/scrollbar";
 import TuSelectDropdown from "./select-dropdown.vue";
 import TuOption from "./option.vue";
+import Emitter from "@packages/src/mixins/emitter";
+import Clickoutside from "@packages/src/utils/clickoutside";
 import {
   addResizeListener,
   removeResizeListener,
 } from "@packages/src/utils/resize-event";
-import { getValueByPath, valueEquals } from "@packages/src/utils/util";
+import { valueEquals } from "@packages/src/utils/util";
+import { debounce } from "@packages/src/utils/throttle-debounce";
+import NavigationMixin from "./navigation-mixin";
+import scrollIntoView from "@packages/src/utils/scroll-into-view";
 export default {
   name: "TuSelect",
 
   componentName: "TuSelect",
 
-  mixins: [Emitter],
+  mixins: [Emitter, NavigationMixin],
 
   components: { TuInput, TuScrollbar, TuSelectDropdown, TuOption },
 
@@ -96,6 +118,13 @@ export default {
     multiple: Boolean,
     disabled: Boolean,
     clearable: Boolean,
+    filterable: Boolean,
+    loading: Boolean,
+    loadingText: String,
+    noMatchText: String,
+    noDataText: String,
+    size: String,
+    filterMethod: Function,
     value: {
       required: true,
     },
@@ -117,42 +146,85 @@ export default {
     return {
       options: [],
       cachedOptions: [],
-      inputWidth: 0,
+      selected: this.multiple ? [] : {},
       query: "",
+      optionsCount: 0,
+      filteredOptionsCount: 0,
+      inputWidth: 0,
+      hoverIndex: -1,
       selectedLabel: "",
       visible: false,
-      softFocus: false,
       inputHovering: false,
+      menuVisibleOnFocus: false,
+      isOnComposition: false,
+      currentPlaceholder: "",
     };
   },
 
   computed: {
-    selectDisabled() {
-      return this.disabled;
-    },
-
-    showClose() {
-      const hasValue =
-        this.value !== undefined && this.value !== null && this.value !== "";
-      return this.clearable && this.inputHovering && hasValue;
-    },
-
-    iconDirect() {
+    iconDirection() {
       return this.visible ? "up is-reverse" : "up";
     },
 
     isDisabled() {
       return this.disabled;
     },
+
+    selectSize() {
+      return this.size;
+    },
+
+    readonly() {
+      return !this.filterable || this.multiple || !this.visible;
+    },
+
+    showClose() {
+      const hasValue =
+        this.value !== undefined && this.value !== null && this.value !== "";
+      return (
+        this.clearable && this.inputHovering && hasValue && !this.isDisabled
+      );
+    },
+
+    delayTime() {
+      return this.remote ? 300 : 0;
+    },
+
+    emptyText() {
+      if (this.options.length === 0) {
+        return this.noDataText || "暂无数据";
+      }
+      if (
+        this.filterable &&
+        this.options.length &&
+        this.query &&
+        this.filteredOptionsCount === 0
+      ) {
+        return this.noMatchText || "暂无匹配数据";
+      }
+      return false;
+    },
   },
 
   watch: {
     visible(val) {
+      this.setSelected();
       if (!val) {
+        //隐藏
         this.broadcast("TuSelectDropdown", "destroyPopper");
+        this.menuVisibleOnFocus = false;
+        this.resetHoverIndex();
       } else {
+        //显示
         this.broadcast("TuSelectDropdown", "updatePopper");
+        if (this.filterable) {
+          this.selectedLabel = "";
+          this.currentPlaceholder = this.getSelectLabel() || this.placeholder;
+          this.query = "";
+          this.handleQueryChange(this.query);
+        }
       }
+      this.$emit("visible-change", val);
     },
 
     value(val, oldVal) {
@@ -161,8 +233,12 @@ export default {
   },
 
   created() {
+    this.currentPlaceholder = this.placeholder;
     this.$on("handleOptionClick", this.handleOptionClick);
     this.$on("setSelected", this.setSelected);
+    this.debounceInput = debounce(this.delayTime, (evt) =>
+      this.handleQueryChange(evt)
+    );
   },
 
   mounted() {
@@ -177,32 +253,39 @@ export default {
   },
 
   methods: {
-    handleFocus(evt) {
-      if (!this.softFocus) {
-        this.visible = true;
-        this.$emit("focus", evt);
-      } else {
-        this.softFocus = false;
+    handleComposition(event) {
+      const text = event.target.value;
+      if (event.type === "compositionend") {
+        this.isOnComposition = false;
+        this.$nextTick((_) => this.handleQueryChange(text));
       }
     },
 
-    blur() {
-      this.visible = false;
-      this.$refs.reference.blur();
+    scrollToOption(option) {
+      const target =
+        Array.isArray(option) && option[0] ? option[0].$el : option.$el;
+      if (this.$refs.popper && target) {
+        const menu = this.$refs.popper.$el.querySelector(
+          ".tu-select-dropdown__wrap"
+        );
+        scrollIntoView(menu, target);
+      }
+      this.$refs.scrollbar && this.$refs.scrollbar.handleScroll();
+    },
+
+    handleFocus(evt) {
+      if (!this.visible) {
+        this.menuVisibleOnFocus = true;
+      }
+      this.visible = true;
+      this.$emit("focus", evt);
     },
 
     handleBlur(evt) {
       setTimeout(() => {
         this.$emit("blur", evt);
       }, 50);
-      this.softFocus = false;
     },
-
-    handleComposition() {},
-
-    handleComposition() {},
-
-    handleComposition() {},
 
     handleInputClear(evt) {
       this.removeSelected(evt);
@@ -212,7 +295,9 @@ export default {
       this.inputWidth = this.$refs.reference.$el.getBoundingClientRect().width;
     },
 
-    handleMenuEnter() {},
+    handleMenuEnter() {
+      this.$nextTick(() => this.scrollToOption(this.selected));
+    },
 
     handleMenuLeave() {
       this.$refs.popper && this.$refs.popper.doDestroy();
@@ -224,8 +309,37 @@ export default {
       this.visible = false;
     },
 
+    handleDropdownToggle() {
+      if (!this.isDisabled) {
+        if (this.menuVisibleOnFocus) {
+          this.menuVisibleOnFocus = false;
+        } else {
+          this.visible = !this.visible;
+        }
+        if (this.visible) {
+          this.$refs.reference.handleFocus();
+        }
+      }
+    },
+
+    handleSelectEnter() {
+      if (!this.visible) {
+        this.handleDropdownToggle();
+      } else {
+        if (this.options[this.hoverIndex]) {
+          this.handleOptionClick(this.options[this.hoverIndex]);
+          this.visible = false;
+        }
+      }
+    },
+
     handleClose() {
       this.visible = false;
+    },
+
+    handleNavigate(direction) {
+      if (this.isOnComposition) return;
+      this.navigateOptions(direction);
     },
 
     emitChange(val) {
@@ -234,15 +348,18 @@ export default {
       }
     },
 
-    setSelected() {
+    getSelectLabel() {
       if (this.value) {
         const targetOption = this.options.find((i) => i.value == this.value);
-        if (targetOption) {
-          this.selectedLabel = targetOption.label;
-        }
+        this.selected = targetOption;
+        return targetOption ? targetOption.label : "";
       } else {
-        this.selectedLabel = "";
+        return "";
       }
+    },
+
+    setSelected() {
+      this.selectedLabel = this.getSelectLabel();
     },
 
     removeSelected(evt) {
@@ -252,6 +369,24 @@ export default {
       this.emitChange(value);
       this.visible = false;
       this.$emit("clear");
+    },
+
+    handleQueryChange(val) {
+      if (this.isOnComposition) return;
+      if (typeof this.filterMethod === "function") this.filterMethod(val);
+      this.hoverIndex = -1;
+      this.filteredOptionsCount = this.optionsCount;
+      this.query = val;
+      this.$nextTick(() => {
+        if (this.visible) this.broadcast("TuSelectDropdown", "updatePopper");
+      });
+      this.broadcast("TuOption", "queryChange", val);
+    },
+
+    resetHoverIndex() {
+      setTimeout(() => {
+        this.hoverIndex = this.options.indexOf(this.selected);
+      }, 300);
     },
   },
 };

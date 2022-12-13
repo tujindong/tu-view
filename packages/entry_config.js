@@ -54,6 +54,10 @@ module.exports = {
             author: 'tujindong'
         },
         {
+            name: 'option-group',
+            author: 'tujindong'
+        },
+        {
             name: 'card',
             author: 'tujindong'
         },

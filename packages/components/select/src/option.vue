@@ -90,7 +90,7 @@ export default {
   watch: {
     currentLabel() {
       if (!this.created && !this.select.remote)
-        this.dispatch("ElSelect", "setSelected");
+        this.dispatch("TuSelect", "setSelected");
     },
     value(val, oldVal) {
       const { remote, valueKey } = this.select;
@@ -103,7 +103,7 @@ export default {
         ) {
           return;
         }
-        this.dispatch("ElSelect", "setSelected");
+        this.dispatch("TuSelect", "setSelected");
       }
     },
   },
