@@ -1,7 +1,8 @@
 @include b(select-dropdown) {
+
     @include e(item) {
         font-size: $--select-font-size;
-        padding: 0 20px;
+        padding: 0 $--select-option-padding-horizontal;
         position: relative;
         white-space: nowrap;
         overflow: hidden;
@@ -30,6 +31,33 @@
         &.selected {
             color: $--color-primary;
             font-weight: bold;
+        }
+    }
+
+    @include m(mini) {
+        @include e(item) {
+            font-size: $--select-mini-font-size;
+            height: $--select-mini-option-height;
+            line-height: $--select-mini-option-height;
+            padding: 0 $--select-mini-option-padding-horizontal;
+        }
+    }
+
+    @include m(small) {
+        @include e(item) {
+            font-size: $--select-small-font-size;
+            height: $--select-small-option-height;
+            line-height: $--select-small-option-height;
+            padding: 0 $--select-small-option-padding-horizontal;
+        }
+    }
+
+    @include m(large) {
+        @include e(item) {
+            font-size: $--select-large-font-size;
+            height: $--select-large-option-height;
+            line-height: $--select-large-option-height;
+            padding: 0 $--select-large-option-padding-horizontal;
         }
     }
 }

@@ -4,6 +4,18 @@
     v-clickoutside="handleClose"
     @click.stop="handleDropdownToggle"
   >
+    <div class="tu-select__tags" v-if="multiple" ref="tags">
+      <tu-tag
+        v-for="item in selected"
+        :key="item.value"
+        :closeable="!isDisabled"
+        disable-transitions
+        @close="handleTagDelete($event, item)"
+      >
+        {{ item.label }}
+      </tu-tag>
+    </div>
+
     <tu-input
       :class="{ 'is-focus': visible }"
       ref="reference"
@@ -57,6 +69,7 @@
         ref="popper"
         :append-to-body="popperAppendToBody"
         v-show="visible"
+        :class="[selectSize ? `tu-select-dropdown--${selectSize}` : '']"
       >
         <tu-scrollbar
           tag="ul"
@@ -85,6 +98,7 @@ import TuInput from "@packages/components/input";
 import TuScrollbar from "@packages/components/scrollbar";
 import TuSelectDropdown from "./select-dropdown.vue";
 import TuOption from "./option.vue";
+import TuTag from "@packages/components/tag";
 import Emitter from "@packages/src/mixins/emitter";
 import Clickoutside from "@packages/src/utils/clickoutside";
 import {
@@ -102,7 +116,7 @@ export default {
 
   mixins: [Emitter, NavigationMixin],
 
-  components: { TuInput, TuScrollbar, TuSelectDropdown, TuOption },
+  components: { TuInput, TuScrollbar, TuSelectDropdown, TuOption, TuTag },
 
   directives: { Clickoutside },
 
@@ -219,7 +233,8 @@ export default {
         this.broadcast("TuSelectDropdown", "updatePopper");
         if (this.filterable) {
           this.selectedLabel = "";
-          this.currentPlaceholder = this.getSelectLabel() || this.placeholder;
+          this.currentPlaceholder =
+            this.getSelected().selectedLabel || this.placeholder;
           this.query = "";
           this.handleQueryChange(this.query);
         }
@@ -304,9 +319,12 @@ export default {
     },
 
     handleOptionClick(option, byClick) {
-      this.$emit("input", option.value);
-      this.emitChange(option.value);
-      this.visible = false;
+      if (this.multiple) {
+      } else {
+        this.$emit("input", option.value);
+        this.emitChange(option.value);
+        this.visible = false;
+      }
     },
 
     handleDropdownToggle() {
@@ -348,18 +366,29 @@ export default {
       }
     },
 
-    getSelectLabel() {
-      if (this.value) {
-        const targetOption = this.options.find((i) => i.value == this.value);
-        this.selected = targetOption;
-        return targetOption ? targetOption.label : "";
+    getSelected() {
+      const result = {
+        selected: this.multiple ? [] : {},
+        selectedLabel: "",
+      };
+      if (this.multiple) {
+        const targetOptions = this.options.filter((i) =>
+          this.value.some((j) => j === i.value)
+        );
+        result.selected = targetOptions;
       } else {
-        return "";
+        const targetOption = this.options.find((i) => i.value == this.value);
+        if (targetOption) {
+          result.selected = targetOption;
+          result.selectedLabel = targetOption.label;
+        }
       }
+      return result;
     },
 
     setSelected() {
-      this.selectedLabel = this.getSelectLabel();
+      this.selectedLabel = this.getSelected().selectedLabel;
+      this.selected = this.getSelected().selected;
     },
 
     removeSelected(evt) {
@@ -367,6 +396,7 @@ export default {
       const value = "";
       this.$emit("input", value);
       this.emitChange(value);
+      this.currentPlaceholder = this.placeholder;
       this.visible = false;
       this.$emit("clear");
     },
@@ -387,6 +417,10 @@ export default {
       setTimeout(() => {
         this.hoverIndex = this.options.indexOf(this.selected);
       }, 300);
+    },
+
+    handleTagDelete(evt, tag) {
+      console.log("evt", evt, "tag", tag);
     },
   },
 };

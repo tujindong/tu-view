@@ -2,7 +2,7 @@
   <div class="demo-wrapper">
     <h2>Select</h2>
     <br />
-    <p>基本配置</p>
+    <!-- <p>基本配置</p>
     <tu-select v-model="value" size="mini" placeholder="请选择" clearable>
       <tu-option
         v-for="item in options"
@@ -61,7 +61,7 @@
         :disabled="item.disabled"
       >
       </tu-option>
-    </tu-select>
+    </tu-select> -->
 
     <br />
     <p>设置宽度 - {{ value }}</p>
@@ -83,6 +83,60 @@
       </tu-option>
     </tu-select>
 
+    <!-- <br />
+    <p>分组</p>
+    <tu-select v-model="value3" size="mini" placeholder="请选择分组">
+      <tu-option-group
+        v-for="group in options3"
+        :key="group.label"
+        :label="group.label"
+      >
+        <tu-option
+          v-for="item in group.options3"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        >
+        </tu-option>
+      </tu-option-group>
+    </tu-select>
+
+    <br />
+    <p>分组 小</p>
+    <tu-select v-model="value3" size="small" placeholder="请选择分组">
+      <tu-option-group
+        v-for="group in options3"
+        :key="group.label"
+        :label="group.label"
+      >
+        <tu-option
+          v-for="item in group.options3"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        >
+        </tu-option>
+      </tu-option-group>
+    </tu-select>
+
+    <br />
+    <p>分组 大</p>
+    <tu-select v-model="value3" size="large" placeholder="请选择分组">
+      <tu-option-group
+        v-for="group in options3"
+        :key="group.label"
+        :label="group.label"
+      >
+        <tu-option
+          v-for="item in group.options3"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value"
+        >
+        </tu-option>
+      </tu-option-group>
+    </tu-select> -->
+
     <br />
     <p>多选</p>
     <tu-select
@@ -100,24 +154,6 @@
         :disabled="item.disabled"
       >
       </tu-option>
-    </tu-select>
-
-    <br />
-    <p>分组</p>
-    <tu-select v-model="value3" placeholder="请选择分组">
-      <tu-option-group
-        v-for="group in options3"
-        :key="group.label"
-        :label="group.label"
-      >
-        <tu-option
-          v-for="item in group.options3"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        >
-        </tu-option>
-      </tu-option-group>
     </tu-select>
   </div>
 </template>
@@ -182,24 +218,23 @@ export default {
       value1: "",
       options2: [
         {
-          value: "val1",
+          value: "beijin",
           label: "北京",
         },
         {
-          value: "val2",
+          value: "shanghai",
           label: "上海",
-          disabled: true,
         },
         {
-          value: "val3",
+          value: "guangzhou",
           label: "广州",
         },
         {
-          value: "val4",
+          value: "shenzheng",
           label: "深圳",
         },
       ],
-      value2: "",
+      value2: ["beijin", "shanghai"],
       options3: [
         {
           label: "热门城市",

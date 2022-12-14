@@ -1,39 +1,73 @@
-@include b(select-group) {
-    $gap: 20px;
+@mixin gapSize($select-group-gap) {
+    .tu-select-group__wrap {
+        &:not(:last-of-type) {
+            padding-bottom: $select-group-gap;
 
-    margin: 0;
-    padding: 0;
+            &::after {
+                bottom: $select-group-gap / 2;
+                left: $select-group-gap;
+                right: $select-group-gap;
+            }
+        }
 
-    @include e(wrap) {
-        position: relative;
-        list-style: none;
+        @include e(title) {
+            padding-left: calc(#{$select-group-gap} - 2px);
+        }
+
+        &.tu-select-dropdown__item {
+            padding-left: $select-group-gap;
+        }
+    }
+}
+
+@include b(select-dropdown) {
+    @include b(select-group) {
         margin: 0;
         padding: 0;
 
-        &:not(:last-of-type) {
-            padding-bottom: 24px;
+        @include e(wrap) {
+            position: relative;
+            list-style: none;
+            margin: 0;
+            padding: 0;
 
-            &::after {
-                content: '';
-                position: absolute;
-                display: block;
-                left: $gap;
-                right: $gap;
-                bottom: 12px;
-                height: 1px;
-                background: $--border-color-base;
+            &:not(:last-of-type) {
+                padding-bottom: 24px;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    display: block;
+                    left: $--select-group-gap;
+                    right: $--select-group-gap;
+                    bottom: 12px;
+                    height: 1px;
+                    background: $--border-color-base;
+                }
             }
+        }
+
+        @include e(title) {
+            padding-left: $--select-group-gap;
+            font-size: $--select-group-font-size;
+            color: $--select-group-color;
+            line-height: $--select-group-height;
+        }
+
+        &.tu-select-dropdown__item {
+            padding-left: $--select-group-gap;
         }
     }
 
-    @include e(title) {
-        padding-left: $gap;
-        font-size: $--select-group-font-size;
-        color: $--select-group-color;
-        line-height: $--select-group-height;
+    @include m(mini) {
+        @include gapSize($--select-mini-group-gap)
     }
 
-    & .tu-select-dropdown__item {
-        padding-left: $gap;
+    @include m(small) {
+        @include gapSize($--select-small-group-gap)
+    }
+
+    @include m(large) {
+        @include gapSize($--select-large-group-gap)
     }
 }

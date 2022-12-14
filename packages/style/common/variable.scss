@@ -299,42 +299,81 @@ $--tag-large-border-radius: 4px;
 
 /* Select
 -------------------------- */
-
-$--select-font-size: $--font-size-base;
 $--select-close-hover-color: $--color-text-secondary;
 
 $--select-input-color: $--color-greyLight-3;
 $--select-multiple-input-color: #666;
 
 $--select-input-focus-border-color: $--color-primary;
-
-$--select-input-font-size: 14px;
 $--select-option-color: $--color-greyDark;
 $--select-option-disabled-color: $--color-greyLight-3;
 $--select-option-disabled-background: $--color-white;
-
-$--select-option-height: 34px;
 $--select-option-hover-background: $--color-greyLight-2;
 
 $--select-option-selected-font-color: $--color-primary;
 $--select-option-selected-hover: $--color-greyLight-2;
 
 $--select-group-color: $--color-greyLight-3;
-$--select-group-height: 30px;
-$--select-group-font-size: 12px;
 
 $--select-dropdown-background: $--color-white;
 $--select-dropdown-empty-color: $--color-greyLight-3;
 
+/*超小 mini*/
+$--select-mini-input-font-size: $--font-size-extra-small;
+$--select-mini-font-size: $--font-size-extra-small;
+$--select-mini-option-height: 26px;
+$--select-mini-option-padding-horizontal: 12px;
+
+$--select-mini-group-height: 22px;
+$--select-mini-group-font-size: 10px;
+$--select-mini-group-gap: 12px;
+
+$--select-mini-dropdown-max-height: 176px;
+$--select-mini-dropdown-padding: 6px 0;
+$--select-mini-dropdown-empty-padding: 6px 0;
+
+/*较小 small*/
+$--select-small-input-font-size: $--font-size-small;
+$--select-small-font-size: $--font-size-small;
+$--select-small-option-height: 30px;
+$--select-small-option-padding-horizontal: 16px;
+
+$--select-small-group-height: 26px;
+$--select-small-group-font-size: 12px;
+$--select-small-group-gap: 16px;
+
+$--select-small-dropdown-max-height: 216px;
+$--select-small-dropdown-padding: 6px 0;
+$--select-small-dropdown-empty-padding: 6px 0;
+
+
+/*中等 medium*/
+$--select-input-font-size: $--font-size-base;
+$--select-font-size: $--font-size-base;
+$--select-option-height: 34px;
+$--select-option-padding-horizontal: 20px;
+
+$--select-group-height: 30px;
+$--select-group-font-size: 12px;
+$--select-group-gap: 20px;
+
 $--select-dropdown-max-height: 274px;
 $--select-dropdown-padding: 6px 0;
 $--select-dropdown-empty-padding: 10px 0;
-$--select-dropdown-border: solid 1px $--border-color-light;
 
-/*超小 mini*/
-/*较小 small*/
-/*中等 medium*/
 /*较大 large*/
+$--select-large-input-font-size: $--font-size-base;
+$--select-large-font-size: $--font-size-base;
+$--select-large-option-height: 38px;
+$--select-large-option-padding-horizontal: 24px;
+
+$--select-large-group-height: 32px;
+$--select-large-group-font-size: 12px;
+$--select-large-group-gap: 24px;
+
+$--select-large-dropdown-max-height: 240px;
+$--select-large-dropdown-padding: 6px 0;
+$--select-large-dropdown-empty-padding: 14px 0;
 
 
 

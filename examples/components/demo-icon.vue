@@ -1,6 +1,8 @@
 <template>
   <div class="demo-icon-wrapper">
     <tu-icon name="home"></tu-icon>
+
+    <tu-icon name="check"></tu-icon>
   </div>
 </template>
 

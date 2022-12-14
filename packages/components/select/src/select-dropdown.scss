@@ -17,17 +17,16 @@
 
         & .tu-select-dropdown__item.selected {
             color: $--select-option-selected-font-color;
-            background-color: $--select-dropdown-background;
 
             &.hover {
-                background-color: $--select-option-hover-background;
+                background: rgba($--color-greyDark, 0.25);
             }
 
             &::after {
                 position: absolute;
                 right: 20px;
-                font-family: 'element-icons';
-                content: "\e6da";
+                font-family: 'tu-icons';
+                content: "\e886";
                 font-size: 12px;
                 font-weight: bold;
                 -webkit-font-smoothing: antialiased;
@@ -39,23 +38,41 @@
     .tu-scrollbar.is-empty .tu-select-dropdown__list {
         padding: 0;
     }
-}
 
-@include b(select-dropdown__empty) {
-    padding: $--select-dropdown-empty-padding;
-    margin: 0;
-    text-align: center;
-    color: $--select-dropdown-empty-color;
-    font-size: $--select-font-size;
-}
+    @include b(select-dropdown__wrap) {
+        max-height: $--select-dropdown-max-height;
+    }
 
-@include b(select-dropdown__wrap) {
-    max-height: $--select-dropdown-max-height;
-}
+    @include b(select-dropdown__list) {
+        list-style: none;
+        padding: $--select-dropdown-padding;
+        margin: 0;
+        box-sizing: border-box;
+    }
 
-@include b(select-dropdown__list) {
-    list-style: none;
-    padding: $--select-dropdown-padding;
-    margin: 0;
-    box-sizing: border-box;
+    @include b(select-dropdown__empty) {
+        padding: $--select-dropdown-empty-padding;
+        margin: 0;
+        text-align: center;
+        color: $--select-dropdown-empty-color;
+        font-size: $--select-font-size;
+    }
+
+    @include m(mini) {
+        @include b(select-dropdown__wrap) {
+            max-height: $--select-mini-dropdown-max-height;
+        }
+    }
+
+    @include m(small) {
+        @include b(select-dropdown__wrap) {
+            max-height: $--select-small-dropdown-max-height;
+        }
+    }
+
+    @include m(large) {
+        @include b(select-dropdown__wrap) {
+            max-height: $--select-large-dropdown-max-height;
+        }
+    }
 }
