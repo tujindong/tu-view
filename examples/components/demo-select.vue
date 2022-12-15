@@ -142,6 +142,8 @@
     <tu-select
       style="width: 300px"
       multiple
+      clearable
+      collapseTags
       v-model="value2"
       placeholder="请选择"
       @change="handleChage"
@@ -232,6 +234,30 @@ export default {
         {
           value: "shenzheng",
           label: "深圳",
+        },
+        {
+          value: "hefei",
+          label: "合肥",
+        },
+        {
+          value: "nanjin",
+          label: "南京",
+        },
+        {
+          value: "hangzhou",
+          label: "杭州",
+        },
+        {
+          value: "wuhan",
+          label: "武汉",
+        },
+        {
+          value: "wulumuqi",
+          label: "乌鲁木齐",
+        },
+        {
+          value: "huhehaote",
+          label: "呼和浩特",
         },
       ],
       value2: ["beijin", "shanghai"],

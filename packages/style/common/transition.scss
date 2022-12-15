@@ -36,6 +36,18 @@
     opacity: 0;
 }
 
+/** tu-popper-in-center */
+.tu-popper-in-center-enter-active,
+.tu-popper-in-center-leave-active {
+    transition: all .2s cubic-bezier(.55, 0, .1, 1);
+}
+
+.tu-popper-in-center-enter,
+.tu-popper-in-center-leave-active {
+    scale: 0;
+    transform: scaleX(0);
+}
+
 /** tu-zoom-in-center */
 .tu-zoom-in-center-enter-active,
 .tu-zoom-in-center-leave-active {

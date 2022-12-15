@@ -282,10 +282,9 @@ $--tag-font-color: $--color-greyDark;
 $--tag-color-fill: $--color-greyLight-3;
 /*较小 small*/
 $--tag-small-font-size: 10px;
-$--tag-small-padding-vertical: 2px;
-$--tag-small-padding-horizontal: 4px;
+$--tag-small-padding-vertical: 3px;
+$--tag-small-padding-horizontal: 5px;
 $--tag-small-border-radius: 2px;
-
 /*中等 medium*/
 $--tag-font-size: 12px;
 $--tag-padding-vertical: 4px;
@@ -357,7 +356,7 @@ $--select-group-height: 30px;
 $--select-group-font-size: 12px;
 $--select-group-gap: 20px;
 
-$--select-dropdown-max-height: 274px;
+$--select-dropdown-max-height: 272px;
 $--select-dropdown-padding: 6px 0;
 $--select-dropdown-empty-padding: 10px 0;
 

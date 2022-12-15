@@ -8,11 +8,11 @@
     <DemoSwitch />
     <DemoInputNumber />
     <DemoCard />
-    <!-- <DemoTooltip /> -->
+    <DemoTooltip />
     <DemoTabs />
     <DemoSelect />
-    <DemoLayout />
     <DemoTag />
+    <DemoLayout />
     <DemoTable />
     <DemoProgress />
     <DemoPagination />

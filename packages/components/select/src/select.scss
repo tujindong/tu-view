@@ -8,13 +8,10 @@
     position: relative;
     width: 100%;
 
-    .tu-select__tags>span {
-        display: contents;
-    }
-
     .tu-input__inner {
         cursor: pointer;
         padding-right: 35px;
+        transition: none;
 
         &:focus {
             border-color: $--select-input-focus-border-color;
@@ -22,6 +19,8 @@
     }
 
     .tu-input {
+        transition: none;
+
         & .tu-select__caret {
             color: $--select-input-color;
             transition: transform .3s;
@@ -92,45 +91,17 @@
     }
 
     @include e(tags) {
+        width: calc(100% - 30px);
         position: absolute;
         line-height: normal;
         white-space: normal;
         z-index: $--index-normal;
         top: 50%;
         transform: translateY(-50%);
-        display: flex;
-        align-items: center;
         flex-wrap: wrap;
-    }
 
-    @include e(tags-text) {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .tu-tag {
-        box-sizing: border-box;
-        border-color: transparent;
-        margin: 2px 0 2px 6px;
-        background-color: #f0f2f5;
-        display: flex;
-        max-width: 100%;
-        align-items: center;
-
-        &__close.tu-icon-close {
-            background-color: $--color-text-placeholder;
-            top: 0;
-            color: $--color-white;
-            flex-shrink: 0;
-
-            &:hover {
-                background-color: $--color-text-secondary;
-            }
-
-            &::before {
-                display: block;
-                transform: translate(0, .5px);
-            }
+        .tu-tag {
+            margin: 4px 0 4px 6px;
         }
     }
 }

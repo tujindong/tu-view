@@ -5,15 +5,41 @@
     @click.stop="handleDropdownToggle"
   >
     <div class="tu-select__tags" v-if="multiple" ref="tags">
-      <tu-tag
-        v-for="item in selected"
-        :key="item.value"
-        :closeable="!isDisabled"
-        disable-transitions
-        @close="handleTagDelete($event, item)"
+      <!-- 超长省略 -->
+      <span v-if="collapseTags && selected.length">
+        <tu-tag
+          effect="shadow"
+          size="small"
+          :closable="!isDisabled"
+          @close.stop="handleTagDelete($event, selected[0])"
+          >{{ selected[0].label }}</tu-tag
+        >
+        <tu-tag
+          effect="shadow"
+          v-if="selected.length > 1"
+          :closable="false"
+          size="small"
+        >
+          {{ selected.length - 1 }}..</tu-tag
+        >
+      </span>
+
+      <transition-group
+        v-if="!collapseTags"
+        name="tu-popper-in-center"
+        @after-leave="adjustInputHeight"
       >
-        {{ item.label }}
-      </tu-tag>
+        <tu-tag
+          v-for="item in selected"
+          effect="shadow"
+          size="small"
+          :key="item.value"
+          :closable="!isDisabled"
+          @close.stop="handleTagDelete($event, item)"
+        >
+          {{ item.label }}
+        </tu-tag>
+      </transition-group>
     </div>
 
     <tu-input
@@ -139,6 +165,7 @@ export default {
     noDataText: String,
     size: String,
     filterMethod: Function,
+    collapseTags: Boolean,
     value: {
       required: true,
     },
@@ -165,6 +192,7 @@ export default {
       optionsCount: 0,
       filteredOptionsCount: 0,
       inputWidth: 0,
+      initialInputHeight: 0,
       hoverIndex: -1,
       selectedLabel: "",
       visible: false,
@@ -185,7 +213,7 @@ export default {
     },
 
     selectSize() {
-      return this.size;
+      return !this.multiple ? this.size : "";
     },
 
     readonly() {
@@ -243,12 +271,14 @@ export default {
     },
 
     value(val, oldVal) {
+      this.setCurrentPlaceholder();
       this.setSelected();
+      if (this.multiple) this.adjustInputHeight();
     },
   },
 
   created() {
-    this.currentPlaceholder = this.placeholder;
+    this.setCurrentPlaceholder();
     this.$on("handleOptionClick", this.handleOptionClick);
     this.$on("setSelected", this.setSelected);
     this.debounceInput = debounce(this.delayTime, (evt) =>
@@ -258,6 +288,7 @@ export default {
 
   mounted() {
     this.setSelected();
+    this.setInitialInputHeight();
     addResizeListener(this.$el, this.handleResize);
   },
 
@@ -268,6 +299,11 @@ export default {
   },
 
   methods: {
+    setInitialInputHeight() {
+      const input = this.$refs.reference.$el.querySelector("input");
+      this.initialInputHeight = input.getBoundingClientRect().height;
+    },
+
     handleComposition(event) {
       const text = event.target.value;
       if (event.type === "compositionend") {
@@ -286,6 +322,15 @@ export default {
         scrollIntoView(menu, target);
       }
       this.$refs.scrollbar && this.$refs.scrollbar.handleScroll();
+    },
+
+    setCurrentPlaceholder() {
+      if (this.multiple) {
+        this.currentPlaceholder =
+          this.value && this.value.length ? "" : this.placeholder;
+      } else {
+        this.currentPlaceholder = this.placeholder;
+      }
     },
 
     handleFocus(evt) {
@@ -308,6 +353,28 @@ export default {
 
     handleResize() {
       this.inputWidth = this.$refs.reference.$el.getBoundingClientRect().width;
+      if (this.multiple) this.adjustInputHeight();
+    },
+
+    adjustInputHeight() {
+      this.$nextTick(() => {
+        if (!this.$refs.reference) return;
+        const inputChildNodes = this.$refs.reference.$el.childNodes;
+        const input = [].filter.call(
+          inputChildNodes,
+          (item) => item.tagName === "INPUT"
+        )[0];
+        const tags = this.$refs.tags;
+        const tagsHeight = tags
+          ? Math.round(tags.getBoundingClientRect().height)
+          : 0;
+        input.style.height = `${Math.max(
+          tags && tagsHeight > this.initialInputHeight
+            ? tagsHeight + 6
+            : this.initialInputHeight
+        )}px`;
+        if (this.visible) this.broadcast("TuSelectDropdown", "updatePopper");
+      });
     },
 
     handleMenuEnter() {
@@ -320,6 +387,15 @@ export default {
 
     handleOptionClick(option, byClick) {
       if (this.multiple) {
+        const value = [...this.value];
+        const optionIndex = value.findIndex((i) => i === option.value);
+        if (optionIndex > -1) {
+          value.splice(optionIndex, 1);
+        } else {
+          value.push(option.value);
+        }
+        this.$emit("input", value);
+        this.emitChange(value);
       } else {
         this.$emit("input", option.value);
         this.emitChange(option.value);
@@ -372,10 +448,14 @@ export default {
         selectedLabel: "",
       };
       if (this.multiple) {
-        const targetOptions = this.options.filter((i) =>
-          this.value.some((j) => j === i.value)
-        );
-        result.selected = targetOptions;
+        const selected = [];
+        this.value.forEach((val) => {
+          const targetOption = this.cachedOptions.find(
+            (option) => option.value === val
+          );
+          targetOption && selected.push(targetOption);
+        });
+        result.selected = selected;
       } else {
         const targetOption = this.options.find((i) => i.value == this.value);
         if (targetOption) {
@@ -393,7 +473,7 @@ export default {
 
     removeSelected(evt) {
       evt.stopPropagation();
-      const value = "";
+      const value = this.multiple ? [] : "";
       this.$emit("input", value);
       this.emitChange(value);
       this.currentPlaceholder = this.placeholder;
@@ -420,7 +500,14 @@ export default {
     },
 
     handleTagDelete(evt, tag) {
-      console.log("evt", evt, "tag", tag);
+      const targetIndex = this.selected.indexOf(tag);
+      if (targetIndex > -1 && !this.isDisabled) {
+        const value = [...this.value];
+        value.splice(targetIndex, 1);
+        this.$emit("input", value);
+        this.emitChange(value);
+        this.$emit("remove-tag", tag.value);
+      }
     },
   },
 };

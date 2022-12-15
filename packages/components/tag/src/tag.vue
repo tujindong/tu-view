@@ -75,7 +75,7 @@ export default {
     return this.disableTransitions ? (
       tagEl
     ) : (
-      <transition name="tu-zoom-in-center">{tagEl}</transition>
+      <transition name="tu-popper-in-center">{tagEl}</transition>
     );
   },
 };
