@@ -14,6 +14,10 @@
     margin-bottom: 8px;
     border-radius: $--tag-border-radius;
 
+    @include when(hit) {
+        font-weight: bold;
+    }
+
 
     @include m(light) {
         border: 1px solid $--color-greyDark;

@@ -20,8 +20,8 @@
           :closable="false"
           size="small"
         >
-          {{ selected.length - 1 }}..</tu-tag
-        >
+          {{ selected.length - 1 }}..
+        </tu-tag>
       </span>
 
       <transition-group
@@ -40,6 +40,23 @@
           {{ item.label }}
         </tu-tag>
       </transition-group>
+      <input
+        v-if="filterable"
+        v-model="query"
+        ref="input"
+        type="text"
+        class="tu-select__input"
+        :disabled="isDisabled"
+        @focus="handleFocus"
+        @blur="handleBlur"
+        @keydown.down.stop.prevent="handleNavigate('next')"
+        @keydown.up.stop.prevent="handleNavigate('prev')"
+        @keydown.esc.stop.prevent="visible = false"
+        @keydown.enter.prevent="handleSelectEnter"
+        @compositionstart="handleComposition"
+        @compositionupdate="handleComposition"
+        @compositionend="handleComposition"
+      />
     </div>
 
     <tu-input
@@ -194,6 +211,7 @@ export default {
       inputWidth: 0,
       initialInputHeight: 0,
       hoverIndex: -1,
+      inputLength: 20,
       selectedLabel: "",
       visible: false,
       inputHovering: false,
@@ -251,6 +269,7 @@ export default {
   watch: {
     visible(val) {
       this.setSelected();
+      this.query = "";
       if (!val) {
         //隐藏
         this.broadcast("TuSelectDropdown", "destroyPopper");
@@ -261,9 +280,7 @@ export default {
         this.broadcast("TuSelectDropdown", "updatePopper");
         if (this.filterable) {
           this.selectedLabel = "";
-          this.currentPlaceholder =
-            this.getSelected().selectedLabel || this.placeholder;
-          this.query = "";
+          this.setCurrentPlaceholder();
           this.handleQueryChange(this.query);
         }
       }
@@ -329,7 +346,8 @@ export default {
         this.currentPlaceholder =
           this.value && this.value.length ? "" : this.placeholder;
       } else {
-        this.currentPlaceholder = this.placeholder;
+        this.currentPlaceholder =
+          this.getSelected().selectedLabel || this.placeholder;
       }
     },
 
@@ -396,6 +414,8 @@ export default {
         }
         this.$emit("input", value);
         this.emitChange(value);
+        this.query = "";
+        this.handleQueryChange(this.query);
       } else {
         this.$emit("input", option.value);
         this.emitChange(option.value);
@@ -482,15 +502,16 @@ export default {
     },
 
     handleQueryChange(val) {
+      console.log("handleQueryChange", val);
       if (this.isOnComposition) return;
       if (typeof this.filterMethod === "function") this.filterMethod(val);
       this.hoverIndex = -1;
       this.filteredOptionsCount = this.optionsCount;
-      this.query = val;
       this.$nextTick(() => {
         if (this.visible) this.broadcast("TuSelectDropdown", "updatePopper");
       });
       this.broadcast("TuOption", "queryChange", val);
+      this.broadcast("TuOptionGroup", "queryChange");
     },
 
     resetHoverIndex() {

@@ -69,6 +69,7 @@
         appearance: none;
         height: 28px;
         background-color: transparent;
+        background-color: #cccccc;
 
         @include when(mini) {
             height: 14px;

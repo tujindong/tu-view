@@ -85,7 +85,7 @@
 
     <!-- <br />
     <p>分组</p>
-    <tu-select v-model="value3" size="mini" placeholder="请选择分组">
+    <tu-select filterable v-model="value3" size="mini" placeholder="请选择分组">
       <tu-option-group
         v-for="group in options3"
         :key="group.label"
@@ -99,9 +99,9 @@
         >
         </tu-option>
       </tu-option-group>
-    </tu-select>
+    </tu-select> -->
 
-    <br />
+    <!-- <br />
     <p>分组 小</p>
     <tu-select v-model="value3" size="small" placeholder="请选择分组">
       <tu-option-group
@@ -117,9 +117,9 @@
         >
         </tu-option>
       </tu-option-group>
-    </tu-select>
+    </tu-select> -->
 
-    <br />
+    <!-- <br />
     <p>分组 大</p>
     <tu-select v-model="value3" size="large" placeholder="请选择分组">
       <tu-option-group
@@ -143,7 +143,7 @@
       style="width: 300px"
       multiple
       clearable
-      collapseTags
+      filterable
       v-model="value2"
       placeholder="请选择"
       @change="handleChage"

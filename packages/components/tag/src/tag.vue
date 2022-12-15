@@ -9,6 +9,7 @@ export default {
     disableTransitions: Boolean,
     closable: Boolean,
     color: String,
+    hit: Boolean,
     size: String,
     effect: {
       type: String,
@@ -54,13 +55,14 @@ export default {
   },
 
   render(h) {
-    const { effect, closable, tagSize, tagStyle } = this;
+    const { effect, closable, tagSize, hit, tagStyle } = this;
     const tagEl = (
       <span
         class={[
           "tu-tag",
           tagSize ? `tu-tag--${tagSize}` : "",
           effect ? `tu-tag--${effect}` : "",
+          hit && "is-hit",
         ]}
         style={tagStyle}
         onClick={this.handleClick}

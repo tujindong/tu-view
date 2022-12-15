@@ -38,6 +38,13 @@
     <tu-tag effect="plain" color="#2db7f5" closable>深色</tu-tag>
     <tu-tag effect="plain" color="#e6a23c">深色</tu-tag>
     <tu-tag effect="shadow" color="#2db7f5">深色</tu-tag>
+
+    <br />
+    <p>命中</p>
+    <tu-tag effect="light" hit closable>浅色</tu-tag>
+    <tu-tag effect="dark" closable>深色</tu-tag>
+    <tu-tag effect="plain" closable>空心</tu-tag>
+    <tu-tag effect="shadow" closable>阴影</tu-tag>
   </div>
 </template>
 
