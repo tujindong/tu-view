@@ -4,8 +4,12 @@
     v-clickoutside="handleClose"
     @click.stop="handleDropdownToggle"
   >
-    <div class="tu-select__tags" v-if="multiple" ref="tags">
-      <!-- 超长省略 -->
+    <div
+      class="tu-select__tags"
+      v-if="multiple"
+      ref="tags"
+      :style="{ 'max-width': inputWidth - 32 + 'px', width: '100%' }"
+    >
       <span v-if="collapseTags && selected.length">
         <tu-tag
           effect="shadow"
@@ -40,6 +44,7 @@
           {{ item.label }}
         </tu-tag>
       </transition-group>
+
       <input
         v-if="filterable"
         v-model="query"
@@ -48,7 +53,8 @@
         class="tu-select__input"
         :disabled="isDisabled"
         @focus="handleFocus"
-        @blur="handleBlur"
+        @blur="softFocus = false"
+        @input="(e) => debounceInput(e.target.value)"
         @keydown.down.stop.prevent="handleNavigate('next')"
         @keydown.up.stop.prevent="handleNavigate('prev')"
         @keydown.esc.stop.prevent="visible = false"
@@ -56,6 +62,10 @@
         @compositionstart="handleComposition"
         @compositionupdate="handleComposition"
         @compositionend="handleComposition"
+        :style="{
+          width: `${inputLength / inputWidth}%`,
+          'max-width': inputWidth - 42 + 'px',
+        }"
       />
     </div>
 
@@ -217,6 +227,7 @@ export default {
       inputHovering: false,
       menuVisibleOnFocus: false,
       isOnComposition: false,
+      softFocus: false,
       currentPlaceholder: "",
     };
   },
@@ -271,14 +282,18 @@ export default {
       this.setSelected();
       this.query = "";
       if (!val) {
-        //隐藏
+        //hide
         this.broadcast("TuSelectDropdown", "destroyPopper");
         this.menuVisibleOnFocus = false;
+        this.inputLength = 20;
         this.resetHoverIndex();
       } else {
-        //显示
+        //show
         this.broadcast("TuSelectDropdown", "updatePopper");
         if (this.filterable) {
+          if (this.multiple) {
+            this.$refs.input && this.$refs.input.focus();
+          }
           this.selectedLabel = "";
           this.setCurrentPlaceholder();
           this.handleQueryChange(this.query);
@@ -287,10 +302,16 @@ export default {
       this.$emit("visible-change", val);
     },
 
-    value(val, oldVal) {
+    value(newVal, oldVal) {
       this.setCurrentPlaceholder();
       this.setSelected();
-      if (this.multiple) this.adjustInputHeight();
+      if (this.multiple) {
+        this.adjustInputHeight();
+        if (this.filterable) {
+          this.query = "";
+          this.handleQueryChange(this.query);
+        }
+      }
     },
   },
 
@@ -352,17 +373,22 @@ export default {
     },
 
     handleFocus(evt) {
-      if (!this.visible) {
-        this.menuVisibleOnFocus = true;
+      if (!this.softFocus) {
+        if (!this.visible) {
+          this.menuVisibleOnFocus = true;
+        }
+        this.visible = true;
+        this.$emit("focus", evt);
+      } else {
+        this.softFocus = false;
       }
-      this.visible = true;
-      this.$emit("focus", evt);
     },
 
     handleBlur(evt) {
       setTimeout(() => {
         this.$emit("blur", evt);
       }, 50);
+      this.softFocus = false;
     },
 
     handleInputClear(evt) {
@@ -414,12 +440,24 @@ export default {
         }
         this.$emit("input", value);
         this.emitChange(value);
-        this.query = "";
-        this.handleQueryChange(this.query);
+        if (this.filterable) this.$refs.input.focus();
       } else {
         this.$emit("input", option.value);
         this.emitChange(option.value);
         this.visible = false;
+      }
+      this.setSoftFocus();
+      if (this.visible) return;
+      this.$nextTick(() => {
+        this.scrollToOption(option);
+      });
+    },
+
+    setSoftFocus() {
+      this.softFocus = true;
+      const input = this.$refs.input;
+      if (input) {
+        input.focus();
       }
     },
 
@@ -432,6 +470,7 @@ export default {
         }
         if (this.visible) {
           this.$refs.reference.handleFocus();
+          this.$refs.input && this.$refs.input.focus();
         }
       }
     },
@@ -440,9 +479,12 @@ export default {
       if (!this.visible) {
         this.handleDropdownToggle();
       } else {
+        console.log(
+          "this.options[this.hoverIndex]",
+          this.options[this.hoverIndex]
+        );
         if (this.options[this.hoverIndex]) {
           this.handleOptionClick(this.options[this.hoverIndex]);
-          this.visible = false;
         }
       }
     },
@@ -502,11 +544,11 @@ export default {
     },
 
     handleQueryChange(val) {
-      console.log("handleQueryChange", val);
       if (this.isOnComposition) return;
       if (typeof this.filterMethod === "function") this.filterMethod(val);
       this.hoverIndex = -1;
       this.filteredOptionsCount = this.optionsCount;
+      this.query = val;
       this.$nextTick(() => {
         if (this.visible) this.broadcast("TuSelectDropdown", "updatePopper");
       });
