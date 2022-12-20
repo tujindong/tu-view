@@ -20,7 +20,7 @@
 
     .tu-input {
 
-        &.tu-select__caret {
+        & .tu-select__caret {
             color: $--select-input-color;
             transition: transform .3s;
             transform: rotateZ(180deg);
@@ -41,6 +41,10 @@
                     color: $--select-close-hover-color;
                 }
             }
+        }
+
+        & .tu-icon-reload {
+            animation: spin 1.0s linear infinite;
         }
 
         &.is-disabled {

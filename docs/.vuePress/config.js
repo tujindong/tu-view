@@ -37,6 +37,7 @@ module.exports = {
                         ['../guide/Input.md', 'Input 输入框'],
                         ['../guide/Textarea.md', 'Textarea 多行输入框'],
                         ['../guide/Input-number.md', 'InputNumber 计数器'],
+                        ['../guide/Select.md', 'Select 选择器'],
                         ['../guide/Switch.md', 'Switch 开关'],
                     ]
                 },

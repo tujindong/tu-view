@@ -14,6 +14,7 @@
         <tu-tag
           effect="shadow"
           size="small"
+          :hit="selected[0].hitState"
           :closable="!isDisabled"
           @close.stop="handleTagDelete($event, selected[0])"
           >{{ selected[0].label }}</tu-tag
@@ -37,6 +38,7 @@
           v-for="item in selected"
           effect="shadow"
           size="small"
+          :hit="item.hitState"
           :key="item.value"
           :closable="!isDisabled"
           @close.stop="handleTagDelete($event, item)"
@@ -55,9 +57,11 @@
         @focus="handleFocus"
         @blur="softFocus = false"
         @input="(e) => debounceInput(e.target.value)"
+        @keydown="resetInputState"
         @keydown.down.stop.prevent="handleNavigate('next')"
         @keydown.up.stop.prevent="handleNavigate('prev')"
         @keydown.esc.stop.prevent="visible = false"
+        @keydown.delete="handlePrevTagDelete"
         @keydown.enter.prevent="handleSelectEnter"
         @compositionstart="handleComposition"
         @compositionupdate="handleComposition"
@@ -68,7 +72,6 @@
         }"
       />
     </div>
-
     <tu-input
       :class="{ 'is-focus': visible }"
       ref="reference"
@@ -97,19 +100,22 @@
         <slot name="prefix"></slot>
       </template>
       <template slot="suffix">
-        <i
-          v-show="!showClose"
-          :class="[
-            'tu-select__caret',
-            'tu-input__icon',
-            `tu-icon-${iconDirection}`,
-          ]"
-        ></i>
-        <i
-          class="tu-select__caret tu-icon-close-circle-fill"
-          v-if="showClose"
-          @click="handleInputClear"
-        ></i>
+        <i v-if="loading" class="tu-select__caret tu-icon-reload"></i>
+        <template v-if="!loading">
+          <i
+            v-show="!showClose"
+            :class="[
+              'tu-select__caret',
+              'tu-input__icon',
+              `tu-icon-${iconDirection}`,
+            ]"
+          ></i>
+          <i
+            class="tu-select__caret tu-icon-close-circle-fill"
+            v-if="showClose"
+            @click="handleInputClear"
+          ></i>
+        </template>
       </template>
     </tu-input>
 
@@ -186,12 +192,14 @@ export default {
     disabled: Boolean,
     clearable: Boolean,
     filterable: Boolean,
+    remote: Boolean,
     loading: Boolean,
     loadingText: String,
     noMatchText: String,
     noDataText: String,
     size: String,
     filterMethod: Function,
+    remoteMethod: Function,
     collapseTags: Boolean,
     value: {
       required: true,
@@ -258,10 +266,13 @@ export default {
     },
 
     delayTime() {
-      return this.remote ? 300 : 0;
+      return 0;
     },
 
     emptyText() {
+      if (this.loading) {
+        return this.loadingText || "加载中";
+      }
       if (this.options.length === 0) {
         return this.noDataText || "暂无数据";
       }
@@ -295,28 +306,31 @@ export default {
             this.$refs.input && this.$refs.input.focus();
           }
           this.selectedLabel = "";
-          this.setCurrentPlaceholder();
           this.handleQueryChange(this.query);
         }
       }
+      this.setCurrentPlaceholder();
       this.$emit("visible-change", val);
     },
 
     value(newVal, oldVal) {
-      this.setCurrentPlaceholder();
       this.setSelected();
       if (this.multiple) {
         this.adjustInputHeight();
-        if (this.filterable) {
-          this.query = "";
-          this.handleQueryChange(this.query);
-        }
+        this.query = "";
+        this.handleQueryChange(this.query);
       }
     },
   },
 
   created() {
     this.setCurrentPlaceholder();
+    if (this.multiple && !Array.isArray(this.value)) {
+      this.$emit("input", []);
+    }
+    if (!this.multiple && Array.isArray(this.value)) {
+      this.$emit("input", "");
+    }
     this.$on("handleOptionClick", this.handleOptionClick);
     this.$on("setSelected", this.setSelected);
     this.debounceInput = debounce(this.delayTime, (evt) =>
@@ -365,7 +379,9 @@ export default {
     setCurrentPlaceholder() {
       if (this.multiple) {
         this.currentPlaceholder =
-          this.value && this.value.length ? "" : this.placeholder;
+          (this.value && this.value.length) || this.query
+            ? ""
+            : this.placeholder;
       } else {
         this.currentPlaceholder =
           this.getSelected().selectedLabel || this.placeholder;
@@ -479,14 +495,39 @@ export default {
       if (!this.visible) {
         this.handleDropdownToggle();
       } else {
-        console.log(
-          "this.options[this.hoverIndex]",
-          this.options[this.hoverIndex]
-        );
         if (this.options[this.hoverIndex]) {
           this.handleOptionClick(this.options[this.hoverIndex]);
         }
       }
+    },
+
+    handlePrevTagDelete(e) {
+      if (e.target.value.length <= 0 && !this.toggleLastOptionHitState()) {
+        const value = [...this.value];
+        value.pop();
+        this.$emit("input", value);
+        this.emitChange(value);
+      }
+    },
+
+    resetInputState(e) {
+      if (e.keyCode !== 8) this.toggleLastOptionHitState(false);
+      this.inputLength = this.$refs.input.value.length * 15 + 20;
+      this.adjustInputHeight();
+    },
+
+    toggleLastOptionHitState(hit) {
+      if (!Array.isArray(this.selected)) return;
+      const lastOption = this.selected[this.selected.length - 1];
+      if (!lastOption) return;
+      if (hit === true || hit === false) {
+        lastOption.hitState = hit;
+        return hit;
+      }
+      lastOption.hitState = !lastOption.hitState;
+
+      console.log("this.selected", this.selected);
+      return lastOption.hitState;
     },
 
     handleClose() {
@@ -545,10 +586,14 @@ export default {
 
     handleQueryChange(val) {
       if (this.isOnComposition) return;
+      if (this.remote && typeof this.remoteMethod === "function") {
+        this.hoverIndex = -1;
+        this.remoteMethod(val);
+      }
       if (typeof this.filterMethod === "function") this.filterMethod(val);
-      this.hoverIndex = -1;
       this.filteredOptionsCount = this.optionsCount;
       this.query = val;
+      this.setCurrentPlaceholder();
       this.$nextTick(() => {
         if (this.visible) this.broadcast("TuSelectDropdown", "updatePopper");
       });
@@ -570,6 +615,14 @@ export default {
         this.$emit("input", value);
         this.emitChange(value);
         this.$emit("remove-tag", tag.value);
+      }
+    },
+
+    onOptionDestroy(index) {
+      if (index > -1) {
+        this.optionsCount--;
+        this.filteredOptionsCount--;
+        this.options.splice(index, 1);
       }
     },
   },
