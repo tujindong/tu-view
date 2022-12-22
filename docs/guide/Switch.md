@@ -101,7 +101,7 @@
 
 ### 尺寸
 
-:::demo 可通过 `size` 属性指定输入框的尺寸，除了默认的大小外，还提供了 medium、small 和 mini 三种尺寸。
+:::demo 可通过 `size` 属性指定输入框的尺寸，除了默认的大小外，还提供了 large、medium 和 mini 三种尺寸。
 
 ```html
 <div class="demo-switch">

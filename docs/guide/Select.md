@@ -198,14 +198,14 @@
 
 ```html
 <template>
-	<tu-row>
+	<tu-row :gutter="20">
 		<tu-col :span="12">
 			<tu-select v-model="value1" multiple placeholder="请选择">
 				<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
 			</tu-select>
 		</tu-col>
 		<tu-col :span="12">
-			<tu-select v-model="value2" multiple collapse-tags style="margin-left: 20px;" placeholder="请选择">
+			<tu-select v-model="value2" multiple collapse-tags placeholder="请选择">
 				<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
 			</tu-select>
 		</tu-col>
@@ -504,6 +504,124 @@
 					this.options = [];
 				}
 			},
+		},
+	};
+</script>
+```
+
+:::
+
+### 尺寸
+
+:::demo 可通过 `size` 属性指定输入框的尺寸，除了默认的大小外，还提供了 medium、small 和 mini 三种尺寸。
+
+```html
+<tu-row :gutter="20">
+	<tu-col :span="8">
+		<tu-select size="large" v-model="value1" placeholder="请选择">
+			<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+		</tu-select>
+	</tu-col>
+	<tu-col :span="8">
+		<tu-select size="medium" v-model="value2" placeholder="请选择">
+			<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+		</tu-select>
+	</tu-col>
+	<tu-col :span="8">
+		<tu-select size="small" v-model="value3" placeholder="请选择">
+			<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+		</tu-select>
+	</tu-col>
+</tu-row>
+<tu-row :gutter="20">
+	<tu-col :span="8">
+		<tu-select size="large" v-model="value4" placeholder="请选择">
+			<tu-option-group v-for="group in optionsGroup" :key="group.label" :label="group.label">
+				<tu-option v-for="item in group.options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+			</tu-option-group>
+		</tu-select>
+	</tu-col>
+	<tu-col :span="8">
+		<tu-select size="medium" v-model="value5" placeholder="请选择">
+			<tu-option-group v-for="group in optionsGroup" :key="group.label" :label="group.label">
+				<tu-option v-for="item in group.options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+			</tu-option-group>
+		</tu-select>
+	</tu-col>
+	<tu-col :span="8">
+		<tu-select size="small" v-model="value6" placeholder="请选择">
+			<tu-option-group v-for="group in optionsGroup" :key="group.label" :label="group.label">
+				<tu-option v-for="item in group.options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+			</tu-option-group>
+		</tu-select>
+	</tu-col>
+</tu-row>
+
+<script>
+	export default {
+		data() {
+			return {
+				options: [
+					{
+						value: "balance",
+						label: "香蕉",
+					},
+					{
+						value: "apple",
+						label: "苹果",
+					},
+					{
+						value: "orange",
+						label: "橙子",
+					},
+					{
+						value: "watermelon",
+						label: "西瓜",
+					},
+					{
+						value: "durian",
+						label: "榴莲",
+					},
+				],
+				optionsGroup: [
+					{
+						label: "温带水果",
+						options: [
+							{
+								value: "apple",
+								label: "苹果",
+							},
+							{
+								value: "orange",
+								label: "橙子",
+							},
+							{
+								value: "watermelon",
+								label: "西瓜",
+							},
+						],
+					},
+					{
+						label: "热带水果",
+						options: [
+							{
+								value: "balance",
+								label: "香蕉",
+							},
+							{
+								value: "durian",
+								label: "榴莲",
+							},
+						],
+					},
+				],
+				value1: "",
+				value2: "",
+				value3: "",
+				value4: "",
+				value5: "",
+				value6: "",
+			};
 		},
 	};
 </script>

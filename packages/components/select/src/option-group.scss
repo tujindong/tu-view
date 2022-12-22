@@ -1,4 +1,4 @@
-@mixin gapSize($select-group-gap) {
+@mixin optionGroupSize($select-group-gap) {
     .tu-select-group__wrap {
         &:not(:last-of-type) {
             padding-bottom: $select-group-gap;
@@ -42,7 +42,7 @@
                     right: $--select-group-gap;
                     bottom: 12px;
                     height: 1px;
-                    background: $--border-color-base;
+                    background: rgba($--color-greyLight-2, 0.65);
                 }
             }
         }
@@ -60,14 +60,14 @@
     }
 
     @include m(mini) {
-        @include gapSize($--select-mini-group-gap)
+        @include optionGroupSize($--select-mini-group-gap)
     }
 
     @include m(small) {
-        @include gapSize($--select-small-group-gap)
+        @include optionGroupSize($--select-small-group-gap)
     }
 
     @include m(large) {
-        @include gapSize($--select-large-group-gap)
+        @include optionGroupSize($--select-large-group-gap)
     }
 }

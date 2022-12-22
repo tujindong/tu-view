@@ -8,9 +8,20 @@
     box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
 
     @include e(header) {
+        position: relative;
         display: flex;
         align-items: center;
-        border-bottom: 1px solid $--border-color-base;
+
+        &::after {
+            position: absolute;
+            bottom: -1px;
+            left: 2%;
+            display: block;
+            content: '';
+            width: 96%;
+            height: 0px;
+            border-bottom: 1px solid rgba($--color-greyLight-2, 0.65);
+        }
 
         @include e(header-title) {
             display: inline-block;

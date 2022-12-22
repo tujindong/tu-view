@@ -451,7 +451,10 @@ export default {
         const optionIndex = value.findIndex((i) => i === option.value);
         if (optionIndex > -1) {
           value.splice(optionIndex, 1);
-        } else {
+        } else if (
+          this.multipleLimit <= 0 ||
+          value.length < this.multipleLimit
+        ) {
           value.push(option.value);
         }
         this.$emit("input", value);
@@ -552,12 +555,13 @@ export default {
       };
       if (this.multiple) {
         const selected = [];
-        this.value.forEach((val) => {
-          const targetOption = this.cachedOptions.find(
-            (option) => option.value === val
-          );
-          targetOption && selected.push(targetOption);
-        });
+        Array.isArray(this.value) &&
+          this.value.forEach((val) => {
+            const targetOption = this.cachedOptions.find(
+              (option) => option.value === val
+            );
+            targetOption && selected.push(targetOption);
+          });
         result.selected = selected;
       } else {
         const targetOption = this.options.find((i) => i.value == this.value);
