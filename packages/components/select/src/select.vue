@@ -37,7 +37,7 @@
         <tu-tag
           v-for="item in selected"
           effect="shadow"
-          size="small"
+          :size="selectSize | tagSize"
           :hit="item.hitState"
           :key="item.value"
           :closable="!isDisabled"
@@ -197,7 +197,10 @@ export default {
     loadingText: String,
     noMatchText: String,
     noDataText: String,
-    size: String,
+    size: {
+      type: String,
+      default: "medium",
+    },
     filterMethod: Function,
     remoteMethod: Function,
     collapseTags: Boolean,
@@ -240,6 +243,17 @@ export default {
     };
   },
 
+  filters: {
+    tagSize(size) {
+      const maps = {
+        large: "medium",
+        medium: "small",
+        small: "mini",
+      };
+      return maps[size] || "medium";
+    },
+  },
+
   computed: {
     iconDirection() {
       return this.visible ? "up is-reverse" : "up";
@@ -250,7 +264,7 @@ export default {
     },
 
     selectSize() {
-      return !this.multiple ? this.size : "";
+      return this.size;
     },
 
     readonly() {
@@ -529,7 +543,6 @@ export default {
       }
       lastOption.hitState = !lastOption.hitState;
 
-      console.log("this.selected", this.selected);
       return lastOption.hitState;
     },
 

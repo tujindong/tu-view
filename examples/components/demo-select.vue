@@ -2,7 +2,6 @@
   <div class="demo-wrapper">
     <h2>Select</h2>
     <br />
-    ~~{{ value1 }}
     <tu-row :gutter="20">
       <tu-col :span="8">
         <tu-select multiple size="large" v-model="value1" placeholder="请选择">

@@ -280,6 +280,11 @@ $--scrollbar-hover-background-color: rgba($--color-greyDark, 0.8);
 -------------------------- */
 $--tag-font-color: $--color-greyDark;
 $--tag-color-fill: $--color-greyLight-3;
+/*超小 mini*/
+$--tag-mini-font-size: 9px;
+$--tag-mini-padding-vertical: 2px;
+$--tag-mini-padding-horizontal: 4px;
+$--tag-mini-border-radius: 1px;
 /*较小 small*/
 $--tag-small-font-size: 10px;
 $--tag-small-padding-vertical: 3px;

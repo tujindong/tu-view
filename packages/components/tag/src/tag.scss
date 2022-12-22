@@ -57,6 +57,13 @@
         box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
     }
 
+    @include m(mini) {
+        font-size: $--tag-mini-font-size;
+        padding: $--tag-small-padding-vertical $--tag-mini-padding-horizontal;
+        border-radius: $--tag-mini-border-radius;
+        transform: scale(.9);
+    }
+
     @include m(small) {
         font-size: $--tag-small-font-size;
         padding: $--tag-small-padding-vertical $--tag-small-padding-horizontal;
