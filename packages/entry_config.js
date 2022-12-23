@@ -46,6 +46,10 @@ module.exports = {
             author: 'tujindong'
         },
         {
+            name: 'tab-pane',
+            author: 'tujindong'
+        },
+        {
             name: 'select',
             author: 'tujindong'
         },
@@ -66,31 +70,31 @@ module.exports = {
             author: 'tujindong'
         },
         {
-            name: 'Col',
+            name: 'col',
             author: 'tujindong'
         },
         {
-            name: 'Tag',
+            name: 'tag',
             author: 'tujindong'
         },
         {
-            name: 'Table',
+            name: 'table',
             author: 'tujindong'
         },
         {
-            name: 'Progress',
+            name: 'progress',
             author: 'tujindong'
         },
         {
-            name: 'Pagination',
+            name: 'pagination',
             author: 'tujindong'
         },
         {
-            name: 'Tooltip',
+            name: 'tooltip',
             author: 'tujindong'
         },
         {
-            name: 'Scrollbar',
+            name: 'scrollbar',
             author: 'tujindong'
         },
     ]

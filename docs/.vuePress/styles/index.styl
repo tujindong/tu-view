@@ -1,3 +1,18 @@
+html,
+body, 
+.navbar, 
+.theme-container .navbar .links, 
+.sidebar,
+.theme-container .navbar .links .search-box input,
+.theme-container .page .demo-block .demo-block-control,
+.theme-container .page .demo-block .demo-block-control:hover,
+.theme-container .page table tr th,
+.theme-container .page table tr td,
+{
+    background: #e4ebf5;
+    border-color: #cad5e1;
+}
+
 h2 {
     font-weight: 400;
     color: #1f2f3d;
@@ -16,7 +31,6 @@ p {
 table {
     border-collapse: collapse;
     width: 100%;
-    background-color: #fff;
     font-size: 14px;
     margin-bottom: 45px;
     line-height: 1.5em;
@@ -46,10 +60,27 @@ table {
     padding: 0.4rem 1.0rem;
     font-size: 1.0rem;
 }
+.theme-container .page .demo-block{
+    border: none;
+}
 .theme-container .demo-block .demo-content {
     background: #e4ebf5;
 }
 .theme-container .page .demo-block .meta {
-    background: #fafafa;
+    background: rgba(255, 255, 255, 0.28);
     border: none;
+}
+.theme-container .page .demo-block .meta .description{
+    background: transparent;
+    border-color: #cad5e1;
+}
+.theme-container .page .demo-block .meta .code-content, 
+.theme-container .page .demo-block .meta .code-content .language-html{
+    background: transparent;
+}
+.theme-container .page .language-bash{
+     background: rgba(255, 255, 255, 0.28);
+}
+.theme-container .home >.theme-default-content{
+    opacity: 0;
 }

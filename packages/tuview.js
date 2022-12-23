@@ -23,6 +23,7 @@ import Textarea from './components/textarea';
 import Switch from './components/switch'
 import InputNumber from './components/input-number'
 import Tabs from './components/tabs'
+import TabPane from './components/tab-pane'
 import Select from './components/select'
 import Option from './components/option'
 import OptionGroup from './components/option-group'
@@ -48,6 +49,7 @@ const componentsList = [
     Switch,
     InputNumber,
     Tabs,
+    TabPane,
     Select,
     Option,
     OptionGroup,

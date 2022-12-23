@@ -1,5 +1,5 @@
 <template>
-  <div>tabs</div>
+  <div class="tu-tab-pane"><slot></slot></div>
 </template>
 
 <script>
@@ -8,6 +8,14 @@ export default {
 
   componentName: "TuTabPane",
 
-  props: {},
+  props: {
+    label: String,
+  },
+
+  data() {
+    return {
+      index: null,
+    };
+  },
 };
 </script>

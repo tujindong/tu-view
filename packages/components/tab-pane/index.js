@@ -1,8 +1,7 @@
-import Tabs from './src/tabs.vue';
-import './src/tabs.scss';
+import TabPane from '../tabs/src/tab-pane.vue';
 
-Tabs.install = function (Vue) {
-    Vue.component(Tabs.name, Tabs);
+TabPane.install = function (Vue) {
+    Vue.component(TabPane.name, TabPane);
 };
 
-export default Tabs;
+export default TabPane;
