@@ -1,1 +1,45 @@
 @import "~@packages/style/common/mixin.scss";
+
+@include b(tabs) {
+    @include e(header) {
+        padding: 0;
+        position: relative;
+        margin: 0 0 15px;
+
+        @include e(nav-wrap) {
+            overflow: hidden;
+            position: relative;
+
+            @include e(nav) {
+                white-space: nowrap;
+                position: relative;
+                float: left;
+                z-index: #{$--index-normal + 1};
+
+                @include e(item) {
+                    padding: 0 20px;
+                    height: 40px;
+                    box-sizing: border-box;
+                    line-height: 40px;
+                    display: inline-block;
+                    list-style: none;
+                    font-size: 14px;
+                    font-weight: 500;
+                    position: relative;
+                    transition: all .3s;
+
+                    &:hover {
+                        cursor: pointer;
+                        color: $--tab-header-color-active;
+                    }
+
+                    @include when(active) {
+                        color: $--tab-header-color-active;
+                    }
+                }
+            }
+        }
+    }
+
+
+}
