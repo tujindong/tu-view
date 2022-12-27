@@ -15,7 +15,7 @@
                     content: "";
                     position: absolute;
                     left: 0;
-                    bottom: 0;
+                    bottom: 2px;
                     width: 100%;
                     height: 1px;
                     background-color: rgba($--color-greyLight-2, 0.65);
@@ -24,14 +24,14 @@
 
                 @include e(active-bar) {
                     position: absolute;
-                    bottom: 0px;
+                    bottom: 2px;
                     left: 0;
                     height: 2px;
                     z-index: 1;
                     transition: transform .3s cubic-bezier(.645, .045, .355, 1);
                     list-style: none;
                     border-radius: 50%;
-                    box-shadow: 2px 2px 4px $--color-greyLight-2,
+                    box-shadow: 3px 1px 2px $--color-greyLight-2,
                         -2px -2px 3px $--color-white,
                         inset 3px 3px 2px $--color-greyLight-2,
                         inset -2px -2px 2px $--color-white;
