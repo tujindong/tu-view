@@ -58,6 +58,21 @@
       >加载中</tu-button
     >
     <tu-button class="demo-button" :loading="true">加载中</tu-button>
+
+    <br />
+    <p>按钮组</p>
+    <tu-button-group>
+      <tu-button>上一页</tu-button>
+      <tu-button>下一页</tu-button>
+      <tu-button>二页</tu-button>
+    </tu-button-group>
+    <br />
+    <p>按钮组</p>
+    <tu-button-group>
+      <tu-button type="primary">上一页</tu-button>
+      <tu-button type="primary">下一页</tu-button>
+      <tu-button type="primary">二页</tu-button>
+    </tu-button-group>
   </div>
 </template>
 

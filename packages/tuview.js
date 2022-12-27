@@ -13,6 +13,7 @@
 
 /* 组件库对外导出的组件集合，对整个组件进行导出 */
 import Button from './components/button';
+import ButtonGroup from './components/button-group';
 import Icon from './components/icon';
 import Radio from './components/radio';
 import RadioGroup from './components/radio-group';
@@ -39,6 +40,7 @@ import Scrollbar from './components/scrollbar';
 
 const componentsList = [
     Button,
+    ButtonGroup,
     Icon,
     Radio,
     RadioGroup,

@@ -6,6 +6,10 @@ module.exports = {
             author: 'tujindong'
         },
         {
+            name: 'button-group',
+            author: 'tujindong'
+        },
+        {
             name: 'icon',
             author: 'tujindong'
         },

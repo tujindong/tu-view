@@ -6,40 +6,74 @@
         position: relative;
         margin: 0 0 15px;
 
-        @include e(nav-wrap) {
-            overflow: hidden;
-            position: relative;
-
-            @include e(nav) {
-                white-space: nowrap;
+        @include e(nav-scroll) {
+            @include e(nav-wrap) {
+                overflow: hidden;
                 position: relative;
-                float: left;
-                z-index: #{$--index-normal + 1};
 
-                @include e(item) {
-                    padding: 0 20px;
-                    height: 40px;
-                    box-sizing: border-box;
-                    line-height: 40px;
-                    display: inline-block;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 1px;
+                    background-color: rgba($--color-greyLight-2, 0.65);
+                    z-index: $--index-normal;
+                }
+
+                @include e(active-bar) {
+                    position: absolute;
+                    bottom: 0px;
+                    left: 0;
+                    height: 2px;
+                    z-index: 1;
+                    transition: transform .3s cubic-bezier(.645, .045, .355, 1);
                     list-style: none;
-                    font-size: 14px;
-                    font-weight: 500;
+                    border-radius: 50%;
+                    box-shadow: 2px 2px 4px $--color-greyLight-2,
+                        -2px -2px 3px $--color-white,
+                        inset 3px 3px 2px $--color-greyLight-2,
+                        inset -2px -2px 2px $--color-white;
+                }
+
+                @include e(nav) {
+                    white-space: nowrap;
                     position: relative;
-                    transition: all .3s;
+                    float: left;
+                    z-index: #{$--index-normal + 1};
 
-                    &:hover {
-                        cursor: pointer;
-                        color: $--tab-header-color-active;
-                    }
+                    @include e(item) {
+                        padding: 0 20px;
+                        height: 40px;
+                        box-sizing: border-box;
+                        line-height: 40px;
+                        display: inline-block;
+                        list-style: none;
+                        font-size: 14px;
+                        font-weight: 500;
+                        position: relative;
+                        transition: all .3s;
+                        color: $--color-greyDark;
 
-                    @include when(active) {
-                        color: $--tab-header-color-active;
+                        &:hover {
+                            cursor: pointer;
+                            color: $--tab-header-color-active;
+                        }
+
+                        @include when(active) {
+                            color: $--tab-header-color-active;
+                        }
                     }
                 }
             }
         }
     }
 
-
+    @include e(content) {
+        overflow: hidden;
+        position: relative;
+        color: $--tab-font-color;
+        font-size: $--tab-font-size;
+    }
 }

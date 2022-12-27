@@ -73,7 +73,6 @@ export default {
     },
 
     handleTabClick(tab, tabName, event) {
-      //   console.log("handleTabClick", { tab, tabName, event });
       if (tab.disabled) return;
       this.setCurrentName(tabName);
       this.$emit("tab-click", tab, event);
