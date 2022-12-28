@@ -14,11 +14,21 @@ export default {
   },
 
   props: {
+    type: {
+      type: String,
+      default: "line",
+    },
+    activeName: String,
+    closable: Boolean,
+    addable: Boolean,
     value: {},
+    editable: Boolean,
     tabPosition: {
       type: String,
       default: "top",
     },
+    beforeLeave: Function,
+    stretch: Boolean,
   },
 
   data() {
@@ -31,6 +41,15 @@ export default {
   watch: {
     value(value) {
       this.setCurrentName(value);
+    },
+    currentName(value) {
+      if (this.$refs.nav) {
+        this.$nextTick(() => {
+          this.$refs.nav.$nextTick(() => {
+            this.$refs.nav.scrollToActiveTab();
+          });
+        });
+      }
     },
   },
 
@@ -85,26 +104,70 @@ export default {
   },
 
   render(h) {
-    let { currentName, panes, handleTabClick } = this;
+    let {
+      type,
+      handleTabClick,
+      handleTabRemove,
+      handleTabAdd,
+      currentName,
+      panes,
+      editable,
+      addable,
+      tabPosition,
+      stretch,
+    } = this;
+
+    const newButton =
+      editable || addable ? (
+        <span
+          class="tu-tabs__new-tab"
+          on-click={handleTabAdd}
+          tabindex="0"
+          on-keydown={(ev) => {
+            if (ev.keyCode === 13) {
+              handleTabAdd();
+            }
+          }}
+        >
+          <i class="tu-icon-plus"></i>
+        </span>
+      ) : null;
 
     const navProps = {
       ref: "nav",
       props: {
         currentName,
+        editable,
+        type,
         panes,
+        stretch,
         onTabClick: handleTabClick,
+        onTabRemove: handleTabRemove,
       },
     };
 
     const header = (
-      <div class={["tu-tabs__header"]}>
+      <div class={["tu-tabs__header", `is-${tabPosition}`]}>
+        {newButton}
         <tab-nav {...navProps}></tab-nav>
       </div>
     );
 
     const panels = <div class="tu-tabs__content">{this.$slots.default}</div>;
 
-    return <div class={{ "tu-tabs": true }}>{[header, panels]}</div>;
+    return (
+      <div
+        class={{
+          "tu-tabs": true,
+          "tu-tabs--line": type === "line",
+          "tu-tabs--card": type === "card",
+          "tu-tabs--border-card": type === "border-card",
+          [`tu-tabs--${tabPosition}`]: true,
+        }}
+      >
+        {tabPosition !== "bottom" ? [header, panels] : [panels, header]}
+      </div>
+    );
   },
 };
 </script>
