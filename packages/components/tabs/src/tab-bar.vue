@@ -12,6 +12,7 @@ export default {
 
   props: {
     tabs: Array,
+    type: String,
   },
 
   inject: ["rootTabs"],
@@ -69,5 +70,9 @@ export default {
       },
     },
   },
+
+  mounted() {},
+
+  methods: {},
 };
 </script>

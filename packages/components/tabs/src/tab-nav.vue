@@ -338,7 +338,7 @@ export default {
             role="tablist"
             on-keydown={changeTab}
           >
-            {!type ? <tab-bar tabs={panes}></tab-bar> : null}
+            {!type ? <tab-bar tabs={panes} type={type}></tab-bar> : null}
             {tabs}
           </div>
         </div>

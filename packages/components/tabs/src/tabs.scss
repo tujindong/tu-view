@@ -4,22 +4,17 @@
     @include e(header) {
         padding: 0;
         position: relative;
-        // margin: 0 0 15px;
-
 
         @include e(nav-wrap) {
-            overflow: hidden;
             position: relative;
 
             @include e(nav-scroll) {
+                overflow: hidden;
 
                 @include e(nav) {
                     white-space: nowrap;
                     position: relative;
-                    float: left;
                     z-index: #{$--index-normal + 1};
-
-                    @include e(active-bar) {}
 
                     @include e(item) {
                         padding: 0 20px;
@@ -50,7 +45,7 @@
     }
 
     @include e(content) {
-        padding-top: 15px;
+        padding: 16px;
         overflow: hidden;
         position: relative;
         color: $--tab-font-color;
@@ -110,9 +105,9 @@
 
                         @include e(active-bar) {
                             position: absolute;
-                            bottom: 11%;
+                            bottom: 3px;
                             left: -10px;
-                            height: 82%;
+                            height: 34px;
                             padding: 0 10px;
                             z-index: 1;
                             transition: transform .3s cubic-bezier(.645, .045, .355, 1);
@@ -127,9 +122,10 @@
     }
 
     @include m(border-card) {
-        box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
 
         @include e(header) {
+            // box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+            box-shadow: -2px -2px 5px $--color-white;
 
             @include e(nav-wrap) {
 
@@ -139,9 +135,9 @@
 
                         @include e(active-bar) {
                             position: absolute;
-                            bottom: -2px;
+                            bottom: 3px;
                             left: -10px;
-                            height: 90%;
+                            height: 34px;
                             padding: 0 10px;
                             z-index: 1;
                             transition: transform .3s cubic-bezier(.645, .045, .355, 1);
@@ -156,6 +152,65 @@
 
         @include e(content) {
             box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+        }
+    }
+
+    @include m((left, right)) {
+        overflow: hidden;
+
+        .tu-tabs__header.is-left,
+        .tu-tabs__header.is-right,
+        .tu-tabs__nav-wrap.is-left,
+        .tu-tabs__nav-wrap.is-right,
+        .tu-tabs__nav-scroll {
+            height: 100%;
+        }
+
+        .tu-tabs__nav-wrap.is-left,
+        .tu-tabs__nav-wrap.is-right {
+            margin-bottom: 0;
+
+            &::after {
+                height: 100%;
+                bottom: auto;
+                width: 1px;
+                top: 0;
+            }
+        }
+
+        .tu-tabs__active-bar.is-left,
+        .tu-tabs__active-bar.is-right {
+            top: 0;
+            bottom: auto;
+            width: 2px;
+            height: auto;
+            box-shadow: 2px 2px 2px $--color-white;
+        }
+
+        .tu-tabs__item.is-left,
+        .tu-tabs__item.is-right {
+            display: block;
+        }
+    }
+
+    @include m(left) {
+        .tu-tabs__header.is-left {
+            float: left;
+            margin-bottom: 0;
+            margin-right: 10px;
+        }
+
+        .tu-tabs__nav-wrap.is-left {
+            margin-right: -1px;
+
+            &::after {
+                left: auto;
+                right: 0;
+            }
+        }
+
+        .tu-tabs__item.is-left {
+            text-align: right;
         }
     }
 }
