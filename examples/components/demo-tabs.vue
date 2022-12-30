@@ -43,6 +43,30 @@
       <tu-tab-pane label="角色管理">角色管理</tu-tab-pane>
       <tu-tab-pane label="定时任务补偿">定时任务补偿</tu-tab-pane>
     </tu-tabs>
+
+    <br />
+    <p>border</p>
+
+    <tu-tabs type="card" :tab-position="tabPosition" style="height: 200px">
+      <tu-tab-pane label="用户管理">用户管理</tu-tab-pane>
+      <tu-tab-pane label="配置管理">配置管理</tu-tab-pane>
+      <tu-tab-pane label="角色管理">角色管理</tu-tab-pane>
+      <tu-tab-pane label="定时任务补偿">定时任务补偿</tu-tab-pane>
+    </tu-tabs>
+
+    <br />
+    <p>border-card</p>
+
+    <tu-tabs
+      type="border-card"
+      :tab-position="tabPosition"
+      style="height: 200px"
+    >
+      <tu-tab-pane label="用户管理">用户管理</tu-tab-pane>
+      <tu-tab-pane label="配置管理">配置管理</tu-tab-pane>
+      <tu-tab-pane label="角色管理">角色管理</tu-tab-pane>
+      <tu-tab-pane label="定时任务补偿">定时任务补偿</tu-tab-pane>
+    </tu-tabs>
   </div>
 </template>
 

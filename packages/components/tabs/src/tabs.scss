@@ -9,7 +9,6 @@
             position: relative;
 
             @include e(nav-scroll) {
-                overflow: hidden;
 
                 @include e(nav) {
                     white-space: nowrap;
@@ -41,11 +40,10 @@
                 }
             }
         }
-
     }
 
     @include e(content) {
-        padding: 16px;
+        padding: 12px;
         overflow: hidden;
         position: relative;
         color: $--tab-font-color;
@@ -68,27 +66,25 @@
                     background-color: rgba($--color-greyLight-2, 0.65);
                     z-index: $--index-normal;
                 }
+            }
 
-                @include e(nav-scroll) {
+            @include e(nav-scroll) {}
 
-                    @include e(nav) {
+            @include e(nav) {}
 
-                        @include e(active-bar) {
-                            position: absolute;
-                            bottom: 2px;
-                            left: 0;
-                            height: 2px;
-                            z-index: 1;
-                            transition: transform .3s cubic-bezier(.645, .045, .355, 1);
-                            list-style: none;
-                            border-radius: 50%;
-                            box-shadow: 3px 1px 2px $--color-greyLight-2,
-                                -2px -2px 3px $--color-white,
-                                inset 3px 3px 2px $--color-greyLight-2,
-                                inset -2px -2px 2px $--color-white;
-                        }
-                    }
-                }
+            @include e(active-bar) {
+                position: absolute;
+                bottom: 2px;
+                left: 0;
+                height: 2px;
+                z-index: 1;
+                transition: transform .3s cubic-bezier(.645, .045, .355, 1);
+                list-style: none;
+                border-radius: 50%;
+                box-shadow: 3px 1px 2px $--color-greyLight-2,
+                    -2px -2px 3px $--color-white,
+                    inset 3px 3px 2px $--color-greyLight-2,
+                    inset -2px -2px 2px $--color-white;
             }
         }
     }
@@ -97,26 +93,23 @@
         @include e(header) {
             box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
 
-            @include e(nav-wrap) {
+            @include e(nav-wrap) {}
 
-                @include e(nav-scroll) {
+            @include e(nav-scroll) {}
 
-                    @include e(nav) {
+            @include e(nav) {}
 
-                        @include e(active-bar) {
-                            position: absolute;
-                            bottom: 3px;
-                            left: -10px;
-                            height: 34px;
-                            padding: 0 10px;
-                            z-index: 1;
-                            transition: transform .3s cubic-bezier(.645, .045, .355, 1);
-                            list-style: none;
-                            box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
-                            border-radius: 6px;
-                        }
-                    }
-                }
+            @include e(active-bar) {
+                position: absolute;
+                bottom: 3px;
+                left: -10px;
+                height: 34px;
+                padding: 0 10px;
+                z-index: 1;
+                transition: transform .3s cubic-bezier(.645, .045, .355, 1);
+                list-style: none;
+                box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+                border-radius: 6px;
             }
         }
     }
@@ -124,29 +117,25 @@
     @include m(border-card) {
 
         @include e(header) {
-            // box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
-            box-shadow: -2px -2px 5px $--color-white;
+            box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
 
-            @include e(nav-wrap) {
+            @include e(nav-wrap) {}
 
-                @include e(nav-scroll) {
+            @include e(nav-scroll) {}
 
-                    @include e(nav) {
+            @include e(nav) {}
 
-                        @include e(active-bar) {
-                            position: absolute;
-                            bottom: 3px;
-                            left: -10px;
-                            height: 34px;
-                            padding: 0 10px;
-                            z-index: 1;
-                            transition: transform .3s cubic-bezier(.645, .045, .355, 1);
-                            list-style: none;
-                            box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
-                            border-radius: 6px;
-                        }
-                    }
-                }
+            @include e(active-bar) {
+                position: absolute;
+                bottom: 3px;
+                left: -10px;
+                height: 34px;
+                padding: 0 10px;
+                z-index: 1;
+                transition: transform .3s cubic-bezier(.645, .045, .355, 1);
+                list-style: none;
+                box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+                border-radius: 6px;
             }
         }
 
@@ -156,7 +145,6 @@
     }
 
     @include m((left, right)) {
-        overflow: hidden;
 
         .tu-tabs__header.is-left,
         .tu-tabs__header.is-right,
@@ -184,12 +172,38 @@
             bottom: auto;
             width: 2px;
             height: auto;
-            box-shadow: 2px 2px 2px $--color-white;
         }
 
         .tu-tabs__item.is-left,
         .tu-tabs__item.is-right {
             display: block;
+        }
+
+        &.tu-tabs--line {
+
+            .tu-tabs__active-bar.is-left,
+            .tu-tabs__active-bar.is-right {
+                box-shadow: 2px 1px 3px $--color-greyLight-2,
+                    -2px -2px 3px $--color-white,
+                    inset 3px 3px 2px $--color-greyLight-2,
+                    inset -2px -2px 2px $--color-white;
+            }
+        }
+
+        &.tu-tabs--card,
+        &.tu-tabs--border-card {
+
+            .tu-tabs__active-bar.is-left,
+            .tu-tabs__active-bar.is-right {
+                width: calc(100% - 6px);
+                padding: 0;
+                left: 3px;
+            }
+
+            .tu-tabs__content {
+                height: 100%;
+                box-sizing: border-box;
+            }
         }
     }
 
@@ -197,7 +211,6 @@
         .tu-tabs__header.is-left {
             float: left;
             margin-bottom: 0;
-            margin-right: 10px;
         }
 
         .tu-tabs__nav-wrap.is-left {
@@ -209,8 +222,33 @@
             }
         }
 
+        .tu-tabs__active-bar.is-left {
+            right: -1px;
+            left: auto;
+        }
+
         .tu-tabs__item.is-left {
             text-align: right;
+        }
+    }
+
+    @include m(right) {
+        .tu-tabs__header.is-right {
+            float: right;
+            margin-bottom: 0;
+        }
+
+        .tu-tabs__nav-wrap.is-right {
+            margin-left: -1px;
+
+            &::after {
+                left: 0;
+                right: auto;
+            }
+        }
+
+        .tu-tabs__active-bar.is-right {
+            left: 0px;
         }
     }
 }
