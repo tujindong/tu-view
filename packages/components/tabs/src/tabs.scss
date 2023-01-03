@@ -38,6 +38,8 @@
                         }
                     }
                 }
+
+                @include e(active-bar) {}
             }
         }
     }
@@ -78,7 +80,7 @@
                 left: 0;
                 height: 2px;
                 z-index: 1;
-                transition: transform .3s cubic-bezier(.645, .045, .355, 1);
+                transition: all .3s cubic-bezier(.645, .045, .355, 1);
                 list-style: none;
                 border-radius: 50%;
                 box-shadow: 3px 1px 2px $--color-greyLight-2,
@@ -106,7 +108,7 @@
                 height: 34px;
                 padding: 0 10px;
                 z-index: 1;
-                transition: transform .3s cubic-bezier(.645, .045, .355, 1);
+                transition: all .3s cubic-bezier(.645, .045, .355, 1);
                 list-style: none;
                 box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
                 border-radius: 6px;
@@ -132,7 +134,7 @@
                 height: 34px;
                 padding: 0 10px;
                 z-index: 1;
-                transition: transform .3s cubic-bezier(.645, .045, .355, 1);
+                transition: all .3s cubic-bezier(.645, .045, .355, 1);
                 list-style: none;
                 box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
                 border-radius: 6px;

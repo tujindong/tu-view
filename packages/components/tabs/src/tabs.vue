@@ -101,6 +101,18 @@ export default {
       this.currentName = value;
       this.$emit("input", value);
     },
+
+    handleTabRemove(pane, ev) {
+      if (pane.disabled) return;
+      ev.stopPropagation();
+      this.$emit("edit", pane.name, "remove");
+      this.$emit("tab-remove", pane.name);
+    },
+
+    handleTabAdd() {
+      this.$emit("edit", null, "add");
+      this.$emit("tab-add");
+    },
   },
 
   render(h) {

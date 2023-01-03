@@ -19,10 +19,16 @@ export default {
   props: {
     panes: Array,
     currentName: String,
+    editable: Boolean,
     onTabClick: {
       type: Function,
       default: () => {},
     },
+    onTabRemove: {
+      type: Function,
+      default: () => {},
+    },
+    stretch: Boolean,
   },
 
   data() {
