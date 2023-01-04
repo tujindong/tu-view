@@ -151,6 +151,54 @@
                 border-radius: 6px;
             }
         }
+
+        >.tu-tabs__header .tu-tabs__item .tu-icon-close {
+            position: relative;
+            font-size: 12px;
+            width: 0;
+            height: 14px;
+            vertical-align: middle;
+            line-height: 15px;
+            overflow: hidden;
+            top: -1px;
+            right: -2px;
+            transform-origin: 100% 50%;
+        }
+
+        >.tu-tabs__header .tu-tabs__active-bar {
+            display: none;
+        }
+
+        >.tu-tabs__header .tu-tabs__item {
+            transition: color .3s cubic-bezier(.645, .045, .355, 1), padding .3s cubic-bezier(.645, .045, .355, 1);
+
+            &:first-child {
+                border-left: none;
+            }
+
+            &.is-closable {
+                &:hover {
+                    padding-left: 13px;
+                    padding-right: 13px;
+
+                    & .tu-icon-close {
+                        width: 14px;
+                    }
+                }
+            }
+
+            &.is-active {
+
+                &.is-closable {
+                    padding-left: 20px;
+                    padding-right: 20px;
+
+                    .tu-icon-close {
+                        width: 14px;
+                    }
+                }
+            }
+        }
     }
 
     @include m(border-card) {
