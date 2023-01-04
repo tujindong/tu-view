@@ -6,6 +6,7 @@
         position: relative;
 
         @include e(nav-wrap) {
+            overflow: hidden;
             position: relative;
 
             @include e(nav-scroll) {
@@ -28,6 +29,24 @@
                         transition: all .3s;
                         color: $--color-greyDark;
 
+                        &:focus,
+                        &:focus:active {
+                            outline: none;
+                        }
+
+                        & .tu-icon-close {
+                            border-radius: 50%;
+                            text-align: center;
+                            transition: all .3s cubic-bezier(.645, .045, .355, 1);
+                            margin-left: 5px;
+                            color: $--color-greyLight-3;
+                            font-size: 12px;
+
+                            &:hover {
+                                color: $--color-greyDark;
+                            }
+                        }
+
                         &:hover {
                             cursor: pointer;
                             color: $--tab-header-color-active;
@@ -40,6 +59,24 @@
                 }
 
                 @include e(active-bar) {}
+            }
+        }
+
+        @include e(new-tab) {
+            float: right;
+            height: 16px;
+            width: 16px;
+            line-height: 16px;
+            border-radius: 3px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all .15s;
+            color: $--color-greyDark;
+            margin: 12px;
+
+            &:hover {
+                color: $--color-primary;
             }
         }
     }
@@ -185,7 +222,7 @@
 
             .tu-tabs__active-bar.is-left,
             .tu-tabs__active-bar.is-right {
-                box-shadow: 2px 1px 3px $--color-greyLight-2,
+                box-shadow: 2px 2px 3px $--color-greyLight-2,
                     -2px -2px 3px $--color-white,
                     inset 3px 3px 2px $--color-greyLight-2,
                     inset -2px -2px 2px $--color-white;
@@ -220,12 +257,12 @@
 
             &::after {
                 left: auto;
-                right: 0;
+                right: 2px;
             }
         }
 
         .tu-tabs__active-bar.is-left {
-            right: -1px;
+            right: 1px;
             left: auto;
         }
 

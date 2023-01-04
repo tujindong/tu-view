@@ -82,12 +82,7 @@
 
     <br />
     <p>动态增减标签页</p>
-    <tu-tabs
-      v-model="editableTabsValue"
-      type="card"
-      editable
-      @edit="handleTabsEdit"
-    >
+    <tu-tabs v-model="editableTabsValue" editable @edit="handleTabsEdit">
       <tu-tab-pane
         :key="item.name"
         v-for="(item, index) in editableTabs"

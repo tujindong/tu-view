@@ -141,7 +141,7 @@ export default {
             }
           }}
         >
-          <i class="tu-icon-plus"></i>
+          <i class="tu-icon-plus-circle"></i>
         </span>
       ) : null;
 
