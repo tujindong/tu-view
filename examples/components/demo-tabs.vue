@@ -2,7 +2,7 @@
   <div class="demo-wrapper">
     <h2>Tabs</h2>
     <br />
-    <p>基本配置</p>
+    <!-- <p>基本配置</p>
     <tu-tabs v-model="activeName" @tab-click="handleClick">
       <tu-tab-pane label="用户管理" name="first">用户管理</tu-tab-pane>
       <tu-tab-pane label="配置管理" name="second">配置管理</tu-tab-pane>
@@ -78,10 +78,21 @@
       <tu-tab-pane label="消息中心">消息中心</tu-tab-pane>
       <tu-tab-pane label="角色管理">角色管理</tu-tab-pane>
       <tu-tab-pane label="定时任务补偿">定时任务补偿</tu-tab-pane>
-    </tu-tabs>
+    </tu-tabs> -->
 
     <br />
     <p>动态增减标签页</p>
+    <tu-tabs v-model="editableTabsValue" editable @edit="handleTabsEdit">
+      <tu-tab-pane
+        :key="item.name"
+        v-for="(item, index) in editableTabs"
+        :label="item.title"
+        :name="item.name"
+      >
+        {{ item.content }}
+      </tu-tab-pane>
+    </tu-tabs>
+    <br />
     <tu-tabs
       type="card"
       v-model="editableTabsValue"

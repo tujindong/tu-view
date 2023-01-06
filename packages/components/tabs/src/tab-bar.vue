@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="tabBar"
     class="tu-tabs__active-bar"
     :class="`is-${rootTabs.tabPosition}`"
     :style="barStyle"
@@ -47,6 +48,7 @@ export default {
             return true;
           } else {
             tabSize = $el[`client${firstUpperCase(sizeName)}`];
+            console.log("tabSize", tabSize, "offset", offset);
             const tabStyles = window.getComputedStyle($el);
             if (sizeName === "width" && this.tabs.length > 1) {
               tabSize -=
@@ -59,17 +61,18 @@ export default {
             return false;
           }
         });
-
         const transform = `translate${firstUpperCase(sizeDir)}(${offset}px)`;
         style[sizeName] = tabSize + "px";
+
         style.transform = transform;
         style.msTransform = transform;
         style.webkitTransform = transform;
-
         return style;
       },
     },
   },
+
+  watch: {},
 
   mounted() {},
 
