@@ -49,6 +49,13 @@ module.exports = {
                     ]
                 },
                 {
+                    title: '导航组件',
+                    collapsable: false,
+                    children: [
+                        ['../guide/Tabs.md', 'Tabs 标签页'],
+                    ]
+                },
+                {
                     title: '其他组件',
                     collapsable: false,
                     children: [

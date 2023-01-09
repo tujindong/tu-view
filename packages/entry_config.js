@@ -101,5 +101,9 @@ module.exports = {
             name: 'scrollbar',
             author: 'tujindong'
         },
+        {
+            name: 'rate',
+            author: 'tujindong'
+        },
     ]
 }

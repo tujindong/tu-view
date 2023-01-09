@@ -2,31 +2,43 @@
   <div class="demo-wrapper">
     <h2>Tabs</h2>
     <br />
-    <!-- <p>基本配置</p>
+    <p>基本配置</p>
+    <tu-tabs type="card" v-model="activeName" @tab-click="handleClick">
+      <tu-tab-pane label="用户管理" name="first">用户管理</tu-tab-pane>
+      <tu-tab-pane label="配置管理" name="second">配置管理</tu-tab-pane>
+      <tu-tab-pane label="角色管理" name="third">角色管理</tu-tab-pane>
+      <tu-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</tu-tab-pane>
+      <tu-tab-pane label="呼入管理" name="five">呼入管理</tu-tab-pane>
+      <tu-tab-pane label="呼出管理" name="six">呼出管理</tu-tab-pane>
+    </tu-tabs>
+
+    <p>基本配置</p>
     <tu-tabs v-model="activeName" @tab-click="handleClick">
       <tu-tab-pane label="用户管理" name="first">用户管理</tu-tab-pane>
       <tu-tab-pane label="配置管理" name="second">配置管理</tu-tab-pane>
       <tu-tab-pane label="角色管理" name="third">角色管理</tu-tab-pane>
       <tu-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</tu-tab-pane>
+      <tu-tab-pane label="呼入管理" name="five">呼入管理</tu-tab-pane>
+      <tu-tab-pane label="呼出管理" name="six">呼出管理</tu-tab-pane>
     </tu-tabs>
 
-    <br />
+    <!-- <br />
     <p>卡片</p>
     <tu-tabs v-model="activeName1" type="card">
       <tu-tab-pane label="用户管理" name="first">用户管理</tu-tab-pane>
       <tu-tab-pane label="配置管理" name="second">配置管理</tu-tab-pane>
       <tu-tab-pane label="角色管理" name="third">角色管理</tu-tab-pane>
       <tu-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</tu-tab-pane>
-    </tu-tabs>
+    </tu-tabs> -->
 
-    <br />
+    <!-- <br />
     <p>边框卡片</p>
     <tu-tabs v-model="activeName2" type="border-card">
       <tu-tab-pane label="用户管理" name="first">用户管理</tu-tab-pane>
       <tu-tab-pane label="配置管理" name="second">配置管理</tu-tab-pane>
       <tu-tab-pane label="角色管理" name="third">角色管理</tu-tab-pane>
       <tu-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</tu-tab-pane>
-    </tu-tabs>
+    </tu-tabs> -->
 
     <br />
     <p>位置</p>
@@ -68,7 +80,7 @@
       <tu-tab-pane label="定时任务补偿">定时任务补偿</tu-tab-pane>
     </tu-tabs>
 
-    <br />
+    <!-- <br />
     <p>自定义标签页</p>
     <tu-tabs type="card">
       <tu-tab-pane>
@@ -80,7 +92,7 @@
       <tu-tab-pane label="定时任务补偿">定时任务补偿</tu-tab-pane>
     </tu-tabs> -->
 
-    <br />
+    <!-- <br />
     <p>动态增减标签页</p>
     <tu-tabs v-model="editableTabsValue" editable @edit="handleTabsEdit">
       <tu-tab-pane
@@ -91,8 +103,9 @@
       >
         {{ item.content }}
       </tu-tab-pane>
-    </tu-tabs>
-    <br />
+    </tu-tabs> -->
+
+    <!-- <br />
     <tu-tabs
       type="card"
       v-model="editableTabsValue"
@@ -107,7 +120,30 @@
       >
         {{ item.content }}
       </tu-tab-pane>
-    </tu-tabs>
+    </tu-tabs> -->
+
+    <!-- <br />
+    <p>自定义位置按钮</p>
+    <div style="margin-bottom: 20px">
+      <tu-button size="small" @click="addTab(editableTabsValue)">
+        add tab
+      </tu-button>
+    </div>
+    <tu-tabs
+      v-model="editableTabsValue"
+      type="card"
+      closable
+      @tab-remove="removeTab"
+    >
+      <tu-tab-pane
+        v-for="(item, index) in editableTabs"
+        :key="item.name"
+        :label="item.title"
+        :name="item.name"
+      >
+        {{ item.content }}
+      </tu-tab-pane>
+    </tu-tabs> -->
   </div>
 </template>
 
@@ -172,6 +208,34 @@ export default {
         this.editableTabsValue = activeName;
         this.editableTabs = tabs.filter((tab) => tab.name !== targetName);
       }
+    },
+
+    addTab(targetName) {
+      let newTabName = ++this.tabIndex + "";
+      this.editableTabs.push({
+        title: "New Tab",
+        name: newTabName,
+        content: "New Tab content",
+      });
+      this.editableTabsValue = newTabName;
+    },
+
+    removeTab(targetName) {
+      let tabs = this.editableTabs;
+      let activeName = this.editableTabsValue;
+      if (activeName === targetName) {
+        tabs.forEach((tab, index) => {
+          if (tab.name === targetName) {
+            let nextTab = tabs[index + 1] || tabs[index - 1];
+            if (nextTab) {
+              activeName = nextTab.name;
+            }
+          }
+        });
+      }
+
+      this.editableTabsValue = activeName;
+      this.editableTabs = tabs.filter((tab) => tab.name !== targetName);
     },
   },
 };

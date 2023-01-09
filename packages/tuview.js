@@ -37,6 +37,7 @@ import Progress from './components/progress'
 import Pagination from './components/pagination'
 import Tooltip from './components/tooltip'
 import Scrollbar from './components/scrollbar';
+import Rate from './components/rate';
 
 const componentsList = [
     Button,
@@ -63,7 +64,8 @@ const componentsList = [
     Progress,
     Pagination,
     Tooltip,
-    Scrollbar
+    Scrollbar,
+    Rate
 ];
 
 const install = function (Vue) {

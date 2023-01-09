@@ -1,5 +1,6 @@
 <script>
 import TabNav from "./tab-nav.vue";
+import { getBackground } from "@packages/src/utils/get-background";
 export default {
   name: "TuTabs",
 
@@ -10,6 +11,7 @@ export default {
   provide() {
     return {
       rootTabs: this,
+      background: "transparent",
     };
   },
 
@@ -62,6 +64,7 @@ export default {
 
   mounted() {
     this.calcPaneInstances();
+    this.setBackground();
   },
 
   updated() {
@@ -113,6 +116,10 @@ export default {
       this.$emit("edit", null, "add");
       this.$emit("tab-add");
     },
+
+    setBackground() {
+      this.background = getBackground(this.$refs.tabs);
+    },
   },
 
   render(h) {
@@ -127,6 +134,7 @@ export default {
       addable,
       tabPosition,
       stretch,
+      background,
     } = this;
 
     const newButton =
@@ -153,6 +161,7 @@ export default {
         type,
         panes,
         stretch,
+        background,
         onTabClick: handleTabClick,
         onTabRemove: handleTabRemove,
       },
@@ -169,6 +178,7 @@ export default {
 
     return (
       <div
+        ref="tabs"
         class={{
           "tu-tabs": true,
           "tu-tabs--line": type === "line",

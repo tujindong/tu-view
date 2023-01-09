@@ -18,7 +18,7 @@
 			return {
 				options: [
 					{
-						value: "balance",
+						value: "banana",
 						label: "香蕉",
 					},
 					{
@@ -64,7 +64,7 @@
 			return {
 				options: [
 					{
-						value: "balance",
+						value: "banana",
 						label: "香蕉",
 					},
 					{
@@ -113,7 +113,7 @@
 			return {
 				options: [
 					{
-						value: "balance",
+						value: "banana",
 						label: "香蕉",
 					},
 					{
@@ -161,7 +161,7 @@
 			return {
 				options: [
 					{
-						value: "balance",
+						value: "banana",
 						label: "香蕉",
 					},
 					{
@@ -218,7 +218,7 @@
 			return {
 				options: [
 					{
-						value: "balance",
+						value: "banana",
 						label: "香蕉",
 					},
 					{
@@ -270,7 +270,7 @@
 			return {
 				options: [
 					{
-						value: "balance",
+						value: "banana",
 						label: "香蕉",
 					},
 					{
@@ -382,7 +382,7 @@
 			return {
 				options: [
 					{
-						value: "balance",
+						value: "banana",
 						label: "香蕉",
 					},
 					{
@@ -585,7 +585,7 @@
 			return {
 				options: [
 					{
-						value: "balance",
+						value: "banana",
 						label: "香蕉",
 					},
 					{
@@ -627,7 +627,7 @@
 						label: "热带水果",
 						options: [
 							{
-								value: "balance",
+								value: "banana",
 								label: "香蕉",
 							},
 							{

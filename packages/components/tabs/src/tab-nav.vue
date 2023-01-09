@@ -20,6 +20,7 @@ export default {
     panes: Array,
     currentName: String,
     editable: Boolean,
+    background: String,
     onTabClick: {
       type: Function,
       default: () => {},
@@ -75,7 +76,7 @@ export default {
     window.removeEventListener("focus", this.windowFocusHandler);
   },
 
-  update() {
+  updated() {
     this.update();
   },
 
@@ -248,6 +249,7 @@ export default {
       changeTab,
       setFocus,
       removeFocus,
+      background,
     } = this;
 
     const scrollBtn = scrollable
@@ -255,14 +257,16 @@ export default {
           <span
             class={["tu-tabs__nav-prev", scrollable.prev ? "" : "is-disabled"]}
             on-click={scrollPrev}
+            style={{ background }}
           >
-            <i class="tu-icon-arrow-left"></i>
+            <i class="tu-icon-left"></i>
           </span>,
           <span
             class={["tu-tabs__nav-next", scrollable.next ? "" : "is-disabled"]}
             on-click={scrollNext}
+            style={{ background }}
           >
-            <i class="tu-icon-arrow-right"></i>
+            <i class="tu-icon-right"></i>
           </span>,
         ]
       : null;
@@ -327,6 +331,7 @@ export default {
           scrollable ? "is-scrollable" : "",
           `is-${this.rootTabs.tabPosition}`,
         ]}
+        ref="tabWrap"
       >
         {scrollBtn}
         <div class={["tu-tabs__nav-scroll"]} ref="navScroll">
