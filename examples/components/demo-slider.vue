@@ -1,20 +1,18 @@
 <template>
   <div class="demo-wrapper">
-    <h2>Rate</h2>
+    <h2>slider</h2>
     <br />
     <p>基本配置</p>
-    <tu-rate v-model="value1"></tu-rate>
+    <tu-slider></tu-slider>
   </div>
 </template>
 
 <script>
 export default {
-  name: "deme-rate",
+  name: "deme-tabs",
 
   data() {
-    return {
-      value1: null,
-    };
+    return {};
   },
 };
 </script>

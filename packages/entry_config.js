@@ -105,5 +105,9 @@ module.exports = {
             name: 'rate',
             author: 'tujindong'
         },
+        {
+            name: 'slider',
+            author: 'tujindong'
+        },
     ]
 }

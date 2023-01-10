@@ -18,6 +18,7 @@
     <DemoPagination />
     <DemoScrollbar />
     <DemoRate />
+    <DemoSlider />
   </div>
 </template>
 
@@ -40,6 +41,7 @@ import DemoPagination from "./components/demo-pagination.vue";
 import DemoTooltip from "./components/demo-tooltip.vue";
 import DemoScrollbar from "./components/demo-scrollbar.vue";
 import DemoRate from "./components/demo-rate.vue";
+import DemoSlider from "./components/demo-slider.vue";
 export default {
   components: {
     DemoButton,
@@ -60,6 +62,7 @@ export default {
     DemoTooltip,
     DemoScrollbar,
     DemoRate,
+    DemoSlider,
   },
 
   data() {
