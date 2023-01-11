@@ -31,7 +31,9 @@ export default {
   },
 
   computed: {
-    classes() {},
+    classes() {
+      return 2;
+    },
   },
 };
 </script>

@@ -109,5 +109,13 @@ module.exports = {
             name: 'slider',
             author: 'tujindong'
         },
+        {
+            name: 'form',
+            author: 'tujindong'
+        },
+        {
+            name: 'form-item',
+            author: 'tujindong'
+        },
     ]
 }

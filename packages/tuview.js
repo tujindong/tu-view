@@ -39,6 +39,8 @@ import Tooltip from './components/tooltip'
 import Scrollbar from './components/scrollbar';
 import Rate from './components/rate';
 import Slider from './components/slider';
+import Form from './components/form';
+import FormItem from './components/form-item';
 
 const componentsList = [
     Button,
@@ -67,7 +69,9 @@ const componentsList = [
     Tooltip,
     Scrollbar,
     Rate,
-    Slider
+    Slider,
+    Form,
+    FormItem
 ];
 
 const install = function (Vue) {

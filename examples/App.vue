@@ -19,6 +19,7 @@
     <DemoScrollbar />
     <DemoRate />
     <DemoSlider />
+    <DemoForm />
   </div>
 </template>
 
@@ -42,6 +43,7 @@ import DemoTooltip from "./components/demo-tooltip.vue";
 import DemoScrollbar from "./components/demo-scrollbar.vue";
 import DemoRate from "./components/demo-rate.vue";
 import DemoSlider from "./components/demo-slider.vue";
+import DemoForm from "./components/demo-form.vue";
 export default {
   components: {
     DemoButton,
@@ -63,6 +65,7 @@ export default {
     DemoScrollbar,
     DemoRate,
     DemoSlider,
+    DemoForm,
   },
 
   data() {
