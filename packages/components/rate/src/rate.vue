@@ -1,7 +1,7 @@
 <template>
   <div class="tu-rate">
     <span class="tu-rate__item" v-for="(item, key) in max" :key="key">
-      <i class="tu-rate__icon"></i>
+      <i :class="[classes[item - 1]]" class="tu-rate__icon"></i>
     </span>
   </div>
 </template>
@@ -21,6 +21,17 @@ export default {
       type: Number,
       default: 5,
     },
+  },
+
+  data() {
+    return {
+      currentValue: this.value,
+      hoverIndex: -1,
+    };
+  },
+
+  computed: {
+    classes() {},
   },
 };
 </script>
