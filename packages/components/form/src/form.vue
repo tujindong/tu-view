@@ -8,6 +8,14 @@
 export default {
   name: "TuForm",
 
+  componentName: "TuForm",
+
+  provide() {
+    return {
+      tuForm: this,
+    };
+  },
+
   components: {},
 
   props: {},
