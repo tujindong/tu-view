@@ -18,6 +18,11 @@ export default {
 
   components: {},
 
-  props: {},
+  props: {
+    labelSuffix: {
+      type: String,
+      default: "",
+    },
+  },
 };
 </script>

@@ -1,6 +1,8 @@
 <template>
   <div class="tu-form-item">
-    <label-wrap></label-wrap>
+    <label-wrap>
+      <slot name="label">{{ label + form.labelSuffix }}</slot>
+    </label-wrap>
     <div class="tu-form-item__content">
       <slot></slot>
     </div>
@@ -26,6 +28,24 @@ export default {
     LabelWrap,
   },
 
-  props: {},
+  props: {
+    label: String,
+  },
+
+  computed: {
+    form() {
+      let parent = this.$parent;
+      let parentName = parent.$options.componentName;
+      while (parentName !== "TuForm") {
+        if (parentName === "TuFormItem") {
+          this.isNested = true;
+        }
+        parent = parent.$parent;
+        parentName = parent.$options.componentName;
+      }
+      console.log("form~~~", parent);
+      return parent;
+    },
+  },
 };
 </script>
