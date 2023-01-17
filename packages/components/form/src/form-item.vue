@@ -43,7 +43,6 @@ export default {
         parent = parent.$parent;
         parentName = parent.$options.componentName;
       }
-      console.log("form~~~", parent);
       return parent;
     },
   },
