@@ -1,1 +1,40 @@
 @import "~@packages/style/common/mixin.scss";
+@import "~@packages/style/common/utils.scss";
+
+@include b(form) {}
+
+@include b(form-item) {
+    margin-bottom: 22px;
+    @include utils-clearfix;
+
+    @include e(label-wrap) {
+        float: left;
+
+        .tu-form-item__label {
+            display: inline-block;
+            float: none;
+        }
+    }
+
+    @include e(label) {
+        text-align: right;
+        vertical-align: middle;
+        float: left;
+        font-size: $--form-label-font-size;
+        color: $--color-greyDark;
+        line-height: 40px;
+        padding: 0 12px 0 0;
+        box-sizing: border-box;
+    }
+
+    @include e(content) {
+        line-height: 40px;
+        position: relative;
+        font-size: 14px;
+        @include utils-clearfix;
+
+        .tu-input-group {
+            vertical-align: top;
+        }
+    }
+}
