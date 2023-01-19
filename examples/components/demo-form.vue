@@ -7,8 +7,11 @@
       <tu-form-item label="活动名称" prop="name">
         <tu-input v-model="ruleForm.name"></tu-input>
       </tu-form-item>
-      <tu-form-item label="活动性别" prop="sex">
-        <tu-input v-model="ruleForm.sex"></tu-input>
+      <tu-form-item label="活动区域" prop="region">
+        <tu-select v-model="ruleForm.region" placeholder="请选择活动区域">
+          <tu-option label="区域一" value="shanghai"></tu-option>
+          <tu-option label="区域二" value="beijing"></tu-option>
+        </tu-select>
       </tu-form-item>
       <tu-form-item label="活动性质" prop="type">
         <tu-checkbox-group v-model="ruleForm.type">
@@ -38,13 +41,16 @@ export default {
     return {
       ruleForm: {
         name: "",
-        sex: "",
+        region: "",
         type: [],
       },
       rules: {
         name: [
           { required: true, message: "请输入活动名称", trigger: "blur" },
           { min: 3, max: 5, message: "长度在 3 到 5 个字符", trigger: "blur" },
+        ],
+        region: [
+          { required: true, message: "请输入地区名称", trigger: "blur" },
         ],
       },
     };

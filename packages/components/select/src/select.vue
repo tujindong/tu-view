@@ -179,6 +179,16 @@ export default {
 
   directives: { Clickoutside },
 
+  inject: {
+    tuForm: {
+      default: "",
+    },
+
+    tuFormItem: {
+      default: "",
+    },
+  },
+
   provide() {
     return {
       select: this,
@@ -329,10 +339,15 @@ export default {
 
     value(newVal, oldVal) {
       this.setSelected();
+      this.setCurrentPlaceholder();
       if (this.multiple) {
         this.adjustInputHeight();
         this.query = "";
         this.handleQueryChange(this.query);
+      }
+      if (!valueEquals(newVal, oldVal)) {
+        console.log("selectchange");
+        this.dispatch("TuFormItem", "tu.form.change", newVal);
       }
     },
   },
