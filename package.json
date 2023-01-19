@@ -68,6 +68,7 @@
         "webpack-merge": "^4.2.2"
     },
     "dependencies": {
+        "async-validator": "~1.8.1",
         "core-js": "^2.6.10",
         "resize-observer-polyfill": "^1.5.0",
         "vue": "^2.6.10",

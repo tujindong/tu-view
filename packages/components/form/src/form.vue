@@ -12,6 +12,7 @@
 
 <script>
 import objectAssign from "@packages/src/utils/merge";
+
 export default {
   name: "TuForm",
 
@@ -23,24 +24,47 @@ export default {
     };
   },
 
-  components: {},
-
   props: {
     model: Object,
     rules: Object,
     labelPosition: String,
     labelWidth: String,
-    inline: Boolean,
     labelSuffix: {
       type: String,
       default: "",
+    },
+    inline: Boolean,
+    inlineMessage: Boolean,
+    statusIcon: Boolean,
+    showMessage: {
+      type: Boolean,
+      default: true,
+    },
+    size: String,
+    disabled: Boolean,
+    validateOnRuleChange: {
+      type: Boolean,
+      default: true,
+    },
+    hideRequiredAsterisk: {
+      type: Boolean,
+      default: false,
     },
   },
 
   data() {
     return {
       fields: [],
+      potentialLabelWidthArr: [],
     };
+  },
+
+  computed: {
+    autoLabelWidth() {
+      if (!this.potentialLabelWidthArr.length) return 0;
+      const max = Math.max(...this.potentialLabelWidthArr);
+      return max ? `${max}px` : "";
+    },
   },
 
   watch: {
@@ -49,6 +73,10 @@ export default {
         field.removeValidateEvents();
         field.addValidateEvents();
       });
+
+      if (this.validateOnRuleChange) {
+        this.validate(() => {});
+      }
     },
   },
 
@@ -66,6 +94,28 @@ export default {
   },
 
   methods: {
+    getLabelWidthIndex(width) {
+      const index = this.potentialLabelWidthArr.indexOf(width);
+      if (index === -1) {
+        throw new Error("[TuForm]unpected width ", width);
+      }
+      return index;
+    },
+
+    registerLabelWidth(val, oldVal) {
+      if (val && oldVal) {
+        const index = this.getLabelWidthIndex(oldVal);
+        this.potentialLabelWidthArr.splice(index, 1, val);
+      } else if (val) {
+        this.potentialLabelWidthArr.push(val);
+      }
+    },
+
+    deregisterLabelWidth(val) {
+      const index = this.getLabelWidthIndex(val);
+      this.potentialLabelWidthArr.splice(index, 1);
+    },
+
     validate(callback) {
       if (!this.model) {
         console.warn(
@@ -87,7 +137,6 @@ export default {
         callback(true);
       }
       let invalidFields = {};
-      console.log("validate~~", this.fields);
       this.fields.forEach((field) => {
         field.validate("", (message, field) => {
           if (message) {
@@ -105,6 +154,21 @@ export default {
       if (promise) return promise;
     },
 
+    validateField(props, cb) {
+      props = [].concat(props);
+      const fields = this.fields.filter(
+        (field) => props.indexOf(field.prop) !== -1
+      );
+      if (!fields.length) {
+        console.warn("[TuView Warn]please pass correct props!");
+        return;
+      }
+
+      fields.forEach((field) => {
+        field.validate("", cb);
+      });
+    },
+
     resetFields() {
       if (!this.model) {
         console.warn(
@@ -112,6 +176,9 @@ export default {
         );
         return;
       }
+      this.fields.forEach((field) => {
+        field.resetField();
+      });
     },
 
     deregisterLabelWidth(val) {

@@ -7,8 +7,16 @@
       <tu-form-item label="活动名称" prop="name">
         <tu-input v-model="ruleForm.name"></tu-input>
       </tu-form-item>
-      <tu-form-item label="活动名称" prop="sex">
+      <tu-form-item label="活动性别" prop="sex">
         <tu-input v-model="ruleForm.sex"></tu-input>
+      </tu-form-item>
+      <tu-form-item label="活动性质" prop="type">
+        <tu-checkbox-group v-model="ruleForm.type">
+          <tu-checkbox label="美食/餐厅线上活动"></tu-checkbox>
+          <tu-checkbox label="地推活动"></tu-checkbox>
+          <tu-checkbox label="线下主题活动"></tu-checkbox>
+          <tu-checkbox label="单纯品牌曝光"></tu-checkbox>
+        </tu-checkbox-group>
       </tu-form-item>
       <tu-form-item>
         <tu-button type="primary" @click="submitForm('ruleForm')"
@@ -31,6 +39,7 @@ export default {
       ruleForm: {
         name: "",
         sex: "",
+        type: [],
       },
       rules: {
         name: [
@@ -45,7 +54,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert("submit!");
+          console.log("ruleForm", this.ruleForm);
         } else {
           console.log("error submit!!");
           return false;

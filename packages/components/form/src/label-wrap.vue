@@ -13,7 +13,14 @@ export default {
     };
   },
 
-  watch: {},
+  watch: {
+    computedWidth(val, oldVal) {
+      if (this.updateAll) {
+        this.tuForm.registerLabelWidth(val, oldVal);
+        this.tuFormItem.updateComputedLabelWidth(val);
+      }
+    },
+  },
 
   mounted() {
     this.updateLabelWidth("update");
@@ -43,17 +50,29 @@ export default {
     },
 
     getLabelWidth() {
-      console.log("获取标签宽度");
+      if (this.$el && this.$el.firstElementChild) {
+        const computedWidth = window.getComputedStyle(
+          this.$el.firstElementChild
+        ).width;
+        return Math.ceil(parseFloat(computedWidth));
+      } else {
+        return 0;
+      }
     },
   },
 
   render() {
     const slots = this.$slots.default;
     if (!slots) return null;
-    console.log("isAutoWidth~~", this.isAutoWidth);
     if (this.isAutoWidth) {
+      const autoLabelWidth = this.tuForm.autoLabelWidth;
       const style = {};
-
+      if (autoLabelWidth && autoLabelWidth !== "auto") {
+        const marginLeft = parseInt(autoLabelWidth, 10) - this.computedWidth;
+        if (marginLeft) {
+          style.marginLeft = marginLeft + "px";
+        }
+      }
       return (
         <div class="tu-form-item__label-wrap" style={style}>
           {slots}

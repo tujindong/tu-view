@@ -1,40 +1,81 @@
 @import "~@packages/style/common/mixin.scss";
 @import "~@packages/style/common/utils.scss";
 
-@include b(form) {}
+@include b(form) {
+}
 
 @include b(form-item) {
-    margin-bottom: 22px;
-    @include utils-clearfix;
+	margin-bottom: 22px;
+	@include utils-clearfix;
 
-    @include e(label-wrap) {
-        float: left;
+	@include e(label-wrap) {
+		float: left;
 
-        .tu-form-item__label {
-            display: inline-block;
-            float: none;
-        }
-    }
+		.tu-form-item__label {
+			display: inline-block;
+			float: none;
+		}
+	}
 
-    @include e(label) {
-        text-align: right;
-        vertical-align: middle;
-        float: left;
-        font-size: $--form-label-font-size;
-        color: $--color-greyDark;
-        line-height: 40px;
-        padding: 0 12px 0 0;
-        box-sizing: border-box;
-    }
+	@include e(label) {
+		text-align: right;
+		vertical-align: middle;
+		float: left;
+		font-size: $--form-label-font-size;
+		color: $--color-greyDark;
+		line-height: 40px;
+		padding: 0 12px 0 0;
+		box-sizing: border-box;
+	}
 
-    @include e(content) {
-        line-height: 40px;
-        position: relative;
-        font-size: 14px;
-        @include utils-clearfix;
+	@include e(content) {
+		line-height: 40px;
+		position: relative;
+		font-size: 14px;
+		@include utils-clearfix;
 
-        .tu-input-group {
-            vertical-align: top;
-        }
-    }
+		.tu-input-group {
+			vertical-align: top;
+		}
+	}
+
+	@include e(error) {
+		color: $--color-danger;
+		font-size: 12px;
+		line-height: 1;
+		padding-top: 4px;
+		position: absolute;
+		top: 100%;
+		left: 0;
+
+		@include m(inline) {
+			position: relative;
+			top: auto;
+			left: auto;
+			display: inline-block;
+			margin-left: 10px;
+		}
+	}
+
+	@include when(required) {
+		@include pseudo("not(.is-no-asterisk)") {
+			& > .tu-form-item__label:before,
+			& .tu-form-item__label-wrap > .tu-form-item__label:before {
+				content: "*";
+				color: $--color-danger;
+				margin-right: 4px;
+			}
+		}
+	}
+
+	@include when(error) {
+		.tu-input__inner,
+		.tu-textarea__inner {
+			position: relative;
+			&,
+			&:focus {
+				box-shadow: inset 2px 2px 5px mix($--color-greyLight-2, $--color-danger, 50%), inset -2px -2px 5px $--color-white;
+			}
+		}
+	}
 }

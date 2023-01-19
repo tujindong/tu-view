@@ -13,6 +13,12 @@ export default {
 
   mixins: [Emitter],
 
+  inject: {
+    tuFormItem: {
+      default: "",
+    },
+  },
+
   props: {
     value: {},
     size: String,
@@ -28,7 +34,11 @@ export default {
     },
   },
 
-  watch: {},
+  watch: {
+    value(value) {
+      this.dispatch("TuFormItem", "tu.form.change", [value]);
+    },
+  },
 };
 </script>
 

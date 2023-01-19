@@ -75,10 +75,13 @@
 </template>
 
 <script>
+import emitter from "@packages/src/mixins/emitter";
 export default {
   name: "TuInput",
 
   componentName: "TuInput",
+
+  mixins: [emitter],
 
   inheritAttrs: false,
 
@@ -106,6 +109,10 @@ export default {
     showWordLimit: {
       type: Boolean,
       default: false,
+    },
+    validateEvent: {
+      type: Boolean,
+      default: true,
     },
   },
 
@@ -172,6 +179,11 @@ export default {
     nativeInputValue() {
       this.setNativeInputValue();
     },
+    value(val) {
+      if (this.validateEvent) {
+        this.dispatch("TuFormItem", "tu.form.change", val);
+      }
+    },
   },
 
   mounted() {
@@ -225,6 +237,9 @@ export default {
     handleBlur(evt) {
       this.focused = false;
       this.$emit("blur", evt);
+      if (this.validateEvent) {
+        this.dispatch("TuFormItem", "tu.form.blur", this.value);
+      }
     },
 
     handleClear() {

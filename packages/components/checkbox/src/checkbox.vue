@@ -45,6 +45,15 @@ export default {
 
   mixins: [Emitter],
 
+  inject: {
+    tuForm: {
+      default: "",
+    },
+    tuFormItem: {
+      default: "",
+    },
+  },
+
   props: {
     value: {},
     label: {},
@@ -132,7 +141,11 @@ export default {
     },
   },
 
-  watch: {},
+  watch: {
+    value(value) {
+      this.dispatch("TuFormItem", "tu.form.change", value);
+    },
+  },
 
   created() {
     this.checked && this.addToModel();
@@ -165,19 +178,19 @@ export default {
     },
 
     handleChange(evt) {
+      if (this.isLimitExceeded) return;
       let value;
       if (evt.target.checked) {
         value = true;
       } else {
         value = false;
       }
+      this.$emit("change", value, evt);
       this.$nextTick(() => {
         if (this.isGroup) {
           this.dispatch("TuCheckboxGroup", "change", [
             this._checkboxGroup.value,
           ]);
-        } else {
-          this.$emit("change", value, evt);
         }
       });
     },
