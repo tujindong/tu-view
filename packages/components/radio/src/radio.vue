@@ -46,6 +46,16 @@ export default {
 
   mixins: [Emitter],
 
+  inject: {
+    tuForm: {
+      default: "",
+    },
+
+    tuFormItem: {
+      default: "",
+    },
+  },
+
   props: {
     value: {},
     label: {},
@@ -108,11 +118,14 @@ export default {
         ? -1
         : 0;
     },
+
+    tuFormItemSize() {
+      return (this.tuFormItem || {}).tuFormItemSize;
+    },
   },
 
   methods: {
     handleChange(e) {
-      //   const value = e.target.value;
       this.$nextTick(() => {
         this.$emit("change", this.model);
         //按钮组情况

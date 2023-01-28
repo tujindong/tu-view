@@ -135,7 +135,6 @@ export default {
       if (labelWidth) {
         ret.width = labelWidth;
       }
-      console.log("labelStyle", ret);
       return ret;
     },
 

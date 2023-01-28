@@ -2,324 +2,311 @@
 @import "~@packages/style/common/animation.scss";
 
 @mixin buttonFilled($color-light, $color-normal, $color-dark) {
-    transition: 0.1s ease;
-    background: $color-normal;
-    box-shadow: inset 2px 2px 10px $color-light,
-        inset -2px -2px 10px $color-dark,
-        3px 3px 6px $--color-greyLight-2,
-        -2px -2px 5px $--color-white;
-    color: $--button-font-color;
+	transition: 0.1s ease;
+	background: $color-normal;
+	box-shadow: inset 2px 2px 10px $color-light, inset -2px -2px 10px $color-dark, 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+	color: $--button-font-color;
 
-    &:hover {
-        color: $--color-white;
-    }
+	&:hover {
+		color: $--color-white;
+	}
 
-    &:active {
-        box-shadow: inset 2px 2px 10px $color-dark, inset -2px -2px 10px $color-light;
-    }
+	&:active {
+		box-shadow: inset 2px 2px 10px $color-dark, inset -2px -2px 10px $color-light;
+	}
 
-    @include when(disabled) {
-        cursor: not-allowed;
-        position: relative;
+	@include when(disabled) {
+		cursor: not-allowed;
+		position: relative;
 
-        &,
-        &:hover,
-        &:focus,
-        &:active {
-            background: $color-normal;
-            box-shadow: inset 2px 2px 10px $color-light,
-                inset -2px -2px 10px $color-dark,
-                3px 3px 6px $--color-greyLight-2,
-                -2px -2px 5px $--color-white;
-            color: $--button-font-color;
+		&,
+		&:hover,
+		&:focus,
+		&:active {
+			background: $color-normal;
+			box-shadow: inset 2px 2px 10px $color-light, inset -2px -2px 10px $color-dark, 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+			color: $--button-font-color;
 
-            &::before {
-                content: ' ';
-                display: block;
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                background: rgba(255, 255, 255, 0.3);
-            }
-        }
-    }
+			&::before {
+				content: " ";
+				display: block;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: rgba(255, 255, 255, 0.3);
+			}
+		}
+	}
 
-    @include when(loading) {
-        position: relative;
-        pointer-events: none;
+	@include when(loading) {
+		position: relative;
+		pointer-events: none;
 
-        &,
-        &:hover,
-        &:focus,
-        &:active {
-            background: $color-normal;
-            box-shadow: inset 2px 2px 10px $color-light,
-                inset -2px -2px 10px $color-dark,
-                3px 3px 6px $--color-greyLight-2,
-                -2px -2px 5px $--color-white;
-            color: $--button-font-color;
+		&,
+		&:hover,
+		&:focus,
+		&:active {
+			background: $color-normal;
+			box-shadow: inset 2px 2px 10px $color-light, inset -2px -2px 10px $color-dark, 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+			color: $--button-font-color;
 
-            &::before {
-                content: ' ';
-                display: block;
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                background: rgba(255, 255, 255, 0.3);
-            }
-        }
-    }
+			&::before {
+				content: " ";
+				display: block;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: rgba(255, 255, 255, 0.3);
+			}
+		}
+	}
 }
 
 @mixin buttonSize($padding-vertical, $padding-horizontal, $font-size) {
-    padding: $padding-vertical $padding-horizontal;
-    font-size: $font-size;
+	padding: $padding-vertical $padding-horizontal;
+	font-size: $font-size;
 }
 
-
 @include b(button) {
-    display: inline-flex;
-    align-items: center;
-    line-height: 1;
-    white-space: nowrap;
-    cursor: pointer;
-    box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
-    transition: $--all-transition;
-    padding: $--button-padding-vertical $--button-padding-horizontal;
-    font-size: $--font-size-base;
-    border-radius: $--button-border-radius;
-    border: none;
+	display: inline-flex;
+	align-items: center;
+	line-height: 1;
+	white-space: nowrap;
+	cursor: pointer;
+	box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+	transition: $--all-transition;
+	padding: $--button-padding-vertical $--button-padding-horizontal;
+	font-size: $--font-size-base;
+	border-radius: $--button-border-radius;
+	border: none;
 
-    @include when(round) {
-        border-radius: 40px;
-    }
+	@include when(round) {
+		border-radius: 40px;
+	}
 
-    @include when(circle) {
-        border-radius: 50%;
-        padding: $--button-padding-vertical;
+	@include when(circle) {
+		border-radius: 50%;
+		padding: $--button-padding-vertical;
 
-        &>i {
-            display: block;
-        }
-    }
+		& > i {
+			display: block;
+		}
+	}
 
+	@include m(default) {
+		color: $--color-greyDark;
+		background: transparent;
 
-    @include m(default) {
-        color: $--color-greyDark;
-        background: transparent;
+		&:hover {
+			color: $--color-primary;
+		}
 
-        &:hover {
-            color: $--color-primary;
-        }
+		&:active {
+			box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+		}
 
-        &:active {
-            box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
-        }
+		&.is-disabled {
+			cursor: not-allowed;
+			position: relative;
 
-        &.is-disabled {
-            cursor: not-allowed;
-            position: relative;
+			&,
+			&:hover,
+			&:focus,
+			&:active {
+				color: $--color-greyDark;
+				box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
 
-            &,
-            &:hover,
-            &:focus,
-            &:active {
-                color: $--color-greyDark;
-                box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+				&::before {
+					content: " ";
+					display: block;
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background: rgba(255, 255, 255, 0.25);
+				}
+			}
+		}
 
-                &::before {
-                    content: ' ';
-                    display: block;
-                    width: 100%;
-                    height: 100%;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    background: rgba(255, 255, 255, 0.25);
-                }
-            }
-        }
+		&.is-loading {
+			position: relative;
+			pointer-events: none;
 
-        &.is-loading {
-            position: relative;
-            pointer-events: none;
+			&,
+			&:hover,
+			&:focus,
+			&:active {
+				color: $--color-greyDark;
+				box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
 
-            &,
-            &:hover,
-            &:focus,
-            &:active {
-                color: $--color-greyDark;
-                box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+				&::before {
+					content: " ";
+					display: block;
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					background: rgba(255, 255, 255, 0.25);
+				}
+			}
+		}
+	}
 
-                &::before {
-                    content: ' ';
-                    display: block;
-                    width: 100%;
-                    height: 100%;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    background: rgba(255, 255, 255, 0.25);
-                }
-            }
-        }
-    }
+	@include m(primary) {
+		@include buttonFilled($--color-primary-light, $--color-primary, $--color-primary-dark);
+	}
 
-    @include m(primary) {
-        @include buttonFilled($--color-primary-light, $--color-primary, $--color-primary-dark);
-    }
+	@include m(success) {
+		@include buttonFilled($--color-success-light, $--color-success, $--color-success-dark);
+	}
 
-    @include m(success) {
-        @include buttonFilled($--color-success-light, $--color-success, $--color-success-dark);
-    }
+	@include m(info) {
+		@include buttonFilled($--color-info-light, $--color-info, $--color-info-dark);
+	}
 
-    @include m(info) {
-        @include buttonFilled($--color-info-light, $--color-info, $--color-info-dark);
-    }
+	@include m(warning) {
+		@include buttonFilled($--color-warning-light, $--color-warning, $--color-warning-dark);
+	}
 
-    @include m(warning) {
-        @include buttonFilled($--color-warning-light, $--color-warning, $--color-warning-dark);
-    }
+	@include m(danger) {
+		@include buttonFilled($--color-danger-light, $--color-danger, $--color-danger-dark);
+	}
 
-    @include m(danger) {
-        @include buttonFilled($--color-danger-light, $--color-danger, $--color-danger-dark);
-    }
+	@include m(small) {
+		@include buttonSize($--button-small-padding-vertical, $--button-small-padding-horizontal, $--font-size-small);
 
-    @include m(small) {
-        @include buttonSize($--button-small-padding-vertical, $--button-small-padding-horizontal, $--font-size-small);
+		@include when(circle) {
+			padding: $--button-small-padding-vertical;
+		}
+	}
 
-        @include when(circle) {
-            padding: $--button-small-padding-vertical;
-        }
-    }
+	@include m(medium) {
+		@include buttonSize($--button-padding-vertical, $--button-padding-horizontal, $--font-size-base);
+	}
 
-    @include m(medium) {
-        @include buttonSize($--button-padding-vertical, $--button-padding-horizontal, $--font-size-base);
-    }
+	@include m(large) {
+		@include buttonSize($--button-large-padding-vertical, $--button-large-padding-horizontal, $--font-size-base);
 
-    @include m(large) {
-        @include buttonSize($--button-large-padding-vertical, $--button-large-padding-horizontal, $--font-size-base);
+		@include when(circle) {
+			padding: calc(#{$--button-large-padding-vertical} - 2px);
+			font-size: $--button-large-font-size;
+		}
+	}
 
-        @include when(circle) {
-            padding: calc(#{$--button-large-padding-vertical} - 2px);
-            font-size: $--button-large-font-size;
-        }
-    }
+	@include m(text) {
+		border-color: transparent;
+		color: $--color-primary;
+		background: transparent;
+		box-shadow: none;
 
-    @include m(text) {
-        border-color: transparent;
-        color: $--color-primary;
-        background: transparent;
-        box-shadow: none;
+		&:hover,
+		&:focus {
+			color: mix($--color-white, $--color-primary, 20%);
+			border-color: transparent;
+			background-color: transparent;
+		}
 
-        &:hover,
-        &:focus {
-            color: mix($--color-white, $--color-primary, 20%);
-            border-color: transparent;
-            background-color: transparent;
-        }
+		&:active {
+			color: mix($--color-black, $--color-primary, 10%);
+			border-color: transparent;
+			background-color: transparent;
+		}
 
-        &:active {
-            color: mix($--color-black, $--color-primary, 10%);
-            border-color: transparent;
-            background-color: transparent;
-        }
+		&.is-disabled,
+		&.is-disabled:hover,
+		&.is-disabled:focus {
+			cursor: not-allowed;
+			border-color: transparent;
+			color: $--color-greyLight-3;
+		}
+	}
 
-        &.is-disabled,
-        &.is-disabled:hover,
-        &.is-disabled:focus {
-            cursor: not-allowed;
-            border-color: transparent;
-            color: $--color-greyLight-3;
-        }
-    }
-
-    .tu-icon__loading {
-        pointer-events: none;
-        content: '';
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        animation: spin 1.0s linear infinite;
-        margin-right: 3px;
-    }
+	.tu-icon__loading {
+		pointer-events: none;
+		content: "";
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		animation: spin 1s linear infinite;
+		margin-right: 3px;
+	}
 }
 
 @include b(button-group) {
-    display: inline-block;
-    vertical-align: middle;
+	display: inline-block;
+	vertical-align: middle;
+	position: absolute;
+	margin: auto;
 
-    position: absolute;
-    margin: auto;
+	& > .tu-button {
+		float: left;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 1px;
+		transition: all 0.5s;
 
-    &>.tu-button {
-        float: left;
-        position: relative;
+		&:hover {
+		}
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 1px;
-        transition: all .5s;
+		& + .tu-button {
+			margin-left: 0;
+		}
 
-        &:hover {}
+		&.is-disabled {
+			z-index: 1;
+		}
 
-        &+.tu-button {
-            margin-left: 0;
-        }
+		&:first-child {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
 
-        &.is-disabled {
-            z-index: 1;
-        }
+		&:last-child {
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
 
-        &:first-child {
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-        }
+		&:first-child:last-child {
+			border-top-right-radius: $--button-border-radius;
+			border-bottom-right-radius: $--button-border-radius;
+			border-top-left-radius: $--button-border-radius;
+			border-bottom-left-radius: $--button-border-radius;
 
-        &:last-child {
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-        }
+			&.is-round {
+				border-radius: 20px;
+			}
 
-        &:first-child:last-child {
-            border-top-right-radius: $--button-border-radius;
-            border-bottom-right-radius: $--button-border-radius;
-            border-top-left-radius: $--button-border-radius;
-            border-bottom-left-radius: $--button-border-radius;
+			&.is-circle {
+				border-radius: 50%;
+			}
+		}
 
-            &.is-round {
-                border-radius: 20px;
-            }
+		&:not(:first-child):not(:last-child) {
+			border-radius: 0;
+		}
 
-            &.is-circle {
-                border-radius: 50%;
-            }
-        }
+		&:not(:last-child) {
+			margin-right: -1px;
+		}
 
-        &:not(:first-child):not(:last-child) {
-            border-radius: 0;
-        }
+		&:not(.is-disabled) {
+			&:hover,
+			&:focus,
+			&:active {
+				z-index: 1;
+			}
+		}
 
-        &:not(:last-child) {
-            margin-right: -1px;
-        }
-
-        &:not(.is-disabled) {
-
-            &:hover,
-            &:focus,
-            &:active {
-                z-index: 1;
-            }
-        }
-
-        @include when(active) {
-            z-index: 1;
-        }
-    }
+		@include when(active) {
+			z-index: 1;
+		}
+	}
 }

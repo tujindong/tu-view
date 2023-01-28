@@ -191,6 +191,14 @@ export default {
   },
 
   methods: {
+    focus() {
+      this.getInput().focus();
+    },
+
+    blur() {
+      this.getInput().blur();
+    },
+
     getInput() {
       return this.$refs.input;
     },

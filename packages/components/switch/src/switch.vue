@@ -72,6 +72,10 @@ export default {
       type: String,
       default: "",
     },
+    validateEvent: {
+      type: Boolean,
+      default: true,
+    },
   },
 
   data() {
@@ -87,6 +91,15 @@ export default {
     },
     isDisabled() {
       return this.disabled;
+    },
+  },
+
+  watch: {
+    checked() {
+      this.$refs.input.checked = this.checked;
+      if (this.validateEvent) {
+        this.dispatch("TuFormItem", "tu.form.change", [this.value]);
+      }
     },
   },
 

@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="tu-select"
-    v-clickoutside="handleClose"
-    @click.stop="handleDropdownToggle"
-  >
+  <div class="tu-select" v-clickoutside="handleClose" @click.stop="toggleMenu">
     <div
       class="tu-select__tags"
       v-if="multiple"
@@ -16,7 +12,7 @@
           size="small"
           :hit="selected[0].hitState"
           :closable="!isDisabled"
-          @close.stop="handleTagDelete($event, selected[0])"
+          @close="deleteTag($event, selected[0])"
           >{{ selected[0].label }}</tu-tag
         >
         <tu-tag
@@ -32,7 +28,7 @@
       <transition-group
         v-if="!collapseTags"
         name="tu-popper-in-center"
-        @after-leave="adjustInputHeight"
+        @after-leave="resetInputHeight"
       >
         <tu-tag
           v-for="item in selected"
@@ -41,7 +37,7 @@
           :hit="item.hitState"
           :key="item.value"
           :closable="!isDisabled"
-          @close.stop="handleTagDelete($event, item)"
+          @close="deleteTag($event, item)"
         >
           {{ item.label }}
         </tu-tag>
@@ -56,18 +52,21 @@
         :disabled="isDisabled"
         @focus="handleFocus"
         @blur="softFocus = false"
-        @input="(e) => debounceInput(e.target.value)"
+        @keyup="managePlaceholder"
         @keydown="resetInputState"
-        @keydown.down.stop.prevent="handleNavigate('next')"
-        @keydown.up.stop.prevent="handleNavigate('prev')"
+        @keydown.down.prevent="handleNavigate('next')"
+        @keydown.up.prevent="handleNavigate('prev')"
+        @keydown.enter.prevent="selectOption"
         @keydown.esc.stop.prevent="visible = false"
-        @keydown.delete="handlePrevTagDelete"
-        @keydown.enter.prevent="handleSelectEnter"
+        @keydown.delete="deletePrevTag"
+        @keydown.tab="visible = false"
         @compositionstart="handleComposition"
         @compositionupdate="handleComposition"
         @compositionend="handleComposition"
+        @input="debouncedQueryChange"
         :style="{
-          width: `${inputLength / inputWidth}%`,
+          'flex-grow': '1',
+          width: inputLength / (inputWidth - 32) + '%',
           'max-width': inputWidth - 42 + 'px',
         }"
       />
@@ -83,18 +82,21 @@
       :disabled="isDisabled"
       :readonly="readonly"
       :size="selectSize"
+      :validate-event="false"
+      :tabindex="multiple && filterable ? '-1' : null"
       @focus="handleFocus"
       @blur="handleBlur"
-      @input="debounceInput"
-      @mouseenter.native="inputHovering = true"
-      @mouseleave.native="inputHovering = false"
+      @input="debouncedOnInputChange"
       @keydown.native.down.stop.prevent="handleNavigate('next')"
       @keydown.native.up.stop.prevent="handleNavigate('prev')"
+      @keydown.native.enter.prevent="selectOption"
       @keydown.native.esc.stop.prevent="visible = false"
-      @keydown.native.enter.prevent="handleSelectEnter"
+      @keydown.native.tab="visible = false"
       @compositionstart="handleComposition"
       @compositionupdate="handleComposition"
       @compositionend="handleComposition"
+      @mouseenter.native="inputHovering = true"
+      @mouseleave.native="inputHovering = false"
     >
       <template slot="prefix" v-if="$slots.prefix">
         <slot name="prefix"></slot>
@@ -122,7 +124,7 @@
     <transition
       name="tu-zoom-in-top"
       @beforeEnter="handleMenuEnter"
-      @after-leave="handleMenuLeave"
+      @afterLeave="resetInputHeight"
     >
       <tu-select-dropdown
         ref="popper"
@@ -198,25 +200,34 @@ export default {
   props: {
     name: String,
     id: String,
-    multiple: Boolean,
-    disabled: Boolean,
-    clearable: Boolean,
-    filterable: Boolean,
-    remote: Boolean,
-    loading: Boolean,
-    loadingText: String,
-    noMatchText: String,
-    noDataText: String,
-    size: {
-      type: String,
-      default: "medium",
-    },
-    filterMethod: Function,
-    remoteMethod: Function,
-    collapseTags: Boolean,
     value: {
       required: true,
     },
+    autocomplete: {
+      type: String,
+      default: "off",
+    },
+    autoComplete: {
+      type: String,
+      validator(val) {
+        return true;
+      },
+    },
+    automaticDropdown: Boolean,
+    size: String,
+    disabled: Boolean,
+    clearable: Boolean,
+    filterable: Boolean,
+    allowCreate: Boolean,
+    loading: Boolean,
+    popperClass: String,
+    remote: Boolean,
+    loadingText: String,
+    noMatchText: String,
+    noDataText: String,
+    remoteMethod: Function,
+    filterMethod: Function,
+    multiple: Boolean,
     multipleLimit: {
       type: Number,
       default: 0,
@@ -225,6 +236,13 @@ export default {
       type: String,
       required: false,
     },
+    defaultFirstOption: Boolean,
+    reserveKeyword: Boolean,
+    valueKey: {
+      type: String,
+      default: "value",
+    },
+    collapseTags: Boolean,
     popperAppendToBody: {
       type: Boolean,
       default: true,
@@ -235,21 +253,26 @@ export default {
     return {
       options: [],
       cachedOptions: [],
+      createdLabel: null,
+      createdSelected: false,
       selected: this.multiple ? [] : {},
-      query: "",
-      optionsCount: 0,
-      filteredOptionsCount: 0,
+      inputLength: 20,
       inputWidth: 0,
       initialInputHeight: 0,
-      hoverIndex: -1,
-      inputLength: 20,
-      selectedLabel: "",
+      cachedPlaceHolder: "",
+      optionsCount: 0,
+      filteredOptionsCount: 0,
       visible: false,
+      softFocus: false,
+      selectedLabel: "",
+      hoverIndex: -1,
+      query: "",
+      previousQuery: null,
       inputHovering: false,
+      currentPlaceholder: "",
       menuVisibleOnFocus: false,
       isOnComposition: false,
-      softFocus: false,
-      currentPlaceholder: "",
+      isSilentBlur: false,
     };
   },
 
@@ -278,7 +301,11 @@ export default {
     },
 
     readonly() {
-      return !this.filterable || this.multiple || !this.visible;
+      return (
+        !this.filterable ||
+        this.multiple ||
+        (!isIE() && !isEdge() && !this.visible)
+      );
     },
 
     showClose() {
@@ -289,8 +316,8 @@ export default {
       );
     },
 
-    delayTime() {
-      return 0;
+    debounce() {
+      return this.remote ? 300 : 0;
     },
 
     emptyText() {
@@ -310,79 +337,206 @@ export default {
       }
       return false;
     },
+
+    showNewOption() {
+      let hasExistingOption = this.options
+        .filter((option) => !option.created)
+        .some((option) => option.currentLabel === this.query);
+      return (
+        this.filterable &&
+        this.allowCreate &&
+        this.query !== "" &&
+        !hasExistingOption
+      );
+    },
+
+    propPlaceholder() {
+      return typeof this.placeholder !== "undefined"
+        ? this.placeholder
+        : "请输入";
+    },
   },
 
   watch: {
-    visible(val) {
-      this.setSelected();
-      this.query = "";
-      if (!val) {
-        //hide
-        this.broadcast("TuSelectDropdown", "destroyPopper");
-        this.menuVisibleOnFocus = false;
-        this.inputLength = 20;
-        this.resetHoverIndex();
-      } else {
-        //show
-        this.broadcast("TuSelectDropdown", "updatePopper");
-        if (this.filterable) {
-          if (this.multiple) {
-            this.$refs.input && this.$refs.input.focus();
-          }
-          this.selectedLabel = "";
+    selectDisabled() {
+      this.$nextTick(() => {
+        this.resetInputHeight();
+      });
+    },
+
+    propPlaceholder(val) {
+      this.cachedPlaceHolder = this.currentPlaceholder = val;
+    },
+
+    value(val, oldVal) {
+      if (this.multiple) {
+        this.resetInputHeight();
+        if (
+          (val && val.length > 0) ||
+          (this.$refs.input && this.query !== "")
+        ) {
+          this.currentPlaceholder = "";
+        } else {
+          this.currentPlaceholder = this.cachedPlaceHolder;
+        }
+        if (this.filterable && !this.reserveKeyword) {
+          this.query = "";
           this.handleQueryChange(this.query);
         }
       }
-      this.setCurrentPlaceholder();
+      this.setSelected();
+      if (this.filterable && !this.multiple) {
+        this.inputLength = 20;
+      }
+      if (!valueEquals(val, oldVal)) {
+        this.dispatch("TuFormItem", "tu.form.change", val);
+      }
+    },
+
+    visible(val) {
+      if (!val) {
+        this.broadcast("TuSelectDropdown", "destroyPopper");
+        if (this.$refs.input) {
+          this.$refs.input.blur();
+        }
+        this.query = "";
+        this.previousQuery = null;
+        this.selectedLabel = "";
+        this.inputLength = 20;
+        this.menuVisibleOnFocus = false;
+        this.resetHoverIndex();
+        this.$nextTick(() => {
+          if (
+            this.$refs.input &&
+            this.$refs.input.value === "" &&
+            this.selected.length === 0
+          ) {
+            this.currentPlaceholder = this.cachedPlaceHolder;
+          }
+        });
+        if (!this.multiple) {
+          if (this.selected) {
+            if (
+              this.filterable &&
+              this.allowCreate &&
+              this.createdSelected &&
+              this.createdLabel
+            ) {
+              this.selectedLabel = this.createdLabel;
+            } else {
+              this.selectedLabel = this.selected.currentLabel;
+            }
+            if (this.filterable) this.query = this.selectedLabel;
+          }
+
+          if (this.filterable) {
+            this.currentPlaceholder = this.cachedPlaceHolder;
+          }
+        }
+      } else {
+        this.broadcast("TuSelectDropdown", "updatePopper");
+        if (this.filterable) {
+          this.query = this.remote ? "" : this.selectedLabel;
+          this.handleQueryChange(this.query);
+          if (this.multiple) {
+            this.$refs.input.focus();
+          } else {
+            if (!this.remote) {
+              this.broadcast("TuOption", "queryChange", "");
+              this.broadcast("TuOptionGroup", "queryChange");
+            }
+
+            if (this.selectedLabel) {
+              this.currentPlaceholder = this.selectedLabel;
+              this.selectedLabel = "";
+            }
+          }
+        }
+      }
       this.$emit("visible-change", val);
     },
 
-    value(newVal, oldVal) {
-      this.setSelected();
-      this.setCurrentPlaceholder();
+    options() {
+      if (this.$isServer) return;
+      this.$nextTick(() => {
+        this.broadcast("TuSelectDropdown", "updatePopper");
+      });
       if (this.multiple) {
-        this.adjustInputHeight();
-        this.query = "";
-        this.handleQueryChange(this.query);
+        this.resetInputHeight();
       }
-      if (!valueEquals(newVal, oldVal)) {
-        console.log("selectchange");
-        this.dispatch("TuFormItem", "tu.form.change", newVal);
+      let inputs = this.$el.querySelectorAll("input");
+      if ([].indexOf.call(inputs, document.activeElement) === -1) {
+        this.setSelected();
+      }
+      if (
+        this.defaultFirstOption &&
+        (this.filterable || this.remote) &&
+        this.filteredOptionsCount
+      ) {
+        this.checkDefaultFirstOption();
       }
     },
   },
 
   created() {
-    this.setCurrentPlaceholder();
+    this.cachedPlaceHolder = this.currentPlaceholder = this.propPlaceholder;
     if (this.multiple && !Array.isArray(this.value)) {
       this.$emit("input", []);
     }
     if (!this.multiple && Array.isArray(this.value)) {
       this.$emit("input", "");
     }
-    this.$on("handleOptionClick", this.handleOptionClick);
+
+    this.debouncedOnInputChange = debounce(this.debounce, () => {
+      this.onInputChange();
+    });
+
+    this.debouncedQueryChange = debounce(this.debounce, (e) => {
+      this.handleQueryChange(e.target.value);
+    });
+
+    this.$on("handleOptionClick", this.handleOptionSelect);
     this.$on("setSelected", this.setSelected);
-    this.debounceInput = debounce(this.delayTime, (evt) =>
-      this.handleQueryChange(evt)
-    );
   },
 
   mounted() {
-    this.setSelected();
-    this.setInitialInputHeight();
+    if (this.multiple && Array.isArray(this.value) && this.value.length > 0) {
+      this.currentPlaceholder = "";
+    }
     addResizeListener(this.$el, this.handleResize);
+
+    const reference = this.$refs.reference;
+    if (reference && reference.$el) {
+      const sizeMap = {
+        medium: 36,
+        small: 32,
+        mini: 28,
+      };
+      const input = reference.$el.querySelector("input");
+      this.initialInputHeight =
+        input.getBoundingClientRect().height || sizeMap[this.selectSize];
+    }
+    if (this.remote && this.multiple) {
+      this.resetInputHeight();
+    }
+    this.$nextTick(() => {
+      if (reference && reference.$el) {
+        this.inputWidth = reference.$el.getBoundingClientRect().width;
+      }
+    });
+    this.setSelected();
   },
 
   beforeDestroy() {
-    if (this.$el && this.handleResize) {
+    if (this.$el && this.handleResize)
       removeResizeListener(this.$el, this.handleResize);
-    }
   },
 
   methods: {
-    setInitialInputHeight() {
-      const input = this.$refs.reference.$el.querySelector("input");
-      this.initialInputHeight = input.getBoundingClientRect().height;
+    handleNavigate(direction) {
+      if (this.isOnComposition) return;
+
+      this.navigateOptions(direction);
     },
 
     handleComposition(event) {
@@ -390,6 +544,49 @@ export default {
       if (event.type === "compositionend") {
         this.isOnComposition = false;
         this.$nextTick((_) => this.handleQueryChange(text));
+      }
+    },
+
+    handleQueryChange(val) {
+      if (this.previousQuery === val || this.isOnComposition) return;
+      if (
+        this.previousQuery === null &&
+        (typeof this.filterMethod === "function" ||
+          typeof this.remoteMethod === "function")
+      ) {
+        this.previousQuery = val;
+        return;
+      }
+      this.previousQuery = val;
+      this.$nextTick(() => {
+        if (this.visible) this.broadcast("TuSelectDropdown", "updatePopper");
+      });
+      this.hoverIndex = -1;
+      if (this.multiple && this.filterable) {
+        this.$nextTick(() => {
+          const length = this.$refs.input.value.length * 15 + 20;
+          this.inputLength = this.collapseTags ? Math.min(50, length) : length;
+          this.managePlaceholder();
+          this.resetInputHeight();
+        });
+      }
+      if (this.remote && typeof this.remoteMethod === "function") {
+        this.hoverIndex = -1;
+        this.remoteMethod(val);
+      } else if (typeof this.filterMethod === "function") {
+        this.filterMethod(val);
+        this.broadcast("TuOptionGroup", "queryChange");
+      } else {
+        this.filteredOptionsCount = this.optionsCount;
+        this.broadcast("TuOption", "queryChange", val);
+        this.broadcast("TuOptionGroup", "queryChange");
+      }
+      if (
+        this.defaultFirstOption &&
+        (this.filterable || this.remote) &&
+        this.filteredOptionsCount
+      ) {
+        this.checkDefaultFirstOption();
       }
     },
 
@@ -405,51 +602,162 @@ export default {
       this.$refs.scrollbar && this.$refs.scrollbar.handleScroll();
     },
 
-    setCurrentPlaceholder() {
-      if (this.multiple) {
-        this.currentPlaceholder =
-          (this.value && this.value.length) || this.query
-            ? ""
-            : this.placeholder;
-      } else {
-        this.currentPlaceholder =
-          this.getSelected().selectedLabel || this.placeholder;
+    handleMenuEnter() {
+      this.$nextTick(() => this.scrollToOption(this.selected));
+    },
+
+    emitChange(val) {
+      if (!valueEquals(this.value, val)) {
+        this.$emit("change", val);
       }
     },
 
-    handleFocus(evt) {
-      if (!this.softFocus) {
-        if (!this.visible) {
-          this.menuVisibleOnFocus = true;
+    getOption(value) {
+      let option;
+      const isObject =
+        Object.prototype.toString.call(value).toLowerCase() ===
+        "[object object]";
+      const isNull =
+        Object.prototype.toString.call(value).toLowerCase() === "[object null]";
+      const isUndefined =
+        Object.prototype.toString.call(value).toLowerCase() ===
+        "[object undefined]";
+
+      for (let i = this.cachedOptions.length - 1; i >= 0; i--) {
+        const cachedOption = this.cachedOptions[i];
+        const isEqual = isObject
+          ? getValueByPath(cachedOption.value, this.valueKey) ===
+            getValueByPath(value, this.valueKey)
+          : cachedOption.value === value;
+        if (isEqual) {
+          option = cachedOption;
+          break;
         }
-        this.visible = true;
-        this.$emit("focus", evt);
+      }
+      if (option) return option;
+      const label = !isObject && !isNull && !isUndefined ? String(value) : "";
+      let newOption = {
+        value: value,
+        currentLabel: label,
+      };
+      if (this.multiple) {
+        newOption.hitState = false;
+      }
+      return newOption;
+    },
+
+    setSelected() {
+      if (!this.multiple) {
+        let option = this.getOption(this.value);
+        if (option.created) {
+          this.createdLabel = option.currentLabel;
+          this.createdSelected = true;
+        } else {
+          this.createdSelected = false;
+        }
+        this.selectedLabel = option.currentLabel;
+        this.selected = option;
+        if (this.filterable) this.query = this.selectedLabel;
+        return;
+      }
+      let result = [];
+      if (Array.isArray(this.value)) {
+        this.value.forEach((value) => {
+          result.push(this.getOption(value));
+        });
+      }
+      this.selected = result;
+      this.$nextTick(() => {
+        this.resetInputHeight();
+        this.broadcast("TuSelectDropdown", "updatePopper");
+      });
+    },
+
+    handleFocus(event) {
+      if (!this.softFocus) {
+        if (this.automaticDropdown || this.filterable) {
+          if (this.filterable && !this.visible) {
+            this.menuVisibleOnFocus = true;
+          }
+          this.visible = true;
+        }
+        this.$emit("focus", event);
       } else {
         this.softFocus = false;
       }
     },
 
-    handleBlur(evt) {
+    blur() {
+      this.visible = false;
+      this.$refs.reference.blur();
+    },
+
+    handleBlur(event) {
       setTimeout(() => {
-        this.$emit("blur", evt);
+        if (this.isSilentBlur) {
+          this.isSilentBlur = false;
+        } else {
+          this.$emit("blur", event);
+        }
       }, 50);
       this.softFocus = false;
     },
 
-    handleInputClear(evt) {
-      this.removeSelected(evt);
+    handleClearClick(event) {
+      this.deleteSelected(event);
     },
 
-    handleResize() {
-      this.inputWidth = this.$refs.reference.$el.getBoundingClientRect().width;
-      if (this.multiple) this.adjustInputHeight();
+    doDestroy() {
+      this.$refs.popper && this.$refs.popper.doDestroy();
     },
 
-    adjustInputHeight() {
+    handleClose() {
+      this.visible = false;
+    },
+
+    toggleLastOptionHitState(hit) {
+      if (!Array.isArray(this.selected)) return;
+      const option = this.selected[this.selected.length - 1];
+      if (!option) return;
+
+      if (hit === true || hit === false) {
+        option.hitState = hit;
+        return hit;
+      }
+
+      option.hitState = !option.hitState;
+      return option.hitState;
+    },
+
+    deletePrevTag(e) {
+      if (e.target.value.length <= 0 && !this.toggleLastOptionHitState()) {
+        const value = this.value.slice();
+        value.pop();
+        this.$emit("input", value);
+        this.emitChange(value);
+      }
+    },
+
+    managePlaceholder() {
+      if (this.currentPlaceholder !== "") {
+        this.currentPlaceholder = this.$refs.input.value
+          ? ""
+          : this.cachedPlaceHolder;
+      }
+    },
+
+    resetInputState(e) {
+      if (e.keyCode !== 8) this.toggleLastOptionHitState(false);
+      this.inputLength = this.$refs.input.value.length * 15 + 20;
+      this.resetInputHeight();
+    },
+
+    resetInputHeight() {
+      if (this.collapseTags && !this.filterable) return;
       this.$nextTick(() => {
         if (!this.$refs.reference) return;
-        const inputChildNodes = this.$refs.reference.$el.childNodes;
-        const input = [].filter.call(
+        let inputChildNodes = this.$refs.reference.$el.childNodes;
+        let input = [].filter.call(
           inputChildNodes,
           (item) => item.tagName === "INPUT"
         )[0];
@@ -457,27 +765,41 @@ export default {
         const tagsHeight = tags
           ? Math.round(tags.getBoundingClientRect().height)
           : 0;
-        input.style.height = `${Math.max(
-          tags && tagsHeight > this.initialInputHeight
-            ? tagsHeight + 6
-            : this.initialInputHeight
-        )}px`;
-        if (this.visible) this.broadcast("TuSelectDropdown", "updatePopper");
+        const sizeInMap = this.initialInputHeight || 40;
+        input.style.height =
+          this.selected.length === 0
+            ? sizeInMap + "px"
+            : Math.max(
+                tags ? tagsHeight + (tagsHeight > sizeInMap ? 6 : 0) : 0,
+                sizeInMap
+              ) + "px";
+        if (this.visible && this.emptyText !== false) {
+          this.broadcast("TuSelectDropdown", "updatePopper");
+        }
       });
     },
 
-    handleMenuEnter() {
-      this.$nextTick(() => this.scrollToOption(this.selected));
+    resetHoverIndex() {
+      setTimeout(() => {
+        if (!this.multiple) {
+          this.hoverIndex = this.options.indexOf(this.selected);
+        } else {
+          if (this.selected.length > 0) {
+            this.hoverIndex = Math.min.apply(
+              null,
+              this.selected.map((item) => this.options.indexOf(item))
+            );
+          } else {
+            this.hoverIndex = -1;
+          }
+        }
+      }, 300);
     },
 
-    handleMenuLeave() {
-      this.$refs.popper && this.$refs.popper.doDestroy();
-    },
-
-    handleOptionClick(option, byClick) {
+    handleOptionSelect(option, byClick) {
       if (this.multiple) {
-        const value = [...this.value];
-        const optionIndex = value.findIndex((i) => i === option.value);
+        const value = (this.value || []).slice();
+        const optionIndex = this.getValueIndex(value, option.value);
         if (optionIndex > -1) {
           value.splice(optionIndex, 1);
         } else if (
@@ -488,12 +810,18 @@ export default {
         }
         this.$emit("input", value);
         this.emitChange(value);
+        if (option.created) {
+          this.query = "";
+          this.handleQueryChange("");
+          this.inputLength = 20;
+        }
         if (this.filterable) this.$refs.input.focus();
       } else {
         this.$emit("input", option.value);
         this.emitChange(option.value);
         this.visible = false;
       }
+      this.isSilentBlur = byClick;
       this.setSoftFocus();
       if (this.visible) return;
       this.$nextTick(() => {
@@ -503,150 +831,82 @@ export default {
 
     setSoftFocus() {
       this.softFocus = true;
-      const input = this.$refs.input;
+      const input = this.$refs.input || this.$refs.reference;
       if (input) {
         input.focus();
       }
     },
 
-    handleDropdownToggle() {
-      if (!this.isDisabled) {
+    getValueIndex(arr = [], value) {
+      const isObject =
+        Object.prototype.toString.call(value).toLowerCase() ===
+        "[object object]";
+      if (!isObject) {
+        return arr.indexOf(value);
+      } else {
+        const valueKey = this.valueKey;
+        let index = -1;
+        arr.some((item, i) => {
+          if (
+            getValueByPath(item, valueKey) === getValueByPath(value, valueKey)
+          ) {
+            index = i;
+            return true;
+          }
+          return false;
+        });
+        return index;
+      }
+    },
+
+    toggleMenu() {
+      if (!this.selectDisabled) {
         if (this.menuVisibleOnFocus) {
           this.menuVisibleOnFocus = false;
         } else {
           this.visible = !this.visible;
         }
         if (this.visible) {
-          this.$refs.reference.handleFocus();
-          this.$refs.input && this.$refs.input.focus();
+          (this.$refs.input || this.$refs.reference).focus();
         }
       }
     },
 
-    handleSelectEnter() {
+    selectOption() {
       if (!this.visible) {
-        this.handleDropdownToggle();
+        this.toggleMenu();
       } else {
         if (this.options[this.hoverIndex]) {
-          this.handleOptionClick(this.options[this.hoverIndex]);
+          this.handleOptionSelect(this.options[this.hoverIndex]);
         }
       }
     },
 
-    handlePrevTagDelete(e) {
-      if (e.target.value.length <= 0 && !this.toggleLastOptionHitState()) {
-        const value = [...this.value];
-        value.pop();
-        this.$emit("input", value);
-        this.emitChange(value);
-      }
-    },
-
-    resetInputState(e) {
-      if (e.keyCode !== 8) this.toggleLastOptionHitState(false);
-      this.inputLength = this.$refs.input.value.length * 15 + 20;
-      this.adjustInputHeight();
-    },
-
-    toggleLastOptionHitState(hit) {
-      if (!Array.isArray(this.selected)) return;
-      const lastOption = this.selected[this.selected.length - 1];
-      if (!lastOption) return;
-      if (hit === true || hit === false) {
-        lastOption.hitState = hit;
-        return hit;
-      }
-      lastOption.hitState = !lastOption.hitState;
-
-      return lastOption.hitState;
-    },
-
-    handleClose() {
-      this.visible = false;
-    },
-
-    handleNavigate(direction) {
-      if (this.isOnComposition) return;
-      this.navigateOptions(direction);
-    },
-
-    emitChange(val) {
-      if (!valueEquals(this.value, val)) {
-        this.$emit("change", val);
-      }
-    },
-
-    getSelected() {
-      const result = {
-        selected: this.multiple ? [] : {},
-        selectedLabel: "",
-      };
-      if (this.multiple) {
-        const selected = [];
-        Array.isArray(this.value) &&
-          this.value.forEach((val) => {
-            const targetOption = this.cachedOptions.find(
-              (option) => option.value === val
-            );
-            targetOption && selected.push(targetOption);
-          });
-        result.selected = selected;
-      } else {
-        const targetOption = this.options.find((i) => i.value == this.value);
-        if (targetOption) {
-          result.selected = targetOption;
-          result.selectedLabel = targetOption.label;
-        }
-      }
-      return result;
-    },
-
-    setSelected() {
-      this.selectedLabel = this.getSelected().selectedLabel;
-      this.selected = this.getSelected().selected;
-    },
-
-    removeSelected(evt) {
-      evt.stopPropagation();
+    deleteSelected(event) {
+      event.stopPropagation();
       const value = this.multiple ? [] : "";
       this.$emit("input", value);
       this.emitChange(value);
-      this.currentPlaceholder = this.placeholder;
       this.visible = false;
       this.$emit("clear");
     },
 
-    handleQueryChange(val) {
-      if (this.isOnComposition) return;
-      if (this.remote && typeof this.remoteMethod === "function") {
-        this.hoverIndex = -1;
-        this.remoteMethod(val);
-      }
-      if (typeof this.filterMethod === "function") this.filterMethod(val);
-      this.filteredOptionsCount = this.optionsCount;
-      this.query = val;
-      this.setCurrentPlaceholder();
-      this.$nextTick(() => {
-        if (this.visible) this.broadcast("TuSelectDropdown", "updatePopper");
-      });
-      this.broadcast("TuOption", "queryChange", val);
-      this.broadcast("TuOptionGroup", "queryChange");
-    },
-
-    resetHoverIndex() {
-      setTimeout(() => {
-        this.hoverIndex = this.options.indexOf(this.selected);
-      }, 300);
-    },
-
-    handleTagDelete(evt, tag) {
-      const targetIndex = this.selected.indexOf(tag);
-      if (targetIndex > -1 && !this.isDisabled) {
-        const value = [...this.value];
-        value.splice(targetIndex, 1);
+    deleteTag(event, tag) {
+      let index = this.selected.indexOf(tag);
+      if (index > -1 && !this.selectDisabled) {
+        const value = this.value.slice();
+        value.splice(index, 1);
         this.$emit("input", value);
         this.emitChange(value);
         this.$emit("remove-tag", tag.value);
+      }
+      event.stopPropagation();
+    },
+
+    onInputChange() {
+      if (this.filterable && this.query !== this.selectedLabel) {
+        this.query = this.selectedLabel;
+        this.handleQueryChange(this.query);
       }
     },
 
@@ -655,6 +915,53 @@ export default {
         this.optionsCount--;
         this.filteredOptionsCount--;
         this.options.splice(index, 1);
+      }
+    },
+
+    resetInputWidth() {
+      this.inputWidth = this.$refs.reference.$el.getBoundingClientRect().width;
+    },
+
+    handleResize() {
+      this.resetInputWidth();
+      if (this.multiple) this.resetInputHeight();
+    },
+
+    checkDefaultFirstOption() {
+      this.hoverIndex = -1;
+      let hasCreated = false;
+      for (let i = this.options.length - 1; i >= 0; i--) {
+        if (this.options[i].created) {
+          hasCreated = true;
+          this.hoverIndex = i;
+          break;
+        }
+      }
+      if (hasCreated) return;
+      for (let i = 0; i !== this.options.length; ++i) {
+        const option = this.options[i];
+        if (this.query) {
+          if (!option.disabled && !option.groupDisabled && option.visible) {
+            this.hoverIndex = i;
+            break;
+          }
+        } else {
+          if (option.itemSelected) {
+            this.hoverIndex = i;
+            break;
+          }
+        }
+      }
+    },
+
+    getValueKey(item) {
+      if (
+        Object.prototype.toString.call(item.value).toLowerCase() !==
+        "[object object]"
+      ) {
+        return item.value;
+      } else {
+        return getValueByPath(item.value, this.valueKey);
       }
     },
   },

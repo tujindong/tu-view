@@ -1,188 +1,178 @@
 @import "~@packages/style/common/mixin.scss";
 @import "~@packages/style/common/utils.scss";
 
-@mixin sizeMixin($radio-bordered-padding-vertical,
-    $radio-bordered-padding-horizontal,
-    $radio-input-width,
-    $radio-input-height,
-    $radio-font-size ) {
-    &.is-bordered {
-        padding: $radio-bordered-padding-vertical calc(#{$radio-bordered-padding-horizontal} + 6px) $radio-bordered-padding-vertical $radio-bordered-padding-horizontal;
+@mixin sizeMixin($radio-bordered-padding-vertical, $radio-bordered-padding-horizontal, $radio-input-width, $radio-input-height, $radio-font-size) {
+	&.is-bordered {
+		padding: $radio-bordered-padding-vertical calc(#{$radio-bordered-padding-horizontal} + 6px) $radio-bordered-padding-vertical $radio-bordered-padding-horizontal;
 
-        @include e(inner) {
-            width: $radio-input-width;
-            height: $radio-input-height;
-        }
+		@include e(inner) {
+			width: $radio-input-width;
+			height: $radio-input-height;
+		}
 
-        @include e(label) {
-            font-size: $radio-font-size;
-        }
-    }
+		@include e(label) {
+			font-size: $radio-font-size;
+		}
+	}
 }
 
 @include b(radio) {
-    color: $--radio-font-color;
-    font-weight: $--radio-font-weight;
-    line-height: 1;
-    position: relative;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    white-space: nowrap;
-    outline: none;
-    font-size: $--font-size-base;
-    margin-right: 30px;
-    @include utils-user-select(none);
+	color: $--radio-font-color;
+	font-weight: $--radio-font-weight;
+	position: relative;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	white-space: nowrap;
+	outline: none;
+	font-size: $--font-size-base;
+	margin-right: 30px;
+	@include utils-user-select(none);
 
-    &:hover {
-        @include e(inner) {
-            &::after {
-                background: $--color-primary;
-            }
-        }
-    }
+	&:hover {
+		@include e(inner) {
+			&::after {
+				background: $--color-primary;
+			}
+		}
+	}
 
-    @include when(bordered) {
-        display: inline-flex;
-        align-items: center;
-        padding: $--radio-bordered-padding-vertical calc(#{$--radio-bordered-padding-horizontal} + 6px) $--radio-bordered-padding-vertical $--radio-bordered-padding-horizontal;
-        color: $--color-greyDark;
-        background: transparent;
-        box-shadow: 3px 3px 6px $--color-greyLight-2,
-            -2px -2px 5px $--color-white;
-        box-sizing: border-box;
-        border-radius: $--border-radius-base;
+	@include when(bordered) {
+		display: inline-flex;
+		align-items: center;
+		padding: $--radio-bordered-padding-vertical calc(#{$--radio-bordered-padding-horizontal} + 6px) $--radio-bordered-padding-vertical $--radio-bordered-padding-horizontal;
+		color: $--color-greyDark;
+		background: transparent;
+		box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+		box-sizing: border-box;
+		border-radius: $--border-radius-base;
 
-        @include e(inner) {
-            box-shadow: none;
-        }
+		@include e(inner) {
+			box-shadow: none;
+		}
 
-        @include e(label) {
-            padding-left: 0;
-        }
+		@include e(label) {
+			padding-left: 0;
+		}
 
-        @include when(checked) {
-            box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+		@include when(checked) {
+			box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
 
-            @include e(inner) {
-                box-shadow: none;
-            }
-        }
-    }
+			@include e(inner) {
+				box-shadow: none;
+			}
+		}
+	}
 
-    @include when(disabled) {
-        cursor: not-allowed;
-        position: relative;
+	@include when(disabled) {
+		cursor: not-allowed;
+		position: relative;
 
-        @include e(inner) {
+		@include e(inner) {
+			&,
+			&:hover,
+			&:focus,
+			&:active {
+				&::after {
+					background: $--color-greyLight-3;
+				}
+			}
+		}
 
-            &,
-            &:hover,
-            &:focus,
-            &:active {
-                &::after {
-                    background: $--color-greyLight-3;
-                }
-            }
-        }
+		@include e(label) {
+			color: $--color-greyLight-3;
+		}
 
-        @include e(label) {
-            color: $--color-greyLight-3;
-        }
+		@include when(checked) {
+			@include e(inner) {
+				&::after {
+					background: mix($--color-primary, $--color-white, 60%);
+				}
+			}
+		}
+	}
 
-        @include when(checked) {
-            @include e(inner) {
-                &::after {
-                    background: mix($--color-primary, $--color-white, 60%);
-                }
-            }
-        }
-    }
+	@include when(checked) {
+		@include e(inner) {
+			box-shadow: inset 2px 2px 4px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
 
-    @include when(checked) {
-        @include e(inner) {
-            box-shadow: inset 2px 2px 4px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+			&::after {
+				background: $--color-primary;
+			}
+		}
+	}
 
-            &::after {
-                background: $--color-primary;
-            }
-        }
-    }
+	@include when(focus) {
+		@include e(inner) {
+			&::after {
+				background: $--color-primary;
+				box-shadow: 0 0 3px $--color-primary-light;
+			}
+		}
+	}
 
-    @include when(focus) {
-        @include e(inner) {
-            &::after {
-                background: $--color-primary;
-                box-shadow: 0 0 3px $--color-primary-light;
-            }
-        }
-    }
+	@include m(mini) {
+		@include sizeMixin($--radio-mini-bordered-padding-vertical, $--radio-mini-bordered-padding-horizontal, $--radio-mini-input-width, $--radio-mini-input-height, $--radio-mini-font-size);
+	}
 
-    @include m(mini) {
-        @include sizeMixin($--radio-mini-bordered-padding-vertical, $--radio-mini-bordered-padding-horizontal, $--radio-mini-input-width, $--radio-mini-input-height, $--radio-mini-font-size);
-    }
+	@include m(small) {
+		@include sizeMixin($--radio-small-bordered-padding-vertical, $--radio-small-bordered-padding-horizontal, $--radio-small-input-width, $--radio-small-input-height, $--radio-small-font-size);
+	}
 
-    @include m(small) {
-        @include sizeMixin($--radio-small-bordered-padding-vertical, $--radio-small-bordered-padding-horizontal, $--radio-small-input-width, $--radio-small-input-height, $--radio-small-font-size);
-    }
+	@include m(large) {
+		@include sizeMixin($--radio-large-bordered-padding-vertical, $--radio-large-bordered-padding-horizontal, $--radio-large-input-width, $--radio-large-input-height, $--radio-large-font-size);
+	}
 
-    @include m(large) {
-        @include sizeMixin($--radio-large-bordered-padding-vertical, $--radio-large-bordered-padding-horizontal, $--radio-large-input-width, $--radio-large-input-height, $--radio-large-font-size);
-    }
+	@include e(input) {
+		white-space: nowrap;
+		cursor: pointer;
+		outline: none;
+		display: inline-flex;
+		position: relative;
+		vertical-align: middle;
 
-    @include e(input) {
-        white-space: nowrap;
-        cursor: pointer;
-        outline: none;
-        display: inline-flex;
-        line-height: 1;
-        position: relative;
-        vertical-align: middle;
+		@include e(inner) {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			box-sizing: border-box;
+			width: $--radio-input-width;
+			height: $--radio-input-height;
+			box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+			position: relative;
+			cursor: pointer;
+			border-radius: 50%;
 
+			&::after {
+				content: "";
+				position: absolute;
+				width: 38%;
+				height: 38%;
+				background: $--color-greyDark;
+				border-radius: 50%;
+				transition: 0.3s ease;
+			}
+		}
 
+		@include e(original) {
+			opacity: 0;
+			outline: none;
+			position: absolute;
+			z-index: -1;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: 0;
+		}
+	}
 
-        @include e(inner) {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            box-sizing: border-box;
-            width: $--radio-input-width;
-            height: $--radio-input-height;
-            box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
-            position: relative;
-            cursor: pointer;
-            border-radius: 50%;
+	@include e(label) {
+		font-size: $--radio-font-size;
+		padding-left: 8px;
+	}
 
-            &::after {
-                content: "";
-                position: absolute;
-                width: 38%;
-                height: 38%;
-                background: $--color-greyDark;
-                border-radius: 50%;
-                transition: 0.3s ease;
-            }
-        }
-
-        @include e(original) {
-            opacity: 0;
-            outline: none;
-            position: absolute;
-            z-index: -1;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            margin: 0;
-        }
-    }
-
-    @include e(label) {
-        font-size: $--radio-font-size;
-        padding-left: 8px;
-    }
-
-    &:last-child {
-        margin-right: 0;
-    }
+	&:last-child {
+		margin-right: 0;
+	}
 }
