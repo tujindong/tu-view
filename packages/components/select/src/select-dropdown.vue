@@ -72,7 +72,7 @@ export default {
       if (this.$parent.visible) this.updatePopper();
     });
     this.$on("destroyPopper", this.destroyPopper);
-    this.setBackground(this.referenceElm);
+    this.setBackground();
   },
 
   methods: {

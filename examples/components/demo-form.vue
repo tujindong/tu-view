@@ -55,6 +55,7 @@ export default {
         name: "",
         region: "",
         type: [],
+        resource: "",
         delivery: false,
       },
       rules: {

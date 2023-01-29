@@ -117,5 +117,9 @@ module.exports = {
             name: 'form-item',
             author: 'tujindong'
         },
+        {
+            name: 'date-picker',
+            author: 'tujindong'
+        },
     ]
 }

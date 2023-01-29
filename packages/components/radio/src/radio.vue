@@ -124,11 +124,12 @@ export default {
     },
   },
 
+  watch: {},
+
   methods: {
     handleChange(e) {
       this.$nextTick(() => {
         this.$emit("change", this.model);
-        //按钮组情况
         this.isGroup &&
           this.dispatch("TuRadioGroup", "handleChange", this.model);
       });

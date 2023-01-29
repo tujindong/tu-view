@@ -44,8 +44,11 @@
 </template>
 
 <script>
+import Emitter from "@packages/src/mixins/emitter";
 export default {
   name: "TuSwitch",
+
+  mixins: [Emitter],
 
   props: {
     id: String,

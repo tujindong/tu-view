@@ -41,6 +41,7 @@ import Rate from './components/rate';
 import Slider from './components/slider';
 import Form from './components/form';
 import FormItem from './components/form-item';
+import DatePicker from './components/date-picker';
 
 const componentsList = [
     Button,
@@ -71,7 +72,8 @@ const componentsList = [
     Rate,
     Slider,
     Form,
-    FormItem
+    FormItem,
+    DatePicker
 ];
 
 const install = function (Vue) {
