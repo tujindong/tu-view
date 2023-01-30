@@ -1,4 +1,22 @@
-<template></template>
+<template>
+  <table
+    @click="handleMonthTableClick"
+    @mousemove="handleMouseMove"
+    class="tu-month-table"
+  >
+    <tbody>
+      <tr v-for="(row, key) in rows" :key="key">
+        <td :class="getCellStyle(cell)" v-for="(cell, key) in row" :key="key">
+          <div>
+            <a class="cell">{{
+              t("tu.datepicker.months." + months[cell.text])
+            }}</a>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</template>
 
 <script>
 import Locale from "@packages/src/mixins/locale";

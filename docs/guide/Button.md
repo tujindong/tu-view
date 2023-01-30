@@ -114,23 +114,26 @@
 
 Button 组件提供除了默认值以外的三种尺寸，可以在不同场景下选择合适的按钮尺寸。
 
-:::demo 额外的尺寸：`medium`、`small`、`mini`，通过设置`size`属性来配置它们。
+:::demo 额外的尺寸：`large`、`small`、`mini`，通过设置`size`属性来配置它们。
 
 ```html
 <tu-row>
 	<tu-button size="large">大型按钮</tu-button>
 	<tu-button>中等按钮</tu-button>
 	<tu-button size="small">小型按钮</tu-button>
+	<tu-button size="mini">迷你按钮</tu-button>
 </tu-row>
 <tu-row>
 	<tu-button size="large" round>大型按钮</tu-button>
 	<tu-button size="medium" round>中等按钮</tu-button>
 	<tu-button size="small" round>小型按钮</tu-button>
+	<tu-button size="mini" round>迷你按钮</tu-button>
 </tu-row>
 <tu-row>
 	<tu-button size="large" icon="home-fill" circle></tu-button>
 	<tu-button icon="home-fill" circle></tu-button>
 	<tu-button size="small" icon="home-fill" circle></tu-button>
+	<tu-button size="mini" icon="home-fill" circle></tu-button>
 </tu-row>
 ```
 

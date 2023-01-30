@@ -178,6 +178,14 @@
 		@include buttonFilled($--color-danger-light, $--color-danger, $--color-danger-dark);
 	}
 
+	@include m(mini) {
+		@include buttonSize($--button-mini-padding-vertical, $--button-mini-padding-horizontal, $--font-size-small);
+
+		@include when(circle) {
+			padding: $--button-mini-padding-vertical;
+		}
+	}
+
 	@include m(small) {
 		@include buttonSize($--button-small-padding-vertical, $--button-small-padding-horizontal, $--font-size-small);
 

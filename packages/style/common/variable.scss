@@ -84,6 +84,13 @@ $--border-radius-small: 2px;
 -------------------------- */
 $--button-disabled-font-color: $--color-greyDark;
 $--button-font-color: $--color-greyLight-1;
+/*迷你 mini*/
+$--button-mini-font-size: $--font-size-small;
+$--button-mini-font-weight: $--font-weight-primary;
+$--button-mini-border-radius: $--border-radius-small;
+$--button-mini-padding-vertical: 5px;
+$--button-mini-padding-horizontal: 7px;
+$--button-mini-circle-size: 28px;
 /*较小 small*/
 $--button-small-font-size: $--font-size-small;
 $--button-small-font-weight: $--font-weight-primary;

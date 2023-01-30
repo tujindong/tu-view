@@ -20,7 +20,6 @@
         <slot name="sidebar" class="tu-picker-panel__sidebar"></slot>
         <div class="tu-picker-panel__sidebar" v-if="shortcuts">
           <button
-            type="button"
             class="tu-picker-panel__shortcut"
             v-for="(shortcut, key) in shortcuts"
             :key="key"
@@ -164,6 +163,38 @@
             </month-table>
           </div>
         </div>
+      </div>
+
+      <div
+        class="tu-picker-panel__footer"
+        v-show="
+          footerVisible &&
+          (currentView === 'date' ||
+            currentView === 'month' ||
+            currentView === 'year')
+        "
+      >
+        <tu-button
+          size="mini"
+          type="text"
+          class="tu-picker-panel__link-btn"
+          @click="changeToNow"
+          v-show="
+            selectionMode !== 'dates' &&
+            selectionMode !== 'months' &&
+            selectionMode !== 'years'
+          "
+        >
+          {{ t("tu.datepicker.now") }}
+        </tu-button>
+        <tu-button
+          plain
+          size="mini"
+          class="tu-picker-panel__link-btn"
+          @click="confirm"
+        >
+          {{ t("tu.datepicker.confirm") }}
+        </tu-button>
       </div>
     </div>
   </transition>

@@ -1,0 +1,51 @@
+@include b(year-table) {
+	font-size: 12px;
+	margin: -1px;
+	border-collapse: collapse;
+
+	.tu-icon {
+		// color: $--datepicker-icon-color;
+	}
+
+	td {
+		text-align: center;
+		padding: 20px 3px;
+		cursor: pointer;
+
+		&.today {
+			.cell {
+				color: $--color-primary;
+				font-weight: bold;
+			}
+		}
+
+		&.disabled .cell {
+			// background-color: $--background-color-base;
+			cursor: not-allowed;
+			// color: $--color-text-placeholder;
+
+			&:hover {
+				// color: $--color-text-placeholder;
+			}
+		}
+
+		.cell {
+			width: 48px;
+			height: 24px;
+			display: block;
+			line-height: 24px;
+			margin: 0 auto;
+			transition: all 0.3s;
+
+			&:hover {
+				color: $--color-primary;
+			}
+		}
+
+		&.current:not(.disabled) .cell {
+			background-color: $--color-primary;
+			color: $--color-white;
+			border-radius: 2px;
+		}
+	}
+}

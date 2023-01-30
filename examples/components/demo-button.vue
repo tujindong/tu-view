@@ -11,6 +11,9 @@
     <tu-button class="demo-button" type="success">成功按钮</tu-button>
     <tu-button class="demo-button" type="warning">警告按钮</tu-button>
     <tu-button class="demo-button" type="danger">危险按钮</tu-button>
+    <tu-button class="demo-button" size="mini" type="default"
+      >迷你按钮</tu-button
+    >
     <tu-button class="demo-button" size="small" type="default"
       >小号按钮</tu-button
     >
@@ -42,6 +45,14 @@
     <tu-button
       class="demo-button"
       size="small"
+      type="default"
+      circle
+      icon="home-fill"
+    ></tu-button>
+
+    <tu-button
+      class="demo-button"
+      size="mini"
       type="default"
       circle
       icon="home-fill"
