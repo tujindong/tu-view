@@ -69,9 +69,32 @@
     <tu-date-picker
       v-model="value9"
       type="daterange"
-      range-separator="至"
       start-placeholder="开始日期"
       end-placeholder="结束日期"
+    >
+    </tu-date-picker>
+
+    <br />
+    <p>日期范围默认 - 带快捷项</p>
+
+    <tu-date-picker
+      v-model="value10"
+      type="daterange"
+      align="right"
+      unlink-panels
+      start-placeholder="开始日期"
+      end-placeholder="结束日期"
+      :picker-options="pickerOptions1"
+    >
+    </tu-date-picker>
+
+    <br />
+    <p>月份范围默认</p>
+    <tu-date-picker
+      v-model="value11"
+      type="monthrange"
+      start-placeholder="开始月份"
+      end-placeholder="结束月份"
     >
     </tu-date-picker>
   </div>
@@ -112,6 +135,37 @@ export default {
           },
         ],
       },
+      pickerOptions1: {
+        shortcuts: [
+          {
+            text: "最近一周",
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit("pick", [start, end]);
+            },
+          },
+          {
+            text: "最近一个月",
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+              picker.$emit("pick", [start, end]);
+            },
+          },
+          {
+            text: "最近三个月",
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+              picker.$emit("pick", [start, end]);
+            },
+          },
+        ],
+      },
       value1: "",
       value2: "",
       value3: "",
@@ -121,6 +175,8 @@ export default {
       value7: "",
       value8: "",
       value9: "",
+      value10: "",
+      value11: "",
     };
   },
 };

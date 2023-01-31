@@ -1,6 +1,7 @@
 <template>
   <transition name="tu-zoom-in-top" @after-leave="$emit('dodestroy')">
     <div
+      ref="dropdown"
       v-show="visible"
       class="tu-picker-panel tu-date-range-picker tu-popper"
       :class="[
@@ -114,12 +115,12 @@
               <button
                 type="button"
                 @click="leftPrevYear"
-                class="tu-picker-panel__icon-btn tu-icon-d-arrow-left"
+                class="tu-picker-panel__icon-btn tu-icon-doubleleft"
               ></button>
               <button
                 type="button"
                 @click="leftPrevMonth"
-                class="tu-picker-panel__icon-btn tu-icon-arrow-left"
+                class="tu-picker-panel__icon-btn tu-icon-left"
               ></button>
               <button
                 type="button"
@@ -127,7 +128,7 @@
                 v-if="unlinkPanels"
                 :disabled="!enableYearArrow"
                 :class="{ 'is-disabled': !enableYearArrow }"
-                class="tu-picker-panel__icon-btn tu-icon-d-arrow-right"
+                class="tu-picker-panel__icon-btn tu-icon-doubleright"
               ></button>
               <button
                 type="button"
@@ -135,7 +136,7 @@
                 v-if="unlinkPanels"
                 :disabled="!enableMonthArrow"
                 :class="{ 'is-disabled': !enableMonthArrow }"
-                class="tu-picker-panel__icon-btn tu-icon-arrow-right"
+                class="tu-picker-panel__icon-btn tu-icon-right"
               ></button>
               <div>{{ leftLabel }}</div>
             </div>
@@ -168,7 +169,7 @@
                 v-if="unlinkPanels"
                 :disabled="!enableYearArrow"
                 :class="{ 'is-disabled': !enableYearArrow }"
-                class="tu-picker-panel__icon-btn tu-icon-d-arrow-left"
+                class="tu-picker-panel__icon-btn tu-icon-doubleleft"
               ></button>
               <button
                 type="button"
@@ -176,17 +177,17 @@
                 v-if="unlinkPanels"
                 :disabled="!enableMonthArrow"
                 :class="{ 'is-disabled': !enableMonthArrow }"
-                class="tu-picker-panel__icon-btn tu-icon-arrow-left"
+                class="tu-picker-panel__icon-btn tu-icon-left"
               ></button>
               <button
                 type="button"
                 @click="rightNextYear"
-                class="tu-picker-panel__icon-btn tu-icon-d-arrow-right"
+                class="tu-picker-panel__icon-btn tu-icon-doubleright"
               ></button>
               <button
                 type="button"
                 @click="rightNextMonth"
-                class="tu-picker-panel__icon-btn tu-icon-arrow-right"
+                class="tu-picker-panel__icon-btn tu-icon-right"
               ></button>
               <div>{{ rightLabel }}</div>
             </div>
@@ -246,6 +247,7 @@ import {
   extractDateFormat,
   extractTimeFormat,
 } from "@packages/src/utils/date-util";
+import { getBackground } from "@packages/src/utils/get-background";
 import Clickoutside from "@packages/src/utils/clickoutside";
 import Locale from "@packages/src/mixins/locale";
 // import TimePicker from "./time";
@@ -808,6 +810,11 @@ export default {
         this.value && isDate(this.value[0]) ? new Date(this.value[0]) : null;
       this.maxDate =
         this.value && isDate(this.value[0]) ? new Date(this.value[1]) : null;
+    },
+
+    setBackground(el) {
+      const background = getBackground(el);
+      this.$refs.dropdown.style.background = background;
     },
   },
 };

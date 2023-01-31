@@ -44,6 +44,7 @@
 			padding: 3px 0;
 			box-sizing: border-box;
 			margin: 0 5px;
+			transition: background-color 0.3s;
 		}
 
 		& span {
@@ -55,6 +56,7 @@
 			position: absolute;
 			left: 50%;
 			transform: translateX(-50%);
+			transition: background-color 0.3s;
 		}
 
 		&.next-month,
@@ -79,10 +81,7 @@
 		}
 
 		&.in-range div {
-			// background-color: $--datepicker-inrange-background-color;
-			&:hover {
-				// background-color: $--datepicker-inrange-hover-background-color;
-			}
+			background-color: rgba($--color-greyLight-2, 0.38);
 		}
 
 		&.current:not(.disabled) span {

@@ -323,7 +323,7 @@ const parseAsFormatAndType = (
   value,
   customFormat,
   type,
-  rangeSeparator = "-"
+  rangeSeparator = "~"
 ) => {
   if (!value) return null;
   const parser = (
@@ -435,7 +435,7 @@ export default {
     defaultValue: {},
     defaultTime: {},
     rangeSeparator: {
-      default: "-",
+      default: "~",
     },
     pickerOptions: {},
     unlinkPanels: Boolean,

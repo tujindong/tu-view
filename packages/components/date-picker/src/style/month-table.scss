@@ -45,21 +45,20 @@
 			}
 		}
 
-		&.in-range div {
-			// background-color: $--datepicker-inrange-background-color;
-			&:hover {
-				// background-color: $--datepicker-inrange-hover-background-color;
-			}
+		&.in-range div .cell {
+			background-color: rgba($--color-greyLight-2, 0.38);
 		}
+
 		&.start-date div,
 		&.end-date div {
 			color: $--color-white;
+			background-color: $--color-primary;
 		}
 
 		&.start-date .cell,
 		&.end-date .cell {
 			color: $--color-white;
-			// background-color: $--datepicker-active-color;
+			background-color: $--color-primary;
 		}
 
 		&.start-date div {
