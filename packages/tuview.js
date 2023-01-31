@@ -42,6 +42,7 @@ import Slider from './components/slider';
 import Form from './components/form';
 import FormItem from './components/form-item';
 import DatePicker from './components/date-picker';
+import TimeSelect from './components/time-select';
 
 const componentsList = [
     Button,
@@ -73,7 +74,8 @@ const componentsList = [
     Slider,
     Form,
     FormItem,
-    DatePicker
+    DatePicker,
+    TimeSelect
 ];
 
 const install = function (Vue) {

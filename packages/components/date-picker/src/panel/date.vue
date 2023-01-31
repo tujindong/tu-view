@@ -5,7 +5,7 @@
     @after-leave="handleLeave"
   >
     <div
-      ref="dropdown"
+      ref="popper"
       v-show="visible"
       class="tu-picker-panel tu-date-picker tu-popper"
       :class="[
@@ -723,7 +723,7 @@ export default {
 
     setBackground(el) {
       const background = getBackground(el);
-      this.$refs.dropdown.style.background = background;
+      this.$refs.popper.style.background = background;
     },
   },
 };

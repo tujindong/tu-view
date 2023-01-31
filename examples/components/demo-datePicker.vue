@@ -97,6 +97,60 @@
       end-placeholder="结束月份"
     >
     </tu-date-picker>
+
+    <br />
+    <p>月份范围 带快捷键</p>
+    <tu-date-picker
+      v-model="value12"
+      type="monthrange"
+      align="right"
+      unlink-panels
+      start-placeholder="开始月份"
+      end-placeholder="结束月份"
+      :picker-options="pickerOptions2"
+    >
+    </tu-date-picker>
+
+    <br />
+    <p>日期格式</p>
+    <span class="demonstration">默认为 Date 对象</span>
+    <div class="demonstration">值：{{ value13 }}</div>
+    <tu-date-picker
+      v-model="value13"
+      type="date"
+      placeholder="选择日期"
+      format="yyyy 年 MM 月 dd 日"
+    >
+    </tu-date-picker>
+    <span class="demonstration">使用 value-format</span>
+    <div class="demonstration">值：{{ value14 }}</div>
+    <tu-date-picker
+      v-model="value14"
+      type="date"
+      placeholder="选择日期"
+      format="yyyy 年 MM 月 dd 日"
+      value-format="yyyy-MM-dd"
+    >
+    </tu-date-picker>
+    <span class="demonstration">时间戳</span>
+    <div class="demonstration">值：{{ value15 }}</div>
+    <tu-date-picker
+      v-model="value15"
+      type="date"
+      placeholder="选择日期"
+      format="yyyy 年 MM 月 dd 日"
+      value-format="timestamp"
+    >
+    </tu-date-picker>
+    <p>组件值：{{ value16 }}</p>
+    <tu-date-picker
+      v-model="value16"
+      type="daterange"
+      start-placeholder="开始日期"
+      end-placeholder="结束日期"
+      :default-time="['00:00:00', '23:59:59']"
+    >
+    </tu-date-picker>
   </div>
 </template>
 
@@ -166,6 +220,33 @@ export default {
           },
         ],
       },
+      pickerOptions2: {
+        shortcuts: [
+          {
+            text: "本月",
+            onClick(picker) {
+              picker.$emit("pick", [new Date(), new Date()]);
+            },
+          },
+          {
+            text: "今年至今",
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date(new Date().getFullYear(), 0);
+              picker.$emit("pick", [start, end]);
+            },
+          },
+          {
+            text: "最近六个月",
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setMonth(start.getMonth() - 6);
+              picker.$emit("pick", [start, end]);
+            },
+          },
+        ],
+      },
       value1: "",
       value2: "",
       value3: "",
@@ -177,6 +258,11 @@ export default {
       value9: "",
       value10: "",
       value11: "",
+      value12: "",
+      value13: "",
+      value14: "",
+      value15: "",
+      value16: "",
     };
   },
 };

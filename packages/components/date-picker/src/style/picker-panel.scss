@@ -2,6 +2,7 @@
 	border-radius: $--border-radius-base;
 	line-height: 30px;
 	margin: 5px 0;
+	box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
 
 	@include e((body, body-wrapper)) {
 		&::after {

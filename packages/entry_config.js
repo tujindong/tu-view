@@ -121,5 +121,9 @@ module.exports = {
             name: 'date-picker',
             author: 'tujindong'
         },
+        {
+            name: 'time-select',
+            author: 'tujindong'
+        },
     ]
 }

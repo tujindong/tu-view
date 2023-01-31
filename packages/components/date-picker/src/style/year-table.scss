@@ -3,10 +3,6 @@
 	margin: -1px;
 	border-collapse: collapse;
 
-	.tu-icon {
-		// color: $--datepicker-icon-color;
-	}
-
 	td {
 		text-align: center;
 		padding: 20px 3px;
@@ -20,13 +16,8 @@
 		}
 
 		&.disabled .cell {
-			// background-color: $--background-color-base;
+			background-color: rgba($--color-greyLight-2, 0.3);
 			cursor: not-allowed;
-			// color: $--color-text-placeholder;
-
-			&:hover {
-				// color: $--color-text-placeholder;
-			}
 		}
 
 		.cell {

@@ -1,7 +1,7 @@
 <template>
   <transition name="tu-zoom-in-top" @after-leave="$emit('dodestroy')">
     <div
-      ref="dropdown"
+      ref="popper"
       v-show="visible"
       class="tu-picker-panel tu-date-range-picker tu-popper"
       :class="[
@@ -814,7 +814,7 @@ export default {
 
     setBackground(el) {
       const background = getBackground(el);
-      this.$refs.dropdown.style.background = background;
+      this.$refs.popper.style.background = background;
     },
   },
 };

@@ -5,12 +5,11 @@
 
 	td {
 		text-align: center;
-		padding: 8px 0px;
 		cursor: pointer;
 		& div {
-			height: 48px;
-			padding: 6px 10px;
 			box-sizing: border-box;
+			margin: 18px 8px;
+			padding: 3px;
 		}
 		&.today {
 			.cell {
@@ -24,13 +23,8 @@
 		}
 
 		&.disabled .cell {
-			// background-color: $--background-color-base;
+			background-color: rgba($--color-greyLight-2, 0.3);
 			cursor: not-allowed;
-			// color: $--color-text-placeholder;
-
-			&:hover {
-				// color: $--color-text-placeholder;
-			}
 		}
 
 		.cell {
@@ -40,17 +34,18 @@
 			line-height: 24px;
 			margin: 0 auto;
 			transition: all 0.3s;
+			border-radius: 2px;
 			&:hover {
 				color: $--color-primary;
 			}
 		}
 
-		&.in-range div .cell {
+		&.in-range div {
 			background-color: rgba($--color-greyLight-2, 0.38);
 		}
 
-		&.start-date div,
-		&.end-date div {
+		&.start-date div .cell,
+		&.end-date div .cell {
 			color: $--color-white;
 			background-color: $--color-primary;
 		}
@@ -59,16 +54,6 @@
 		&.end-date .cell {
 			color: $--color-white;
 			background-color: $--color-primary;
-		}
-
-		&.start-date div {
-			// border-top-left-radius: 24px;
-			// border-bottom-left-radius: 24px;
-		}
-
-		&.end-date div {
-			// border-top-right-radius: 24px;
-			// border-bottom-right-radius: 24px;
 		}
 
 		&.current:not(.disabled) .cell {
