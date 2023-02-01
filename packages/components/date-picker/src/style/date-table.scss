@@ -1,5 +1,4 @@
 @include b(date-table) {
-	font-size: 12px;
 	user-select: none;
 
 	@include when(week-mode) {
@@ -29,9 +28,9 @@
 	}
 
 	td {
-		width: 32px;
-		height: 30px;
-		padding: 4px 0;
+		width: 26px;
+		height: 26px;
+		padding: 6px 0;
 		box-sizing: border-box;
 		text-align: center;
 		cursor: pointer;
@@ -40,8 +39,8 @@
 		transition: all 0.3s;
 
 		& div {
-			height: 30px;
-			padding: 3px 0;
+			height: 32px;
+			padding: 4px 0;
 			box-sizing: border-box;
 			margin: 0 5px;
 			transition: background-color 0.3s;
@@ -133,7 +132,6 @@
 
 		&.week {
 			font-size: 80%;
-			// color: $--datepicker-header-font-color;
 		}
 	}
 

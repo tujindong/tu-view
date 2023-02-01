@@ -36,6 +36,10 @@
 		}
 	}
 
+	&.is-focus {
+		box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+	}
+
 	.tu-input__icon--suffix {
 		cursor: pointer;
 		transition: all 0.3s;
@@ -89,5 +93,10 @@
 		display: inline-block;
 		float: right;
 		line-height: 32px;
+		cursor: pointer;
+
+		&:hover {
+			color: $--color-greyDark;
+		}
 	}
 }

@@ -51,6 +51,7 @@
         pickerSize ? `tu-range-editor--${pickerSize}` : '',
         pickerDisabled ? 'is-disabled' : '',
         pickerVisible ? 'is-active' : '',
+        rangeFocus ? 'is-focus' : '',
       ]"
       @click="handleRangeClick"
       @mouseenter="handleMouseEnter"
@@ -323,7 +324,7 @@ const parseAsFormatAndType = (
   value,
   customFormat,
   type,
-  rangeSeparator = "~"
+  rangeSeparator = "-"
 ) => {
   if (!value) return null;
   const parser = (
@@ -435,7 +436,7 @@ export default {
     defaultValue: {},
     defaultTime: {},
     rangeSeparator: {
-      default: "~",
+      default: "-",
     },
     pickerOptions: {},
     unlinkPanels: Boolean,
@@ -452,6 +453,7 @@ export default {
       userInput: null,
       valueOnOpen: null,
       unwatchPickerOptions: null,
+      rangeFocus: false,
     };
   },
 
@@ -809,6 +811,7 @@ export default {
     handleClose() {
       if (!this.pickerVisible) return;
       this.pickerVisible = false;
+      this.rangeFocus = false;
 
       if (
         this.type === "dates" ||
@@ -894,7 +897,7 @@ export default {
 
     handleRangeClick() {
       const type = this.type;
-
+      this.rangeFocus = true;
       if (HAVE_TRIGGER_TYPES.indexOf(type) !== -1 && !this.pickerVisible) {
         this.pickerVisible = true;
       }
@@ -959,16 +962,11 @@ export default {
         }
 
         for (const option in options) {
-          if (
-            options.hasOwnProperty(option) &&
-            // 忽略 time-picker 的该配置项
-            option !== "selectableRange"
-          ) {
+          if (options.hasOwnProperty(option) && option !== "selectableRange") {
             this.picker[option] = options[option];
           }
         }
 
-        // main format must prevail over undocumented pickerOptions.format
         if (this.format) {
           this.picker.format = this.format;
         }
@@ -1014,12 +1012,11 @@ export default {
     },
 
     emitChange(val) {
-      // determine user real change only
       if (!valueEquals(val, this.valueOnOpen)) {
         this.$emit("change", val);
         this.valueOnOpen = val;
         if (this.validateEvent) {
-          this.dispatch("ElFormItem", "el.form.change", val);
+          this.dispatch("TuFormItem", "tu.form.change", val);
         }
       }
     },

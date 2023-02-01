@@ -176,7 +176,6 @@
       >
         <tu-button
           size="mini"
-          type="text"
           class="tu-picker-panel__link-btn"
           @click="changeToNow"
           v-show="
@@ -188,8 +187,8 @@
           {{ t("tu.datepicker.now") }}
         </tu-button>
         <tu-button
-          plain
           size="mini"
+          type="primary"
           class="tu-picker-panel__link-btn"
           @click="confirm"
         >

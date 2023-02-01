@@ -8,8 +8,8 @@
           <tu-option
             v-for="item in options"
             :key="item.value"
-            :label="item.label"
             :value="item.value"
+            :label="item.label"
           >
           </tu-option>
         </tu-select>
@@ -90,7 +90,10 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+/deep/.tu-select-dropdown__item {
+  color: red;
+}
 .demo-wrapper {
 }
 </style>
