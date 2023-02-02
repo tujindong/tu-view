@@ -8,7 +8,10 @@
     >
       <div
         class="tu-time-panel__content"
-        :class="{ 'has-seconds': showSeconds }"
+        :class="{
+          'has-seconds': showSeconds,
+          'is-arrow': useArrow,
+        }"
       >
         <time-spinner
           ref="spinner"

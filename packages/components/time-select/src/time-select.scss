@@ -17,18 +17,19 @@
 	font-size: 14px;
 	line-height: 20px;
 	transition: all 0.3s ease;
+	color: $--color-greyDark;
 }
 
 .time-select-item.selected:not(.disabled) {
 	color: $--color-primary;
 }
 
+.time-select-item:hover:not(.disabled) {
+	background: rgba($--color-greyDark, 0.25);
+	cursor: pointer;
+}
+
 .time-select-item.disabled {
 	color: $--color-greyLight-3;
 	cursor: not-allowed;
-}
-
-.time-select-item:hover {
-	background: rgba($--color-greyDark, 0.25);
-	cursor: pointer;
 }

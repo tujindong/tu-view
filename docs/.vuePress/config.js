@@ -24,44 +24,48 @@ module.exports = {
                     title: '基础组件',
                     collapsable: false,
                     children: [
-                        ['../guide/Layout.md', 'Layout 布局'],
-                        ['../guide/Button.md', 'Button 按钮'],
+                        ['../guide/layout.md', 'Layout 布局'],
+                        ['../guide/button.md', 'Button 按钮'],
                     ]
                 },
                 {
                     title: '表单组件',
                     collapsable: false,
                     children: [
-                        ['../guide/Radio.md', 'Radio 单选框'],
-                        ['../guide/Checkbox.md', 'Checkbox 多选框'],
-                        ['../guide/Input.md', 'Input 输入框'],
-                        ['../guide/Textarea.md', 'Textarea 多行输入框'],
-                        ['../guide/Input-number.md', 'InputNumber 计数器'],
-                        ['../guide/Select.md', 'Select 选择器'],
-                        ['../guide/Switch.md', 'Switch 开关'],
+                        ['../guide/radio.md', 'Radio 单选框'],
+                        ['../guide/checkbox.md', 'Checkbox 多选框'],
+                        ['../guide/input.md', 'Input 输入框'],
+                        ['../guide/textarea.md', 'Textarea 多行输入框'],
+                        ['../guide/input-number.md', 'InputNumber 计数器'],
+                        ['../guide/select.md', 'Select 选择器'],
+                        ['../guide/switch.md', 'Switch 开关'],
+                        ['../guide/time-picker.md', 'TimePicker 时间选择器'],
+                        ['../guide/date-picker.md', 'DataPicker 日期选择器'],
+                        ['../guide/date-time-picker.md', 'DataTimePicker 日期时间选择器'],
+                        ['../guide/date-time-picker.md', 'Form 表单'],
                     ]
                 },
                 {
                     title: '数据组件',
                     collapsable: false,
                     children: [
-                        ['../guide/Tag.md', 'Tag 标签'],
+                        ['../guide/tag.md', 'Tag 标签'],
                     ]
                 },
                 {
                     title: '导航组件',
                     collapsable: false,
                     children: [
-                        ['../guide/Tabs.md', 'Tabs 标签页'],
+                        ['../guide/tabs.md', 'Tabs 标签页'],
                     ]
                 },
                 {
                     title: '其他组件',
                     collapsable: false,
                     children: [
-                        ['../guide/Tooltip.md', 'Tooltip 文字提示'],
-                        ['../guide/Card.md', 'Card 卡片'],
-                        ['../guide/Scrollbar.md', 'Scrollbar 区域滚动']
+                        ['../guide/tooltip.md', 'Tooltip 文字提示'],
+                        ['../guide/card.md', 'Card 卡片'],
+                        ['../guide/scrollbar.md', 'Scrollbar 区域滚动']
                     ]
                 }
             ]

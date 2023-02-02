@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="width: 100%">
     <tu-input
       class="tu-date-editor"
       :class="'tu-date-editor--' + type"
@@ -317,7 +317,7 @@ const TYPE_VALUE_RESOLVER_MAP = {
 const PLACEMENT_MAP = {
   left: "bottom-start",
   center: "bottom",
-  right: "bottom-end",
+  left: "bottom-start",
 };
 
 const parseAsFormatAndType = (
@@ -469,6 +469,7 @@ export default {
 
     refInput() {
       if (this.reference) {
+        //NodeList -> Array
         return [].slice.call(this.reference.querySelectorAll("input"));
       }
       return [];

@@ -64,7 +64,7 @@
                 </time-picker>
               </span>
             </span>
-            <span class="tu-icon-arrow-right"></span>
+            <span class="tu-icon-dash"></span>
             <span class="tu-date-range-picker__editors-wrap is-right">
               <span class="tu-date-range-picker__time-picker-wrap">
                 <tu-input
@@ -211,15 +211,14 @@
       <div class="tu-picker-panel__footer" v-if="showTime">
         <tu-button
           size="mini"
-          type="text"
           class="tu-picker-panel__link-btn"
           @click="handleClear"
         >
           {{ t("tu.datepicker.clear") }}
         </tu-button>
         <tu-button
-          plain
           size="mini"
+          type="primary"
           class="tu-picker-panel__link-btn"
           :disabled="btnDisabled"
           @click="handleConfirm(false)"
@@ -250,7 +249,7 @@ import {
 import { getBackground } from "@packages/src/utils/get-background";
 import Clickoutside from "@packages/src/utils/clickoutside";
 import Locale from "@packages/src/mixins/locale";
-// import TimePicker from "./time";
+import TimePicker from "./time";
 import DateTable from "../basic/date-table";
 
 const calcDefaultValue = (defaultValue) => {
@@ -268,7 +267,7 @@ export default {
 
   directives: { Clickoutside },
 
-  components: { DateTable },
+  components: { TimePicker, DateTable },
 
   data() {
     return {
@@ -305,6 +304,7 @@ export default {
         min: null,
         max: null,
       },
+      reference: null,
     };
   },
 
@@ -701,6 +701,9 @@ export default {
       ) {
         this.maxDate = new Date(this.minDate);
       }
+      this.$nextTick(() => {
+        this.$refs.minTimePicker.setBackground(this.reference);
+      });
     },
 
     handleMinTimeClose() {
@@ -728,6 +731,10 @@ export default {
       ) {
         this.minDate = new Date(this.maxDate);
       }
+
+      this.$nextTick(() => {
+        this.$refs.maxTimePicker.setBackground(this.reference);
+      });
     },
 
     handleMaxTimeClose() {
@@ -813,6 +820,7 @@ export default {
     },
 
     setBackground(el) {
+      this.reference = el;
       const background = getBackground(el);
       this.$refs.popper.style.background = background;
     },

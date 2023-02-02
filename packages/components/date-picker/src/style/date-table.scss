@@ -1,5 +1,7 @@
 @include b(date-table) {
 	user-select: none;
+	font-size: 14px;
+	display: table;
 
 	@include when(week-mode) {
 		.tu-date-table__row {
@@ -27,6 +29,12 @@
 		}
 	}
 
+	tr,
+	tr:nth-child(2n) {
+		border: none;
+		background: transparent;
+	}
+
 	td {
 		width: 26px;
 		height: 26px;
@@ -37,6 +45,7 @@
 		position: relative;
 		color: $--color-greyDark;
 		transition: all 0.3s;
+		border: none;
 
 		& div {
 			height: 32px;
@@ -136,6 +145,7 @@
 	}
 
 	th {
+		border: none;
 		padding: 5px;
 		color: $--color-greyDark;
 		font-weight: 400;

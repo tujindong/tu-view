@@ -5,27 +5,9 @@
 
 	&.tu-input,
 	&.tu-input__inner {
-		width: 322px;
-	}
-
-	@include m((monthrange)) {
-		&.tu-input,
-		&.tu-input__inner {
-			width: 300px;
-		}
-	}
-
-	@include m((daterange, timerange)) {
-		&.tu-input,
-		&.tu-input__inner {
-			width: 350px;
-		}
-	}
-
-	@include m(datetimerange) {
-		&.tu-input,
-		&.tu-input__inner {
-			width: 400px;
+		::selection {
+			transition: all 0.3s ease;
+			color: $--color-primary;
 		}
 	}
 
@@ -68,6 +50,7 @@
 		text-align: center;
 		font-size: $--font-size-base;
 		color: $--color-greyDark;
+		background: transparent;
 
 		&::placeholder {
 			color: $--color-greyLight-3;

@@ -41,7 +41,9 @@
 		text-align: center;
 		height: 30px;
 		line-height: 30px;
+		color: $--color-greyLight-3;
 		cursor: pointer;
+		transition: all 0.3s;
 
 		&:hover {
 			color: $--color-primary;
@@ -87,7 +89,7 @@
 		height: 32px;
 		line-height: 32px;
 		color: $--color-greyDark;
-		transition: all 0.3s ease;
+		transition: all 0.3s;
 
 		&:hover:not(.disabled):not(.active) {
 			background: rgba($--color-greyLight-3, 0.38);

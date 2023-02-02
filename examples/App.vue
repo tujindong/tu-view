@@ -22,6 +22,7 @@
     <DemoForm />
     <DemoDatePicker />
     <DemoTimePicker />
+    <DemoDateTimePicker />
   </div>
 </template>
 
@@ -48,6 +49,7 @@ import DemoSlider from "./components/demo-slider.vue";
 import DemoForm from "./components/demo-form.vue";
 import DemoDatePicker from "./components/demo-datePicker.vue";
 import DemoTimePicker from "./components/demo-timePicker.vue";
+import DemoDateTimePicker from "./components/demo-dateTimePicker.vue";
 export default {
   components: {
     DemoButton,
@@ -72,6 +74,7 @@ export default {
     DemoForm,
     DemoDatePicker,
     DemoTimePicker,
+    DemoDateTimePicker,
   },
 
   data() {

@@ -176,6 +176,7 @@
       >
         <tu-button
           size="mini"
+          type="text"
           class="tu-picker-panel__link-btn"
           @click="changeToNow"
           v-show="
@@ -222,7 +223,7 @@ import {
 import { getBackground } from "@packages/src/utils/get-background";
 import Clickoutside from "@packages/src/utils/clickoutside";
 import Locale from "@packages/src/mixins/locale";
-// import TimePicker from "./time";
+import TimePicker from "./time";
 import DateTable from "../basic/date-table";
 import MonthTable from "../basic/month-table";
 import YearTable from "../basic/year-table";
@@ -232,7 +233,7 @@ export default {
 
   directives: { Clickoutside },
 
-  components: { DateTable, MonthTable, YearTable },
+  components: { TimePicker, DateTable, MonthTable, YearTable },
 
   data() {
     return {
@@ -256,6 +257,7 @@ export default {
       arrowControl: false,
       userInputDate: null,
       userInputTime: null,
+      reference: null,
     };
   },
 
@@ -492,6 +494,9 @@ export default {
       if (!first) {
         this.timePickerVisible = visible;
       }
+      this.$nextTick(() => {
+        this.$refs.timepicker.setBackground(this.reference);
+      });
     },
 
     handleTimePickClose() {
@@ -721,6 +726,7 @@ export default {
     },
 
     setBackground(el) {
+      this.reference = el;
       const background = getBackground(el);
       this.$refs.popper.style.background = background;
     },

@@ -193,5 +193,5 @@ export default {
     // call destroy in keep-alive mode
     deactivated() {
         this.$options.beforeDestroy[0].call(this);
-    }
+    },
 };

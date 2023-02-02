@@ -31,7 +31,6 @@
 
 	@include e(time-header) {
 		position: relative;
-		// border-bottom: 1px solid $--datepicker-inner-border-color;
 		font-size: 12px;
 		padding: 8px 5px 5px 5px;
 		display: table;
@@ -46,7 +45,6 @@
 		@include m(bordered) {
 			margin-bottom: 0;
 			padding-bottom: 12px;
-			// border-bottom: solid 1px $--border-color-lighter;
 
 			& + .tu-picker-panel__content {
 				margin-top: 0;

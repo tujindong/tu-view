@@ -3,7 +3,6 @@
 
 @include b(time-panel) {
 	margin: 5px 0;
-	background-color: $--color-white;
 	border-radius: 2px;
 	position: absolute;
 	width: 180px;
@@ -11,6 +10,7 @@
 	z-index: $--index-top;
 	user-select: none;
 	box-sizing: content-box;
+	color: $--color-greyDark;
 	box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
 
 	@include e(content) {
@@ -54,6 +54,13 @@
 
 			&::before {
 				padding-left: calc(100% / 3);
+			}
+		}
+
+		@include when(arrow) {
+			&::after,
+			&::before {
+				margin-top: -15px;
 			}
 		}
 	}

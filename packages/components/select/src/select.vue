@@ -11,7 +11,7 @@
           effect="shadow"
           size="small"
           :hit="selected[0].hitState"
-          :closable="!isDisabled"
+          :closable="!selectDisabled"
           @close="deleteTag($event, selected[0])"
           >{{ selected[0].label }}</tu-tag
         >
@@ -36,7 +36,7 @@
           :size="selectSize | tagSize"
           :hit="item.hitState"
           :key="item.value"
-          :closable="!isDisabled"
+          :closable="!selectDisabled"
           @close="deleteTag($event, item)"
         >
           {{ item.label }}
@@ -49,7 +49,7 @@
         ref="input"
         type="text"
         class="tu-select__input"
-        :disabled="isDisabled"
+        :disabled="selectDisabled"
         @focus="handleFocus"
         @blur="softFocus = false"
         @keyup="managePlaceholder"
@@ -79,7 +79,7 @@
       :name="name"
       :id="id"
       :placeholder="currentPlaceholder"
-      :disabled="isDisabled"
+      :disabled="selectDisabled"
       :readonly="readonly"
       :size="selectSize"
       :validate-event="false"
@@ -115,7 +115,7 @@
           <i
             class="tu-select__caret tu-icon-close-circle-fill"
             v-if="showClose"
-            @click="handleInputClear"
+            @click="handleClearClick"
           ></i>
         </template>
       </template>
@@ -292,7 +292,7 @@ export default {
       return this.visible ? "up is-reverse" : "up";
     },
 
-    isDisabled() {
+    selectDisabled() {
       return this.disabled;
     },
 
@@ -301,18 +301,14 @@ export default {
     },
 
     readonly() {
-      return (
-        !this.filterable ||
-        this.multiple ||
-        (!isIE() && !isEdge() && !this.visible)
-      );
+      return !this.filterable || this.multiple || !this.visible;
     },
 
     showClose() {
       const hasValue =
         this.value !== undefined && this.value !== null && this.value !== "";
       return (
-        this.clearable && this.inputHovering && hasValue && !this.isDisabled
+        this.clearable && this.inputHovering && hasValue && !this.selectDisabled
       );
     },
 
