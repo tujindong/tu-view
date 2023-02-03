@@ -214,7 +214,10 @@ export default {
       },
     },
     automaticDropdown: Boolean,
-    size: String,
+    size: {
+      type: String,
+      default: "medium",
+    },
     disabled: Boolean,
     clearable: Boolean,
     filterable: Boolean,

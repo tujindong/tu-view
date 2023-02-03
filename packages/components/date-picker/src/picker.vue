@@ -615,11 +615,13 @@ export default {
       if (this.readonly || this.pickerDisabled) return;
       if (val) {
         this.showPicker();
+        this.rangeFocus = true;
         this.valueOnOpen = Array.isArray(this.value)
           ? [...this.value]
           : this.value;
       } else {
         this.hidePicker();
+        this.rangeFocus = false;
         this.emitChange(this.value);
         this.userInput = null;
         if (this.validateEvent) {
@@ -812,7 +814,6 @@ export default {
     handleClose() {
       if (!this.pickerVisible) return;
       this.pickerVisible = false;
-      this.rangeFocus = false;
 
       if (
         this.type === "dates" ||
@@ -898,7 +899,6 @@ export default {
 
     handleRangeClick() {
       const type = this.type;
-      this.rangeFocus = true;
       if (HAVE_TRIGGER_TYPES.indexOf(type) !== -1 && !this.pickerVisible) {
         this.pickerVisible = true;
       }

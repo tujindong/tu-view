@@ -1,6 +1,15 @@
 @include b(year-table) {
 	margin: -1px;
 	border-collapse: collapse;
+	display: table;
+
+	tr,
+	tr:nth-child(2n),
+	td {
+		padding: 0;
+		border: none;
+		background: transparent;
+	}
 
 	td {
 		text-align: center;
@@ -26,6 +35,8 @@
 			line-height: 24px;
 			margin: 0 auto;
 			transition: all 0.3s;
+			color: $--color-greyDark;
+			font-weight: $--font-weight-secondary;
 
 			&:hover {
 				color: $--color-primary;

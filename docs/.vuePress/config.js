@@ -41,8 +41,8 @@ module.exports = {
                         ['../guide/switch.md', 'Switch 开关'],
                         ['../guide/time-picker.md', 'TimePicker 时间选择器'],
                         ['../guide/date-picker.md', 'DataPicker 日期选择器'],
-                        ['../guide/date-time-picker.md', 'DataTimePicker 日期时间选择器'],
-                        ['../guide/date-time-picker.md', 'Form 表单'],
+                        ['../guide/datetime-picker.md', 'DataTimePicker 日期时间选择器'],
+                        ['../guide/form.md', 'Form 表单'],
                     ]
                 },
                 {
