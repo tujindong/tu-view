@@ -1,8 +1,8 @@
-import Table from './src/table.vue';
-import './src/table.scss';
+import Dropdown from './src/dropdown.vue';
+import './src/dropdown.scss';
 
-Table.install = function (Vue) {
-    Vue.component(Table.name, Table);
+Dropdown.install = function (Vue) {
+    Vue.component(Dropdown.name, Dropdown);
 };
 
-export default Table;
+export default Dropdown;

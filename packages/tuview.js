@@ -44,6 +44,9 @@ import FormItem from './components/form-item';
 import DatePicker from './components/date-picker';
 import TimeSelect from './components/time-select';
 import TimePicker from './components/time-picker';
+import Dropdown from './components/dropdown';
+import DropdownItem from './components/dropdown-item';
+import DropdownMenu from './components/dropdown-menu';
 
 const componentsList = [
     Button,
@@ -77,7 +80,10 @@ const componentsList = [
     FormItem,
     DatePicker,
     TimeSelect,
-    TimePicker
+    TimePicker,
+    Dropdown,
+    DropdownItem,
+    DropdownMenu
 ];
 
 const install = function (Vue) {

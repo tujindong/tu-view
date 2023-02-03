@@ -129,5 +129,17 @@ module.exports = {
             name: 'time-picker',
             author: 'tujindong'
         },
+        {
+            name: 'dropdown',
+            author: 'tujindong'
+        },
+        {
+            name: 'dropdown-item',
+            author: 'tujindong'
+        },
+        {
+            name: 'dropdown-menu',
+            author: 'tujindong'
+        },
     ]
 }
