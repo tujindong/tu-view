@@ -156,34 +156,33 @@
 
 ```html
 <template>
-	<div>
-		<tu-checkbox v-model="checked1" label="苹果" border></tu-checkbox>
-		<tu-checkbox v-model="checked2" label="香蕉" border></tu-checkbox>
-		<tu-checkbox v-model="checked3" label="西瓜" border></tu-checkbox>
-	</div>
 	<div style="margin-top: 20px">
-		<tu-checkbox-group v-model="checkboxGroup1" size="large" border>
+		<p>超小</p>
+		<tu-checkbox-group v-model="checkboxGroup1" size="mini" border>
 			<tu-checkbox label="苹果"></tu-checkbox>
 			<tu-checkbox label="香蕉"></tu-checkbox>
 			<tu-checkbox label="西瓜"></tu-checkbox>
 		</tu-checkbox-group>
 	</div>
 	<div style="margin-top: 20px">
-		<tu-checkbox-group v-model="checkboxGroup2" border>
+		<p>较小</p>
+		<tu-checkbox-group v-model="checkboxGroup2" size="small" border>
 			<tu-checkbox label="苹果"></tu-checkbox>
 			<tu-checkbox label="香蕉"></tu-checkbox>
 			<tu-checkbox label="西瓜"></tu-checkbox>
 		</tu-checkbox-group>
 	</div>
 	<div style="margin-top: 20px">
-		<tu-checkbox-group v-model="checkboxGroup3" size="small" border>
+		<p>中等</p>
+		<tu-checkbox-group v-model="checkboxGroup3" size="medium" border>
 			<tu-checkbox label="苹果"></tu-checkbox>
 			<tu-checkbox label="香蕉"></tu-checkbox>
 			<tu-checkbox label="西瓜"></tu-checkbox>
 		</tu-checkbox-group>
 	</div>
 	<div style="margin-top: 20px">
-		<tu-checkbox-group v-model="checkboxGroup4" size="mini" border>
+		<p>较大</p>
+		<tu-checkbox-group v-model="checkboxGroup4" size="large" border>
 			<tu-checkbox label="苹果"></tu-checkbox>
 			<tu-checkbox label="香蕉"></tu-checkbox>
 			<tu-checkbox label="西瓜"></tu-checkbox>

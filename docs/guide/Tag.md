@@ -56,10 +56,10 @@ Tag 组件提供除了默认值以外的两种尺寸，可以在不同场景下�
 
 ```html
 <tu-row>
-	<tu-tag size="large">大型标签</tu-tag>
-	<tu-tag size="medium">中等标签</tu-tag>
-	<tu-tag size="small">小型标签</tu-tag>
 	<tu-tag size="mini">超小标签</tu-tag>
+	<tu-tag size="small">小型标签</tu-tag>
+	<tu-tag size="medium">中等标签</tu-tag>
+	<tu-tag size="large">大型标签</tu-tag>
 </tu-row>
 ```
 

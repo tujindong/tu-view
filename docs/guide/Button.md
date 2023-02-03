@@ -35,6 +35,12 @@
 	<tu-button type="warning" icon="star" circle></tu-button>
 	<tu-button type="danger" icon="delete" circle></tu-button>
 </tu-row>
+
+<style>
+	.tu-button + .tu-button {
+		margin-left: 10px;
+	}
+</style>
 ```
 
 :::
@@ -63,6 +69,12 @@
 	<tu-button type="warning" plain disabled>警告按钮</tu-button>
 	<tu-button type="danger" plain disabled>危险按钮</tu-button>
 </tu-row>
+
+<style>
+	.tu-button + .tu-button {
+		margin-left: 10px;
+	}
+</style>
 ```
 
 :::
@@ -106,6 +118,33 @@
 	<tu-button :loading="true">加载中</tu-button>
 	<tu-button type="primary" :loading="true">加载中</tu-button>
 </tu-row>
+```
+
+:::
+
+### 按钮组
+
+以按钮组的方式出现，常用于多项类似操作。
+
+:::demo 使用`<tu-button-group>`标签来嵌套你的按钮。
+
+```html
+<tu-row>
+	<tu-button-group>
+		<tu-button icon="left">上一页</tu-button>
+		<tu-button>下一页<i class="tu-icon-right"></i></tu-button>
+	</tu-button-group>
+	<tu-button-group>
+		<tu-button icon="edit"></tu-button>
+		<tu-button icon="share"></tu-button>
+		<tu-button icon="delete"></tu-button>
+	</tu-button-group>
+</tu-row>
+<style>
+	.tu-button-group + .tu-button-group {
+		margin-left: 15px;
+	}
+</style>
 ```
 
 :::

@@ -127,10 +127,14 @@
 ```html
 <template>
 	<div class="demo-input-number-size">
-		<tu-input-number v-model="num1"></tu-input-number>
-		<tu-input-number size="medium" v-model="num2"></tu-input-number>
-		<tu-input-number size="small" v-model="num3"></tu-input-number>
-		<tu-input-number size="mini" v-model="num4"></tu-input-number>
+		<p>超小</p>
+		<tu-input-number size="mini" v-model="num1"></tu-input-number>
+		<p>较小</p>
+		<tu-input-number size="small" v-model="num2"></tu-input-number>
+		<p>中等</p>
+		<tu-input-number size="medium" v-model="num3"></tu-input-number>
+		<p>较大</p>
+		<tu-input-number size="large" v-model="num4"></tu-input-number>
 	</div>
 </template>
 <script>
@@ -168,34 +172,6 @@
 			handleChange(value) {
 				console.log(value);
 			},
-		},
-	};
-</script>
-```
-
-:::
-
-### 尺寸
-
-:::demo 可通过 `size` 属性指定输入框的尺寸，除了默认的大小外，还提供了 medium、small 和 mini 三种尺寸。
-
-```html
-<div class="demo-input-number-size">
-	<tu-input-number size="large" placeholder="请输入内容" v-model="num1"> </tu-input-number>
-	<tu-input-number size="medium" placeholder="请输入内容" v-model="num2"> </tu-input-number>
-	<tu-input-number size="small" placeholder="请输入内容" v-model="num3"> </tu-input-number>
-	<tu-input-number size="mini" placeholder="请输入内容" v-model="num4"> </tu-input-number>
-</div>
-
-<script>
-	export default {
-		data() {
-			return {
-				num1: "",
-				num2: "",
-				num3: "",
-				num4: "",
-			};
 		},
 	};
 </script>

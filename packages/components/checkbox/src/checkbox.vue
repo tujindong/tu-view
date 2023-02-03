@@ -61,6 +61,9 @@ export default {
     disabled: Boolean,
     checked: Boolean,
     name: String,
+    id: String,
+    trueLabel: [String, Number],
+    falseLabel: [String, Number],
     border: Boolean,
     size: String,
     controls: String,
@@ -70,28 +73,36 @@ export default {
     return {
       selfModel: false,
       focus: false,
+      isLimitExceeded: false,
     };
   },
 
   computed: {
     model: {
       get() {
-        if (this.isGroup) {
-          return this._checkboxGroup.value !== undefined
-            ? this._checkboxGroup.value
-            : this.selfModel;
-        } else {
-          return this.value !== undefined ? this.value : this.selfModel;
-        }
+        return this.isGroup
+          ? this.store
+          : this.value !== undefined
+          ? this.value
+          : this.selfModel;
       },
       set(val) {
         if (this.isGroup) {
-          this.isLimitExceeded(val.length) === false &&
+          this.isLimitExceeded = false;
+          this._checkboxGroup.min !== undefined &&
+            val.length < this._checkboxGroup.min &&
+            (this.isLimitExceeded = true);
+
+          this._checkboxGroup.max !== undefined &&
+            val.length > this._checkboxGroup.max &&
+            (this.isLimitExceeded = true);
+
+          this.isLimitExceeded === false &&
             this.dispatch("TuCheckboxGroup", "input", [val]);
         } else {
           this.$emit("input", val);
+          this.selfModel = val;
         }
-        this.selfModel = val;
       },
     },
 
@@ -104,6 +115,8 @@ export default {
         return this.model;
       } else if (Array.isArray(this.model)) {
         return this.model.indexOf(this.label) > -1;
+      } else if (this.model !== null && this.model !== undefined) {
+        return this.model === this.trueLabel;
       }
     },
 
@@ -136,8 +149,15 @@ export default {
 
     isDisabled() {
       return this.isGroup
-        ? this._checkboxGroup.disabled || this.disabled || this.isLimitDisabled
-        : this.disabled;
+        ? this._checkboxGroup.disabled ||
+            this.disabled ||
+            (this.tuForm || {}).disabled ||
+            this.isLimitDisabled
+        : this.disabled || (this.tuForm || {}).disabled;
+    },
+
+    store() {
+      return this._checkboxGroup ? this._checkboxGroup.value : this.value;
     },
   },
 
@@ -148,7 +168,7 @@ export default {
   },
 
   created() {
-    this.checked && this.addToModel();
+    this.checked && this.addToStore();
   },
 
   mounted() {
@@ -158,22 +178,11 @@ export default {
   },
 
   methods: {
-    isLimitExceeded(length) {
-      const { min, max } = this._checkboxGroup;
-      if (min !== undefined && length < min) {
-        return true;
-      }
-      if (max !== undefined && length > max) {
-        return true;
-      }
-      return false;
-    },
-
-    addToModel() {
+    addToStore() {
       if (Array.isArray(this.model) && this.model.indexOf(this.label) === -1) {
         this.model.push(this.label);
       } else {
-        this.model = true;
+        this.model = this.trueLabel || true;
       }
     },
 
@@ -181,9 +190,9 @@ export default {
       if (this.isLimitExceeded) return;
       let value;
       if (evt.target.checked) {
-        value = true;
+        value = this.trueLabel === undefined ? true : this.trueLabel;
       } else {
-        value = false;
+        value = this.falseLabel === undefined ? false : this.falseLabel;
       }
       this.$emit("change", value, evt);
       this.$nextTick(() => {

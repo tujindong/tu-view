@@ -103,9 +103,9 @@
 
 ```html
 <div class="demo-switch">
-	<tu-switch size="large" v-model="value1"> </tu-switch>
+	<tu-switch size="small" v-model="value1"> </tu-switch>
 	<tu-switch size="medium" v-model="value2"> </tu-switch>
-	<tu-switch size="small" v-model="value3"> </tu-switch>
+	<tu-switch size="large" v-model="value3"> </tu-switch>
 </div>
 
 <script>

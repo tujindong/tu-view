@@ -241,15 +241,20 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		animation: spin 1s linear infinite;
+		animation: spin 1.5s linear infinite;
 		margin-right: 3px;
+	}
+
+	& [class*="tu-icon-"] {
+		& + span {
+			margin-left: 3px;
+		}
 	}
 }
 
 @include b(button-group) {
 	display: inline-block;
 	vertical-align: middle;
-	position: absolute;
 	margin: auto;
 
 	& > .tu-button {
@@ -258,11 +263,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin: 1px;
-		transition: all 0.5s;
-
-		&:hover {
-		}
+		margin: 0;
 
 		& + .tu-button {
 			margin-left: 0;
@@ -301,16 +302,8 @@
 			border-radius: 0;
 		}
 
-		&:not(:last-child) {
-			margin-right: -1px;
-		}
-
-		&:not(.is-disabled) {
-			&:hover,
-			&:focus,
-			&:active {
-				z-index: 1;
-			}
+		&:not(:first-child) {
+			margin-left: 2px;
 		}
 
 		@include when(active) {

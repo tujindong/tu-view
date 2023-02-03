@@ -14,7 +14,7 @@
     ]"
     @click="handleClick"
   >
-    <i class="tu-icon__loading tu-icon-reload" v-if="loading"></i>
+    <i class="tu-icon__loading tu-icon-sync" v-if="loading"></i>
     <i :class="`tu-icon-${icon}`" v-if="icon"></i>
     <template v-if="$slots.default"><slot></slot></template>
   </button>

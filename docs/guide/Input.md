@@ -134,10 +134,14 @@ Input 为受控组件，它**总会显示 Vue 绑定值**。
 
 ```html
 <div class="demo-input-size">
-	<tu-input size="large" placeholder="请输入内容" suffix-icon="tu-icon-date" v-model="input1"> </tu-input>
-	<tu-input size="medium" placeholder="请输入内容" suffix-icon="tu-icon-date" v-model="input2"> </tu-input>
-	<tu-input size="small" placeholder="请输入内容" suffix-icon="tu-icon-date" v-model="input3"> </tu-input>
-	<tu-input size="mini" placeholder="请输入内容" suffix-icon="tu-icon-date" v-model="input4"> </tu-input>
+	<p>超小</p>
+	<tu-input size="mini" placeholder="请输入内容" suffix-icon="tu-icon-date" v-model="input1"> </tu-input>
+	<p>较小</p>
+	<tu-input size="small" placeholder="请输入内容" suffix-icon="tu-icon-date" v-model="input2"> </tu-input>
+	<p>中等</p>
+	<tu-input size="medium" placeholder="请输入内容" suffix-icon="tu-icon-date" v-model="input3"> </tu-input>
+	<p>较大</p>
+	<tu-input size="large" placeholder="请输入内容" suffix-icon="tu-icon-date" v-model="input4"> </tu-input>
 </div>
 
 <script>

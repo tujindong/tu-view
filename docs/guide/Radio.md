@@ -87,35 +87,33 @@
 
 ```html
 <template>
-	<div>
-		<tu-radio v-model="radio1" label="1" border>苹果</tu-radio>
-		<tu-radio v-model="radio1" label="2" border>香蕉</tu-radio>
-		<tu-radio v-model="radio1" label="3" border>西瓜</tu-radio>
-	</div>
-
 	<div style="margin-top: 20px">
-		<tu-radio-group v-model="radio2" border size="mini">
+		<p>超小</p>
+		<tu-radio-group v-model="radio1" border size="mini">
 			<tu-radio label="1">苹果</tu-radio>
 			<tu-radio label="2">香蕉</tu-radio>
 			<tu-radio label="3">西瓜</tu-radio>
 		</tu-radio-group>
 	</div>
 	<div style="margin-top: 20px">
-		<tu-radio-group v-model="radio3" border size="small">
+		<p>较小</p>
+		<tu-radio-group v-model="radio2" border size="small">
 			<tu-radio label="1">苹果</tu-radio>
 			<tu-radio label="2">香蕉</tu-radio>
 			<tu-radio label="3">西瓜</tu-radio>
 		</tu-radio-group>
 	</div>
 	<div style="margin-top: 20px">
-		<tu-radio-group v-model="radio4" border>
+		<p>中等</p>
+		<tu-radio-group v-model="radio3" border size="medium">
 			<tu-radio label="1">苹果</tu-radio>
 			<tu-radio label="2">香蕉</tu-radio>
 			<tu-radio label="3">西瓜</tu-radio>
 		</tu-radio-group>
 	</div>
 	<div style="margin-top: 20px">
-		<tu-radio-group v-model="radio5" border size="large">
+		<p>较大</p>
+		<tu-radio-group v-model="radio4" border size="large">
 			<tu-radio label="1">苹果</tu-radio>
 			<tu-radio label="2">香蕉</tu-radio>
 			<tu-radio label="3">西瓜</tu-radio>
@@ -131,7 +129,6 @@
 				radio2: "1",
 				radio3: "1",
 				radio4: "1",
-				radio5: "1",
 			};
 		},
 	};
