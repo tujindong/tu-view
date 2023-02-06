@@ -316,7 +316,7 @@ export default {
             class="tu-dropdown__caret-button"
             disabled={disabled}
           >
-            <i class="tu-dropdown__icon tu-icon-arrow-down"></i>
+            <i class="tu-dropdown__icon tu-icon-down"></i>
           </tu-button>
         </tu-button-group>
       );

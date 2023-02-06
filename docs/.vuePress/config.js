@@ -57,6 +57,7 @@ module.exports = {
                     collapsable: false,
                     children: [
                         ['../guide/tabs.md', 'Tabs 标签页'],
+                        ['../guide/dropdown.md', 'Dropdown 下拉菜单'],
                     ]
                 },
                 {

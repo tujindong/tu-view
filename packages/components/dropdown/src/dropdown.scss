@@ -5,6 +5,52 @@
 	position: relative;
 	color: $--color-greyDark;
 	font-size: $--font-size-base;
+
+	& .tu-dropdown__caret-button {
+		padding-left: 5px;
+		padding-right: 5px;
+		position: relative;
+		border-left: none;
+
+		&::before {
+			$gap: 5px;
+
+			content: "";
+			position: absolute;
+			display: block;
+			width: 1px;
+			top: $gap;
+			bottom: $gap;
+			left: 0;
+		}
+
+		&:hover {
+			&:not(.is-disabled)::before {
+				top: 0;
+				bottom: 0;
+			}
+		}
+
+		& .tu-dropdown__icon {
+			padding-left: 0;
+		}
+	}
+
+	@include e(icon) {
+		margin: 0 3px;
+	}
+
+	.tu-dropdown-selfdefine {
+		&:focus:active,
+		&:focus:not(.focusing) {
+			outline-width: 0;
+		}
+	}
+
+	[disabled] {
+		cursor: not-allowed;
+		color: $--color-greyLight-3;
+	}
 }
 
 @include b(dropdown-menu) {
@@ -26,13 +72,95 @@
 		color: $--color-greyDark;
 		cursor: pointer;
 		outline: none;
+		transition: all 0.3s;
 		&:not(.is-disabled):hover,
 		&:focus {
 			background: rgba($--color-greyDark, 0.25);
+			color: $--color-primary;
 		}
 
 		i {
 			margin-right: 5px;
+		}
+
+		@include m(divided) {
+			position: relative;
+			margin-top: 6px;
+
+			&::after {
+				content: "";
+				display: block;
+				position: absolute;
+				left: 0;
+				top: -6px;
+				width: 100%;
+				border-top: 1px solid rgba($--color-greyDark, 0.25);
+			}
+		}
+
+		@include when(disabled) {
+			cursor: not-allowed;
+			color: $--color-greyLight-3;
+		}
+	}
+
+	@include m(medium) {
+		padding: 6px 0;
+
+		@include e(item) {
+			line-height: 30px;
+			padding: 0 17px;
+			font-size: 14px;
+
+			&.tu-dropdown-menu__item--divided {
+				$divided-offset: 6px;
+				margin-top: $divided-offset;
+
+				&:before {
+					height: $divided-offset;
+					margin: 0 -17px;
+				}
+			}
+		}
+	}
+
+	@include m(small) {
+		padding: 6px 0;
+
+		@include e(item) {
+			line-height: 27px;
+			padding: 0 15px;
+			font-size: 13px;
+
+			&.tu-dropdown-menu__item--divided {
+				$divided-offset: 4px;
+				margin-top: $divided-offset;
+
+				&:before {
+					height: $divided-offset;
+					margin: 0 -15px;
+				}
+			}
+		}
+	}
+
+	@include m(mini) {
+		padding: 3px 0;
+
+		@include e(item) {
+			line-height: 24px;
+			padding: 0 10px;
+			font-size: 12px;
+
+			&.tu-dropdown-menu__item--divided {
+				$divided-offset: 3px;
+				margin-top: $divided-offset;
+
+				&:before {
+					height: $divided-offset;
+					margin: 0 -10px;
+				}
+			}
 		}
 	}
 }

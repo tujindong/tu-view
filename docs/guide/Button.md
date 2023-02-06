@@ -28,12 +28,12 @@
 </tu-row>
 
 <tu-row>
-	<tu-button icon="home-fill" circle></tu-button>
-	<tu-button type="primary" icon="edit" circle></tu-button>
-	<tu-button type="success" icon="check" circle></tu-button>
-	<tu-button type="info" icon="message" circle></tu-button>
-	<tu-button type="warning" icon="star" circle></tu-button>
-	<tu-button type="danger" icon="delete" circle></tu-button>
+	<tu-button icon="tu-icon-home-fill" circle></tu-button>
+	<tu-button type="primary" icon="tu-icon-edit" circle></tu-button>
+	<tu-button type="success" icon="tu-icon-check" circle></tu-button>
+	<tu-button type="info" icon="tu-icon-message" circle></tu-button>
+	<tu-button type="warning" icon="tu-icon-star" circle></tu-button>
+	<tu-button type="danger" icon="tu-icon-delete" circle></tu-button>
 </tu-row>
 
 <style>
@@ -98,10 +98,10 @@
 :::demo 设置`icon`属性即可，icon 的列表可以参考 Element 的 icon 组件，也可以设置在文字右边的 icon ，只要使用`i`标签即可，可以使用自定义图标。
 
 ```html
-<tu-button icon="edit"></tu-button>
-<tu-button icon="share"></tu-button>
-<tu-button icon="delete"></tu-button>
-<tu-button icon="search">搜索</tu-button>
+<tu-button icon="tu-icon-edit"></tu-button>
+<tu-button icon="tu-icon-share"></tu-button>
+<tu-button icon="tu-icon-delete"></tu-button>
+<tu-button icon="tu-icon-search">搜索</tu-button>
 <tu-button>上传<i class="tu-icon-upload tu-icon--right"></i></tu-button>
 ```
 
@@ -131,13 +131,13 @@
 ```html
 <tu-row>
 	<tu-button-group>
-		<tu-button icon="left">上一页</tu-button>
+		<tu-button icon="tu-icon-left">上一页</tu-button>
 		<tu-button>下一页<i class="tu-icon-right"></i></tu-button>
 	</tu-button-group>
 	<tu-button-group>
-		<tu-button icon="edit"></tu-button>
-		<tu-button icon="share"></tu-button>
-		<tu-button icon="delete"></tu-button>
+		<tu-button icon="tu-icon-edit"></tu-button>
+		<tu-button icon="tu-icon-share"></tu-button>
+		<tu-button icon="tu-icon-delete"></tu-button>
 	</tu-button-group>
 </tu-row>
 <style>
@@ -169,10 +169,10 @@ Button 组件提供除了默认值以外的三种尺寸，可以在不同场景�
 	<tu-button size="mini" round>迷你按钮</tu-button>
 </tu-row>
 <tu-row>
-	<tu-button size="large" icon="home-fill" circle></tu-button>
-	<tu-button icon="home-fill" circle></tu-button>
-	<tu-button size="small" icon="home-fill" circle></tu-button>
-	<tu-button size="mini" icon="home-fill" circle></tu-button>
+	<tu-button size="large" icon="tu-icon-home-fill" circle></tu-button>
+	<tu-button icon="tu-icon-home-fill" circle></tu-button>
+	<tu-button size="small" icon="tu-icon-home-fill" circle></tu-button>
+	<tu-button size="mini" icon="tu-icon-home-fill" circle></tu-button>
 </tu-row>
 ```
 

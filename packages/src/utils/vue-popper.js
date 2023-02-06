@@ -2,6 +2,7 @@ import Vue from 'vue';
 import {
     PopupManager
 } from '@packages/src/utils/popup';
+import { getBackground } from "./get-background";
 
 const PopperJS = Vue.prototype.$isServer ? function () { } : require('./popper');
 const stop = e => e.stopPropagation();
@@ -99,11 +100,15 @@ export default {
             if (this.popperJS && this.popperJS.destroy) {
                 this.popperJS.destroy();
             }
+            //弹出层背景着色
+            const background = getBackground(reference);
+            popper.style.background = background
 
             options.placement = this.currentPlacement;
             options.offset = this.offset;
             options.arrowOffset = this.arrowOffset;
             this.popperJS = new PopperJS(reference, popper, options);
+
             this.popperJS.onCreate(_ => {
                 this.$emit('created', this);
                 this.resetTransformOrigin();

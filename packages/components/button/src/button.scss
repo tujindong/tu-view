@@ -72,8 +72,8 @@
 }
 
 @include b(button) {
-	display: inline-flex;
-	align-items: center;
+	display: inline-block;
+	text-align: center;
 	line-height: 1;
 	white-space: nowrap;
 	cursor: pointer;
@@ -256,6 +256,7 @@
 	display: inline-block;
 	vertical-align: middle;
 	margin: auto;
+	margin-top: -2px;
 
 	& > .tu-button {
 		float: left;

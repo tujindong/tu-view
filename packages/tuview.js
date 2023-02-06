@@ -47,6 +47,7 @@ import TimePicker from './components/time-picker';
 import Dropdown from './components/dropdown';
 import DropdownItem from './components/dropdown-item';
 import DropdownMenu from './components/dropdown-menu';
+import Message from './components/message';
 
 const componentsList = [
     Button,
@@ -83,15 +84,18 @@ const componentsList = [
     TimePicker,
     Dropdown,
     DropdownItem,
-    DropdownMenu
+    DropdownMenu,
+    Message
 ];
 
-const install = function (Vue) {
+const install = function (Vue, opts = {}) {
     if (install.installed) return;
 
     componentsList.map((component) => {
         Vue.component(component.name, component);
     })
+
+    Vue.prototype.$message = Message;
 }
 
 if (typeof window !== 'undefined' && window.Vue) {

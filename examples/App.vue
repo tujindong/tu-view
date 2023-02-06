@@ -24,6 +24,7 @@
     <DemoTimePicker />
     <DemoDateTimePicker />
     <DemoDropdown />
+    <DemoMessage />
   </div>
 </template>
 
@@ -52,6 +53,7 @@ import DemoDatePicker from "./components/demo-datePicker.vue";
 import DemoTimePicker from "./components/demo-timePicker.vue";
 import DemoDateTimePicker from "./components/demo-dateTimePicker.vue";
 import DemoDropdown from "./components/demo-dropdown.vue";
+import DemoMessage from "./components/demo-message.vue";
 export default {
   components: {
     DemoButton,
@@ -78,6 +80,7 @@ export default {
     DemoTimePicker,
     DemoDateTimePicker,
     DemoDropdown,
+    DemoMessage,
   },
 
   data() {

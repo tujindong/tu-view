@@ -1,6 +1,7 @@
 <template>
   <transition name="tu-zoom-in-top" @after-leave="doDestroy">
     <ul
+      ref="popper"
       class="tu-dropdown-menu tu-popper"
       :class="[size && `tu-dropdown-menu--${size}`]"
       v-show="showPopper"
@@ -24,13 +25,12 @@ export default {
   props: {
     visibleArrow: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     arrowOffset: {
       type: Number,
       default: 0,
     },
-    visibleArrow: false,
   },
 
   data() {

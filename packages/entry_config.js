@@ -141,5 +141,9 @@ module.exports = {
             name: 'dropdown-menu',
             author: 'tujindong'
         },
+        {
+            name: 'message',
+            author: 'tujindong'
+        },
     ]
 }
