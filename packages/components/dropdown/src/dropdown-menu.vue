@@ -30,6 +30,7 @@ export default {
       type: Number,
       default: 0,
     },
+    visibleArrow: false,
   },
 
   data() {
@@ -57,8 +58,8 @@ export default {
   },
 
   mounted() {
-    this.dropdown.popperTum = this.popperTum = this.$el;
-    this.referenceTum = this.dropdown.$el;
+    this.dropdown.popperElm = this.popperElm = this.$el;
+    this.referenceElm = this.dropdown.$el;
     this.dropdown.initDomOperation();
   },
 };

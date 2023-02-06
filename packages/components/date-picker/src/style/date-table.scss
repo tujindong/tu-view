@@ -145,10 +145,9 @@
 	}
 
 	th {
-		border: none;
 		padding: 5px;
 		color: $--color-greyDark;
 		font-weight: 400;
-		border-bottom: solid 1px $--color-greyLight-2;
+		border-bottom: solid 1px rgba($--color-greyLight-3, 0.38);
 	}
 }

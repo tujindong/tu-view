@@ -1,1 +1,38 @@
 @import "~@packages/style/common/mixin.scss";
+
+@include b(dropdown) {
+	display: inline-block;
+	position: relative;
+	color: $--color-greyDark;
+	font-size: $--font-size-base;
+}
+
+@include b(dropdown-menu) {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	padding: 10px 0;
+	margin: 5px 0;
+	border-radius: $--border-radius-base;
+	box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+
+	@include e(item) {
+		list-style: none;
+		line-height: 36px;
+		padding: 0 20px;
+		margin: 0;
+		font-size: $--font-size-base;
+		color: $--color-greyDark;
+		cursor: pointer;
+		outline: none;
+		&:not(.is-disabled):hover,
+		&:focus {
+			background: rgba($--color-greyDark, 0.25);
+		}
+
+		i {
+			margin-right: 5px;
+		}
+	}
+}
