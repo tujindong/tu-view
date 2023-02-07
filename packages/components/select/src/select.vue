@@ -113,7 +113,7 @@
             ]"
           ></i>
           <i
-            class="tu-select__caret tu-icon-close-circle-fill"
+            class="tu-select__caret is-show-close tu-icon-close-circle-fill"
             v-if="showClose"
             @click="handleClearClick"
           ></i>

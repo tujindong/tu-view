@@ -3,6 +3,8 @@ import Clickoutside from "@packages/src/utils/clickoutside";
 import Emitter from "@packages/src/mixins/emitter";
 import Migrating from "@packages/src/mixins/migrating";
 import { generateId } from "@packages/src/utils/util";
+import { getBackground } from "@packages/src/utils/get-background";
+
 export default {
   name: "TuDropdown",
 
@@ -225,7 +227,7 @@ export default {
           "class",
           (this.triggerElm.getAttribute("class") || "") +
             " tu-dropdown-selfdefine"
-        ); // 控制
+        );
       }
     },
 
@@ -269,6 +271,12 @@ export default {
       }
     },
 
+    setDropdownBackgorundColor() {
+      const backgroundColor = getBackground(this.triggerElm);
+      if (backgroundColor)
+        this.dropdownElm.style.backgroundColor = backgroundColor;
+    },
+
     handleMenuItemClick(command, instance) {
       if (this.hideOnClick) {
         this.visible = false;
@@ -286,6 +294,7 @@ export default {
       this.menuItemsArray = [].slice.call(this.menuItems);
       this.initEvent();
       this.initAria();
+      this.setDropdownBackgorundColor();
     },
   },
 

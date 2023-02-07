@@ -26,6 +26,7 @@ module.exports = {
                     children: [
                         ['../guide/layout.md', 'Layout 布局'],
                         ['../guide/button.md', 'Button 按钮'],
+                        ['../guide/icon.md', 'Icon 图标'],
                     ]
                 },
                 {
@@ -58,6 +59,13 @@ module.exports = {
                     children: [
                         ['../guide/tabs.md', 'Tabs 标签页'],
                         ['../guide/dropdown.md', 'Dropdown 下拉菜单'],
+                    ]
+                },
+                {
+                    title: '通知组件',
+                    collapsable: false,
+                    children: [
+                        ['../guide/message.md', 'Message 消息通知'],
                     ]
                 },
                 {

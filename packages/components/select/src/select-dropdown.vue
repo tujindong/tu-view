@@ -11,6 +11,8 @@
 
 <script>
 import Popper from "@packages/src/utils/vue-popper";
+import { getBackground } from "@packages/src/utils/get-background";
+
 export default {
   name: "TuSelectDropdown",
 
@@ -48,7 +50,6 @@ export default {
   data() {
     return {
       minWidth: "",
-      background: "",
     };
   },
 
@@ -69,10 +70,16 @@ export default {
     this.$parent.popperElm = this.popperElm = this.$el;
     this.$on("updatePopper", () => {
       if (this.$parent.visible) this.updatePopper();
+      this.setBackground();
     });
     this.$on("destroyPopper", this.destroyPopper);
   },
 
-  methods: {},
+  methods: {
+    setBackground() {
+      const background = getBackground(this.referenceElm);
+      this.$refs.dropdown.style.background = background;
+    },
+  },
 };
 </script>

@@ -15,7 +15,13 @@
         </tu-select>
       </tu-col>
       <tu-col :span="8">
-        <tu-select multiple size="medium" v-model="value2" placeholder="请选择">
+        <tu-select
+          multiple
+          size="medium"
+          v-model="value2"
+          placeholder="请选择"
+          clearable
+        >
           <tu-option
             v-for="item in options"
             :key="item.value"

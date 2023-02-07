@@ -1,6 +1,7 @@
 <template>
   <transition name="tu-message-fade" @after-leave="handleAfterLeave">
     <div
+      ref="message"
       :class="[
         'tu-message',
         type && !iconClass ? `tu-message--${type}` : '',
@@ -33,10 +34,10 @@
 
 <script type="text/babel">
 const typeMap = {
-  success: "success",
-  info: "info",
-  warning: "warning",
-  error: "error",
+  success: "check-circle-fill",
+  info: "info-circle-fill",
+  warning: "warning-circle",
+  error: "close-circle",
 };
 
 export default {
@@ -45,7 +46,7 @@ export default {
       visible: false,
       message: "",
       duration: 3000,
-      type: "info",
+      type: "",
       iconClass: "",
       customClass: "",
       onClose: null,
@@ -79,6 +80,15 @@ export default {
     },
   },
 
+  mounted() {
+    this.startTimer();
+    document.addEventListener("keydown", this.keydown);
+  },
+
+  beforeDestroy() {
+    document.removeEventListener("keydown", this.keydown);
+  },
+
   methods: {
     handleAfterLeave() {
       this.$destroy(true);
@@ -105,6 +115,7 @@ export default {
         }, this.duration);
       }
     },
+
     keydown(e) {
       if (e.keyCode === 27) {
         // esc关闭消息
@@ -113,13 +124,6 @@ export default {
         }
       }
     },
-  },
-  mounted() {
-    this.startTimer();
-    document.addEventListener("keydown", this.keydown);
-  },
-  beforeDestroy() {
-    document.removeEventListener("keydown", this.keydown);
   },
 };
 </script>

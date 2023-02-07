@@ -31,26 +31,31 @@ $--border-color-extra-light: #f2f6fc;
 $--color-primary-light: #8abdff;
 $--color-primary: #6d5dfc;
 $--color-primary-dark: #510ccf;
+$--color-primary-lighter: mix($--color-white, $--color-primary, 90%);
 
 /*success color*/
 $--color-success-light: #93e769;
 $--color-success: #6bc43f;
 $--color-success-dark: #3d8618;
+$--color-success-lighter: mix($--color-white, $--color-success, 90%);
 
 /* info color */
 $--color-info-light: #c5c5c5;
 $--color-info: #909399;
 $--color-info-dark: #54585f;
+$--color-info-lighter: mix($--color-white, $--color-info, 90%);
 
 /* warning color*/
 $--color-warning-light: #ffc979;
 $--color-warning: #e6a23c;
 $--color-warning-dark: #b67617;
+$--color-warning-lighter: mix($--color-white, $--color-warning, 90%);
 
 /* danger color*/
 $--color-danger-light: #ff9f9f;
 $--color-danger: #f56c6c;
 $--color-danger-dark: #c44444;
+$--color-danger-lighter: mix($--color-white, $--color-danger, 90%);
 
 /* z-index
 -------------------------- */
@@ -265,10 +270,10 @@ $--popover-title-font-color: $--color-text-primary;
 
 /* Tooltip
 -------------------------- */
-$--tooltip-fill: $--color-greyLight-3;
+$--tooltip-fill: rgba(103, 105, 107, 1);
 $--tooltip-color: $--color-white;
 $--tooltip-font-size: 12px;
-$--tooltip-border-color: $--color-greyDark;
+$--tooltip-border-color: rgba(103, 105, 107, 1);
 $--tooltip-arrow-size: 4px;
 $--tooltip-padding: 10px;
 
@@ -304,7 +309,7 @@ $--tag-large-border-radius: 4px;
 
 /* Select
 -------------------------- */
-$--select-close-hover-color: $--color-text-secondary;
+$--select-close-hover-color: $--color-greyDark;
 
 $--select-input-color: $--color-greyLight-3;
 $--select-multiple-input-color: $--color-greyLight-3;
@@ -395,6 +400,21 @@ $--form-label-font-size: $--font-size-base;
 
 /* Dropdown
 -------------------------- */
+
+/* Message
+-------------------------- */
+// $--message-shadow: $--box-shadow-base;
+$--message-min-width: 380px;
+$--message-color: $--color-white;
+$--message-padding: 15px 15px 15px 20px;
+$--message-close-icon-color: $--color-greyLight-3;
+$--message-close-size: 16px;
+$--message-close-hover-color: $--color-greyDark;
+
+$--message-success-font-color: $--color-success;
+$--message-info-font-color: $--color-info;
+$--message-warning-font-color: $--color-warning;
+$--message-danger-font-color: $--color-danger;
 
 /* Break-point
 --------------------------*/
