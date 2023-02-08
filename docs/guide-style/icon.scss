@@ -1,0 +1,39 @@
+.icon-block {
+	.icon-block-item {
+		.icon-list {
+			border: 1px solid #cad5e1;
+			&::after {
+				display: block;
+				content: "";
+				clear: both;
+			}
+			.icon-item {
+				float: left;
+				width: 16.66%;
+				height: 120px;
+				text-align: center;
+				font-size: 13px;
+				border-right: 1px solid #cad5e1;
+				border-bottom: 1px solid #cad5e1;
+				margin-right: -1px;
+				margin-bottom: -1px;
+				font-size: 1.3em;
+				color: #9baacf;
+				[class*="tu-icon-"] {
+					font-size: 1.2em;
+					margin-top: 30px;
+					transition: color 0.3s;
+					&:hover {
+						color: #6d5dfc;
+					}
+				}
+				.icon-item-name {
+					margin-top: 10px;
+					display: block;
+					font-size: 14px;
+					color: #bec8e4;
+				}
+			}
+		}
+	}
+}

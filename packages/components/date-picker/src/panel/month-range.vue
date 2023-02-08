@@ -36,7 +36,7 @@
               <button
                 type="button"
                 @click="leftPrevYear"
-                class="tu-picker-panel__icon-btn tu-icon-doubleleft"
+                class="tu-picker-panel__icon-btn tu-icon-double-left"
               ></button>
               <button
                 type="button"
@@ -44,7 +44,7 @@
                 @click="leftNextYear"
                 :disabled="!enableYearArrow"
                 :class="{ 'is-disabled': !enableYearArrow }"
-                class="tu-picker-panel__icon-btn tu-icon-doubleright"
+                class="tu-picker-panel__icon-btn tu-icon-double-right"
               ></button>
               <div>{{ leftLabel }}</div>
             </div>
@@ -75,12 +75,12 @@
                 @click="rightPrevYear"
                 :disabled="!enableYearArrow"
                 :class="{ 'is-disabled': !enableYearArrow }"
-                class="tu-picker-panel__icon-btn tu-icon-doubleleft"
+                class="tu-picker-panel__icon-btn tu-icon-double-left"
               ></button>
               <button
                 type="button"
                 @click="rightNextYear"
-                class="tu-picker-panel__icon-btn tu-icon-doubleright"
+                class="tu-picker-panel__icon-btn tu-icon-double-right"
               ></button>
               <div>{{ rightLabel }}</div>
             </div>

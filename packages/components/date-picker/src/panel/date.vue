@@ -77,7 +77,7 @@
               class="
                 tu-picker-panel__icon-btn
                 tu-date-picker__prev-btn
-                tu-icon-doubleleft
+                tu-icon-double-left
               "
             ></button>
             <button
@@ -112,7 +112,7 @@
               class="
                 tu-picker-panel__icon-btn
                 tu-date-picker__next-btn
-                tu-icon-doubleright
+                tu-icon-double-right
               "
             ></button>
             <button
