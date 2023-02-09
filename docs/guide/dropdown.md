@@ -40,21 +40,21 @@
 <tu-dropdown>
 	<tu-button> 更多菜单<i class="tu-icon-arrow-down tu-icon--right"></i> </tu-button>
 	<tu-dropdown-menu slot="dropdown">
-		<tu-dropdown-item>黄金糕</tu-dropdown-item>
-		<tu-dropdown-item>狮子头</tu-dropdown-item>
-		<tu-dropdown-item>螺蛳粉</tu-dropdown-item>
-		<tu-dropdown-item>双皮奶</tu-dropdown-item>
-		<tu-dropdown-item>蚵仔煎</tu-dropdown-item>
+		<tu-dropdown-item>苹果</tu-dropdown-item>
+		<tu-dropdown-item>微软</tu-dropdown-item>
+		<tu-dropdown-item>雅虎</tu-dropdown-item>
+		<tu-dropdown-item>谷歌</tu-dropdown-item>
+		<tu-dropdown-item>微信</tu-dropdown-item>
 	</tu-dropdown-menu>
 </tu-dropdown>
 <tu-dropdown split-button @click="handleClick">
 	更多菜单
 	<tu-dropdown-menu slot="dropdown">
-		<tu-dropdown-item>黄金糕</tu-dropdown-item>
-		<tu-dropdown-item>狮子头</tu-dropdown-item>
-		<tu-dropdown-item>螺蛳粉</tu-dropdown-item>
-		<tu-dropdown-item>双皮奶</tu-dropdown-item>
-		<tu-dropdown-item>蚵仔煎</tu-dropdown-item>
+		<tu-dropdown-item>苹果</tu-dropdown-item>
+		<tu-dropdown-item>微软</tu-dropdown-item>
+		<tu-dropdown-item>雅虎</tu-dropdown-item>
+		<tu-dropdown-item>谷歌</tu-dropdown-item>
+		<tu-dropdown-item>微信</tu-dropdown-item>
 	</tu-dropdown-menu>
 </tu-dropdown>
 

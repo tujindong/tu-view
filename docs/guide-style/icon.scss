@@ -19,19 +19,26 @@
 				margin-bottom: -1px;
 				font-size: 1.3em;
 				color: #9baacf;
+				&:hover {
+					color: #6d5dfc;
+					[class*="tu-icon-"] {
+						scale: 1.2;
+					}
+					.icon-item-name {
+						color: #6d5dfc;
+					}
+				}
 				[class*="tu-icon-"] {
 					font-size: 1.2em;
 					margin-top: 30px;
-					transition: color 0.3s;
-					&:hover {
-						color: #6d5dfc;
-					}
+					transition: all 0.3s;
 				}
 				.icon-item-name {
 					margin-top: 10px;
 					display: block;
 					font-size: 14px;
 					color: #bec8e4;
+					transition: color 0.3s;
 				}
 			}
 		}

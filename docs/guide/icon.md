@@ -32,18 +32,16 @@
 ### 图标集合
 
 <div class="icon-block">
-    <p style="font-weight: bold;">{{$icon.line.name}}</p>
-    <div class="icon-block-item" v-for="line in $icon.line.children">
-        <p>{{line.name}}</p>
-        <div class="icon-list">
-            <div class="icon-item" v-for="icon in line.icons">
-                <i :class="`tu-icon-${icon}`"></i>
-                <span class="icon-item-name">{{`tu-icon-${icon}`}}</span>
+    <div v-for="item in $icon" :key="item.name">
+     <p style="font-weight: bold;">{{item.name}}</p>
+        <div class="icon-block-item" v-for="line in item.children">
+            <p>{{line.name}}</p>
+            <div class="icon-list">
+                <div class="icon-item" v-for="icon in line.icons">
+                    <i :class="`tu-icon-${icon}`"></i>
+                    <span class="icon-item-name">{{`tu-icon-${icon}`}}</span>
+                </div>
             </div>
         </div>
-    </div>
-    <p style="font-weight: bold;">{{$icon.fill.name}}</p>
-    <div class="icon-block-item" v-for="fill in $icon.fill.children">
-        <p>{{fill.name}}</p>
     </div>
 </div>

@@ -52,7 +52,7 @@
           v-if="showPassword"
           :class="[
             'tu-input__icon',
-            `tu-icon-${isPasswordVisible ? 'eye' : 'eyeclose'}-fill`,
+            `tu-icon-${isPasswordVisible ? 'eye' : 'eye-close'}-fill`,
             'tu-input__hover',
           ]"
           @mousedown.prevent
