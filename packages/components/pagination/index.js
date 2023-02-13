@@ -1,4 +1,4 @@
-import Pagination from './src/pagination.vue';
+import Pagination from './src/pagination.js';
 import './src/pagination.scss';
 
 Pagination.install = function (Vue) {

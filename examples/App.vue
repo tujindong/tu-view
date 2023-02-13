@@ -15,7 +15,6 @@
     <DemoLayout />
     <DemoTable />
     <DemoProgress />
-    <DemoPagination />
     <DemoScrollbar />
     <DemoRate />
     <DemoSlider />
@@ -25,6 +24,7 @@
     <DemoDateTimePicker />
     <DemoDropdown />
     <DemoMessage />
+    <DemoPagination />
   </div>
 </template>
 

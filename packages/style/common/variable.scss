@@ -6,7 +6,8 @@
 $--all-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) !default;
 $--fade-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) !default;
 $--fade-linear-transition: opacity 200ms linear !default;
-$--md-fade-transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) !default;
+$--md-fade-transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1),
+	opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) !default;
 $--border-transition-base: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) !default;
 $--color-transition-base: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) !default;
 
@@ -403,6 +404,20 @@ $--form-label-font-size: $--font-size-base;
 
 /* Message
 -------------------------- */
+
+/* Panination
+-------------------------- */
+$--pagination-font-size: 14px;
+$--pagination-background-color: $--color-white;
+$--pagination-font-color: $--color-greyDark;
+$--pagination-border-radius: 3px;
+$--pagination-button-color: $--color-greyDark;
+$--pagination-button-width: 34px;
+$--pagination-button-height: 28px;
+$--pagination-button-disabled-color: $--color-greyLight-3;
+$--pagination-button-disabled-background-color: $--color-white;
+$--pagination-hover-color: $--color-primary;
+
 // $--message-shadow: $--box-shadow-base;
 $--message-min-width: 380px;
 $--message-color: $--color-white;

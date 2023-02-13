@@ -1,7 +1,8 @@
 @font-face {
 	font-family: "tu-icons";
 	src:
-        /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/ url("~@packages/style/fonts/iconfont.woff") format("truetype"),
+        /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/ url("~@packages/style/fonts/iconfont.woff")
+			format("truetype"),
 		/* chrome, firefox */ url("~@packages/style/fonts/iconfont.ttf") format("woff");
 	font-weight: normal;
 	font-style: normal;
@@ -2124,7 +2125,7 @@
 	content: "\e9c5";
 }
 
-.tu-icon-radius-bottom-right:before {
+.tu-icon-radius-bottomright:before {
 	content: "\e7c6";
 }
 
