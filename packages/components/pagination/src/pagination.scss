@@ -17,6 +17,13 @@
 		box-sizing: border-box;
 	}
 
+	.tu-select {
+		span:not([class*="suffix"]),
+		button {
+			min-width: 0;
+		}
+	}
+
 	button {
 		border: none;
 		padding: 0 6px;
@@ -72,10 +79,6 @@
 			line-height: 22px;
 			height: 22px;
 			min-width: 22px;
-		}
-
-		.tu-pager {
-			margin-top: -1px;
 		}
 
 		.arrow.disabled {
