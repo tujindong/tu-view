@@ -9,7 +9,7 @@
       <span v-if="collapseTags && selected.length">
         <tu-tag
           effect="shadow"
-          size="small"
+          :size="selectSize | tagSize"
           :hit="selected[0].hitState"
           :closable="!selectDisabled"
           @close="deleteTag($event, selected[0])"
@@ -19,7 +19,7 @@
           effect="shadow"
           v-if="selected.length > 1"
           :closable="false"
-          size="small"
+          :size="selectSize | tagSize"
         >
           {{ selected.length - 1 }}..
         </tu-tag>

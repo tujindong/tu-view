@@ -25,6 +25,7 @@
     <DemoDropdown />
     <DemoMessage />
     <DemoPagination />
+    <DemoCascader />
   </div>
 </template>
 
@@ -54,6 +55,7 @@ import DemoTimePicker from "./components/demo-timePicker.vue";
 import DemoDateTimePicker from "./components/demo-dateTimePicker.vue";
 import DemoDropdown from "./components/demo-dropdown.vue";
 import DemoMessage from "./components/demo-message.vue";
+import DemoCascader from "./components/demo-cascader.vue";
 export default {
   components: {
     DemoButton,
@@ -81,6 +83,7 @@ export default {
     DemoDateTimePicker,
     DemoDropdown,
     DemoMessage,
+    DemoCascader,
   },
 
   data() {

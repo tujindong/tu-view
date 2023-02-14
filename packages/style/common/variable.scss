@@ -431,6 +431,17 @@ $--message-info-font-color: $--color-info;
 $--message-warning-font-color: $--color-warning;
 $--message-danger-font-color: $--color-danger;
 
+/* Cascader
+-------------------------- */
+$--cascader-menu-font-color: $--color-greyDark;
+$--cascader-menu-selected-font-color: $--color-primary;
+$--cascader-menu-fill: $--color-white;
+$--cascader-menu-font-size: $--font-size-base;
+$--cascader-menu-radius: $--border-radius-base;
+$--cascader-menu-border: solid 1px $--color-greyLight-3;
+$--cascader-node-color-disabled: $--color-greyLight-3;
+$--cascader-color-empty: $--color-greyLight-3;
+
 /* Break-point
 --------------------------*/
 $--sm: 768px !default;

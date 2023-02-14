@@ -129,11 +129,13 @@ export default {
     inputSize() {
       return this.size;
     },
+
     nativeInputValue() {
-      return this.value !== null || this.value !== undefined
-        ? String(this.value)
-        : "";
+      return this.value === null || this.value === undefined
+        ? ""
+        : String(this.value);
     },
+
     inputType() {
       return this.showPassword
         ? this.isPasswordVisible
@@ -141,9 +143,11 @@ export default {
           : "password"
         : this.type;
     },
+
     isDisabled() {
       return this.disabled;
     },
+
     showClear() {
       return (
         this.clearable &&
@@ -153,6 +157,7 @@ export default {
         (this.focused || this.hovering)
       );
     },
+
     isWordLimitVisible() {
       return (
         this.showWordLimit &&
@@ -162,14 +167,17 @@ export default {
         !this.showPassword
       );
     },
+
     upperLimit() {
       return this.$attrs.maxlength;
     },
+
     textLength() {
       return typeof this.value === "number"
         ? String(this.value).length
         : (this.value || "").length;
     },
+
     isExceed() {
       return this.isWordLimitVisible && this.textLength >= this.upperLimit;
     },
