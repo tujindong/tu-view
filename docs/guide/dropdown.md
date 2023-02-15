@@ -47,7 +47,10 @@
 		<tu-dropdown-item>微信</tu-dropdown-item>
 	</tu-dropdown-menu>
 </tu-dropdown>
-<tu-dropdown split-button @click="handleClick">
+<tu-dropdown
+	split-button
+	@click="handleClick"
+>
 	更多菜单
 	<tu-dropdown-menu slot="dropdown">
 		<tu-dropdown-item>苹果</tu-dropdown-item>
@@ -93,8 +96,16 @@
 				<tu-dropdown-item icon="tu-icon-apple">苹果</tu-dropdown-item>
 				<tu-dropdown-item icon="tu-icon-windows">微软</tu-dropdown-item>
 				<tu-dropdown-item icon="tu-icon-yahoo">雅虎</tu-dropdown-item>
-				<tu-dropdown-item icon="tu-icon-google" disabled>谷歌</tu-dropdown-item>
-				<tu-dropdown-item icon="tu-icon-wechat-fill" divided>微信</tu-dropdown-item>
+				<tu-dropdown-item
+					icon="tu-icon-google"
+					disabled
+					>谷歌</tu-dropdown-item
+				>
+				<tu-dropdown-item
+					icon="tu-icon-wechat-fill"
+					divided
+					>微信</tu-dropdown-item
+				>
 			</tu-dropdown-menu>
 		</tu-dropdown>
 	</tu-col>
@@ -106,8 +117,16 @@
 				<tu-dropdown-item icon="tu-icon-apple">苹果</tu-dropdown-item>
 				<tu-dropdown-item icon="tu-icon-windows">微软</tu-dropdown-item>
 				<tu-dropdown-item icon="tu-icon-yahoo">雅虎</tu-dropdown-item>
-				<tu-dropdown-item icon="tu-icon-google" disabled>谷歌</tu-dropdown-item>
-				<tu-dropdown-item icon="tu-icon-wechat-fill" divided>微信</tu-dropdown-item>
+				<tu-dropdown-item
+					icon="tu-icon-google"
+					disabled
+					>谷歌</tu-dropdown-item
+				>
+				<tu-dropdown-item
+					icon="tu-icon-wechat-fill"
+					divided
+					>微信</tu-dropdown-item
+				>
 			</tu-dropdown-menu>
 		</tu-dropdown>
 	</tu-col>
@@ -159,8 +178,16 @@
 		<tu-dropdown-item command="apple">苹果</tu-dropdown-item>
 		<tu-dropdown-item command="windows">微软</tu-dropdown-item>
 		<tu-dropdown-item command="yahoo">雅虎</tu-dropdown-item>
-		<tu-dropdown-item command="google" disabled>谷歌</tu-dropdown-item>
-		<tu-dropdown-item command="wechat" divided>微信</tu-dropdown-item>
+		<tu-dropdown-item
+			command="google"
+			disabled
+			>谷歌</tu-dropdown-item
+		>
+		<tu-dropdown-item
+			command="wechat"
+			divided
+			>微信</tu-dropdown-item
+		>
 	</tu-dropdown-menu>
 </tu-dropdown>
 
@@ -202,7 +229,10 @@ Dropdown 组件提供除了默认值以外的三种尺寸，可以在不同场�
 	</tu-dropdown-menu>
 </tu-dropdown>
 
-<tu-dropdown size="medium" split-button>
+<tu-dropdown
+	size="medium"
+	split-button
+>
 	中等尺寸
 	<tu-dropdown-menu slot="dropdown">
 		<tu-dropdown-item icon="tu-icon-apple">苹果</tu-dropdown-item>
@@ -213,7 +243,10 @@ Dropdown 组件提供除了默认值以外的三种尺寸，可以在不同场�
 	</tu-dropdown-menu>
 </tu-dropdown>
 
-<tu-dropdown size="small" split-button>
+<tu-dropdown
+	size="small"
+	split-button
+>
 	小型尺寸
 	<tu-dropdown-menu slot="dropdown">
 		<tu-dropdown-item icon="tu-icon-apple">苹果</tu-dropdown-item>
@@ -224,7 +257,10 @@ Dropdown 组件提供除了默认值以外的三种尺寸，可以在不同场�
 	</tu-dropdown-menu>
 </tu-dropdown>
 
-<tu-dropdown size="mini" split-button>
+<tu-dropdown
+	size="mini"
+	split-button
+>
 	超小尺寸
 	<tu-dropdown-menu slot="dropdown">
 		<tu-dropdown-item icon="tu-icon-apple">苹果</tu-dropdown-item>

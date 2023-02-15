@@ -20,20 +20,63 @@
 
 <tu-row>
 	<tu-button round>圆角按钮</tu-button>
-	<tu-button type="primary" round>主要按钮</tu-button>
-	<tu-button type="success" round>成功按钮</tu-button>
-	<tu-button type="info" round>信息按钮</tu-button>
-	<tu-button type="warning" round>警告按钮</tu-button>
-	<tu-button type="danger" round>危险按钮</tu-button>
+	<tu-button
+		type="primary"
+		round
+		>主要按钮</tu-button
+	>
+	<tu-button
+		type="success"
+		round
+		>成功按钮</tu-button
+	>
+	<tu-button
+		type="info"
+		round
+		>信息按钮</tu-button
+	>
+	<tu-button
+		type="warning"
+		round
+		>警告按钮</tu-button
+	>
+	<tu-button
+		type="danger"
+		round
+		>危险按钮</tu-button
+	>
 </tu-row>
 
 <tu-row>
-	<tu-button icon="tu-icon-home-fill" circle></tu-button>
-	<tu-button type="primary" icon="tu-icon-edit" circle></tu-button>
-	<tu-button type="success" icon="tu-icon-check" circle></tu-button>
-	<tu-button type="info" icon="tu-icon-message" circle></tu-button>
-	<tu-button type="warning" icon="tu-icon-star" circle></tu-button>
-	<tu-button type="danger" icon="tu-icon-delete" circle></tu-button>
+	<tu-button
+		icon="tu-icon-home-fill"
+		circle
+	></tu-button>
+	<tu-button
+		type="primary"
+		icon="tu-icon-edit"
+		circle
+	></tu-button>
+	<tu-button
+		type="success"
+		icon="tu-icon-check"
+		circle
+	></tu-button>
+	<tu-button
+		type="info"
+		icon="tu-icon-message"
+		circle
+	></tu-button>
+	<tu-button
+		type="warning"
+		icon="tu-icon-star"
+		circle
+	></tu-button>
+	<tu-button
+		type="danger"
+		icon="tu-icon-delete"
+		circle
+	></tu-button>
 </tu-row>
 
 <style>
@@ -54,20 +97,69 @@
 ```html
 <tu-row>
 	<tu-button disabled>默认按钮</tu-button>
-	<tu-button type="primary" disabled>主要按钮</tu-button>
-	<tu-button type="success" disabled>成功按钮</tu-button>
-	<tu-button type="info" disabled>信息按钮</tu-button>
-	<tu-button type="warning" disabled>警告按钮</tu-button>
-	<tu-button type="danger" disabled>危险按钮</tu-button>
+	<tu-button
+		type="primary"
+		disabled
+		>主要按钮</tu-button
+	>
+	<tu-button
+		type="success"
+		disabled
+		>成功按钮</tu-button
+	>
+	<tu-button
+		type="info"
+		disabled
+		>信息按钮</tu-button
+	>
+	<tu-button
+		type="warning"
+		disabled
+		>警告按钮</tu-button
+	>
+	<tu-button
+		type="danger"
+		disabled
+		>危险按钮</tu-button
+	>
 </tu-row>
 
 <tu-row>
-	<tu-button plain disabled>朴素按钮</tu-button>
-	<tu-button type="primary" plain disabled>主要按钮</tu-button>
-	<tu-button type="success" plain disabled>成功按钮</tu-button>
-	<tu-button type="info" plain disabled>信息按钮</tu-button>
-	<tu-button type="warning" plain disabled>警告按钮</tu-button>
-	<tu-button type="danger" plain disabled>危险按钮</tu-button>
+	<tu-button
+		plain
+		disabled
+		>朴素按钮</tu-button
+	>
+	<tu-button
+		type="primary"
+		plain
+		disabled
+		>主要按钮</tu-button
+	>
+	<tu-button
+		type="success"
+		plain
+		disabled
+		>成功按钮</tu-button
+	>
+	<tu-button
+		type="info"
+		plain
+		disabled
+		>信息按钮</tu-button
+	>
+	<tu-button
+		type="warning"
+		plain
+		disabled
+		>警告按钮</tu-button
+	>
+	<tu-button
+		type="danger"
+		plain
+		disabled
+		>危险按钮</tu-button
+	>
 </tu-row>
 
 <style>
@@ -86,7 +178,12 @@
 :::demo
 
 ```html
-<tu-button type="text">文字按钮</tu-button> <tu-button type="text" disabled>文字按钮</tu-button>
+<tu-button type="text">文字按钮</tu-button>
+<tu-button
+	type="text"
+	disabled
+	>文字按钮</tu-button
+>
 ```
 
 :::
@@ -116,7 +213,11 @@
 ```html
 <tu-row>
 	<tu-button :loading="true">加载中</tu-button>
-	<tu-button type="primary" :loading="true">加载中</tu-button>
+	<tu-button
+		type="primary"
+		:loading="true"
+		>加载中</tu-button
+	>
 </tu-row>
 ```
 
@@ -163,16 +264,47 @@ Button 组件提供除了默认值以外的三种尺寸，可以在不同场景�
 	<tu-button size="mini">迷你按钮</tu-button>
 </tu-row>
 <tu-row>
-	<tu-button size="large" round>大型按钮</tu-button>
-	<tu-button size="medium" round>中等按钮</tu-button>
-	<tu-button size="small" round>小型按钮</tu-button>
-	<tu-button size="mini" round>迷你按钮</tu-button>
+	<tu-button
+		size="large"
+		round
+		>大型按钮</tu-button
+	>
+	<tu-button
+		size="medium"
+		round
+		>中等按钮</tu-button
+	>
+	<tu-button
+		size="small"
+		round
+		>小型按钮</tu-button
+	>
+	<tu-button
+		size="mini"
+		round
+		>迷你按钮</tu-button
+	>
 </tu-row>
 <tu-row>
-	<tu-button size="large" icon="tu-icon-home-fill" circle></tu-button>
-	<tu-button icon="tu-icon-home-fill" circle></tu-button>
-	<tu-button size="small" icon="tu-icon-home-fill" circle></tu-button>
-	<tu-button size="mini" icon="tu-icon-home-fill" circle></tu-button>
+	<tu-button
+		size="large"
+		icon="tu-icon-home-fill"
+		circle
+	></tu-button>
+	<tu-button
+		icon="tu-icon-home-fill"
+		circle
+	></tu-button>
+	<tu-button
+		size="small"
+		icon="tu-icon-home-fill"
+		circle
+	></tu-button>
+	<tu-button
+		size="mini"
+		icon="tu-icon-home-fill"
+		circle
+	></tu-button>
 </tu-row>
 ```
 

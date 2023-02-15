@@ -8,7 +8,13 @@
 
 ```html
 <template>
-	<tu-input-number v-model="num" @change="handleChange" :min="1" :max="10" label="描述文字"></tu-input-number>
+	<tu-input-number
+		v-model="num"
+		@change="handleChange"
+		:min="1"
+		:max="10"
+		label="描述文字"
+	></tu-input-number>
 </template>
 <script>
 	export default {
@@ -34,7 +40,10 @@
 
 ```html
 <template>
-	<tu-input-number v-model="num" :disabled="true"></tu-input-number>
+	<tu-input-number
+		v-model="num"
+		:disabled="true"
+	></tu-input-number>
 </template>
 <script>
 	export default {
@@ -57,7 +66,10 @@
 
 ```html
 <template>
-	<tu-input-number v-model="num" :step="2"></tu-input-number>
+	<tu-input-number
+		v-model="num"
+		:step="2"
+	></tu-input-number>
 </template>
 <script>
 	export default {
@@ -78,7 +90,11 @@
 
 ```html
 <template>
-	<tu-input-number v-model="num" :step="2" step-strictly></tu-input-number>
+	<tu-input-number
+		v-model="num"
+		:step="2"
+		step-strictly
+	></tu-input-number>
 </template>
 <script>
 	export default {
@@ -99,7 +115,12 @@
 
 ```html
 <template>
-	<tu-input-number v-model="num" :precision="2" :step="0.1" :max="10"></tu-input-number>
+	<tu-input-number
+		v-model="num"
+		:precision="2"
+		:step="0.1"
+		:max="10"
+	></tu-input-number>
 </template>
 <script>
 	export default {
@@ -128,13 +149,25 @@
 <template>
 	<div class="demo-input-number-size">
 		<p>超小</p>
-		<tu-input-number size="mini" v-model="num1"></tu-input-number>
+		<tu-input-number
+			size="mini"
+			v-model="num1"
+		></tu-input-number>
 		<p>较小</p>
-		<tu-input-number size="small" v-model="num2"></tu-input-number>
+		<tu-input-number
+			size="small"
+			v-model="num2"
+		></tu-input-number>
 		<p>中等</p>
-		<tu-input-number size="medium" v-model="num3"></tu-input-number>
+		<tu-input-number
+			size="medium"
+			v-model="num3"
+		></tu-input-number>
 		<p>较大</p>
-		<tu-input-number size="large" v-model="num4"></tu-input-number>
+		<tu-input-number
+			size="large"
+			v-model="num4"
+		></tu-input-number>
 	</div>
 </template>
 <script>
@@ -159,7 +192,13 @@
 
 ```html
 <template>
-	<tu-input-number v-model="num" controls-position="right" @change="handleChange" :min="1" :max="10"></tu-input-number>
+	<tu-input-number
+		v-model="num"
+		controls-position="right"
+		@change="handleChange"
+		:min="1"
+		:max="10"
+	></tu-input-number>
 </template>
 <script>
 	export default {

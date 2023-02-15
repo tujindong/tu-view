@@ -7,8 +7,17 @@
 
 ```html
 <template>
-	<tu-select v-model="value" placeholder="请选择">
-		<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+	<tu-select
+		v-model="value"
+		placeholder="请选择"
+	>
+		<tu-option
+			v-for="item in options"
+			:key="item.value"
+			:label="item.label"
+			:value="item.value"
+		>
+		</tu-option>
 	</tu-select>
 </template>
 
@@ -53,8 +62,18 @@
 
 ```html
 <template>
-	<tu-select v-model="value" placeholder="请选择">
-		<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" :disabled="item.disabled"> </tu-option>
+	<tu-select
+		v-model="value"
+		placeholder="请选择"
+	>
+		<tu-option
+			v-for="item in options"
+			:key="item.value"
+			:label="item.label"
+			:value="item.value"
+			:disabled="item.disabled"
+		>
+		</tu-option>
 	</tu-select>
 </template>
 
@@ -102,8 +121,18 @@
 
 ```html
 <template>
-	<tu-select v-model="value" disabled placeholder="请选择">
-		<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+	<tu-select
+		v-model="value"
+		disabled
+		placeholder="请选择"
+	>
+		<tu-option
+			v-for="item in options"
+			:key="item.value"
+			:label="item.label"
+			:value="item.value"
+		>
+		</tu-option>
 	</tu-select>
 </template>
 
@@ -150,8 +179,18 @@
 
 ```html
 <template>
-	<tu-select v-model="value" clearable placeholder="请选择">
-		<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+	<tu-select
+		v-model="value"
+		clearable
+		placeholder="请选择"
+	>
+		<tu-option
+			v-for="item in options"
+			:key="item.value"
+			:label="item.label"
+			:value="item.value"
+		>
+		</tu-option>
 	</tu-select>
 </template>
 
@@ -200,13 +239,34 @@
 <template>
 	<tu-row :gutter="20">
 		<tu-col :span="12">
-			<tu-select v-model="value1" multiple placeholder="请选择">
-				<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+			<tu-select
+				v-model="value1"
+				multiple
+				placeholder="请选择"
+			>
+				<tu-option
+					v-for="item in options"
+					:key="item.value"
+					:label="item.label"
+					:value="item.value"
+				>
+				</tu-option>
 			</tu-select>
 		</tu-col>
 		<tu-col :span="12">
-			<tu-select v-model="value2" multiple collapse-tags placeholder="请选择">
-				<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+			<tu-select
+				v-model="value2"
+				multiple
+				collapse-tags
+				placeholder="请选择"
+			>
+				<tu-option
+					v-for="item in options"
+					:key="item.value"
+					:label="item.label"
+					:value="item.value"
+				>
+				</tu-option>
 			</tu-select>
 		</tu-col>
 	</tu-row>
@@ -256,8 +316,16 @@
 
 ```html
 <template>
-	<tu-select v-model="value" placeholder="请选择">
-		<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+	<tu-select
+		v-model="value"
+		placeholder="请选择"
+	>
+		<tu-option
+			v-for="item in options"
+			:key="item.value"
+			:label="item.label"
+			:value="item.value"
+		>
 			<span style="float: left">{{ item.label }}</span>
 			<span style="float: right; color: #8492a6; font-size: 13px">{{ item.value }}</span>
 		</tu-option>
@@ -307,9 +375,22 @@
 
 ```html
 <template>
-	<tu-select v-model="value" placeholder="请选择">
-		<tu-option-group v-for="group in options" :key="group.label" :label="group.label">
-			<tu-option v-for="item in group.options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+	<tu-select
+		v-model="value"
+		placeholder="请选择"
+	>
+		<tu-option-group
+			v-for="group in options"
+			:key="group.label"
+			:label="group.label"
+		>
+			<tu-option
+				v-for="item in group.options"
+				:key="item.value"
+				:label="item.label"
+				:value="item.value"
+			>
+			</tu-option>
 		</tu-option-group>
 	</tu-select>
 </template>
@@ -371,8 +452,18 @@
 
 ```html
 <template>
-	<tu-select v-model="value" filterable placeholder="请选择">
-		<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+	<tu-select
+		v-model="value"
+		filterable
+		placeholder="请选择"
+	>
+		<tu-option
+			v-for="item in options"
+			:key="item.value"
+			:label="item.label"
+			:value="item.value"
+		>
+		</tu-option>
 	</tu-select>
 </template>
 
@@ -418,8 +509,23 @@
 
 ```html
 <template>
-	<tu-select v-model="value" multiple filterable remote reserve-keyword placeholder="请输入关键词" :remote-method="remoteMethod" :loading="loading">
-		<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+	<tu-select
+		v-model="value"
+		multiple
+		filterable
+		remote
+		reserve-keyword
+		placeholder="请输入关键词"
+		:remote-method="remoteMethod"
+		:loading="loading"
+	>
+		<tu-option
+			v-for="item in options"
+			:key="item.value"
+			:label="item.label"
+			:value="item.value"
+		>
+		</tu-option>
 	</tu-select>
 </template>
 
@@ -520,41 +626,113 @@
 	<span>基础</span>
 	<tu-row :gutter="20">
 		<tu-col :span="8">
-			<tu-select size="small" v-model="value1" placeholder="请选择">
-				<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+			<tu-select
+				size="small"
+				v-model="value1"
+				placeholder="请选择"
+			>
+				<tu-option
+					v-for="item in options"
+					:key="item.value"
+					:label="item.label"
+					:value="item.value"
+				>
+				</tu-option>
 			</tu-select>
 		</tu-col>
 		<tu-col :span="8">
-			<tu-select size="medium" v-model="value2" placeholder="请选择">
-				<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+			<tu-select
+				size="medium"
+				v-model="value2"
+				placeholder="请选择"
+			>
+				<tu-option
+					v-for="item in options"
+					:key="item.value"
+					:label="item.label"
+					:value="item.value"
+				>
+				</tu-option>
 			</tu-select>
 		</tu-col>
 		<tu-col :span="8">
-			<tu-select size="large" v-model="value3" placeholder="请选择">
-				<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+			<tu-select
+				size="large"
+				v-model="value3"
+				placeholder="请选择"
+			>
+				<tu-option
+					v-for="item in options"
+					:key="item.value"
+					:label="item.label"
+					:value="item.value"
+				>
+				</tu-option>
 			</tu-select>
 		</tu-col>
 	</tu-row>
 	<span>分组</span>
 	<tu-row :gutter="20">
 		<tu-col :span="8">
-			<tu-select size="small" v-model="value4" placeholder="请选择">
-				<tu-option-group v-for="group in optionsGroup" :key="group.label" :label="group.label">
-					<tu-option v-for="item in group.options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+			<tu-select
+				size="small"
+				v-model="value4"
+				placeholder="请选择"
+			>
+				<tu-option-group
+					v-for="group in optionsGroup"
+					:key="group.label"
+					:label="group.label"
+				>
+					<tu-option
+						v-for="item in group.options"
+						:key="item.value"
+						:label="item.label"
+						:value="item.value"
+					>
+					</tu-option>
 				</tu-option-group>
 			</tu-select>
 		</tu-col>
 		<tu-col :span="8">
-			<tu-select size="medium" v-model="value5" placeholder="请选择">
-				<tu-option-group v-for="group in optionsGroup" :key="group.label" :label="group.label">
-					<tu-option v-for="item in group.options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+			<tu-select
+				size="medium"
+				v-model="value5"
+				placeholder="请选择"
+			>
+				<tu-option-group
+					v-for="group in optionsGroup"
+					:key="group.label"
+					:label="group.label"
+				>
+					<tu-option
+						v-for="item in group.options"
+						:key="item.value"
+						:label="item.label"
+						:value="item.value"
+					>
+					</tu-option>
 				</tu-option-group>
 			</tu-select>
 		</tu-col>
 		<tu-col :span="8">
-			<tu-select size="large" v-model="value6" placeholder="请选择">
-				<tu-option-group v-for="group in optionsGroup" :key="group.label" :label="group.label">
-					<tu-option v-for="item in group.options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+			<tu-select
+				size="large"
+				v-model="value6"
+				placeholder="请选择"
+			>
+				<tu-option-group
+					v-for="group in optionsGroup"
+					:key="group.label"
+					:label="group.label"
+				>
+					<tu-option
+						v-for="item in group.options"
+						:key="item.value"
+						:label="item.label"
+						:value="item.value"
+					>
+					</tu-option>
 				</tu-option-group>
 			</tu-select>
 		</tu-col>
@@ -562,18 +740,51 @@
 	<span>多选</span>
 	<tu-row :gutter="20">
 		<tu-col :span="8">
-			<tu-select size="small" multiple v-model="value7" placeholder="请选择">
-				<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+			<tu-select
+				size="small"
+				multiple
+				v-model="value7"
+				placeholder="请选择"
+			>
+				<tu-option
+					v-for="item in options"
+					:key="item.value"
+					:label="item.label"
+					:value="item.value"
+				>
+				</tu-option>
 			</tu-select>
 		</tu-col>
 		<tu-col :span="8">
-			<tu-select size="medium" multiple v-model="value8" placeholder="请选择">
-				<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+			<tu-select
+				size="medium"
+				multiple
+				v-model="value8"
+				placeholder="请选择"
+			>
+				<tu-option
+					v-for="item in options"
+					:key="item.value"
+					:label="item.label"
+					:value="item.value"
+				>
+				</tu-option>
 			</tu-select>
 		</tu-col>
 		<tu-col :span="8">
-			<tu-select size="large" multiple v-model="value9" placeholder="请选择">
-				<tu-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"> </tu-option>
+			<tu-select
+				size="large"
+				multiple
+				v-model="value9"
+				placeholder="请选择"
+			>
+				<tu-option
+					v-for="item in options"
+					:key="item.value"
+					:label="item.label"
+					:value="item.value"
+				>
+				</tu-option>
 			</tu-select>
 		</tu-col>
 	</tu-row>

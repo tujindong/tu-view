@@ -11,8 +11,17 @@
 ```html
 <div style="width: 300px">
 	<tu-card title="卡片名称">
-		<tu-icon slot="extra" name="close" style="color: #9baacf"></tu-icon>
-		<div v-for="i in 4" :key="i">{{ "列表内容 " + i }}</div>
+		<tu-icon
+			slot="extra"
+			name="close"
+			style="color: #9baacf"
+		></tu-icon>
+		<div
+			v-for="i in 4"
+			:key="i"
+		>
+			{{ "列表内容 " + i }}
+		</div>
 	</tu-card>
 </div>
 ```
@@ -28,7 +37,13 @@
 ```html
 <div style="width: 300px">
 	<tu-card>
-		<div v-for="i in 4" :key="i" class="text item">{{'列表内容 ' + i }}</div>
+		<div
+			v-for="i in 4"
+			:key="i"
+			class="text item"
+		>
+			{{'列表内容 ' + i }}
+		</div>
 	</tu-card>
 </div>
 ```
@@ -43,9 +58,17 @@
 
 ```html
 <tu-row>
-	<tu-col :span="7" v-for="(i, index) in 2" :key="i" :offset="index > 0 ? 2 : 0">
+	<tu-col
+		:span="7"
+		v-for="(i, index) in 2"
+		:key="i"
+		:offset="index > 0 ? 2 : 0"
+	>
 		<tu-card :body-style="{ padding: '0px' }">
-			<img style="width: 243px; height: 300px" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
+			<img
+				style="width: 243px; height: 300px"
+				src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+			/>
 			<div style="padding: 14px">
 				<span>欧洲风情街</span>
 			</div>
@@ -64,22 +87,67 @@ Card 组件提供除了默认值以外的两种尺寸，可以在不同场景下
 
 ```html
 <tu-row>
-	<tu-col :span="6" :offset="0">
-		<tu-card title="大型卡片" size="large">
-			<tu-icon slot="extra" name="close" style="color: #9baacf"></tu-icon>
-			<div v-for="i in 4" :key="i" class="text item">{{ "列表内容 " + i }}</div>
+	<tu-col
+		:span="6"
+		:offset="0"
+	>
+		<tu-card
+			title="大型卡片"
+			size="large"
+		>
+			<tu-icon
+				slot="extra"
+				name="close"
+				style="color: #9baacf"
+			></tu-icon>
+			<div
+				v-for="i in 4"
+				:key="i"
+				class="text item"
+			>
+				{{ "列表内容 " + i }}
+			</div>
 		</tu-card>
 	</tu-col>
-	<tu-col :span="6" :offset="1">
+	<tu-col
+		:span="6"
+		:offset="1"
+	>
 		<tu-card title="中型卡片">
-			<tu-icon slot="extra" name="close" style="color: #9baacf"></tu-icon>
-			<div v-for="i in 4" :key="i" class="text item">{{ "列表内容 " + i }}</div>
+			<tu-icon
+				slot="extra"
+				name="close"
+				style="color: #9baacf"
+			></tu-icon>
+			<div
+				v-for="i in 4"
+				:key="i"
+				class="text item"
+			>
+				{{ "列表内容 " + i }}
+			</div>
 		</tu-card>
 	</tu-col>
-	<tu-col :span="6" :offset="1">
-		<tu-card title="小型卡片" size="small">
-			<tu-icon slot="extra" name="close" style="color: #9baacf"></tu-icon>
-			<div v-for="i in 4" :key="i" class="text item">{{ "列表内容 " + i }}</div>
+	<tu-col
+		:span="6"
+		:offset="1"
+	>
+		<tu-card
+			title="小型卡片"
+			size="small"
+		>
+			<tu-icon
+				slot="extra"
+				name="close"
+				style="color: #9baacf"
+			></tu-icon>
+			<div
+				v-for="i in 4"
+				:key="i"
+				class="text item"
+			>
+				{{ "列表内容 " + i }}
+			</div>
 		</tu-card>
 	</tu-col>
 </tu-row>
@@ -94,8 +162,17 @@ Card 组件提供除了默认值以外的两种尺寸，可以在不同场景下
 :::demo 通过`shadow`属性设置卡片阴影的效果`。
 
 ```html
-<tu-card title="卡片标题" shadow="inset">
-	<div v-for="i in 4" :key="i" class="text item">{{'内阴影效果 ' + i }}</div>
+<tu-card
+	title="卡片标题"
+	shadow="inset"
+>
+	<div
+		v-for="i in 4"
+		:key="i"
+		class="text item"
+	>
+		{{'内阴影效果 ' + i }}
+	</div>
 </tu-card>
 ```
 

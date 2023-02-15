@@ -29,8 +29,16 @@
 ```html
 <template>
 	<div class="demo-switch">
-		<tu-switch v-model="value1" disabled> </tu-switch>
-		<tu-switch v-model="value2" disabled> </tu-switch>
+		<tu-switch
+			v-model="value1"
+			disabled
+		>
+		</tu-switch>
+		<tu-switch
+			v-model="value2"
+			disabled
+		>
+		</tu-switch>
 	</div>
 </template>
 
@@ -55,10 +63,21 @@
 ```html
 <template>
 	<div class="demo-switch">
-		<tu-switch v-model="value1" activeLabel="开" inactiveLabel="关"> </tu-switch>
+		<tu-switch
+			v-model="value1"
+			activeLabel="开"
+			inactiveLabel="关"
+		>
+		</tu-switch>
 		<tu-switch v-model="value2">
-			<i slot="activeLabel" class="tu-icon-check"></i>
-			<i slot="inactiveLabel" class="tu-icon-close"></i>
+			<i
+				slot="activeLabel"
+				class="tu-icon-check"
+			></i>
+			<i
+				slot="inactiveLabel"
+				class="tu-icon-close"
+			></i>
 		</tu-switch>
 	</div>
 </template>
@@ -82,7 +101,12 @@
 :::demo 设置`active-value`和`inactive-value`属性，接受`Boolean`, `String`或`Number`类型的值。
 
 ```html
-<tu-switch v-model="value" active-value="100" inactive-value="0"> </tu-switch>
+<tu-switch
+	v-model="value"
+	active-value="100"
+	inactive-value="0"
+>
+</tu-switch>
 
 <script>
 	export default {
@@ -103,9 +127,21 @@
 
 ```html
 <div class="demo-switch">
-	<tu-switch size="small" v-model="value1"> </tu-switch>
-	<tu-switch size="medium" v-model="value2"> </tu-switch>
-	<tu-switch size="large" v-model="value3"> </tu-switch>
+	<tu-switch
+		size="small"
+		v-model="value1"
+	>
+	</tu-switch>
+	<tu-switch
+		size="medium"
+		v-model="value2"
+	>
+	</tu-switch>
+	<tu-switch
+		size="large"
+		v-model="value3"
+	>
+	</tu-switch>
 </div>
 
 <script>

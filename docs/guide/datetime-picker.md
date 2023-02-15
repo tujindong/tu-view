@@ -15,15 +15,32 @@ DateTimePicker 由 DatePicker 和 TimePicker 派生，`Picker Options` 或者其
 	<tu-row :gutter="20">
 		<tu-col :span="8">
 			<p>默认</p>
-			<tu-date-picker v-model="value1" type="datetime" placeholder="选择日期时间"> </tu-date-picker>
+			<tu-date-picker
+				v-model="value1"
+				type="datetime"
+				placeholder="选择日期时间"
+			>
+			</tu-date-picker>
 		</tu-col>
 		<tu-col :span="8">
 			<p>带快捷选项</p>
-			<tu-date-picker v-model="value2" type="datetime" placeholder="选择日期时间" :picker-options="pickerOptions"> </tu-date-picker>
+			<tu-date-picker
+				v-model="value2"
+				type="datetime"
+				placeholder="选择日期时间"
+				:picker-options="pickerOptions"
+			>
+			</tu-date-picker>
 		</tu-col>
 		<tu-col :span="8">
 			<p>设置默认时间</p>
-			<tu-date-picker v-model="value3" type="datetime" placeholder="选择日期时间" default-time="12:00:00"> </tu-date-picker>
+			<tu-date-picker
+				v-model="value3"
+				type="datetime"
+				placeholder="选择日期时间"
+				default-time="12:00:00"
+			>
+			</tu-date-picker>
 		</tu-col>
 	</tu-row>
 </template>
@@ -78,11 +95,24 @@ DateTimePicker 由 DatePicker 和 TimePicker 派生，`Picker Options` 或者其
 	<tu-row :gutter="20">
 		<tu-col :span="12">
 			<p>默认</p>
-			<tu-date-picker v-model="value1" type="datetimerange" start-placeholder="开始日期" end-placeholder="结束日期"> </tu-date-picker>
+			<tu-date-picker
+				v-model="value1"
+				type="datetimerange"
+				start-placeholder="开始日期"
+				end-placeholder="结束日期"
+			>
+			</tu-date-picker>
 		</tu-col>
 		<tu-col :span="12">
 			<p>带快捷选项</p>
-			<tu-date-picker v-model="value2" type="datetimerange" :picker-options="pickerOptions" start-placeholder="开始日期" end-placeholder="结束日期"> </tu-date-picker>
+			<tu-date-picker
+				v-model="value2"
+				type="datetimerange"
+				:picker-options="pickerOptions"
+				start-placeholder="开始日期"
+				end-placeholder="结束日期"
+			>
+			</tu-date-picker>
 		</tu-col>
 	</tu-row>
 </template>
@@ -141,11 +171,25 @@ DateTimePicker 由 DatePicker 和 TimePicker 派生，`Picker Options` 或者其
 	<tu-row :gutter="20">
 		<tu-col :span="12">
 			<p>起始日期时刻为 12:00:00</p>
-			<tu-date-picker v-model="value1" type="datetimerange" start-placeholder="开始日期" end-placeholder="结束日期" :default-time="['12:00:00']"> </tu-date-picker>
+			<tu-date-picker
+				v-model="value1"
+				type="datetimerange"
+				start-placeholder="开始日期"
+				end-placeholder="结束日期"
+				:default-time="['12:00:00']"
+			>
+			</tu-date-picker>
 		</tu-col>
 		<tu-col :span="12">
 			<p>起始日期时刻为 12:00:00，结束日期时刻为 08:00:00</p>
-			<tu-date-picker v-model="value2" type="datetimerange" start-placeholder="开始日期" end-placeholder="结束日期" :default-time="['12:00:00', '08:00:00']"> </tu-date-picker>
+			<tu-date-picker
+				v-model="value2"
+				type="datetimerange"
+				start-placeholder="开始日期"
+				end-placeholder="结束日期"
+				:default-time="['12:00:00', '08:00:00']"
+			>
+			</tu-date-picker>
 		</tu-col>
 	</tu-row>
 </template>

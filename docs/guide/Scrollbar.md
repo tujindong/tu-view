@@ -9,7 +9,12 @@
 ```html
 <tu-scrollbar style="height: 120px; width: 380px; background: rgba(255,255,255,0.28)">
 	<div style="width: 500px; padding: 0 16px">
-		<p v-for="i in 20" :key="i">列表项{{ i }}</p>
+		<p
+			v-for="i in 20"
+			:key="i"
+		>
+			列表项{{ i }}
+		</p>
 	</div>
 </tu-scrollbar>
 ```

@@ -15,7 +15,10 @@ Textarea 为受控组件，它**总会显示 Vue 绑定值**。
 :::demo
 
 ```html
-<tu-textarea v-model="textarea" placeholder="请输入内容"></tu-textarea>
+<tu-textarea
+	v-model="textarea"
+	placeholder="请输入内容"
+></tu-textarea>
 
 <script>
 	export default {
@@ -35,7 +38,12 @@ Textarea 为受控组件，它**总会显示 Vue 绑定值**。
 :::demo 通过 `disabled` 属性指定是否禁用 textarea 组件
 
 ```html
-<tu-textarea placeholder="请输入内容" v-model="textarea" :disabled="true"> </tu-textarea>
+<tu-textarea
+	placeholder="请输入内容"
+	v-model="textarea"
+	:disabled="true"
+>
+</tu-textarea>
 
 <script>
 	export default {
@@ -55,7 +63,12 @@ Textarea 为受控组件，它**总会显示 Vue 绑定值**。
 :::demo 使用`clearable`属性即可得到一个可清空的输入框
 
 ```html
-<tu-textarea placeholder="请输入内容" v-model="textarea" clearable> </tu-textarea>
+<tu-textarea
+	placeholder="请输入内容"
+	v-model="textarea"
+	clearable
+>
+</tu-textarea>
 
 <script>
 	export default {
@@ -77,9 +90,19 @@ Textarea 为受控组件，它**总会显示 Vue 绑定值**。
 :::demo
 
 ```html
-<tu-textarea autosize placeholder="请输入内容" v-model="textarea1"> </tu-textarea>
+<tu-textarea
+	autosize
+	placeholder="请输入内容"
+	v-model="textarea1"
+>
+</tu-textarea>
 <div style="margin: 20px 0;"></div>
-<tu-textarea :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" v-model="textarea2"> </tu-textarea>
+<tu-textarea
+	:autosize="{ minRows: 2, maxRows: 4}"
+	placeholder="请输入内容"
+	v-model="textarea2"
+>
+</tu-textarea>
 
 <script>
 	export default {
@@ -100,7 +123,14 @@ Textarea 为受控组件，它**总会显示 Vue 绑定值**。
 :::demo `maxlength` 和 `minlength` 是原生属性，用来限制输入框的字符长度，其中字符长度是用 Javascript 的字符串长度统计的。对于类型为 `text` 的输入框，在使用 `maxlength` 属性限制最大输入长度的同时，可通过设置 `show-word-limit` 属性来展示字数统计。
 
 ```html
-<tu-textarea type="text" placeholder="请输入内容" v-model="text" maxlength="10" show-word-limit> </tu-textarea>
+<tu-textarea
+	type="text"
+	placeholder="请输入内容"
+	v-model="text"
+	maxlength="10"
+	show-word-limit
+>
+</tu-textarea>
 <div style="margin: 20px 0;"></div>
 
 <script>

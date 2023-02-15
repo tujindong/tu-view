@@ -46,18 +46,20 @@
     </tu-input>
 
     <div v-if="multiple" class="tu-cascader__tags">
-      <tu-tag
-        v-for="tag in presentTags"
-        :key="tag.key"
-        effect="shadow"
-        :size="tagSize | tagSizeMap"
-        :hit="tag.hitState"
-        :closable="tag.closable"
-        disable-transitions
-        @close="deleteTag(tag)"
+      <transition-group name="tu-popper-in-center" @after-leave="updateStyle">
+        <tu-tag
+          v-for="tag in presentTags"
+          :key="tag.key"
+          effect="shadow"
+          :size="tagSize | tagSizeMap"
+          :hit="tag.hitState"
+          :closable="tag.closable"
+          disable-transitions
+          @close.stop="deleteTag(tag)"
+        >
+          <span>{{ tag.text }}</span>
+        </tu-tag></transition-group
       >
-        <span>{{ tag.text }}</span>
-      </tu-tag>
       <input
         v-if="filterable && !isDisabled"
         v-model.trim="inputValue"
@@ -258,7 +260,6 @@ export default {
     },
 
     tagSize() {
-      //   return ["small", "mini"].indexOf(this.realSize) > -1 ? "mini" : "small";
       return this.realSize;
     },
 

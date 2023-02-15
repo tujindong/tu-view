@@ -10,9 +10,21 @@
 
 ```html
 <template>
-	<tu-radio v-model="radio" label="1">苹果</tu-radio>
-	<tu-radio v-model="radio" label="2">香蕉</tu-radio>
-	<tu-radio v-model="radio" label="3">西瓜</tu-radio>
+	<tu-radio
+		v-model="radio"
+		label="1"
+		>苹果</tu-radio
+	>
+	<tu-radio
+		v-model="radio"
+		label="2"
+		>香蕉</tu-radio
+	>
+	<tu-radio
+		v-model="radio"
+		label="3"
+		>西瓜</tu-radio
+	>
 </template>
 
 <script>
@@ -36,8 +48,18 @@
 
 ```html
 <template>
-	<tu-radio disabled v-model="radio" label="禁用">禁用</tu-radio>
-	<tu-radio disabled v-model="radio" label="选中且禁用">选中且禁用</tu-radio>
+	<tu-radio
+		disabled
+		v-model="radio"
+		label="禁用"
+		>禁用</tu-radio
+	>
+	<tu-radio
+		disabled
+		v-model="radio"
+		label="选中且禁用"
+		>选中且禁用</tu-radio
+	>
 </template>
 
 <script>
@@ -89,7 +111,11 @@
 <template>
 	<div style="margin-top: 20px">
 		<p>超小</p>
-		<tu-radio-group v-model="radio1" border size="mini">
+		<tu-radio-group
+			v-model="radio1"
+			border
+			size="mini"
+		>
 			<tu-radio label="1">苹果</tu-radio>
 			<tu-radio label="2">香蕉</tu-radio>
 			<tu-radio label="3">西瓜</tu-radio>
@@ -97,7 +123,11 @@
 	</div>
 	<div style="margin-top: 20px">
 		<p>较小</p>
-		<tu-radio-group v-model="radio2" border size="small">
+		<tu-radio-group
+			v-model="radio2"
+			border
+			size="small"
+		>
 			<tu-radio label="1">苹果</tu-radio>
 			<tu-radio label="2">香蕉</tu-radio>
 			<tu-radio label="3">西瓜</tu-radio>
@@ -105,7 +135,11 @@
 	</div>
 	<div style="margin-top: 20px">
 		<p>中等</p>
-		<tu-radio-group v-model="radio3" border size="medium">
+		<tu-radio-group
+			v-model="radio3"
+			border
+			size="medium"
+		>
 			<tu-radio label="1">苹果</tu-radio>
 			<tu-radio label="2">香蕉</tu-radio>
 			<tu-radio label="3">西瓜</tu-radio>
@@ -113,7 +147,11 @@
 	</div>
 	<div style="margin-top: 20px">
 		<p>较大</p>
-		<tu-radio-group v-model="radio4" border size="large">
+		<tu-radio-group
+			v-model="radio4"
+			border
+			size="large"
+		>
 			<tu-radio label="1">苹果</tu-radio>
 			<tu-radio label="2">香蕉</tu-radio>
 			<tu-radio label="3">西瓜</tu-radio>

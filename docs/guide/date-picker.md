@@ -13,11 +13,22 @@
 	<tu-row :gutter="20">
 		<tu-col :span="12">
 			<p>默认</p>
-			<tu-date-picker v-model="value1" type="date" placeholder="选择日期"> </tu-date-picker>
+			<tu-date-picker
+				v-model="value1"
+				type="date"
+				placeholder="选择日期"
+			>
+			</tu-date-picker>
 		</tu-col>
 		<tu-col :span="12">
 			<p>带快捷选项</p>
-			<tu-date-picker v-model="value2" type="date" placeholder="选择日期" :picker-options="pickerOptions"> </tu-date-picker>
+			<tu-date-picker
+				v-model="value2"
+				type="date"
+				placeholder="选择日期"
+				:picker-options="pickerOptions"
+			>
+			</tu-date-picker>
 		</tu-col>
 	</tu-row>
 </template>
@@ -75,29 +86,60 @@
 <tu-row :gutter="20">
 	<tu-col :span="8">
 		<p>周</p>
-		<tu-date-picker v-model="value1" type="week" format="yyyy 第 WW 周" placeholder="选择周"> </tu-date-picker>
+		<tu-date-picker
+			v-model="value1"
+			type="week"
+			format="yyyy 第 WW 周"
+			placeholder="选择周"
+		>
+		</tu-date-picker>
 	</tu-col>
 	<tu-col :span="8">
 		<p>月</p>
-		<tu-date-picker v-model="value2" type="month" placeholder="选择月"> </tu-date-picker>
+		<tu-date-picker
+			v-model="value2"
+			type="month"
+			placeholder="选择月"
+		>
+		</tu-date-picker>
 	</tu-col>
 	<tu-col :span="8">
 		<p>年</p>
-		<tu-date-picker v-model="value3" type="year" placeholder="选择年"> </tu-date-picker>
+		<tu-date-picker
+			v-model="value3"
+			type="year"
+			placeholder="选择年"
+		>
+		</tu-date-picker>
 	</tu-col>
 </tu-row>
 <tu-row :gutter="20">
 	<tu-col :span="8">
 		<p>多个日期</p>
-		<tu-date-picker type="dates" v-model="value4" placeholder="选择一个或多个日期"> </tu-date-picker>
+		<tu-date-picker
+			type="dates"
+			v-model="value4"
+			placeholder="选择一个或多个日期"
+		>
+		</tu-date-picker>
 	</tu-col>
 	<tu-col :span="8">
 		<p>多个月</p>
-		<tu-date-picker type="months" v-model="value5" placeholder="选择一个或多个月"> </tu-date-picker>
+		<tu-date-picker
+			type="months"
+			v-model="value5"
+			placeholder="选择一个或多个月"
+		>
+		</tu-date-picker>
 	</tu-col>
 	<tu-col :span="8">
 		<p>多个年</p>
-		<tu-date-picker type="years" v-model="value6" placeholder="选择一个或多个年"> </tu-date-picker>
+		<tu-date-picker
+			type="years"
+			v-model="value6"
+			placeholder="选择一个或多个年"
+		>
+		</tu-date-picker>
 	</tu-col>
 </tu-row>
 
@@ -130,11 +172,25 @@
 	<tu-row :gutter="20">
 		<tu-col :span="12">
 			<p>默认</p>
-			<tu-date-picker v-model="value1" type="daterange" start-placeholder="开始日期" end-placeholder="结束日期"> </tu-date-picker>
+			<tu-date-picker
+				v-model="value1"
+				type="daterange"
+				start-placeholder="开始日期"
+				end-placeholder="结束日期"
+			>
+			</tu-date-picker>
 		</tu-col>
 		<tu-col :span="12">
 			<p>带快捷选项</p>
-			<tu-date-picker v-model="value2" type="daterange" unlink-panels start-placeholder="开始日期" end-placeholder="结束日期" :picker-options="pickerOptions"> </tu-date-picker>
+			<tu-date-picker
+				v-model="value2"
+				type="daterange"
+				unlink-panels
+				start-placeholder="开始日期"
+				end-placeholder="结束日期"
+				:picker-options="pickerOptions"
+			>
+			</tu-date-picker>
 		</tu-col>
 	</tu-row>
 </template>
@@ -195,11 +251,26 @@
 	<tu-row :gutter="20">
 		<tu-col :span="12">
 			<p>默认</p>
-			<tu-date-picker v-model="value1" type="monthrange" start-placeholder="开始月份" end-placeholder="结束月份"> </tu-date-picker>
+			<tu-date-picker
+				v-model="value1"
+				type="monthrange"
+				start-placeholder="开始月份"
+				end-placeholder="结束月份"
+			>
+			</tu-date-picker>
 		</tu-col>
 		<tu-col :span="12">
 			<p>带快捷选项</p>
-			<tu-date-picker v-model="value2" type="monthrange" unlink-panels range-separator="至" start-placeholder="开始月份" end-placeholder="结束月份" :picker-options="pickerOptions"> </tu-date-picker>
+			<tu-date-picker
+				v-model="value2"
+				type="monthrange"
+				unlink-panels
+				range-separator="至"
+				start-placeholder="开始月份"
+				end-placeholder="结束月份"
+				:picker-options="pickerOptions"
+			>
+			</tu-date-picker>
 		</tu-col>
 	</tu-row>
 </template>
@@ -284,15 +355,35 @@
 	<tu-row :gutter="20">
 		<tu-col :span="8">
 			<p>默认为 Date 对象，值：{{value1}}</p>
-			<tu-date-picker v-model="value1" type="date" placeholder="选择日期" format="yyyy 年 MM 月 dd 日"> </tu-date-picker>
+			<tu-date-picker
+				v-model="value1"
+				type="date"
+				placeholder="选择日期"
+				format="yyyy 年 MM 月 dd 日"
+			>
+			</tu-date-picker>
 		</tu-col>
 		<tu-col :span="8">
 			<p>使用 value-format，值：{{value2}}</p>
-			<tu-date-picker v-model="value2" type="date" placeholder="选择日期" format="yyyy 年 MM 月 dd 日" value-format="yyyy-MM-dd"> </tu-date-picker>
+			<tu-date-picker
+				v-model="value2"
+				type="date"
+				placeholder="选择日期"
+				format="yyyy 年 MM 月 dd 日"
+				value-format="yyyy-MM-dd"
+			>
+			</tu-date-picker>
 		</tu-col>
 		<tu-col :span="8">
 			<p>时间戳，值：{{value3}}</p>
-			<tu-date-picker v-model="value3" type="date" placeholder="选择日期" format="yyyy 年 MM 月 dd 日" value-format="timestamp"> </tu-date-picker>
+			<tu-date-picker
+				v-model="value3"
+				type="date"
+				placeholder="选择日期"
+				format="yyyy 年 MM 月 dd 日"
+				value-format="timestamp"
+			>
+			</tu-date-picker>
 		</tu-col>
 	</tu-row>
 </template>
@@ -322,7 +413,14 @@
 <template>
 	<div class="block">
 		<p>组件值：{{ value }}</p>
-		<tu-date-picker v-model="value" type="daterange" start-placeholder="开始日期" end-placeholder="结束日期" :default-time="['00:00:00', '23:59:59']"> </tu-date-picker>
+		<tu-date-picker
+			v-model="value"
+			type="daterange"
+			start-placeholder="开始日期"
+			end-placeholder="结束日期"
+			:default-time="['00:00:00', '23:59:59']"
+		>
+		</tu-date-picker>
 	</div>
 </template>
 

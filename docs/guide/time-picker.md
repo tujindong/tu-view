@@ -43,10 +43,23 @@
 <template>
 	<tu-row :gutter="20">
 		<tu-col :span="12">
-			<tu-time-picker style="width: 100%" v-model="value1" :picker-options="{selectableRange: '18:30:00 - 20:30:00'}" placeholder="任意时间点"> </tu-time-picker>
+			<tu-time-picker
+				style="width: 100%"
+				v-model="value1"
+				:picker-options="{selectableRange: '18:30:00 - 20:30:00'}"
+				placeholder="任意时间点"
+			>
+			</tu-time-picker>
 		</tu-col>
 		<tu-col :span="12">
-			<tu-time-picker style="width: 100%" arrow-control v-model="value2" :picker-options="{selectableRange: '18:30:00 - 20:30:00'}" placeholder="任意时间点"> </tu-time-picker>
+			<tu-time-picker
+				style="width: 100%"
+				arrow-control
+				v-model="value2"
+				:picker-options="{selectableRange: '18:30:00 - 20:30:00'}"
+				placeholder="任意时间点"
+			>
+			</tu-time-picker>
 		</tu-col>
 	</tu-row>
 </template>
@@ -126,10 +139,25 @@
 <template>
 	<tu-row :gutter="20">
 		<tu-col :span="12">
-			<tu-time-picker is-range v-model="value1" start-placeholder="开始时间" end-placeholder="结束时间" placeholder="选择时间范围"> </tu-time-picker>
+			<tu-time-picker
+				is-range
+				v-model="value1"
+				start-placeholder="开始时间"
+				end-placeholder="结束时间"
+				placeholder="选择时间范围"
+			>
+			</tu-time-picker>
 		</tu-col>
 		<tu-col :span="12">
-			<tu-time-picker is-range arrow-control v-model="value2" start-placeholder="开始时间" end-placeholder="结束时间" placeholder="选择时间范围"> </tu-time-picker>
+			<tu-time-picker
+				is-range
+				arrow-control
+				v-model="value2"
+				start-placeholder="开始时间"
+				end-placeholder="结束时间"
+				placeholder="选择时间范围"
+			>
+			</tu-time-picker>
 		</tu-col>
 	</tu-row>
 </template>

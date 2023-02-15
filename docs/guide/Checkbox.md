@@ -34,8 +34,16 @@
 
 ```html
 <template>
-	<tu-checkbox v-model="checked1" disabled>苹果</tu-checkbox>
-	<tu-checkbox v-model="checked2" disabled>香蕉</tu-checkbox>
+	<tu-checkbox
+		v-model="checked1"
+		disabled
+		>苹果</tu-checkbox
+	>
+	<tu-checkbox
+		v-model="checked2"
+		disabled
+		>香蕉</tu-checkbox
+	>
 </template>
 <script>
 	export default {
@@ -63,8 +71,14 @@
 		<tu-checkbox label="复选框 A"></tu-checkbox>
 		<tu-checkbox label="复选框 B"></tu-checkbox>
 		<tu-checkbox label="复选框 C"></tu-checkbox>
-		<tu-checkbox label="禁用" disabled></tu-checkbox>
-		<tu-checkbox label="选中且禁用" disabled></tu-checkbox>
+		<tu-checkbox
+			label="禁用"
+			disabled
+		></tu-checkbox>
+		<tu-checkbox
+			label="选中且禁用"
+			disabled
+		></tu-checkbox>
 	</tu-checkbox-group>
 </template>
 
@@ -89,8 +103,17 @@
 
 ```html
 <template>
-	<tu-checkbox-group v-model="checkedFruits" :min="1" :max="2">
-		<tu-checkbox v-for="fruit in fruits" :label="fruit" :key="fruit">{{fruit}}</tu-checkbox>
+	<tu-checkbox-group
+		v-model="checkedFruits"
+		:min="1"
+		:max="2"
+	>
+		<tu-checkbox
+			v-for="fruit in fruits"
+			:label="fruit"
+			:key="fruit"
+			>{{fruit}}</tu-checkbox
+		>
 	</tu-checkbox-group>
 </template>
 <script>
@@ -116,10 +139,23 @@
 
 ```html
 <template>
-	<tu-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</tu-checkbox>
+	<tu-checkbox
+		:indeterminate="isIndeterminate"
+		v-model="checkAll"
+		@change="handleCheckAllChange"
+		>全选</tu-checkbox
+	>
 	<div style="margin: 15px 0;"></div>
-	<tu-checkbox-group v-model="checkedFruits" @change="handleCheckedFruitsChange">
-		<tu-checkbox v-for="fruit in fruits" :label="fruit" :key="fruit">{{fruit}}</tu-checkbox>
+	<tu-checkbox-group
+		v-model="checkedFruits"
+		@change="handleCheckedFruitsChange"
+	>
+		<tu-checkbox
+			v-for="fruit in fruits"
+			:label="fruit"
+			:key="fruit"
+			>{{fruit}}</tu-checkbox
+		>
 	</tu-checkbox-group>
 </template>
 <script>
@@ -158,7 +194,11 @@
 <template>
 	<div style="margin-top: 20px">
 		<p>超小</p>
-		<tu-checkbox-group v-model="checkboxGroup1" size="mini" border>
+		<tu-checkbox-group
+			v-model="checkboxGroup1"
+			size="mini"
+			border
+		>
 			<tu-checkbox label="苹果"></tu-checkbox>
 			<tu-checkbox label="香蕉"></tu-checkbox>
 			<tu-checkbox label="西瓜"></tu-checkbox>
@@ -166,7 +206,11 @@
 	</div>
 	<div style="margin-top: 20px">
 		<p>较小</p>
-		<tu-checkbox-group v-model="checkboxGroup2" size="small" border>
+		<tu-checkbox-group
+			v-model="checkboxGroup2"
+			size="small"
+			border
+		>
 			<tu-checkbox label="苹果"></tu-checkbox>
 			<tu-checkbox label="香蕉"></tu-checkbox>
 			<tu-checkbox label="西瓜"></tu-checkbox>
@@ -174,7 +218,11 @@
 	</div>
 	<div style="margin-top: 20px">
 		<p>中等</p>
-		<tu-checkbox-group v-model="checkboxGroup3" size="medium" border>
+		<tu-checkbox-group
+			v-model="checkboxGroup3"
+			size="medium"
+			border
+		>
 			<tu-checkbox label="苹果"></tu-checkbox>
 			<tu-checkbox label="香蕉"></tu-checkbox>
 			<tu-checkbox label="西瓜"></tu-checkbox>
@@ -182,7 +230,11 @@
 	</div>
 	<div style="margin-top: 20px">
 		<p>较大</p>
-		<tu-checkbox-group v-model="checkboxGroup4" size="large" border>
+		<tu-checkbox-group
+			v-model="checkboxGroup4"
+			size="large"
+			border
+		>
 			<tu-checkbox label="苹果"></tu-checkbox>
 			<tu-checkbox label="香蕉"></tu-checkbox>
 			<tu-checkbox label="西瓜"></tu-checkbox>

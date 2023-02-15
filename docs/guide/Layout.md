@@ -165,14 +165,30 @@
 ```html
 <tu-row :gutter="20">
 	<tu-col :span="6"><div class="grid-content bg-purple"></div></tu-col>
-	<tu-col :span="6" :offset="6"><div class="grid-content bg-purple"></div></tu-col>
+	<tu-col
+		:span="6"
+		:offset="6"
+		><div class="grid-content bg-purple"></div
+	></tu-col>
 </tu-row>
 <tu-row :gutter="20">
-	<tu-col :span="6" :offset="6"><div class="grid-content bg-purple"></div></tu-col>
-	<tu-col :span="6" :offset="6"><div class="grid-content bg-purple"></div></tu-col>
+	<tu-col
+		:span="6"
+		:offset="6"
+		><div class="grid-content bg-purple"></div
+	></tu-col>
+	<tu-col
+		:span="6"
+		:offset="6"
+		><div class="grid-content bg-purple"></div
+	></tu-col>
 </tu-row>
 <tu-row :gutter="20">
-	<tu-col :span="12" :offset="6"><div class="grid-content bg-purple"></div></tu-col>
+	<tu-col
+		:span="12"
+		:offset="6"
+		><div class="grid-content bg-purple"></div
+	></tu-col>
 </tu-row>
 
 <style>
@@ -210,27 +226,46 @@
 :::demo 将 `type` 属性赋值为 'flex'，可以启用 flex 布局，并可通过 `justify` 属性来指定 start, center, end, space-between, space-around 其中的值来定义子元素的排版方式。
 
 ```html
-<tu-row type="flex" class="row-bg">
+<tu-row
+	type="flex"
+	class="row-bg"
+>
 	<tu-col :span="6"><div class="grid-content bg-purple"></div></tu-col>
 	<tu-col :span="6"><div class="grid-content bg-purple-light"></div></tu-col>
 	<tu-col :span="6"><div class="grid-content bg-purple"></div></tu-col>
 </tu-row>
-<tu-row type="flex" class="row-bg" justify="center">
+<tu-row
+	type="flex"
+	class="row-bg"
+	justify="center"
+>
 	<tu-col :span="6"><div class="grid-content bg-purple"></div></tu-col>
 	<tu-col :span="6"><div class="grid-content bg-purple-light"></div></tu-col>
 	<tu-col :span="6"><div class="grid-content bg-purple"></div></tu-col>
 </tu-row>
-<tu-row type="flex" class="row-bg" justify="end">
+<tu-row
+	type="flex"
+	class="row-bg"
+	justify="end"
+>
 	<tu-col :span="6"><div class="grid-content bg-purple"></div></tu-col>
 	<tu-col :span="6"><div class="grid-content bg-purple-light"></div></tu-col>
 	<tu-col :span="6"><div class="grid-content bg-purple"></div></tu-col>
 </tu-row>
-<tu-row type="flex" class="row-bg" justify="space-between">
+<tu-row
+	type="flex"
+	class="row-bg"
+	justify="space-between"
+>
 	<tu-col :span="6"><div class="grid-content bg-purple"></div></tu-col>
 	<tu-col :span="6"><div class="grid-content bg-purple-light"></div></tu-col>
 	<tu-col :span="6"><div class="grid-content bg-purple"></div></tu-col>
 </tu-row>
-<tu-row type="flex" class="row-bg" justify="space-around">
+<tu-row
+	type="flex"
+	class="row-bg"
+	justify="space-around"
+>
 	<tu-col :span="6"><div class="grid-content bg-purple"></div></tu-col>
 	<tu-col :span="6"><div class="grid-content bg-purple-light"></div></tu-col>
 	<tu-col :span="6"><div class="grid-content bg-purple"></div></tu-col>
@@ -271,10 +306,38 @@
 
 ```html
 <tu-row :gutter="10">
-	<tu-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1"><div class="grid-content bg-purple"></div></tu-col>
-	<tu-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11"><div class="grid-content bg-purple-light"></div></tu-col>
-	<tu-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11"><div class="grid-content bg-purple"></div></tu-col>
-	<tu-col :xs="8" :sm="6" :md="4" :lg="3" :xl="1"><div class="grid-content bg-purple-light"></div></tu-col>
+	<tu-col
+		:xs="8"
+		:sm="6"
+		:md="4"
+		:lg="3"
+		:xl="1"
+		><div class="grid-content bg-purple"></div
+	></tu-col>
+	<tu-col
+		:xs="4"
+		:sm="6"
+		:md="8"
+		:lg="9"
+		:xl="11"
+		><div class="grid-content bg-purple-light"></div
+	></tu-col>
+	<tu-col
+		:xs="4"
+		:sm="6"
+		:md="8"
+		:lg="9"
+		:xl="11"
+		><div class="grid-content bg-purple"></div
+	></tu-col>
+	<tu-col
+		:xs="8"
+		:sm="6"
+		:md="4"
+		:lg="3"
+		:xl="1"
+		><div class="grid-content bg-purple-light"></div
+	></tu-col>
 </tu-row>
 
 <style>

@@ -21,7 +21,16 @@
 :::demo 设置`closable`属性可以定义一个标签是否可移除。默认的标签移除时会附带渐变动画，如果不想使用，可以设置`disable-transitions`属性，它接受一个`Boolean`，true 为关闭。
 
 ```html
-<tu-tag v-for="(tag, index) in tags" :key="tag.name" :closable="tags.length !== 1" :color="tag.color" effect="plain" @close="handleClose(index)"> {{tag.name}} </tu-tag>
+<tu-tag
+	v-for="(tag, index) in tags"
+	:key="tag.name"
+	:closable="tags.length !== 1"
+	:color="tag.color"
+	effect="plain"
+	@close="handleClose(index)"
+>
+	{{tag.name}}
+</tu-tag>
 
 <script>
 	export default {
@@ -81,24 +90,72 @@ Tag 组件提供了四个不同的主题：`light` 、`dark`、`plain` 和 `shad
 </tu-row>
 <tu-row>
 	<tu-tag effect="dark">默认</tu-tag>
-	<tu-tag effect="dark" color="#67c23a">绿色</tu-tag>
-	<tu-tag effect="dark" color="#409eff">蓝色</tu-tag>
-	<tu-tag effect="dark" color="#f56c6c">红色</tu-tag>
-	<tu-tag effect="dark" color="#e6a23c">橙色</tu-tag>
+	<tu-tag
+		effect="dark"
+		color="#67c23a"
+		>绿色</tu-tag
+	>
+	<tu-tag
+		effect="dark"
+		color="#409eff"
+		>蓝色</tu-tag
+	>
+	<tu-tag
+		effect="dark"
+		color="#f56c6c"
+		>红色</tu-tag
+	>
+	<tu-tag
+		effect="dark"
+		color="#e6a23c"
+		>橙色</tu-tag
+	>
 </tu-row>
 <tu-row>
 	<tu-tag effect="plain">默认</tu-tag>
-	<tu-tag effect="plain" color="#67c23a">绿色</tu-tag>
-	<tu-tag effect="plain" color="#409eff">蓝色</tu-tag>
-	<tu-tag effect="plain" color="#f56c6c">红色</tu-tag>
-	<tu-tag effect="plain" color="#e6a23c">橙色</tu-tag>
+	<tu-tag
+		effect="plain"
+		color="#67c23a"
+		>绿色</tu-tag
+	>
+	<tu-tag
+		effect="plain"
+		color="#409eff"
+		>蓝色</tu-tag
+	>
+	<tu-tag
+		effect="plain"
+		color="#f56c6c"
+		>红色</tu-tag
+	>
+	<tu-tag
+		effect="plain"
+		color="#e6a23c"
+		>橙色</tu-tag
+	>
 </tu-row>
 <tu-row>
 	<tu-tag effect="shadow">默认</tu-tag>
-	<tu-tag effect="shadow" color="#67c23a">绿色</tu-tag>
-	<tu-tag effect="shadow" color="#409eff">蓝色</tu-tag>
-	<tu-tag effect="shadow" color="#f56c6c">红色</tu-tag>
-	<tu-tag effect="shadow" color="#e6a23c">橙色</tu-tag>
+	<tu-tag
+		effect="shadow"
+		color="#67c23a"
+		>绿色</tu-tag
+	>
+	<tu-tag
+		effect="shadow"
+		color="#409eff"
+		>蓝色</tu-tag
+	>
+	<tu-tag
+		effect="shadow"
+		color="#f56c6c"
+		>红色</tu-tag
+	>
+	<tu-tag
+		effect="shadow"
+		color="#e6a23c"
+		>橙色</tu-tag
+	>
 </tu-row>
 ```
 

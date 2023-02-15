@@ -10,11 +10,30 @@
 
 ```html
 <template>
-	<tu-tabs v-model="activeName" @tab-click="handleClick">
-		<tu-tab-pane label="香蕉" name="banana">香蕉</tu-tab-pane>
-		<tu-tab-pane label="苹果" name="apple">苹果</tu-tab-pane>
-		<tu-tab-pane label="橙子" name="orange">橙子</tu-tab-pane>
-		<tu-tab-pane label="火龙果" name="pitaya">火龙果</tu-tab-pane>
+	<tu-tabs
+		v-model="activeName"
+		@tab-click="handleClick"
+	>
+		<tu-tab-pane
+			label="香蕉"
+			name="banana"
+			>香蕉</tu-tab-pane
+		>
+		<tu-tab-pane
+			label="苹果"
+			name="apple"
+			>苹果</tu-tab-pane
+		>
+		<tu-tab-pane
+			label="橙子"
+			name="orange"
+			>橙子</tu-tab-pane
+		>
+		<tu-tab-pane
+			label="火龙果"
+			name="pitaya"
+			>火龙果</tu-tab-pane
+		>
 	</tu-tabs>
 </template>
 <script>
@@ -43,11 +62,31 @@
 
 ```html
 <template>
-	<tu-tabs v-model="activeName" type="card" @tab-click="handleClick">
-		<tu-tab-pane label="香蕉" name="banana">香蕉</tu-tab-pane>
-		<tu-tab-pane label="苹果" name="apple">苹果</tu-tab-pane>
-		<tu-tab-pane label="橙子" name="orange">橙子</tu-tab-pane>
-		<tu-tab-pane label="火龙果" name="pitaya">火龙果</tu-tab-pane>
+	<tu-tabs
+		v-model="activeName"
+		type="card"
+		@tab-click="handleClick"
+	>
+		<tu-tab-pane
+			label="香蕉"
+			name="banana"
+			>香蕉</tu-tab-pane
+		>
+		<tu-tab-pane
+			label="苹果"
+			name="apple"
+			>苹果</tu-tab-pane
+		>
+		<tu-tab-pane
+			label="橙子"
+			name="orange"
+			>橙子</tu-tab-pane
+		>
+		<tu-tab-pane
+			label="火龙果"
+			name="pitaya"
+			>火龙果</tu-tab-pane
+		>
 	</tu-tabs>
 </template>
 <script>
@@ -93,14 +132,20 @@
 
 ```html
 <template>
-	<tu-radio-group v-model="tabPosition" style="margin-bottom: 30px;">
+	<tu-radio-group
+		v-model="tabPosition"
+		style="margin-bottom: 30px;"
+	>
 		<tu-radio label="top">上方</tu-radio>
 		<tu-radio label="right">右方</tu-radio>
 		<tu-radio label="bottom">下方</tu-radio>
 		<tu-radio label="left">左方</tu-radio>
 	</tu-radio-group>
 
-	<tu-tabs :tab-position="tabPosition" style="height: 200px;">
+	<tu-tabs
+		:tab-position="tabPosition"
+		style="height: 200px;"
+	>
 		<tu-tab-pane label="香蕉">香蕉</tu-tab-pane>
 		<tu-tab-pane label="苹果">苹果</tu-tab-pane>
 		<tu-tab-pane label="橙子">橙子</tu-tab-pane>
@@ -150,8 +195,20 @@
 :::demo
 
 ```html
-<tu-tabs v-model="editableTabsValue" type="card" editable @edit="handleTabsEdit">
-	<tu-tab-pane :key="item.name" v-for="(item, index) in editableTabs" :label="item.title" :name="item.name"> {{item.content}} </tu-tab-pane>
+<tu-tabs
+	v-model="editableTabsValue"
+	type="card"
+	editable
+	@edit="handleTabsEdit"
+>
+	<tu-tab-pane
+		:key="item.name"
+		v-for="(item, index) in editableTabs"
+		:label="item.title"
+		:name="item.name"
+	>
+		{{item.content}}
+	</tu-tab-pane>
 </tu-tabs>
 <script>
 	export default {
@@ -215,10 +272,27 @@
 
 ```html
 <div style="margin-bottom: 20px;">
-	<tu-button size="small" @click="addTab(editableTabsValue)"> 新增 </tu-button>
+	<tu-button
+		size="small"
+		@click="addTab(editableTabsValue)"
+	>
+		新增
+	</tu-button>
 </div>
-<tu-tabs v-model="editableTabsValue" type="card" closable @tab-remove="removeTab">
-	<tu-tab-pane v-for="(item, index) in editableTabs" :key="item.name" :label="item.title" :name="item.name"> {{item.content}} </tu-tab-pane>
+<tu-tabs
+	v-model="editableTabsValue"
+	type="card"
+	closable
+	@tab-remove="removeTab"
+>
+	<tu-tab-pane
+		v-for="(item, index) in editableTabs"
+		:key="item.name"
+		:label="item.title"
+		:name="item.name"
+	>
+		{{item.content}}
+	</tu-tab-pane>
 </tu-tabs>
 <script>
 	export default {

@@ -28,6 +28,14 @@
 
     <p>默认显示所有Tag</p>
     <tu-cascader :options="options" :props="props" clearable></tu-cascader>
+
+    <p>折叠展示Tag</p>
+    <tu-cascader
+      :options="options"
+      :props="props"
+      collapse-tags
+      clearable
+    ></tu-cascader>
   </div>
 </template>
 
@@ -38,7 +46,8 @@ export default {
   data() {
     return {
       value: [],
-      props: { multiple: true },
+      //   props: { multiple: true, checkStrictly: true },
+      props: { checkStrictly: true },
       options: [
         {
           value: "zhinan",

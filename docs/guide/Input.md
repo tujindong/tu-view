@@ -15,7 +15,10 @@ Input 为受控组件，它**总会显示 Vue 绑定值**。
 :::demo
 
 ```html
-<tu-input v-model="input" placeholder="请输入内容"></tu-input>
+<tu-input
+	v-model="input"
+	placeholder="请输入内容"
+></tu-input>
 
 <script>
 	export default {
@@ -35,7 +38,12 @@ Input 为受控组件，它**总会显示 Vue 绑定值**。
 :::demo 通过 `disabled` 属性指定是否禁用 input 组件
 
 ```html
-<tu-input placeholder="请输入内容" v-model="input" :disabled="true"> </tu-input>
+<tu-input
+	placeholder="请输入内容"
+	v-model="input"
+	:disabled="true"
+>
+</tu-input>
 
 <script>
 	export default {
@@ -55,7 +63,12 @@ Input 为受控组件，它**总会显示 Vue 绑定值**。
 :::demo 使用`clearable`属性即可得到一个可清空的输入框
 
 ```html
-<tu-input placeholder="请输入内容" v-model="input" clearable> </tu-input>
+<tu-input
+	placeholder="请输入内容"
+	v-model="input"
+	clearable
+>
+</tu-input>
 
 <script>
 	export default {
@@ -75,7 +88,11 @@ Input 为受控组件，它**总会显示 Vue 绑定值**。
 :::demo 使用`show-password`属性即可得到一个可切换显示隐藏的密码框
 
 ```html
-<tu-input placeholder="请输入密码" v-model="input" show-password></tu-input>
+<tu-input
+	placeholder="请输入密码"
+	v-model="input"
+	show-password
+></tu-input>
 
 <script>
 	export default {
@@ -99,16 +116,38 @@ Input 为受控组件，它**总会显示 Vue 绑定值**。
 ```html
 <div class="demo-input-suffix">
 	<span> 属性方式： </span>
-	<tu-input placeholder="请选择日期" suffix-icon="tu-icon-calendar" v-model="input1"> </tu-input>
-	<tu-input placeholder="请输入内容" prefix-icon="tu-icon-search" v-model="input2"> </tu-input>
+	<tu-input
+		placeholder="请选择日期"
+		suffix-icon="tu-icon-calendar"
+		v-model="input1"
+	>
+	</tu-input>
+	<tu-input
+		placeholder="请输入内容"
+		prefix-icon="tu-icon-search"
+		v-model="input2"
+	>
+	</tu-input>
 </div>
 <div class="demo-input-suffix">
 	<span> slot 方式：</span>
-	<tu-input placeholder="请选择日期" v-model="input3">
-		<i slot="suffix" class="tu-icon-calendar"></i>
+	<tu-input
+		placeholder="请选择日期"
+		v-model="input3"
+	>
+		<i
+			slot="suffix"
+			class="tu-icon-calendar"
+		></i>
 	</tu-input>
-	<tu-input placeholder="请输入内容" v-model="input4">
-		<i slot="prefix" class="tu-icon-search"></i>
+	<tu-input
+		placeholder="请输入内容"
+		v-model="input4"
+	>
+		<i
+			slot="prefix"
+			class="tu-icon-search"
+		></i>
 	</tu-input>
 </div>
 
@@ -135,13 +174,37 @@ Input 为受控组件，它**总会显示 Vue 绑定值**。
 ```html
 <div class="demo-input-size">
 	<p>超小</p>
-	<tu-input size="mini" placeholder="请输入内容" suffix-icon="tu-icon-date" v-model="input1"> </tu-input>
+	<tu-input
+		size="mini"
+		placeholder="请输入内容"
+		suffix-icon="tu-icon-date"
+		v-model="input1"
+	>
+	</tu-input>
 	<p>较小</p>
-	<tu-input size="small" placeholder="请输入内容" suffix-icon="tu-icon-date" v-model="input2"> </tu-input>
+	<tu-input
+		size="small"
+		placeholder="请输入内容"
+		suffix-icon="tu-icon-date"
+		v-model="input2"
+	>
+	</tu-input>
 	<p>中等</p>
-	<tu-input size="medium" placeholder="请输入内容" suffix-icon="tu-icon-date" v-model="input3"> </tu-input>
+	<tu-input
+		size="medium"
+		placeholder="请输入内容"
+		suffix-icon="tu-icon-date"
+		v-model="input3"
+	>
+	</tu-input>
 	<p>较大</p>
-	<tu-input size="large" placeholder="请输入内容" suffix-icon="tu-icon-date" v-model="input4"> </tu-input>
+	<tu-input
+		size="large"
+		placeholder="请输入内容"
+		suffix-icon="tu-icon-date"
+		v-model="input4"
+	>
+	</tu-input>
 </div>
 
 <script>
@@ -165,7 +228,14 @@ Input 为受控组件，它**总会显示 Vue 绑定值**。
 :::demo `maxlength` 和 `minlength` 是原生属性，用来限制输入框的字符长度，其中字符长度是用 Javascript 的字符串长度统计的。对于类型为 `text` 的输入框，在使用 `maxlength` 属性限制最大输入长度的同时，可通过设置 `show-word-limit` 属性来展示字数统计。
 
 ```html
-<tu-input type="text" placeholder="请输入内容" v-model="text" maxlength="10" show-word-limit> </tu-input>
+<tu-input
+	type="text"
+	placeholder="请输入内容"
+	v-model="text"
+	maxlength="10"
+	show-word-limit
+>
+</tu-input>
 <div style="margin: 20px 0;"></div>
 
 <script>

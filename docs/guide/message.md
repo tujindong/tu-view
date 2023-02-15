@@ -26,7 +26,10 @@
 			openVn() {
 				const h = this.$createElement;
 				this.$message({
-					message: h("p", null, [h("span", null, "内容可以是 "), h("i", { style: "color: orange" }, "VNode")]),
+					message: h("p", null, [
+						h("span", null, "内容可以是 "),
+						h("i", { style: "color: orange" }, "VNode"),
+					]),
 				});
 			},
 		},
