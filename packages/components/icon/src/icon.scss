@@ -1,3 +1,4 @@
+@import "~@packages/style/common/animation.scss";
 @font-face {
 	font-family: "tu-icons";
 	src:
@@ -2431,4 +2432,7 @@
 
 .tu-icon-magnifier:before {
 	content: "\e62d";
+}
+.tu-icon-loading {
+	animation: spin 1s linear infinite;
 }

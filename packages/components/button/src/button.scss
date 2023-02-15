@@ -4,7 +4,8 @@
 @mixin buttonFilled($color-light, $color-normal, $color-dark) {
 	transition: 0.1s ease;
 	background: $color-normal;
-	box-shadow: inset 2px 2px 10px $color-light, inset -2px -2px 10px $color-dark, 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+	box-shadow: inset 2px 2px 10px $color-light, inset -2px -2px 10px $color-dark,
+		3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
 	color: $--button-font-color;
 
 	&:hover {
@@ -24,7 +25,8 @@
 		&:focus,
 		&:active {
 			background: $color-normal;
-			box-shadow: inset 2px 2px 10px $color-light, inset -2px -2px 10px $color-dark, 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+			box-shadow: inset 2px 2px 10px $color-light, inset -2px -2px 10px $color-dark,
+				3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
 			color: $--button-font-color;
 
 			&::before {
@@ -49,7 +51,8 @@
 		&:focus,
 		&:active {
 			background: $color-normal;
-			box-shadow: inset 2px 2px 10px $color-light, inset -2px -2px 10px $color-dark, 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+			box-shadow: inset 2px 2px 10px $color-light, inset -2px -2px 10px $color-dark,
+				3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
 			color: $--button-font-color;
 
 			&::before {
@@ -179,7 +182,11 @@
 	}
 
 	@include m(mini) {
-		@include buttonSize($--button-mini-padding-vertical, $--button-mini-padding-horizontal, $--font-size-small);
+		@include buttonSize(
+			$--button-mini-padding-vertical,
+			$--button-mini-padding-horizontal,
+			$--font-size-small
+		);
 
 		@include when(circle) {
 			padding: $--button-mini-padding-vertical;
@@ -187,7 +194,11 @@
 	}
 
 	@include m(small) {
-		@include buttonSize($--button-small-padding-vertical, $--button-small-padding-horizontal, $--font-size-small);
+		@include buttonSize(
+			$--button-small-padding-vertical,
+			$--button-small-padding-horizontal,
+			$--font-size-small
+		);
 
 		@include when(circle) {
 			padding: $--button-small-padding-vertical;
@@ -195,11 +206,19 @@
 	}
 
 	@include m(medium) {
-		@include buttonSize($--button-padding-vertical, $--button-padding-horizontal, $--font-size-base);
+		@include buttonSize(
+			$--button-padding-vertical,
+			$--button-padding-horizontal,
+			$--font-size-base
+		);
 	}
 
 	@include m(large) {
-		@include buttonSize($--button-large-padding-vertical, $--button-large-padding-horizontal, $--font-size-base);
+		@include buttonSize(
+			$--button-large-padding-vertical,
+			$--button-large-padding-horizontal,
+			$--font-size-base
+		);
 
 		@include when(circle) {
 			padding: calc(#{$--button-large-padding-vertical} - 2px);
@@ -237,12 +256,7 @@
 
 	.tu-icon__loading {
 		pointer-events: none;
-		content: "";
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		animation: spin 1.5s linear infinite;
-		margin-right: 3px;
+		margin-right: 5px;
 	}
 
 	& [class*="tu-icon-"] {

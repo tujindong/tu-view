@@ -6,12 +6,12 @@
 	font-size: $--cascader-menu-font-size;
 
 	@include when(bordered) {
-		border: $--cascader-menu-border;
-		border-radius: $--cascader-menu-radius;
+		box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
 	}
 }
 
 @include b(cascader-menu) {
+	width: 100%;
 	min-width: 180px;
 	box-sizing: border-box;
 	color: $--cascader-menu-font-color;
@@ -27,11 +27,13 @@
 	@include e(wrap) {
 		height: 212px;
 		max-height: 212px;
+		min-height: 72px;
 	}
 
 	@include e(list) {
 		position: relative;
 		min-height: 100%;
+		width: 100%;
 		margin: 0;
 		padding: 6px 0;
 		list-style: none;

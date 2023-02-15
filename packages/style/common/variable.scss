@@ -85,6 +85,8 @@ $--font-line-height-secondary: 16px;
 $--border-radius-large: 6px;
 $--border-radius-base: 4px;
 $--border-radius-small: 2px;
+$--border-radius-circle: 100%;
+$--border-radius-zero: 0;
 
 /* Button
 -------------------------- */
@@ -360,7 +362,7 @@ $--select-small-dropdown-empty-padding: 6px 0;
 /*中等 medium*/
 $--select-input-font-size: $--font-size-base;
 $--select-font-size: $--font-size-base;
-$--select-option-height: 34px;
+$--select-option-height: 36px;
 $--select-option-padding-horizontal: 22px;
 
 $--select-group-height: 30px;
@@ -441,6 +443,20 @@ $--cascader-menu-radius: $--border-radius-base;
 $--cascader-menu-border: solid 1px $--color-greyLight-3;
 $--cascader-node-color-disabled: $--color-greyLight-3;
 $--cascader-color-empty: $--color-greyLight-3;
+
+/* Slider
+-------------------------- */
+$--slider-main-background-color: $--color-primary;
+$--slider-runway-background-color: $--border-color-light;
+$--slider-button-hover-color: mix($--color-primary, black, 97%);
+$--slider-stop-background-color: $--color-white;
+$--slider-disable-color: $--color-greyLight-3;
+$--slider-margin: 16px 0;
+$--slider-border-radius: 3px;
+$--slider-height: 6px;
+$--slider-button-size: 16px;
+$--slider-button-wrapper-size: 36px;
+$--slider-button-wrapper-offset: -15px;
 
 /* Break-point
 --------------------------*/

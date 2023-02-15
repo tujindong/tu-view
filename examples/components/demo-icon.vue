@@ -3,6 +3,8 @@
     <tu-icon name="home"></tu-icon>
 
     <tu-icon name="check"></tu-icon>
+
+    <tu-icon name="loading"></tu-icon>
   </div>
 </template>
 

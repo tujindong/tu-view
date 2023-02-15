@@ -17,7 +17,6 @@
     <DemoProgress />
     <DemoScrollbar />
     <DemoRate />
-    <DemoSlider />
     <DemoForm />
     <DemoDatePicker />
     <DemoTimePicker />
@@ -26,6 +25,7 @@
     <DemoMessage />
     <DemoPagination />
     <DemoCascader />
+    <DemoSlider />
   </div>
 </template>
 

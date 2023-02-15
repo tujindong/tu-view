@@ -154,15 +154,19 @@ export default {
     },
 
     renderCheckIcon(h) {
-      return <i class="tu-icon-check tu-cascader-node__prefix"></i>;
+      return <tu-icon name="check" class="tu-cascader-node__prefix"></tu-icon>;
     },
 
     renderLoadingIcon(h) {
-      return <i class="tu-icon-loading tu-cascader-node__postfix"></i>;
+      return (
+        <tu-icon name="loading" class="tu-cascader-node__postfix"></tu-icon>
+      );
     },
 
     renderExpandIcon(h) {
-      return <i class="tu-icon-right tu-cascader-node__postfix"></i>;
+      return (
+        <tu-icon name="right" class=" tu-cascader-node__postfix"></tu-icon>
+      );
     },
 
     renderContent(h) {

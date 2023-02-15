@@ -3,7 +3,7 @@
     <h2>slider</h2>
     <br />
     <p>基本配置</p>
-    <tu-slider></tu-slider>
+    <tu-slider v-model="value1"></tu-slider>
   </div>
 </template>
 
@@ -12,7 +12,9 @@ export default {
   name: "deme-tabs",
 
   data() {
-    return {};
+    return {
+      value1: 0,
+    };
   },
 };
 </script>

@@ -16,7 +16,7 @@
       ref="input"
       v-model="multiple ? presentText : inputValue"
       :size="realSize"
-      :placeholder="placeholder"
+      :placeholder="currentPlaceholder"
       :readonly="readonly"
       :disabled="isDisabled"
       :validate-event="false"
@@ -63,12 +63,14 @@
       <input
         v-if="filterable && !isDisabled"
         v-model.trim="inputValue"
+        ref="filterInput"
         type="text"
         class="tu-cascader__search-input"
-        :placeholder="presentTags.length ? '' : placeholder"
         @input="(e) => handleInput(inputValue, e)"
         @click.stop="toggleDropDownVisible(true)"
         @keydown.delete="handleDelete"
+        @compositionstart="handleCompositionStart"
+        @compositionend="handleCompositionEnd"
       />
     </div>
 
@@ -208,7 +210,10 @@ export default {
     value: {},
     options: Array,
     props: Object,
-    size: String,
+    size: {
+      type: String,
+      default: "medium",
+    },
     placeholder: {
       type: String,
       default: () => t("tu.cascader.placeholder"),
@@ -250,6 +255,7 @@ export default {
       suggestions: [],
       inputInitialHeight: 0,
       pressDeleteCount: 0,
+      isOnComposition: false,
     };
   },
 
@@ -311,6 +317,14 @@ export default {
 
     panel() {
       return this.$refs.panel;
+    },
+
+    currentPlaceholder() {
+      return this.isOnComposition
+        ? ""
+        : this.inputValue
+        ? ""
+        : this.placeholder;
     },
   },
 
@@ -439,6 +453,8 @@ export default {
             this.updatePopper();
             this.panel.scrollIntoView();
             this.setBackground();
+            if (this.filterable && this.$refs.filterInput)
+              this.$refs.filterInput.focus();
           });
         }
         input.$refs.input.setAttribute("aria-expanded", visible);
@@ -469,11 +485,21 @@ export default {
       }
     },
 
+    handleCompositionStart(evt) {
+      this.isOnComposition = true;
+    },
+
+    handleCompositionEnd(evt) {
+      this.isOnComposition = false;
+    },
+
     handleFocus(e) {
+      console.log("focuse");
       this.$emit("focus", e);
     },
 
     handleBlur(e) {
+      console.log("handleBlur");
       this.$emit("blur", e);
     },
 

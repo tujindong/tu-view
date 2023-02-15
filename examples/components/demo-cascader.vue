@@ -36,6 +36,29 @@
       collapse-tags
       clearable
     ></tu-cascader>
+
+    <tu-row :gutter="20">
+      <tu-col :span="12">
+        <p>单选可搜索</p>
+        <tu-cascader
+          placeholder="试试搜索：姑苏区"
+          :options="options"
+          filterable
+        ></tu-cascader>
+      </tu-col>
+      <tu-col :span="12">
+        <p>多选可搜索</p>
+        <tu-cascader
+          placeholder="试试搜索：姑苏区"
+          :options="options"
+          :props="{ multiple: true }"
+          filterable
+        ></tu-cascader>
+      </tu-col>
+    </tu-row>
+    <br />
+    <p>级联面板</p>
+    <tu-cascader-panel :options="options"></tu-cascader-panel>
   </div>
 </template>
 
@@ -50,269 +73,134 @@ export default {
       props: { checkStrictly: true },
       options: [
         {
-          value: "zhinan",
-          label: "指南",
-          disabled: true,
+          value: "1",
+          label: "上海",
           children: [
             {
-              value: "shejiyuanze",
-              label: "设计原则",
+              value: "1-1",
+              label: "普陀区",
+            },
+            {
+              value: "1-2",
+              label: "黄埔区",
+            },
+            {
+              value: "1-3",
+              label: "徐汇区",
+            },
+          ],
+        },
+        {
+          value: "2",
+          label: "江苏",
+          children: [
+            {
+              value: "2-1",
+              label: "南京",
               children: [
                 {
-                  value: "yizhi",
-                  label: "一致",
+                  value: "2-1-1",
+                  label: "玄武区",
                 },
                 {
-                  value: "fankui",
-                  label: "反馈",
+                  value: "2-1-2",
+                  label: "秦淮区",
                 },
                 {
-                  value: "xiaolv",
-                  label: "效率",
+                  value: "2-1-3",
+                  label: "建邺区",
                 },
                 {
-                  value: "kekong",
-                  label: "可控",
+                  value: "2-1-4",
+                  label: "鼓楼区",
+                },
+                {
+                  value: "2-1-5",
+                  label: "浦口区",
+                },
+                {
+                  value: "2-1-6",
+                  label: "栖霞区",
+                },
+                {
+                  value: "2-1-7",
+                  label: "雨花台区",
+                },
+                {
+                  value: "2-1-8",
+                  label: "江宁区",
+                },
+                {
+                  value: "2-1-9",
+                  label: "六合区",
                 },
               ],
             },
             {
-              value: "daohang",
-              label: "导航",
+              value: "2-2",
+              label: "苏州",
               children: [
                 {
-                  value: "cexiangdaohang",
-                  label: "侧向导航",
+                  value: "2-2-1",
+                  label: "姑苏区",
                 },
                 {
-                  value: "dingbudaohang",
-                  label: "顶部导航",
+                  value: "2-2-2",
+                  label: "相城区",
+                },
+              ],
+            },
+            {
+              value: "2-3",
+              label: "扬州",
+              children: [
+                {
+                  value: "2-3-1",
+                  label: "江都区",
                 },
               ],
             },
           ],
         },
         {
-          value: "zujian",
-          label: "组件",
+          value: "3",
+          label: "浙江",
           children: [
             {
-              value: "basic",
-              label: "Basic",
+              value: "3-1",
+              label: "杭州",
               children: [
                 {
-                  value: "layout",
-                  label: "Layout 布局",
+                  value: "3-1-1",
+                  label: "西湖区",
                 },
                 {
-                  value: "color",
-                  label: "Color 色彩",
+                  value: "3-1-2",
+                  label: "上城区",
                 },
                 {
-                  value: "typography",
-                  label: "Typography 字体",
+                  value: "3-1-3",
+                  label: "余杭区",
                 },
                 {
-                  value: "icon",
-                  label: "Icon 图标",
+                  value: "3-1-4",
+                  label: "拱墅区",
                 },
                 {
-                  value: "button",
-                  label: "Button 按钮",
+                  value: "3-1-5",
+                  label: "滨江区",
                 },
               ],
             },
             {
-              value: "form",
-              label: "Form",
+              value: "3-2",
+              label: "宁波",
               children: [
                 {
-                  value: "radio",
-                  label: "Radio 单选框",
-                },
-                {
-                  value: "checkbox",
-                  label: "Checkbox 多选框",
-                },
-                {
-                  value: "input",
-                  label: "Input 输入框",
-                },
-                {
-                  value: "input-number",
-                  label: "InputNumber 计数器",
-                },
-                {
-                  value: "select",
-                  label: "Select 选择器",
-                },
-                {
-                  value: "cascader",
-                  label: "Cascader 级联选择器",
-                },
-                {
-                  value: "switch",
-                  label: "Switch 开关",
-                },
-                {
-                  value: "slider",
-                  label: "Slider 滑块",
-                },
-                {
-                  value: "time-picker",
-                  label: "TimePicker 时间选择器",
-                },
-                {
-                  value: "date-picker",
-                  label: "DatePicker 日期选择器",
-                },
-                {
-                  value: "datetime-picker",
-                  label: "DateTimePicker 日期时间选择器",
-                },
-                {
-                  value: "upload",
-                  label: "Upload 上传",
-                },
-                {
-                  value: "rate",
-                  label: "Rate 评分",
-                },
-                {
-                  value: "form",
-                  label: "Form 表单",
+                  value: "3-2-1",
+                  label: "海曙区",
                 },
               ],
-            },
-            {
-              value: "data",
-              label: "Data",
-              children: [
-                {
-                  value: "table",
-                  label: "Table 表格",
-                },
-                {
-                  value: "tag",
-                  label: "Tag 标签",
-                },
-                {
-                  value: "progress",
-                  label: "Progress 进度条",
-                },
-                {
-                  value: "tree",
-                  label: "Tree 树形控件",
-                },
-                {
-                  value: "pagination",
-                  label: "Pagination 分页",
-                },
-                {
-                  value: "badge",
-                  label: "Badge 标记",
-                },
-              ],
-            },
-            {
-              value: "notice",
-              label: "Notice",
-              children: [
-                {
-                  value: "alert",
-                  label: "Alert 警告",
-                },
-                {
-                  value: "loading",
-                  label: "Loading 加载",
-                },
-                {
-                  value: "message",
-                  label: "Message 消息提示",
-                },
-                {
-                  value: "message-box",
-                  label: "MessageBox 弹框",
-                },
-                {
-                  value: "notification",
-                  label: "Notification 通知",
-                },
-              ],
-            },
-            {
-              value: "navigation",
-              label: "Navigation",
-              children: [
-                {
-                  value: "menu",
-                  label: "NavMenu 导航菜单",
-                },
-                {
-                  value: "tabs",
-                  label: "Tabs 标签页",
-                },
-                {
-                  value: "breadcrumb",
-                  label: "Breadcrumb 面包屑",
-                },
-                {
-                  value: "dropdown",
-                  label: "Dropdown 下拉菜单",
-                },
-                {
-                  value: "steps",
-                  label: "Steps 步骤条",
-                },
-              ],
-            },
-            {
-              value: "others",
-              label: "Others",
-              children: [
-                {
-                  value: "dialog",
-                  label: "Dialog 对话框",
-                },
-                {
-                  value: "tooltip",
-                  label: "Tooltip 文字提示",
-                },
-                {
-                  value: "popover",
-                  label: "Popover 弹出框",
-                },
-                {
-                  value: "card",
-                  label: "Card 卡片",
-                },
-                {
-                  value: "carousel",
-                  label: "Carousel 走马灯",
-                },
-                {
-                  value: "collapse",
-                  label: "Collapse 折叠面板",
-                },
-              ],
-            },
-          ],
-        },
-        {
-          value: "ziyuan",
-          label: "资源",
-          children: [
-            {
-              value: "axure",
-              label: "Axure Components",
-            },
-            {
-              value: "sketch",
-              label: "Sketch Templates",
-            },
-            {
-              value: "jiaohu",
-              label: "组件交互文档",
             },
           ],
         },
