@@ -77,8 +77,8 @@
 </template>
 
 <script>
-// import SliderButton from "./button.vue";
-// import SliderMarker from "./marker";
+import SliderButton from "./slider-button.vue";
+import SliderMarker from "./slider-marker";
 import Emitter from "@packages/src/mixins/emitter";
 
 export default {
@@ -92,7 +92,10 @@ export default {
     },
   },
 
-  components: {},
+  components: {
+    SliderButton,
+    SliderMarker,
+  },
 
   props: {
     min: {
@@ -338,6 +341,119 @@ export default {
 
   beforeDestroy() {
     window.removeEventListener("resize", this.resetSize);
+  },
+
+  methods: {
+    valueChanged() {
+      if (this.range) {
+        return ![this.minValue, this.maxValue].every(
+          (item, index) => item === this.oldValue[index]
+        );
+      } else {
+        return this.value !== this.oldValue;
+      }
+    },
+
+    setValues() {
+      if (this.min > this.max) {
+        console.error(
+          "[TuView Error][Slider]min should not be greater than max."
+        );
+        return;
+      }
+      const val = this.value;
+      if (this.range && Array.isArray(val)) {
+        if (val[1] < this.min) {
+          this.$emit("input", [this.min, this.min]);
+        } else if (val[0] > this.max) {
+          this.$emit("input", [this.max, this.max]);
+        } else if (val[0] < this.min) {
+          this.$emit("input", [this.min, val[1]]);
+        } else if (val[1] > this.max) {
+          this.$emit("input", [val[0], this.max]);
+        } else {
+          this.firstValue = val[0];
+          this.secondValue = val[1];
+          if (this.valueChanged()) {
+            this.dispatch("TuFormItem", "tu.form.change", [
+              this.minValue,
+              this.maxValue,
+            ]);
+            this.oldValue = val.slice();
+          }
+        }
+      } else if (!this.range && typeof val === "number" && !isNaN(val)) {
+        if (val < this.min) {
+          this.$emit("input", this.min);
+        } else if (val > this.max) {
+          this.$emit("input", this.max);
+        } else {
+          this.firstValue = val;
+          if (this.valueChanged()) {
+            this.dispatch("TuFormItem", "tu.form.change", val);
+            this.oldValue = val;
+          }
+        }
+      }
+    },
+
+    setPosition(percent) {
+      const targetValue = this.min + (percent * (this.max - this.min)) / 100;
+      if (!this.range) {
+        this.$refs.button1.setPosition(percent);
+        return;
+      }
+      let button;
+      if (
+        Math.abs(this.minValue - targetValue) <
+        Math.abs(this.maxValue - targetValue)
+      ) {
+        button = this.firstValue < this.secondValue ? "button1" : "button2";
+      } else {
+        button = this.firstValue > this.secondValue ? "button1" : "button2";
+      }
+      this.$refs[button].setPosition(percent);
+    },
+
+    onSliderClick(event) {
+      if (this.sliderDisabled || this.dragging) return;
+      this.resetSize();
+      if (this.vertical) {
+        const sliderOffsetBottom =
+          this.$refs.slider.getBoundingClientRect().bottom;
+        this.setPosition(
+          ((sliderOffsetBottom - event.clientY) / this.sliderSize) * 100
+        );
+      } else {
+        const sliderOffsetLeft = this.$refs.slider.getBoundingClientRect().left;
+        this.setPosition(
+          ((event.clientX - sliderOffsetLeft) / this.sliderSize) * 100
+        );
+      }
+      this.emitChange();
+    },
+
+    resetSize() {
+      if (this.$refs.slider) {
+        this.sliderSize =
+          this.$refs.slider[`client${this.vertical ? "Height" : "Width"}`];
+      }
+    },
+
+    emitChange() {
+      this.$nextTick(() => {
+        this.$emit(
+          "change",
+          this.range ? [this.minValue, this.maxValue] : this.value
+        );
+      });
+    },
+
+    getStopStyle(position) {
+      return this.vertical
+        ? { bottom: position + "%" }
+        : { left: position + "%" };
+    },
   },
 };
 </script>

@@ -40,25 +40,10 @@
 		}
 	}
 
-	@include m(medium) {
-		// font-size: $--input-medium-font-size;
-		// line-height: $--input-medium-height;
-	}
-
-	@include m(small) {
-		// font-size: $--input-small-font-size;
-		// line-height: $--input-small-height;
-	}
-
-	@include m(mini) {
-		// font-size: $--input-mini-font-size;
-		// line-height: $--input-mini-height;
-	}
-
 	@include when(disabled) {
 		.tu-cascader__label {
 			z-index: #{$--index-normal + 1};
-			// color: $--disabled-color-base;
+			color: $--color-greyLight-3;
 		}
 	}
 
@@ -82,21 +67,11 @@
 		.tu-tag {
 			margin: 4px 0 4px 6px;
 			text-overflow: ellipsis;
-
-			// &:not(.is-hit) {
-			// 	border-color: transparent;
-			// }
-
-			// > span {
-			// 	flex: 1;
-			// 	overflow: hidden;
-			// 	text-overflow: ellipsis;
-			// }
 		}
 	}
 
 	@include e(suggestion-panel) {
-		// border-radius: $--cascader-menu-radius;
+		border-radius: $--cascader-menu-radius;
 	}
 
 	@include e(suggestion-list) {

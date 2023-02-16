@@ -41,6 +41,7 @@ module.exports = {
 						["../guide/select.md", "Select 选择器"],
 						["../guide/cascader.md", "Cascader 级联选择器"],
 						["../guide/switch.md", "Switch 开关"],
+						["../guide/slider.md", "Slider 滑块"],
 						["../guide/time-picker.md", "TimePicker 时间选择器"],
 						["../guide/date-picker.md", "DataPicker 日期选择器"],
 						["../guide/datetime-picker.md", "DataTimePicker 日期时间选择器"],

@@ -13,6 +13,7 @@
 		position: relative;
 		cursor: pointer;
 		vertical-align: middle;
+		box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
 
 		&.show-input {
 			margin-right: 160px;
@@ -23,7 +24,12 @@
 			cursor: default;
 
 			.tu-slider__bar {
-				background-color: $--slider-disable-color;
+				background: linear-gradient(
+					-1deg,
+					$--color-greyDark 0%,
+					$--color-greyLight-3 50%,
+					$--color-greyLight-2 100%
+				);
 			}
 
 			.tu-slider__button {
@@ -80,7 +86,12 @@
 
 	@include e(bar) {
 		height: $--slider-height;
-		background-color: $--slider-main-background-color;
+		background: linear-gradient(
+			-1deg,
+			$--color-primary-dark 0%,
+			$--color-primary 50%,
+			$--color-primary-light 100%
+		);
 		border-top-left-radius: $--slider-border-radius;
 		border-bottom-left-radius: $--slider-border-radius;
 		position: absolute;
@@ -115,13 +126,27 @@
 	}
 
 	@include e(button) {
+		position: relative;
 		width: $--slider-button-size;
 		height: $--slider-button-size;
-		border: solid 2px $--slider-main-background-color;
 		background-color: $--color-white;
 		border-radius: 50%;
 		transition: 0.2s;
 		user-select: none;
+		box-shadow: 0 1px 3px 0px $--color-greyLight-2;
+
+		&::after {
+			content: "";
+			position: absolute;
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			box-shadow: inset 1px 1px 4px $--color-greyLight-1, inset -2px -2px 5px $--color-white;
+			margin: auto;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
 
 		&:hover,
 		&.hover,
@@ -143,8 +168,9 @@
 		position: absolute;
 		height: $--slider-height;
 		width: $--slider-height;
+
 		border-radius: $--border-radius-circle;
-		background-color: $--slider-stop-background-color;
+		background: rgba($--color-white, 0.38);
 		transform: translateX(-50%);
 	}
 
