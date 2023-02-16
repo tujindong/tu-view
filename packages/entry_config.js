@@ -153,5 +153,9 @@ module.exports = {
 			name: "cascader-panel",
 			author: "tujindong",
 		},
+		{
+			name: "rate",
+			author: "tujindong",
+		},
 	],
 };

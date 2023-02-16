@@ -458,6 +458,17 @@ $--slider-button-size: 18px;
 $--slider-button-wrapper-size: 36px;
 $--slider-button-wrapper-offset: -15px;
 
+/* Rate
+--------------------------*/
+$--rate-height: 20px;
+/// fontSize||Font|1
+$--rate-font-size: $--font-size-base;
+/// height||Other|3
+$--rate-icon-size: 18px;
+/// margin||Spacing|2
+$--rate-icon-margin: 6px;
+$--rate-icon-color: $--color-greyLight-3;
+
 /* Break-point
 --------------------------*/
 $--sm: 768px !default;
