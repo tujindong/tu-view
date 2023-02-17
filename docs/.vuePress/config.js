@@ -45,6 +45,8 @@ module.exports = {
 						["../guide/time-picker.md", "TimePicker 时间选择器"],
 						["../guide/date-picker.md", "DataPicker 日期选择器"],
 						["../guide/datetime-picker.md", "DataTimePicker 日期时间选择器"],
+						["../guide/rate.md", "Rate 评分"],
+						["../guide/transfer.md", "Transfer 穿梭框"],
 						["../guide/form.md", "Form 表单"],
 					],
 				},

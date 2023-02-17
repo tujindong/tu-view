@@ -50,6 +50,7 @@ import DropdownMenu from "./components/dropdown-menu";
 import Message from "./components/message";
 import Cascader from "./components/cascader";
 import CascaderPanel from "./components/cascader-panel";
+import Transfer from "./components/transfer";
 
 const componentsList = [
 	Button,
@@ -90,6 +91,7 @@ const componentsList = [
 	Message,
 	Cascader,
 	CascaderPanel,
+	Transfer,
 ];
 
 const install = function (Vue, opts = {}) {

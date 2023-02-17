@@ -26,6 +26,7 @@
     <DemoCascader />
     <DemoSlider />
     <DemoRate />
+    <DemoTransfer />
   </div>
 </template>
 
@@ -56,6 +57,7 @@ import DemoDateTimePicker from "./components/demo-dateTimePicker.vue";
 import DemoDropdown from "./components/demo-dropdown.vue";
 import DemoMessage from "./components/demo-message.vue";
 import DemoCascader from "./components/demo-cascader.vue";
+import DemoTransfer from "./components/demo-transfer.vue";
 export default {
   components: {
     DemoButton,
@@ -84,6 +86,7 @@ export default {
     DemoDropdown,
     DemoMessage,
     DemoCascader,
+    DemoTransfer,
   },
 
   data() {

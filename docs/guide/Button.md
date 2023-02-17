@@ -80,7 +80,7 @@
 </tu-row>
 
 <style>
-	.tu-button + .tu-button {
+	.tu-row .tu-button + .tu-button {
 		margin-left: 10px;
 	}
 </style>
@@ -163,7 +163,7 @@
 </tu-row>
 
 <style>
-	.tu-button + .tu-button {
+	.tu-row .tu-button + .tu-button {
 		margin-left: 10px;
 	}
 </style>

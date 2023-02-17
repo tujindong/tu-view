@@ -157,5 +157,9 @@ module.exports = {
 			name: "rate",
 			author: "tujindong",
 		},
+		{
+			name: "transfer",
+			author: "tujindong",
+		},
 	],
 };

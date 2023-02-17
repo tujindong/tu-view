@@ -1,8 +1,43 @@
 <template>
-  <div class="tu-rate">
-    <span class="tu-rate__item" v-for="(item, key) in max" :key="key">
-      <i :class="[classes[item - 1]]" class="tu-rate__icon"></i>
+  <div
+    class="tu-rate"
+    @keydown="handleKey"
+    role="slider"
+    :aria-valuenow="currentValue"
+    :aria-valuetext="text"
+    aria-valuemin="0"
+    :aria-valuemax="max"
+    tabindex="0"
+  >
+    <span
+      v-for="(item, key) in max"
+      class="tu-rate__item"
+      @mousemove="setCurrentValue(item, $event)"
+      @mouseleave="resetCurrentValue"
+      @click="selectValue(item)"
+      :style="{ cursor: rateDisabled ? 'auto' : 'pointer' }"
+      :key="key"
+    >
+      <i
+        :class="[classes[item - 1], { hover: hoverIndex === item }]"
+        class="tu-rate__icon"
+        :style="getIconStyle(item)"
+      >
+        <i
+          v-if="showDecimalIcon(item)"
+          :class="decimalIconClass"
+          :style="decimalStyle"
+          class="tu-rate__decimal"
+        >
+        </i>
+      </i>
     </span>
+    <span
+      v-if="showText || showScore"
+      class="tu-rate__text"
+      :style="{ color: textColor }"
+      >{{ text }}</span
+    >
   </div>
 </template>
 
@@ -44,30 +79,30 @@ export default {
     colors: {
       type: [Array, Object],
       default() {
-        return ["#F7BA2A", "#F7BA2A", "#F7BA2A"];
+        return ["#f7ba2a", "#f7ba2a", "#f7ba2a"];
       },
     },
     voidColor: {
       type: String,
-      default: "#C6D1DE",
+      default: "#c6d1de",
     },
     disabledVoidColor: {
       type: String,
-      default: "#EFF2F7",
+      default: "#c8d0e7",
     },
     iconClasses: {
       type: [Array, Object],
       default() {
-        return ["tu-icon-star-on", "tu-icon-star-on", "tu-icon-star-on"];
+        return ["tu-icon-star-fill", "tu-icon-star-fill", "tu-icon-star-fill"];
       },
     },
     voidIconClass: {
       type: String,
-      default: "tu-icon-star-off",
+      default: "tu-icon-star-fill",
     },
     disabledVoidIconClass: {
       type: String,
-      default: "tu-icon-star-on",
+      default: "tu-icon-star-fill",
     },
     disabled: {
       type: Boolean,
@@ -87,7 +122,7 @@ export default {
     },
     textColor: {
       type: String,
-      default: "#1f2d3d",
+      default: "#9baacf",
     },
     texts: {
       type: Array,
@@ -245,7 +280,6 @@ export default {
         this.valueDecimal > 0 &&
         item - 1 < this.value &&
         item > this.value;
-      /* istanbul ignore next */
       let showWhenAllowHalf =
         this.allowHalf &&
         this.pointerAtLeftHalf &&
