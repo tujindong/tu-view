@@ -2,7 +2,7 @@
 
 @include b(backtop) {
 	position: fixed;
-	width: 32px;
+	min-width: 32px;
 	height: 32px;
 	border-radius: 50%;
 	font-size: 22px;

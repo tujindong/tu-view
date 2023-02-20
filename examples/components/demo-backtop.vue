@@ -3,7 +3,7 @@
     <h2>Table</h2>
     <br />
     <p>基本配置</p>
-    <tu-backtop></tu-backtop>
+    <tu-backtop>返回顶部</tu-backtop>
   </div>
 </template>
 
