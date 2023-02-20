@@ -1,16 +1,3 @@
-/**
- * ⠀⠰⢷⢿⠄
-⠀⠀⠀⠀⠀⣼⣷⣄
-⠀⠀⣤⣿⣇⣿⣿⣧⣿⡄
-⢴⠾⠋⠀⠀⠻⣿⣷⣿⣿⡀
-○ ⠀⢀⣿⣿⡿⢿⠈⣿
-⠀⠀⠀⢠⣿⡿⠁⠀⡊⠀⠙
-⠀⠀⠀⢿⣿⠀⠀⠹⣿
-⠀⠀⠀⠀⠹⣷⡀⠀⣿⡄
-⠀⠀⠀⠀⣀⣼⣿⠀⢈⣧.
- * 
- */
-
 /* 组件库对外导出的组件集合，对整个组件进行导出 */
 import Button from "./components/button";
 import ButtonGroup from "./components/button-group";
@@ -51,6 +38,8 @@ import Message from "./components/message";
 import Cascader from "./components/cascader";
 import CascaderPanel from "./components/cascader-panel";
 import Transfer from "./components/transfer";
+import ColorPicker from "./components/color-picker";
+import Backtop from "./components/backtop";
 
 const componentsList = [
 	Button,
@@ -92,6 +81,8 @@ const componentsList = [
 	Cascader,
 	CascaderPanel,
 	Transfer,
+	ColorPicker,
+	Backtop,
 ];
 
 const install = function (Vue, opts = {}) {

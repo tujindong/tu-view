@@ -3,7 +3,6 @@
     <h2>Table</h2>
     <br />
     <p>基本配置</p>
-    <tu-table></tu-table>
   </div>
 </template>
 

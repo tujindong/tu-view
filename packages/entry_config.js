@@ -161,5 +161,13 @@ module.exports = {
 			name: "transfer",
 			author: "tujindong",
 		},
+		{
+			name: "color-picker",
+			author: "tujindong",
+		},
+		{
+			name: "backtop",
+			author: "tujindong",
+		},
 	],
 };

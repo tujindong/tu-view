@@ -27,6 +27,8 @@
     <DemoSlider />
     <DemoRate />
     <DemoTransfer />
+    <DemoColorPicker />
+    <DemoBacktop />
   </div>
 </template>
 
@@ -58,6 +60,8 @@ import DemoDropdown from "./components/demo-dropdown.vue";
 import DemoMessage from "./components/demo-message.vue";
 import DemoCascader from "./components/demo-cascader.vue";
 import DemoTransfer from "./components/demo-transfer.vue";
+import DemoColorPicker from "./components/demo-colorPicker.vue";
+import DemoBacktop from "./components/demo-backtop.vue";
 export default {
   components: {
     DemoButton,
@@ -87,6 +91,8 @@ export default {
     DemoMessage,
     DemoCascader,
     DemoTransfer,
+    DemoColorPicker,
+    DemoBacktop,
   },
 
   data() {
