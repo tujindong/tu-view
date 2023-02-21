@@ -14,7 +14,6 @@
     <DemoTag />
     <DemoLayout />
     <DemoTable />
-    <DemoProgress />
     <DemoScrollbar />
     <DemoForm />
     <DemoDatePicker />
@@ -29,6 +28,8 @@
     <DemoTransfer />
     <DemoColorPicker />
     <DemoBacktop />
+    <DemoUpload />
+    <DemoProgress />
   </div>
 </template>
 
@@ -62,6 +63,8 @@ import DemoCascader from "./components/demo-cascader.vue";
 import DemoTransfer from "./components/demo-transfer.vue";
 import DemoColorPicker from "./components/demo-colorPicker.vue";
 import DemoBacktop from "./components/demo-backtop.vue";
+import DemoUpload from "./components/demo-upload.vue";
+
 export default {
   components: {
     DemoButton,
@@ -93,6 +96,7 @@ export default {
     DemoTransfer,
     DemoColorPicker,
     DemoBacktop,
+    DemoUpload,
   },
 
   data() {

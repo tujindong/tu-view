@@ -169,5 +169,13 @@ module.exports = {
 			name: "backtop",
 			author: "tujindong",
 		},
+		{
+			name: "upload",
+			author: "tujindong",
+		},
+		{
+			name: "tree",
+			author: "tujindong",
+		},
 	],
 };

@@ -56,6 +56,7 @@ module.exports = {
 					collapsable: false,
 					children: [
 						["../guide/tag.md", "Tag 标签"],
+						["../guide/progress.md", "Progress 进度条"],
 						["../guide/pagination.md", "Pagination 分页"],
 					],
 				},
@@ -79,6 +80,7 @@ module.exports = {
 						["../guide/tooltip.md", "Tooltip 文字提示"],
 						["../guide/card.md", "Card 卡片"],
 						["../guide/scrollbar.md", "Scrollbar 区域滚动"],
+						["../guide/backtop.md", "Backtop 回到顶部"],
 					],
 				},
 			],

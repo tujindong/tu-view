@@ -40,6 +40,8 @@ import CascaderPanel from "./components/cascader-panel";
 import Transfer from "./components/transfer";
 import ColorPicker from "./components/color-picker";
 import Backtop from "./components/backtop";
+import Upload from "./components/upload";
+import Tree from "./components/tree";
 
 const componentsList = [
 	Button,
@@ -83,6 +85,8 @@ const componentsList = [
 	Transfer,
 	ColorPicker,
 	Backtop,
+	Upload,
+	Tree,
 ];
 
 const install = function (Vue, opts = {}) {

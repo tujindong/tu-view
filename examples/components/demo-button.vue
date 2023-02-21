@@ -72,7 +72,7 @@
 
     <br />
     <p>按钮组</p>
-    <tu-button-group>
+    <tu-button-group size="small">
       <tu-button>上一页</tu-button>
       <tu-button>下一页</tu-button>
       <tu-button>二页</tu-button>

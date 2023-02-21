@@ -38,7 +38,7 @@
 
 ```html
 <tu-dropdown>
-	<tu-button> 更多菜单<i class="tu-icon-arrow-down tu-icon--right"></i> </tu-button>
+	<tu-button> 更多菜单<i class="tu-icon-down tu-icon--right"></i> </tu-button>
 	<tu-dropdown-menu slot="dropdown">
 		<tu-dropdown-item>苹果</tu-dropdown-item>
 		<tu-dropdown-item>微软</tu-dropdown-item>
@@ -145,7 +145,7 @@
 
 ```html
 <tu-dropdown :hide-on-click="false">
-	<span class="tu-dropdown-link"> 下拉菜单<i class="tu-icon-arrow-down tu-icon--right"></i> </span>
+	<span class="tu-dropdown-link"> 下拉菜单<i class="tu-icon-down tu-icon--right"></i> </span>
 	<tu-dropdown-menu slot="dropdown">
 		<tu-dropdown-item>苹果</tu-dropdown-item>
 		<tu-dropdown-item>微软</tu-dropdown-item>
@@ -173,7 +173,7 @@
 
 ```html
 <tu-dropdown @command="handleCommand">
-	<span class="tu-dropdown-link"> 下拉菜单<i class="tu-icon-arrow-down tu-icon--right"></i> </span>
+	<span class="tu-dropdown-link"> 下拉菜单<i class="tu-icon-down tu-icon--right"></i> </span>
 	<tu-dropdown-menu slot="dropdown">
 		<tu-dropdown-item command="apple">苹果</tu-dropdown-item>
 		<tu-dropdown-item command="windows">微软</tu-dropdown-item>

@@ -4,7 +4,7 @@
     :disabled="buttonDisabled"
     :class="[
       type ? `tu-button--${type}` : '',
-      size ? `tu-button--${size}` : '',
+      buttonSize ? `tu-button--${buttonSize}` : '',
       {
         'is-disabled': buttonDisabled,
         'is-round': round,
@@ -52,6 +52,23 @@ export default {
   computed: {
     buttonDisabled() {
       return this.disabled;
+    },
+
+    isGroup() {
+      let parent = this.$parent;
+      while (parent) {
+        if (parent.$options.componentName !== "TuButtonGroup") {
+          parent = parent.$parent;
+        } else {
+          this._buttonGroup = parent;
+          return true;
+        }
+      }
+      return false;
+    },
+
+    buttonSize() {
+      return this.isGroup ? this._buttonGroup.size : this.size;
     },
   },
 

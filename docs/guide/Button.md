@@ -237,7 +237,7 @@
 :::demo 使用`<tu-button-group>`标签来嵌套你的按钮。
 
 ```html
-<tu-row>
+<div class="button-group-block">
 	<tu-button-group>
 		<tu-button icon="tu-icon-left">上一页</tu-button>
 		<tu-button>下一页<i class="tu-icon-right"></i></tu-button>
@@ -247,9 +247,9 @@
 		<tu-button icon="tu-icon-share"></tu-button>
 		<tu-button icon="tu-icon-delete"></tu-button>
 	</tu-button-group>
-</tu-row>
+</div>
 <style>
-	.tu-button-group + .tu-button-group {
+	.button-group-block .tu-button-group + .tu-button-group {
 		margin-left: 15px;
 	}
 </style>
