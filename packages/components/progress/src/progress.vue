@@ -1,3 +1,4 @@
+import { getBackground } from '@packages/src/utils/get-background';
 <template>
   <div
     class="tu-progress"
@@ -13,6 +14,7 @@
     :aria-valuenow="percentage"
     aria-valuemin="0"
     aria-valuemax="100"
+    ref="progress"
   >
     <div class="tu-progress-bar" v-if="type === 'line'">
       <div
@@ -31,11 +33,14 @@
       :style="{ height: width + 'px', width: width + 'px' }"
       v-else
     >
-      <svg viewBox="0 0 100 100">
+      <div
+        class="tu-progress-circle__outer"
+        :style="{ '--stroke-width': `${strokeWidth * 2}px` }"
+      ></div>
+      <svg viewBox="0 0 100 100" class="tu-progress-circle__inner">
         <path
           class="tu-progress-circle__track"
           :d="trackPath"
-          stroke="#e5e9f2"
           :stroke-width="relativeStrokeWidth"
           fill="none"
           :style="trailPathStyle"
@@ -111,6 +116,12 @@ export default {
     format: Function,
   },
 
+  data() {
+    return {
+      strokeTrack: "",
+    };
+  },
+
   computed: {
     barStyle() {
       const style = {};
@@ -179,16 +190,16 @@ export default {
       } else {
         switch (this.status) {
           case "success":
-            ret = "#3d8618";
+            ret = "#6bc43f";
             break;
           case "exception":
-            ret = "#c44444";
+            ret = "#f56c6c";
             break;
           case "warning":
-            ret = "#b67617";
+            ret = "#e6a23c";
             break;
           default:
-            ret = "#510ccf";
+            ret = "#6d5dfc";
         }
       }
       return ret;
@@ -223,6 +234,8 @@ export default {
       }
     },
   },
+
+  mounted() {},
 
   methods: {
     getCurrentColor(percentage) {

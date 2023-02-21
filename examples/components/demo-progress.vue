@@ -20,6 +20,24 @@
         <tu-button icon="tu-icon-plus" @click="increase"></tu-button>
       </tu-button-group>
     </div>
+
+    <br />
+    <p>环形</p>
+    <tu-progress type="circle" :percentage="25"></tu-progress>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <tu-progress type="circle" :percentage="5" :stroke-width="20"></tu-progress>
+
+    <br />
+    <p>仪表盘</p>
+    <tu-progress
+      type="dashboard"
+      :percentage="percentage"
+      :color="customColors"
+    ></tu-progress>
   </div>
 </template>
 

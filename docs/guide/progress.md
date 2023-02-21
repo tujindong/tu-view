@@ -166,3 +166,37 @@
 ```
 
 :::
+
+### 环形进度条
+
+Progress 组件可通过 `type` 属性来指定使用环形进度条，在环形进度条中，还可以通过 `width` 属性来设置其大小。
+
+:::demo
+
+```html
+<tu-progress
+	type="circle"
+	:percentage="0"
+></tu-progress>
+<tu-progress
+	type="circle"
+	:percentage="25"
+></tu-progress>
+<tu-progress
+	type="circle"
+	:percentage="100"
+	status="success"
+></tu-progress>
+<tu-progress
+	type="circle"
+	:percentage="70"
+	status="warning"
+></tu-progress>
+<tu-progress
+	type="circle"
+	:percentage="50"
+	status="exception"
+></tu-progress>
+```
+
+:::
