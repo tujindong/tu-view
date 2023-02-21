@@ -34,21 +34,36 @@ import { getBackground } from '@packages/src/utils/get-background';
       v-else
     >
       <div
+        v-if="type == 'circle'"
         class="tu-progress-circle__outer"
         :style="{ '--stroke-width': `${strokeWidth * 2}px` }"
       ></div>
       <svg viewBox="0 0 100 100" class="tu-progress-circle__inner">
+        <defs>
+          <radialGradient
+            :id="`gradient-${id}`"
+            cx="50%"
+            cy="50%"
+            r="60%"
+            fx="50%"
+            fy="50%"
+          >
+            <stop offset="30%" :stop-color="stroke" />
+            <stop offset="100%" :stop-color="strokeLight" />
+          </radialGradient>
+        </defs>
         <path
           class="tu-progress-circle__track"
           :d="trackPath"
           :stroke-width="relativeStrokeWidth"
+          :stroke="type == 'dashboard' ? '#c8d0e761' : ''"
           fill="none"
           :style="trailPathStyle"
         ></path>
         <path
           class="tu-progress-circle__path"
           :d="trackPath"
-          :stroke="stroke"
+          :stroke="`url(#gradient-${id})`"
           fill="none"
           :stroke-linecap="strokeLinecap"
           :stroke-width="percentage ? relativeStrokeWidth : 0"
@@ -68,6 +83,7 @@ import { getBackground } from '@packages/src/utils/get-background';
 </template>
 
 <script>
+import { generateId } from "@packages/src/utils/util";
 export default {
   name: "TuProgress",
 
@@ -91,7 +107,7 @@ export default {
     },
     strokeWidth: {
       type: Number,
-      default: 6,
+      default: 8,
     },
     strokeLinecap: {
       type: String,
@@ -119,6 +135,7 @@ export default {
   data() {
     return {
       strokeTrack: "",
+      id: generateId(),
     };
   },
 
@@ -200,6 +217,28 @@ export default {
             break;
           default:
             ret = "#6d5dfc";
+        }
+      }
+      return ret;
+    },
+
+    strokeLight() {
+      let ret;
+      if (this.color) {
+        ret = this.getCurrentColor(this.percentage);
+      } else {
+        switch (this.status) {
+          case "success":
+            ret = "#93e769";
+            break;
+          case "exception":
+            ret = "#ff9f9f";
+            break;
+          case "warning":
+            ret = "#ffc979";
+            break;
+          default:
+            ret = "#8abdff";
         }
       }
       return ret;

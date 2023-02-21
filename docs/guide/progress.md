@@ -174,29 +174,51 @@ Progress 组件可通过 `type` 属性来指定使用环形进度条，在环形
 :::demo
 
 ```html
-<tu-progress
-	type="circle"
-	:percentage="0"
-></tu-progress>
-<tu-progress
-	type="circle"
-	:percentage="25"
-></tu-progress>
-<tu-progress
-	type="circle"
-	:percentage="100"
-	status="success"
-></tu-progress>
-<tu-progress
-	type="circle"
-	:percentage="70"
-	status="warning"
-></tu-progress>
-<tu-progress
-	type="circle"
-	:percentage="50"
-	status="exception"
-></tu-progress>
+<div class="progress-circle-block">
+	<tu-progress
+		type="circle"
+		:percentage="0"
+	></tu-progress>
+	<tu-progress
+		type="circle"
+		:percentage="25"
+		status="exception"
+	></tu-progress>
+	<tu-progress
+		type="circle"
+		:percentage="50"
+		status="warning"
+	></tu-progress>
+	<tu-progress
+		type="circle"
+		:percentage="70"
+	></tu-progress>
+	<tu-progress
+		type="circle"
+		:percentage="100"
+		status="success"
+	></tu-progress>
+</div>
+<style>
+	.progress-circle-block .tu-progress {
+		margin-right: 16px;
+	}
+</style>
 ```
 
 :::
+
+### Attributes
+
+| 参数           | 说明                                                          | 类型                  | 可选值                    | 默认值 |
+| -------------- | ------------------------------------------------------------- | --------------------- | ------------------------- | ------ |
+| **percentage** | **百分比（必填）**                                            | number                | 0-100                     | 0      |
+| type           | 进度条类型                                                    | string                | line/circle/dashboard     | line   |
+| stroke-width   | 进度条的宽度，单位 px                                         | number                | —                         | 6      |
+| text-inside    | 进度条显示文字内置在进度条内（只在 type=line 时可用）         | boolean               | —                         | false  |
+| status         | 进度条当前状态                                                | string                | success/exception/warning | —      |
+| color          | 进度条背景色（会覆盖 status 状态颜色）                        | string/function/array | —                         | ''     |
+| width          | 环形进度条画布宽度（只在 type 为 circle 或 dashboard 时可用） | number                |                           | 126    |
+| show-text      | 是否显示进度条文字内容                                        | boolean               | —                         | true   |
+| stroke-linecap | circle/dashboard 类型路径两端的形状                           | string                | butt/round/square         | round  |
+| format         | 指定进度条文字内容                                            | function(percentage)  | —                         | —      |

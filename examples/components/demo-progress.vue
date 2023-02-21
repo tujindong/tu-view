@@ -23,13 +23,26 @@
 
     <br />
     <p>环形</p>
-    <tu-progress type="circle" :percentage="25"></tu-progress>
+    <!-- <tu-progress type="circle" :percentage="25"></tu-progress> -->
     <br />
     <br />
     <br />
     <br />
     <br />
     <tu-progress type="circle" :percentage="5" :stroke-width="20"></tu-progress>
+
+    <tu-progress
+      type="circle"
+      :percentage="50"
+      status="exception"
+      :stroke-width="20"
+    ></tu-progress>
+    <tu-progress
+      type="circle"
+      :percentage="50"
+      :stroke-width="20"
+      status="warning"
+    ></tu-progress>
 
     <br />
     <p>仪表盘</p>
