@@ -112,13 +112,13 @@
 
 .tu-list-enter-active,
 .tu-list-leave-active {
-	transition: all 1s;
+	transition: all 0.48s;
 }
 
 .tu-list-enter,
 .tu-list-leave-active {
 	opacity: 0;
-	transform: translateY(-30px);
+	transform: translateX(-40px);
 }
 
 .tu-opacity-transition {

@@ -1,36 +1,36 @@
 <template>
-  <div class="container">
-    <DemoButton />
-    <DemoIcon />
-    <DemoRadio />
-    <DemoCheckbox />
-    <DemoInput />
-    <DemoSwitch />
-    <DemoInputNumber />
-    <DemoCard />
-    <DemoTooltip />
-    <DemoTabs />
-    <DemoSelect />
-    <DemoTag />
-    <DemoLayout />
-    <DemoTable />
-    <DemoScrollbar />
-    <DemoForm />
-    <DemoDatePicker />
-    <DemoTimePicker />
-    <DemoDateTimePicker />
-    <DemoDropdown />
-    <DemoMessage />
-    <DemoPagination />
-    <DemoCascader />
-    <DemoSlider />
-    <DemoRate />
-    <DemoTransfer />
-    <DemoColorPicker />
-    <DemoBacktop />
-    <DemoUpload />
-    <DemoProgress />
-  </div>
+	<div class="container">
+		<DemoButton />
+		<DemoIcon />
+		<DemoRadio />
+		<DemoCheckbox />
+		<DemoInput />
+		<DemoSwitch />
+		<DemoInputNumber />
+		<DemoCard />
+		<DemoTooltip />
+		<DemoTabs />
+		<DemoSelect />
+		<DemoTag />
+		<DemoLayout />
+		<DemoTable />
+		<DemoScrollbar />
+		<DemoForm />
+		<DemoDatePicker />
+		<DemoTimePicker />
+		<DemoDateTimePicker />
+		<DemoDropdown />
+		<DemoMessage />
+		<DemoPagination />
+		<DemoCascader />
+		<DemoSlider />
+		<DemoRate />
+		<DemoTransfer />
+		<DemoColorPicker />
+		<DemoBacktop />
+		<DemoProgress />
+		<DemoUpload />
+	</div>
 </template>
 
 <script>
@@ -66,50 +66,50 @@ import DemoBacktop from "./components/demo-backtop.vue";
 import DemoUpload from "./components/demo-upload.vue";
 
 export default {
-  components: {
-    DemoButton,
-    DemoIcon,
-    DemoRadio,
-    DemoCheckbox,
-    DemoInput,
-    DemoSwitch,
-    DemoInputNumber,
-    DemoTabs,
-    DemoSelect,
-    DemoCard,
-    DemoLayout,
-    DemoTag,
-    DemoTable,
-    DemoProgress,
-    DemoPagination,
-    DemoTooltip,
-    DemoScrollbar,
-    DemoRate,
-    DemoSlider,
-    DemoForm,
-    DemoDatePicker,
-    DemoTimePicker,
-    DemoDateTimePicker,
-    DemoDropdown,
-    DemoMessage,
-    DemoCascader,
-    DemoTransfer,
-    DemoColorPicker,
-    DemoBacktop,
-    DemoUpload,
-  },
+	components: {
+		DemoButton,
+		DemoIcon,
+		DemoRadio,
+		DemoCheckbox,
+		DemoInput,
+		DemoSwitch,
+		DemoInputNumber,
+		DemoTabs,
+		DemoSelect,
+		DemoCard,
+		DemoLayout,
+		DemoTag,
+		DemoTable,
+		DemoProgress,
+		DemoPagination,
+		DemoTooltip,
+		DemoScrollbar,
+		DemoRate,
+		DemoSlider,
+		DemoForm,
+		DemoDatePicker,
+		DemoTimePicker,
+		DemoDateTimePicker,
+		DemoDropdown,
+		DemoMessage,
+		DemoCascader,
+		DemoTransfer,
+		DemoColorPicker,
+		DemoBacktop,
+		DemoUpload,
+	},
 
-  data() {
-    return {};
-  },
+	data() {
+		return {};
+	},
 };
 </script>
 
 <style lang="scss">
 .container {
-  min-height: 100vh;
-  font-family: "Poppins", sans-serif;
-  background: #e4ebf5;
-  padding: 10px 10px 500px;
+	min-height: 100vh;
+	font-family: "Poppins", sans-serif;
+	background: #e4ebf5;
+	padding: 10px 10px 500px;
 }
 </style>
