@@ -481,6 +481,12 @@ $--transfer-panel-body-height: 238px;
 $--transfer-item-height: 32px;
 $--transfer-filter-height: 32px;
 
+/* Tree
+-------------------------- */
+$--tree-node-hover-background-color: $--color-greyLight-2;
+$--tree-font-color: $--color-text-regular;
+$--tree-expand-icon-color: $--color-text-placeholder;
+
 /* Break-point
 --------------------------*/
 $--sm: 768px !default;
