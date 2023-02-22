@@ -57,7 +57,7 @@
 			emptyText: {
 				type: String,
 				default() {
-					return t("el.tree.emptyText");
+					return t("tu.tree.emptyText");
 				},
 			},
 			renderAfterExpand: {
@@ -221,7 +221,7 @@
 			});
 
 			this.$on("tree-node-drag-over", (event, treeNode) => {
-				const dropNode = findNearestComponent(event.target, "ElTreeNode");
+				const dropNode = findNearestComponent(event.target, "TuTreeNode");
 				const oldDropNode = dragState.dropNode;
 				if (oldDropNode && oldDropNode !== dropNode) {
 					removeClass(oldDropNode.$el, "is-drop-inner");
