@@ -57,7 +57,9 @@ module.exports = {
 					children: [
 						["../guide/tag.md", "Tag 标签"],
 						["../guide/progress.md", "Progress 进度条"],
+						["../guide/tree.md", "Tree 树形控件"],
 						["../guide/pagination.md", "Pagination 分页"],
+						["../guide/badge.md", "Badge 标记"],
 					],
 				},
 				{

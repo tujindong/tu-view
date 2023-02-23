@@ -171,8 +171,8 @@ $--checkbox-small-bordered-padding-vertical: 6px;
 $--checkbox-small-bordered-padding-horizontal: 8px;
 /*中等 medium*/
 $--checkbox-font-size: $--font-size-base;
-$--checkbox-input-height: 20px;
-$--checkbox-input-width: 20px;
+$--checkbox-input-height: 18px;
+$--checkbox-input-width: 18px;
 $--checkbox-border-radius: $--border-radius-small;
 $--checkbox-bordered-padding-vertical: 6px;
 $--checkbox-bordered-padding-horizontal: 8px;
@@ -478,14 +478,22 @@ $--transfer-panel-header-height: 40px;
 $--transfer-panel-header-background-color: $--color-greyLight-2;
 $--transfer-panel-footer-height: 40px;
 $--transfer-panel-body-height: 238px;
-$--transfer-item-height: 32px;
-$--transfer-filter-height: 32px;
+$--transfer-item-height: 28px;
+$--transfer-filter-height: 28px;
 
 /* Tree
 -------------------------- */
-$--tree-node-hover-background-color: $--color-greyLight-2;
-$--tree-font-color: $--color-text-regular;
-$--tree-expand-icon-color: $--color-text-placeholder;
+$--tree-node-hover-background-color: rgba($--color-greyDark, 0.15);
+$--tree-font-color: $--color-greyDark;
+$--tree-expand-icon-color: $--color-greyDark;
+
+/* Badge
+-------------------------- */
+$--badge-background-color: $--color-danger;
+$--badge-radius: 10px;
+$--badge-font-size: 12px;
+$--badge-padding: 6px;
+$--badge-size: 18px;
 
 /* Break-point
 --------------------------*/

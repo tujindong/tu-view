@@ -31,6 +31,8 @@
 		<DemoColorPicker />
 		<DemoBacktop />
 		<DemoTree />
+		<DemoTreeSelect />
+		<DemoBadge />
 	</div>
 </template>
 
@@ -66,6 +68,8 @@
 	import DemoBacktop from "./components/demo-backtop.vue";
 	import DemoUpload from "./components/demo-upload.vue";
 	import DemoTree from "./components/demo-tree.vue";
+	import DemoTreeSelect from "./components/demo-treeSelect";
+	import DemoBadge from "./components/demo-badge";
 
 	export default {
 		components: {
@@ -100,6 +104,8 @@
 			DemoBacktop,
 			DemoUpload,
 			DemoTree,
+			DemoTreeSelect,
+			DemoBadge,
 		},
 
 		data() {

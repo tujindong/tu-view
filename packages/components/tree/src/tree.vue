@@ -113,7 +113,7 @@
 			accordion: Boolean,
 			indent: {
 				type: Number,
-				default: 18,
+				default: 22,
 			},
 			iconClass: String,
 		},
@@ -209,11 +209,7 @@
 					return false;
 				}
 				event.dataTransfer.effectAllowed = "move";
-
-				// wrap in try catch to address IE's error when first param is 'text/plain'
 				try {
-					// setData is required for draggable to work in FireFox
-					// the content has to be '' so dragging a node out of the tree won't open a new tab in FireFox
 					event.dataTransfer.setData("text/plain", "");
 				} catch (e) {}
 				dragState.draggingNode = treeNode;

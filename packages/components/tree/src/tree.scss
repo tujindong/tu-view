@@ -3,7 +3,6 @@
 @include b(tree) {
 	position: relative;
 	cursor: default;
-	background: $--color-white;
 	color: $--tree-font-color;
 
 	@include e(empty-block) {
@@ -19,7 +18,7 @@
 		left: 50%;
 		top: 50%;
 		transform: translate(-50%, -50%);
-		color: $--color-text-secondary;
+		color: $--color-greyLight-3;
 		font-size: $--font-size-base;
 	}
 
@@ -44,19 +43,21 @@
 
 	@include when(drop-inner) {
 		> .tu-tree-node__content .tu-tree-node__label {
-			background-color: $--color-primary;
-			color: #fff;
+			color: $--color-primary;
 		}
 	}
 
 	@include e(content) {
 		display: flex;
 		align-items: center;
-		height: 26px;
+		height: 28px;
+		line-height: 28px;
 		cursor: pointer;
+		transition: background-color 0.3s;
 
 		& > .tu-tree-node__expand-icon {
-			padding: 6px;
+			font-size: 13px;
+			padding: 8px 6px;
 		}
 		& > label.tu-checkbox {
 			margin-right: 8px;
@@ -97,6 +98,7 @@
 	}
 
 	@include e(label) {
+		transition: all 0.3s;
 		font-size: $--font-size-base;
 	}
 
@@ -114,8 +116,4 @@
 	&.is-expanded > .tu-tree-node__children {
 		display: block;
 	}
-}
-
-.tu-tree--highlight-current .tu-tree-node.is-current > .tu-tree-node__content {
-	background-color: mix($--color-white, $--color-primary, 92%);
 }

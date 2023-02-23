@@ -177,5 +177,13 @@ module.exports = {
 			name: "tree",
 			author: "tujindong",
 		},
+		{
+			name: "tree-select",
+			author: "tujindong",
+		},
+		{
+			name: "badge",
+			author: "tujindong",
+		},
 	],
 };

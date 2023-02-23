@@ -222,7 +222,9 @@
 }
 
 @include b(color-picker) {
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
 	position: relative;
 	line-height: normal;
 	height: 32px;
@@ -243,6 +245,7 @@
 		height: 40px;
 
 		.tu-color-picker__trigger {
+			padding: 8px;
 			height: 40px;
 			width: 40px;
 		}
@@ -271,6 +274,7 @@
 		height: 28px;
 
 		.tu-color-picker__trigger {
+			padding: 8px;
 			height: 28px;
 			width: 28px;
 		}
@@ -290,6 +294,7 @@
 		height: 22px;
 
 		.tu-color-picker__trigger {
+			padding: 5px;
 			height: 22px;
 			width: 22px;
 		}

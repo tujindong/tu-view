@@ -42,6 +42,8 @@ import ColorPicker from "./components/color-picker";
 import Backtop from "./components/backtop";
 import Upload from "./components/upload";
 import Tree from "./components/tree";
+import TreeSelect from "./components/tree-select";
+import Badge from "./components/badge";
 
 const componentsList = [
 	Button,
@@ -87,6 +89,8 @@ const componentsList = [
 	Backtop,
 	Upload,
 	Tree,
+	TreeSelect,
+	Badge,
 ];
 
 const install = function (Vue, opts = {}) {

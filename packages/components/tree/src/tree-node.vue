@@ -45,11 +45,11 @@
 				@change="handleCheckChange"
 			>
 			</tu-checkbox>
-			<span
+			<tu-icon
 				v-if="node.loading"
-				class="tu-tree-node__loading-icon tu-icon-loading"
-			>
-			</span>
+				name="loading"
+				class="tu-tree-node__loading-icon"
+			></tu-icon>
 			<node-content :node="node"></node-content>
 		</div>
 		<tu-collapse-transition>
@@ -219,7 +219,7 @@
 	    },
 
 	    handleChildNodeExpand(nodeData, node, instance) {
-	      this.broadcast('ElTreeNode', 'tree-node-expand', node);
+	      this.broadcast('TuTreeNode', 'tree-node-expand', node);
 	      this.tree.$emit('node-expand', nodeData, node, instance);
 	    },
 
@@ -244,7 +244,7 @@
 	    }
 	  },
 
-	  created() {
+	 created() {
 	    const parent = this.$parent;
 
 	    if (parent.isTree) {
@@ -270,9 +270,10 @@
 	      this.childNodeRendered = true;
 	    }
 
-	    if(this.tree.accordion) {
-	      this.$on('tree-node-expand', node => {
-	        if(this.node !== node) {
+	    if (this.tree.accordion) {
+	        this.$on('tree-node-expand', node => {
+	          console.log('this.node', this.node.data.label, 'node', node.data.label)
+	          if (this.node !== node) {
 	          this.node.collapse();
 	        }
 	      });
