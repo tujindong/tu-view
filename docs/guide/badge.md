@@ -67,9 +67,9 @@
 			:value="12"
 			class="badge-badge-item"
 			:number-style="{
-        backgroundColor: '#fff',
-        color: '#999',
-        boxShadow: '0 0 0 1px #d9d9d9 inset',
+        backgroundColor: 'transparent',
+        color: '#9baacf',
+        boxShadow: '0 0 0 1px #9baacf inset',
       }"
 		></tu-badge>
 		<tu-badge
