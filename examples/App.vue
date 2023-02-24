@@ -33,7 +33,7 @@
 		<DemoTree />
 		<DemoTreeSelect />
 		<DemoBadge />
-		<DemoDialog />
+		<DemoModal />
 	</div>
 </template>
 
@@ -71,7 +71,7 @@
 	import DemoTree from "./components/demo-tree.vue";
 	import DemoTreeSelect from "./components/demo-treeSelect";
 	import DemoBadge from "./components/demo-badge";
-	import DemoDialog from "./components/demo-dialog";
+	import DemoModal from "./components/demo-modal";
 
 	export default {
 		components: {
@@ -108,7 +108,7 @@
 			DemoTree,
 			DemoTreeSelect,
 			DemoBadge,
-			DemoDialog,
+			DemoModal,
 		},
 
 		data() {

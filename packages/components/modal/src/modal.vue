@@ -1,50 +1,50 @@
 <template>
 	<transition
-		name="dialog-fade"
+		name="modal-fade"
 		@after-enter="afterEnter"
 		@after-leave="afterLeave"
 	>
 		<div
-			ref="dialogWrapper"
+			ref="modalWrapper"
 			v-show="visible"
-			class="tu-dialog__wrapper"
+			class="tu-modal__wrapper"
 			@click.self="handleWrapperClick"
 		>
 			<div
-				ref="dialog"
-				role="dialog"
+				ref="modal"
+				role="modal"
 				:key="key"
 				aria-modal="true"
-				:aria-label="title || 'dialog'"
+				:aria-label="title || 'modal'"
 				:class="[
-					'tu-dialog',
-					{ 'is-fullscreen': fullscreen, 'tu-dialog--center': center },
+					'tu-modal',
+					{ 'is-fullscreen': fullscreen, 'tu-modal--center': center },
 					customClass,
 				]"
 				:style="style"
 			>
-				<div class="tu-dialog__header">
+				<div class="tu-modal__header">
 					<slot name="title">
-						<span class="tu-dialog__title">{{ title }}</span>
+						<span class="tu-modal__title">{{ title }}</span>
 					</slot>
 					<button
 						type="button"
-						class="tu-dialog__headerbtn"
+						class="tu-modal__headerbtn"
 						aria-label="Close"
 						v-if="showClose"
 						@click="handleClose"
 					>
-						<i class="tu-dialog__close tu-icon tu-icon-close"></i>
+						<i class="tu-modal__close tu-icon tu-icon-close"></i>
 					</button>
 				</div>
 				<div
-					class="tu-dialog__body"
+					class="tu-modal__body"
 					v-if="rendered"
 				>
 					<slot></slot>
 				</div>
 				<div
-					class="tu-dialog__footer"
+					class="tu-modal__footer"
 					v-if="$slots.footer"
 				>
 					<slot name="footer"></slot>
@@ -61,7 +61,7 @@
 	import { getBackground } from "@packages/src/utils/get-background";
 
 	export default {
-		name: "TuDialog",
+		name: "TuModal",
 
 		mixins: [Popup, emitter, Migrating],
 
@@ -157,7 +157,7 @@
 					this.$emit("open");
 					this.$el.addEventListener("scroll", this.updatePopper);
 					this.$nextTick(() => {
-						this.$refs.dialog.scrollTop = 0;
+						this.$refs.modal.scrollTop = 0;
 						this.setBackgroundColor();
 					});
 					if (this.appendToBody) {
@@ -235,8 +235,8 @@
 			},
 
 			setBackgroundColor() {
-				const backgroundColor = getBackground(this.$refs.dialogWrapper);
-				if (backgroundColor) this.$refs.dialog.style.backgroundColor = backgroundColor;
+				const backgroundColor = getBackground(this.$refs.modalWrapper);
+				if (backgroundColor) this.$refs.modal.style.backgroundColor = backgroundColor;
 			},
 		},
 	};

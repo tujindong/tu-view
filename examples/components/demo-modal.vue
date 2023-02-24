@@ -9,7 +9,7 @@
 			>点击打开 Dialog</tu-button
 		>
 
-		<tu-dialog
+		<tu-modal
 			title="提示"
 			:visible.sync="dialogVisible"
 			width="30%"
@@ -26,7 +26,7 @@
 					>确 定</tu-button
 				>
 			</span>
-		</tu-dialog>
+		</tu-modal>
 	</div>
 </template>
 

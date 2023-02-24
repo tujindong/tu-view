@@ -44,7 +44,7 @@ import Upload from "./components/upload";
 import Tree from "./components/tree";
 import TreeSelect from "./components/tree-select";
 import Badge from "./components/badge";
-import Dialog from "./components/dialog";
+import Modal from "./components/modal";
 
 const componentsList = [
 	Button,
@@ -92,7 +92,7 @@ const componentsList = [
 	Tree,
 	TreeSelect,
 	Badge,
-	Dialog,
+	Modal,
 ];
 
 const install = function (Vue, opts = {}) {

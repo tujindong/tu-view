@@ -23,10 +23,10 @@ $--color-text-primary: #303133;
 $--color-text-regular: #606266;
 $--color-text-secondary: #909399;
 $--color-text-placeholder: #c0c4cc;
-$--border-color-base: #dcdfe6;
-$--border-color-light: #e4e7ed;
-$--border-color-lighter: #ebeef5;
-$--border-color-extra-light: #f2f6fc;
+$--border-color-base: rgba($--color-greyLight-3, 0.38);
+$--border-color-light: rgba($--color-greyLight-3, 0.28);
+$--border-color-lighter: rgba($--color-greyLight-3, 0.18);
+$--border-color-extra-light: rgba($--color-greyLight-3, 0.1);
 
 /*primary color*/
 $--color-primary-light: #8abdff;
@@ -505,14 +505,16 @@ $--badge-font-size: 12px;
 $--badge-padding: 6px;
 $--badge-size: 18px;
 
-/* Dialog
+/* Modal
 -------------------------- */
-$--dialog-background-color: $--color-white;
-$--dialog-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-$--dialog-title-font-size: $--font-size-large;
-$--dialog-content-font-size: 14px;
-$--dialog-font-line-height: $--font-line-height-primary;
-$--dialog-padding-primary: 20px;
+$--modal-background-color: $--color-white;
+$--modal-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+$--modal-title-font-size: $--font-size-base;
+$--modal-content-font-size: 14px;
+$--modal-font-line-height: $--font-line-height-primary;
+$--modal-padding-primary: 20px;
+$--modal-padding-horizontal: 18px;
+$--modal-padding-vertical: 12px;
 
 /* Break-point
 --------------------------*/

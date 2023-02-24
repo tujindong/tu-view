@@ -1,13 +1,13 @@
 <template>
-  <div>表格</div>
+	<div>表格</div>
 </template>
 
 <script>
-export default {
-  name: "TuTable",
+	export default {
+		name: "TuTable",
 
-  components: {},
+		components: {},
 
-  props: {},
-};
+		props: {},
+	};
 </script>

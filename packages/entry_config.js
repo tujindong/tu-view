@@ -186,7 +186,7 @@ module.exports = {
 			author: "tujindong",
 		},
 		{
-			name: "dialog",
+			name: "modal",
 			author: "tujindong",
 		},
 	],
