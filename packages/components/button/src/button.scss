@@ -5,7 +5,7 @@
 	transition: 0.1s ease;
 	background: $color-normal;
 	box-shadow: inset 2px 2px 10px $color-light, inset -2px -2px 10px $color-dark,
-		3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+		$--box-shadow-convex;
 	color: $--button-font-color;
 
 	&:hover {
@@ -26,7 +26,7 @@
 		&:active {
 			background: $color-normal;
 			box-shadow: inset 2px 2px 10px $color-light, inset -2px -2px 10px $color-dark,
-				3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+				$--box-shadow-convex;
 			color: $--button-font-color;
 
 			&::before {
@@ -52,7 +52,7 @@
 		&:active {
 			background: $color-normal;
 			box-shadow: inset 2px 2px 10px $color-light, inset -2px -2px 10px $color-dark,
-				3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+				$--box-shadow-convex;
 			color: $--button-font-color;
 
 			&::before {
@@ -80,7 +80,7 @@
 	line-height: 1;
 	white-space: nowrap;
 	cursor: pointer;
-	box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+	box-shadow: $--box-shadow-convex;
 	transition: $--all-transition;
 	padding: $--button-padding-vertical $--button-padding-horizontal;
 	font-size: $--font-size-base;
@@ -109,7 +109,7 @@
 		}
 
 		&:active {
-			box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+			box-shadow: $--box-shadow-concave;
 		}
 
 		&.is-disabled {
@@ -121,7 +121,7 @@
 			&:focus,
 			&:active {
 				color: $--color-greyDark;
-				box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+				box-shadow: $--box-shadow-convex;
 
 				&::before {
 					content: " ";
@@ -145,7 +145,7 @@
 			&:focus,
 			&:active {
 				color: $--color-greyDark;
-				box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+				box-shadow: $--box-shadow-convex;
 
 				&::before {
 					content: " ";

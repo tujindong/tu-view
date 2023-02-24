@@ -158,6 +158,7 @@
 					this.$el.addEventListener("scroll", this.updatePopper);
 					this.$nextTick(() => {
 						this.$refs.dialog.scrollTop = 0;
+						this.setBackgroundColor();
 					});
 					if (this.appendToBody) {
 						document.body.appendChild(this.$el);
@@ -233,7 +234,10 @@
 				this.$emit("closed");
 			},
 
-			setBackgroundColor() {},
+			setBackgroundColor() {
+				const backgroundColor = getBackground(this.$refs.dialogWrapper);
+				if (backgroundColor) this.$refs.dialog.style.backgroundColor = backgroundColor;
+			},
 		},
 	};
 </script>

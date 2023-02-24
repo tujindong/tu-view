@@ -93,6 +93,11 @@ $--border-radius-small: 2px;
 $--border-radius-circle: 100%;
 $--border-radius-zero: 0;
 
+/* BoxShadow
+-------------------------- */
+$--box-shadow-concave: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white; //凹
+$--box-shadow-convex: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white; //凸
+
 /* Button
 -------------------------- */
 $--button-disabled-font-color: $--color-greyDark;

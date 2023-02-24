@@ -198,8 +198,7 @@
 			color: $--color-greyDark;
 			min-width: 30px;
 			border-radius: 2px;
-			box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
-
+			box-shadow: $--box-shadow-convex;
 			&.disabled {
 				color: $--color-greyLight-3;
 			}
@@ -221,7 +220,7 @@
 
 			&.active {
 				color: $--color-primary;
-				box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+				box-shadow: $--box-shadow-concave;
 			}
 		}
 

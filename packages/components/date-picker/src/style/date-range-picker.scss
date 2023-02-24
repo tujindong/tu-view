@@ -1,7 +1,6 @@
 @include b(date-range-picker) {
 	width: 646px;
-	box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
-
+	box-shadow: $--box-shadow-convex;
 	&.has-sidebar {
 		width: 756px;
 	}

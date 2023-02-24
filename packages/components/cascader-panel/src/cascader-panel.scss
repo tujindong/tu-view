@@ -6,7 +6,7 @@
 	font-size: $--cascader-menu-font-size;
 
 	@include when(bordered) {
-		box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+		box-shadow: $--box-shadow-concave;
 	}
 }
 

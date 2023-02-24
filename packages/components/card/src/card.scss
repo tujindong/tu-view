@@ -1,97 +1,95 @@
 @import "~@packages/style/common/mixin.scss";
 
 @include b(card) {
-    border-radius: $--card-border-radius;
-    overflow: hidden;
-    color: $--color-text-primary;
-    transition: 0.3s ease;
-    box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+	border-radius: $--card-border-radius;
+	overflow: hidden;
+	color: $--color-text-primary;
+	transition: 0.3s ease;
+	box-shadow: $--box-shadow-convex;
 
-    &:hover {
-        box-shadow: 3px 3px 6px $--color-greyLight-2,
-            -2px -2px 5px $--color-white,
-            inset 3px 3px 6px $--color-greyLight-2,
-            inset -2px -2px 5px $--color-white;
-    }
+	&:hover {
+		box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white,
+			inset 3px 3px 6px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+	}
 
-    @include e(header) {
-        position: relative;
-        display: flex;
-        align-items: center;
+	@include e(header) {
+		position: relative;
+		display: flex;
+		align-items: center;
 
-        &::after {
-            position: absolute;
-            bottom: -1px;
-            left: 2%;
-            display: block;
-            content: '';
-            width: 96%;
-            height: 0px;
-            border-bottom: 1px solid rgba($--color-greyLight-2, 0.65);
-        }
+		&::after {
+			position: absolute;
+			bottom: -1px;
+			left: 2%;
+			display: block;
+			content: "";
+			width: 96%;
+			height: 0px;
+			border-bottom: 1px solid rgba($--color-greyLight-2, 0.65);
+		}
 
-        @include e(header-title) {
-            display: inline-block;
-            flex: 1;
-            padding: $--card-header-padding-vertical $--card-header-padding-horizontal;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            font-size: $--card-font-size;
-            color: $--card-font-color;
-            font-weight: 600;
-        }
+		@include e(header-title) {
+			display: inline-block;
+			flex: 1;
+			padding: $--card-header-padding-vertical $--card-header-padding-horizontal;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			font-size: $--card-font-size;
+			color: $--card-font-color;
+			font-weight: 600;
+		}
 
-        @include e(header-extra) {
-            float: right;
-            margin-left: auto;
-            padding: 0 $--card-header-padding-horizontal;
-        }
-    }
+		@include e(header-extra) {
+			float: right;
+			margin-left: auto;
+			padding: 0 $--card-header-padding-horizontal;
+		}
+	}
 
-    @include e(body) {
-        padding: $--card-body-padding-vertical $--card-body-padding-horizontal;
-        font-size: $--card-font-size;
-        color: $--card-font-color;
-    }
+	@include e(body) {
+		padding: $--card-body-padding-vertical $--card-body-padding-horizontal;
+		font-size: $--card-font-size;
+		color: $--card-font-color;
+	}
 
-    @include m(small) {
-        @include e(header) {
-            @include e(header-title) {
-                padding: $--card-small-header-padding-vertical $--card-small-header-padding-horizontal;
-                font-size: $--card-small-font-size;
-            }
+	@include m(small) {
+		@include e(header) {
+			@include e(header-title) {
+				padding: $--card-small-header-padding-vertical $--card-small-header-padding-horizontal;
+				font-size: $--card-small-font-size;
+			}
 
-            @include e(header-extra) {
-                padding: 0 $--card-small-header-padding-horizontal;
-            }
-        }
+			@include e(header-extra) {
+				padding: 0 $--card-small-header-padding-horizontal;
+			}
+		}
 
-        @include e(body) {
-            padding: $--card-small-body-padding-vertical $--card-small-body-padding-horizontal;
-            font-size: $--card-small-font-size;
-        }
-    }
+		@include e(body) {
+			padding: $--card-small-body-padding-vertical $--card-small-body-padding-horizontal;
+			font-size: $--card-small-font-size;
+		}
+	}
 
-    @include m(large) {
-        @include e(header) {
-            @include e(header-title) {
-                padding: $--card-large-header-padding-vertical $--card-large-header-padding-horizontal;
-                font-size: $--card-large-font-size;
-            }
+	@include m(large) {
+		@include e(header) {
+			@include e(header-title) {
+				padding: $--card-large-header-padding-vertical $--card-large-header-padding-horizontal;
+				font-size: $--card-large-font-size;
+			}
 
-            @include e(header-extra) {
-                padding: 0 $--card-large-header-padding-horizontal;
-            }
-        }
+			@include e(header-extra) {
+				padding: 0 $--card-large-header-padding-horizontal;
+			}
+		}
 
-        @include e(body) {
-            padding: $--card-large-body-padding-vertical $--card-large-body-padding-horizontal;
-            font-size: $--card-large-font-size;
-        }
-    }
+		@include e(body) {
+			padding: $--card-large-body-padding-vertical $--card-large-body-padding-horizontal;
+			font-size: $--card-large-font-size;
+		}
+	}
 
-    &.tu-card-shadow--inset {
-        box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
-    }
+	&.tu-card-shadow--inset {
+		box-shadow: $--box-shadow-concave;
+	}
 }

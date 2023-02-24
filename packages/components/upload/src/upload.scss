@@ -36,7 +36,7 @@
 		width: 148px;
 		height: 148px;
 		cursor: pointer;
-		box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+		box-shadow: $--box-shadow-concave;
 
 		i {
 			font-size: 28px;
@@ -124,8 +124,7 @@
 		border-radius: 4px;
 		width: 100%;
 		color: $--color-greyDark;
-		box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
-
+		box-shadow: $--box-shadow-convex;
 		.tu-progress {
 			position: absolute;
 			bottom: -4px;
@@ -285,7 +284,7 @@
 			height: 148px;
 			margin: 0 8px 8px 0;
 			display: inline-block;
-			box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+			box-shadow: $--box-shadow-concave;
 
 			.tu-icon-check,
 			.tu-icon-circle-check {

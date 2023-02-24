@@ -53,7 +53,7 @@
 		width: 100%;
 		font-size: $--font-size-base;
 		color: $--input-font-color;
-		box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+		box-shadow: $--box-shadow-concave;
 		outline: none;
 		font-weight: 500;
 		font-family: "";
@@ -79,7 +79,7 @@
 
 		&:focus {
 			outline: none;
-			box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+			box-shadow: $--box-shadow-convex;
 		}
 	}
 

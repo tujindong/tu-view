@@ -51,7 +51,7 @@
 	max-height: 100%;
 	box-sizing: border-box;
 	position: relative;
-	box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+	box-shadow: $--box-shadow-concave;
 	transition: 0.3s ease;
 
 	@include e(wrapper) {

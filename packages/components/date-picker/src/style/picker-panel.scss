@@ -3,8 +3,7 @@
 	line-height: 30px;
 	margin: 5px 0;
 	color: $--color-greyDark;
-	box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
-
+	box-shadow: $--box-shadow-convex;
 	@include e((body, body-wrapper)) {
 		&::after {
 			content: "";

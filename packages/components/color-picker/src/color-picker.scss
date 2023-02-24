@@ -192,8 +192,7 @@
 @include b(color-dropdown) {
 	margin-top: 12px;
 	width: 300px;
-	box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
-
+	box-shadow: $--box-shadow-convex;
 	@include e(main-wrapper) {
 		margin-bottom: 6px;
 
@@ -237,7 +236,7 @@
 
 	@include when(focus) {
 		.tu-color-picker__trigger {
-			box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+			box-shadow: $--box-shadow-convex;
 		}
 	}
 
@@ -332,7 +331,7 @@
 		font-size: 0;
 		position: relative;
 		cursor: pointer;
-		box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+		box-shadow: $--box-shadow-concave;
 	}
 
 	@include e(color) {

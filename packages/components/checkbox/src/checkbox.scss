@@ -49,7 +49,7 @@
 			$--checkbox-bordered-padding-horizontal;
 		color: $--color-greyDark;
 		background: transparent;
-		box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+		box-shadow: $--box-shadow-convex;
 		box-sizing: border-box;
 		border-radius: $--border-radius-base;
 
@@ -62,7 +62,7 @@
 		}
 
 		@include when(checked) {
-			box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+			box-shadow: $--box-shadow-concave;
 
 			@include e(inner) {
 				box-shadow: none;
@@ -101,7 +101,7 @@
 
 	@include when(checked) {
 		@include e(inner) {
-			box-shadow: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+			box-shadow: $--box-shadow-concave;
 
 			&::after {
 				border-color: $--checkbox-checked-icon-color;
@@ -165,7 +165,7 @@
 			width: $--checkbox-input-width;
 			height: $--checkbox-input-height;
 			border-radius: $--checkbox-border-radius;
-			box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white;
+			box-shadow: $--box-shadow-convex;
 
 			&::after {
 				position: absolute;
