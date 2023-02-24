@@ -1,748 +1,725 @@
 <template>
-  <div
-    ref="reference"
-    :class="[
-      'tu-cascader',
-      realSize && `tu-cascader--${realSize}`,
-      { 'is-disabled': isDisabled },
-    ]"
-    v-clickoutside="() => toggleDropDownVisible(false)"
-    @mouseenter="inputHover = true"
-    @mouseleave="inputHover = false"
-    @click="() => toggleDropDownVisible(readonly ? undefined : true)"
-    @keydown="handleKeyDown"
-  >
-    <tu-input
-      ref="input"
-      v-model="multiple ? presentText : inputValue"
-      :size="realSize"
-      :placeholder="currentPlaceholder"
-      :readonly="readonly"
-      :disabled="isDisabled"
-      :validate-event="false"
-      :class="{ 'is-focus': dropDownVisible }"
-      @focus="handleFocus"
-      @blur="handleBlur"
-      @input="handleInput"
-    >
-      <template slot="suffix">
-        <i
-          v-if="clearBtnVisible"
-          key="clear"
-          class="tu-input__icon tu-icon-close-circle-fill"
-          @click.stop="handleClear"
-        ></i>
-        <i
-          v-else
-          key="arrow-down"
-          :class="[
-            'tu-input__icon',
-            'tu-icon-down',
-            dropDownVisible && 'is-reverse',
-          ]"
-          @click.stop="toggleDropDownVisible()"
-        ></i>
-      </template>
-    </tu-input>
+	<div
+		ref="reference"
+		:class="['tu-cascader', realSize && `tu-cascader--${realSize}`, { 'is-disabled': isDisabled }]"
+		v-clickoutside="() => toggleDropDownVisible(false)"
+		@mouseenter="inputHover = true"
+		@mouseleave="inputHover = false"
+		@click="() => toggleDropDownVisible(readonly ? undefined : true)"
+		@keydown="handleKeyDown"
+	>
+		<tu-input
+			ref="input"
+			v-model="multiple ? presentText : inputValue"
+			:size="realSize"
+			:placeholder="currentPlaceholder"
+			:readonly="readonly"
+			:disabled="isDisabled"
+			:validate-event="false"
+			:class="{ 'is-focus': dropDownVisible }"
+			@focus="handleFocus"
+			@blur="handleBlur"
+			@input="handleInput"
+		>
+			<template slot="suffix">
+				<i
+					v-if="clearBtnVisible"
+					key="clear"
+					class="tu-input__icon tu-icon-close-circle-fill"
+					@click.stop="handleClear"
+				></i>
+				<i
+					v-else
+					key="arrow-down"
+					:class="['tu-input__icon', 'tu-icon-down', dropDownVisible && 'is-reverse']"
+					@click.stop="toggleDropDownVisible()"
+				></i>
+			</template>
+		</tu-input>
 
-    <div v-if="multiple" class="tu-cascader__tags">
-      <transition-group name="tu-popper-in-center" @after-leave="updateStyle">
-        <tu-tag
-          v-for="tag in presentTags"
-          :key="tag.key"
-          effect="shadow"
-          :size="tagSize | tagSizeMap"
-          :hit="tag.hitState"
-          :closable="tag.closable"
-          disable-transitions
-          @close.stop="deleteTag(tag)"
-        >
-          <span>{{ tag.text }}</span>
-        </tu-tag></transition-group
-      >
-      <input
-        v-if="filterable && !isDisabled"
-        v-model.trim="inputValue"
-        ref="filterInput"
-        type="text"
-        class="tu-cascader__search-input"
-        @input="(e) => handleInput(inputValue, e)"
-        @click.stop="toggleDropDownVisible(true)"
-        @keydown.delete="handleDelete"
-        @compositionstart="handleCompositionStart"
-        @compositionend="handleCompositionEnd"
-      />
-    </div>
+		<div
+			v-if="multiple"
+			class="tu-cascader__tags"
+		>
+			<transition-group
+				name="tu-popper-in-center"
+				@after-leave="updateStyle"
+			>
+				<tu-tag
+					v-for="tag in presentTags"
+					:key="tag.key"
+					effect="shadow"
+					:size="tagSize | tagSizeMap"
+					:hit="tag.hitState"
+					:closable="tag.closable"
+					disable-transitions
+					@close.stop="deleteTag(tag)"
+				>
+					<span>{{ tag.text }}</span>
+				</tu-tag></transition-group
+			>
+			<input
+				v-if="filterable && !isDisabled"
+				v-model.trim="inputValue"
+				ref="filterInput"
+				type="text"
+				class="tu-cascader__search-input"
+				@input="e => handleInput(inputValue, e)"
+				@click.stop="toggleDropDownVisible(true)"
+				@keydown.delete="handleDelete"
+				@compositionstart="handleCompositionStart"
+				@compositionend="handleCompositionEnd"
+			/>
+		</div>
 
-    <transition name="tu-zoom-in-top" @after-leave="handleDropdownLeave">
-      <div
-        v-show="dropDownVisible"
-        ref="popper"
-        :class="['tu-popper', 'tu-cascader__dropdown', popperClass]"
-      >
-        <tu-cascader-panel
-          ref="panel"
-          v-show="!filtering"
-          v-model="checkedValue"
-          :options="options"
-          :props="config"
-          :border="false"
-          :render-label="$scopedSlots.default"
-          @expand-change="handleExpandChange"
-          @close="toggleDropDownVisible(false)"
-        ></tu-cascader-panel>
-        <tu-scrollbar
-          ref="suggestionPanel"
-          v-if="filterable"
-          v-show="filtering"
-          tag="ul"
-          class="tu-cascader__suggestion-panel"
-          view-class="tu-cascader__suggestion-list"
-          @keydown.native="handleSuggestionKeyDown"
-        >
-          <template v-if="suggestions.length">
-            <li
-              v-for="(item, index) in suggestions"
-              :key="item.uid"
-              :class="[
-                'tu-cascader__suggestion-item',
-                item.checked && 'is-checked',
-              ]"
-              :tabindex="-1"
-              @click="handleSuggestionClick(index)"
-            >
-              <span>{{ item.text }}</span>
-              <i v-if="item.checked" class="tu-icon-check"></i>
-            </li>
-          </template>
-          <slot v-else name="empty">
-            <li class="tu-cascader__empty-text">
-              {{ t("el.cascader.noMatch") }}
-            </li>
-          </slot>
-        </tu-scrollbar>
-      </div>
-    </transition>
-  </div>
+		<transition
+			name="tu-zoom-in-top"
+			@after-leave="handleDropdownLeave"
+		>
+			<div
+				v-show="dropDownVisible"
+				ref="popper"
+				:class="['tu-popper', 'tu-cascader__dropdown', popperClass]"
+			>
+				<tu-cascader-panel
+					ref="panel"
+					v-show="!filtering"
+					v-model="checkedValue"
+					:options="options"
+					:props="config"
+					:border="false"
+					:render-label="$scopedSlots.default"
+					@expand-change="handleExpandChange"
+					@close="toggleDropDownVisible(false)"
+				></tu-cascader-panel>
+				<tu-scrollbar
+					ref="suggestionPanel"
+					v-if="filterable"
+					v-show="filtering"
+					tag="ul"
+					class="tu-cascader__suggestion-panel"
+					view-class="tu-cascader__suggestion-list"
+					@keydown.native="handleSuggestionKeyDown"
+				>
+					<template v-if="suggestions.length">
+						<li
+							v-for="(item, index) in suggestions"
+							:key="item.uid"
+							:class="['tu-cascader__suggestion-item', item.checked && 'is-checked']"
+							:tabindex="-1"
+							@click="handleSuggestionClick(index)"
+						>
+							<span>{{ item.text }}</span>
+							<i
+								v-if="item.checked"
+								class="tu-icon-check"
+							></i>
+						</li>
+					</template>
+					<slot
+						v-else
+						name="empty"
+					>
+						<li class="tu-cascader__empty-text">
+							{{ t("el.cascader.noMatch") }}
+						</li>
+					</slot>
+				</tu-scrollbar>
+			</div>
+		</transition>
+	</div>
 </template>
 
 <script>
-import Popper from "@packages/src/utils/vue-popper";
-import Clickoutside from "@packages/src/utils/clickoutside";
-import Emitter from "@packages/src/mixins/emitter";
-import Locale from "@packages/src/mixins/locale";
-import Migrating from "@packages/src/mixins/migrating";
-import AriaUtils from "@packages/src/utils/aria-utils";
-import { t } from "@packages/src/locale";
-import { isEqual, isEmpty, kebabCase } from "@packages/src/utils/util";
-import { isUndefined, isFunction } from "@packages/src/utils/types";
-import { isDef } from "@packages/src/utils/shared";
-import {
-  addResizeListener,
-  removeResizeListener,
-} from "@packages/src/utils/resize-event";
-import { debounce } from "@packages/src/utils/throttle-debounce";
-import { getBackground } from "@packages/src/utils/get-background";
-
-const { keys: KeyCode } = AriaUtils;
-const MigratingProps = {
-  expandTrigger: {
-    newProp: "expandTrigger",
-    type: String,
-  },
-  changeOnSelect: {
-    newProp: "checkStrictly",
-    type: Boolean,
-  },
-  hoverThreshold: {
-    newProp: "hoverThreshold",
-    type: Number,
-  },
-};
-
-const PopperMixin = {
-  props: {
-    placement: {
-      type: String,
-      default: "bottom-start",
-    },
-    appendToBody: Popper.props.appendToBody,
-    visibleArrow: {
-      type: Boolean,
-      default: false,
-    },
-    arrowOffset: Popper.props.arrowOffset,
-    offset: Popper.props.offset,
-    boundariesPadding: Popper.props.boundariesPadding,
-    popperOptions: Popper.props.popperOptions,
-    transformOrigin: Popper.props.transformOrigin,
-  },
-  methods: Popper.methods,
-  data: Popper.data,
-  beforeDestroy: Popper.beforeDestroy,
-};
-
-const InputSizeMap = {
-  medium: 36,
-  small: 32,
-  mini: 28,
-};
-
-export default {
-  name: "TuCascader",
-
-  directives: { Clickoutside },
-
-  mixins: [PopperMixin, Emitter, Locale, Migrating],
-
-  inject: {
-    tuForm: {
-      default: "",
-    },
-    tuFormItem: {
-      default: "",
-    },
-  },
-
-  components: {},
-
-  props: {
-    value: {},
-    options: Array,
-    props: Object,
-    size: {
-      type: String,
-      default: "medium",
-    },
-    placeholder: {
-      type: String,
-      default: () => t("tu.cascader.placeholder"),
-    },
-    disabled: Boolean,
-    clearable: Boolean,
-    filterable: Boolean,
-    filterMethod: Function,
-    separator: {
-      type: String,
-      default: " / ",
-    },
-    showAllLevels: {
-      type: Boolean,
-      default: true,
-    },
-    collapseTags: Boolean,
-    debounce: {
-      type: Number,
-      default: 300,
-    },
-    beforeFilter: {
-      type: Function,
-      default: () => () => {},
-    },
-    popperClass: String,
-  },
-
-  data() {
-    return {
-      dropDownVisible: false,
-      checkedValue: this.value,
-      inputHover: false,
-      inputValue: null,
-      presentText: null,
-      presentTags: [],
-      checkedNodes: [],
-      filtering: false,
-      suggestions: [],
-      inputInitialHeight: 0,
-      pressDeleteCount: 0,
-      isOnComposition: false,
-    };
-  },
-
-  computed: {
-    realSize() {
-      const _tuFormItemSize = (this.tuFormItem || {}).tuFormItemSize;
-      return this.size || _tuFormItemSize || (this.$TUVIEW || {}).size;
-    },
-
-    tagSize() {
-      return this.realSize;
-    },
-
-    isDisabled() {
-      return this.disabled || (this.elForm || {}).disabled;
-    },
-
-    config() {
-      const config = this.props || {};
-      const { $attrs } = this;
-      Object.keys(MigratingProps).forEach((oldProp) => {
-        const { newProp, type } = MigratingProps[oldProp];
-        let oldValue = $attrs[oldProp] || $attrs[kebabCase(oldProp)];
-        if (isDef(oldProp) && !isDef(config[newProp])) {
-          if (type === Boolean && oldValue === "") {
-            oldValue = true;
-          }
-          config[newProp] = oldValue;
-        }
-      });
-      return config;
-    },
-
-    multiple() {
-      return this.config.multiple;
-    },
-
-    leafOnly() {
-      return !this.config.checkStrictly;
-    },
-
-    readonly() {
-      return !this.filterable || this.multiple;
-    },
-
-    clearBtnVisible() {
-      if (
-        !this.clearable ||
-        this.isDisabled ||
-        this.filtering ||
-        !this.inputHover
-      ) {
-        return false;
-      }
-      return this.multiple
-        ? !!this.checkedNodes.filter((node) => !node.isDisabled).length
-        : !!this.presentText;
-    },
-
-    panel() {
-      return this.$refs.panel;
-    },
-
-    currentPlaceholder() {
-      return this.isOnComposition
-        ? ""
-        : this.inputValue
-        ? ""
-        : this.placeholder;
-    },
-  },
-
-  watch: {
-    disabled() {
-      this.computePresentContent();
-    },
-
-    value(val) {
-      if (!isEqual(val, this.checkedValue)) {
-        this.checkedValue = val;
-        this.computePresentContent();
-      }
-    },
-
-    checkedValue(val) {
-      const { value, dropDownVisible } = this;
-      const { checkStrictly, multiple } = this.config;
-      if (!isEqual(val, value) || isUndefined(value)) {
-        this.computePresentContent();
-        if (!multiple && !checkStrictly && dropDownVisible) {
-          this.toggleDropDownVisible(false);
-        }
-        this.$emit("input", val);
-        this.$emit("change", val);
-        this.dispatch("TuFormItem", "tu.form.change", [val]);
-      }
-    },
-
-    options: {
-      handler: function () {
-        this.$nextTick(this.computePresentContent);
-      },
-      deep: true,
-    },
-
-    presentText(val) {
-      this.inputValue = val;
-    },
-
-    presentTags(val, oldVal) {
-      if (this.multiple && (val.length || oldVal.length)) {
-        this.$nextTick(this.updateStyle);
-      }
-    },
-
-    filtering(val) {
-      this.$nextTick(this.updatePopper);
-    },
-  },
-
-  filters: {
-    tagSizeMap(size) {
-      const maps = {
-        large: "medium",
-        medium: "small",
-        small: "mini",
-      };
-      return maps[size] || "medium";
-    },
-  },
-
-  mounted() {
-    const { input } = this.$refs;
-    if (input && input.$el) {
-      this.inputInitialHeight =
-        input.$el.offsetHeight || InputSizeMap[this.realSize] || 40;
-    }
-
-    if (!this.isEmptyValue(this.value)) {
-      this.computePresentContent();
-    }
-
-    this.filterHandler = debounce(this.debounce, () => {
-      const { inputValue } = this;
-
-      if (!inputValue) {
-        this.filtering = false;
-        return;
-      }
-
-      const before = this.beforeFilter(inputValue);
-      if (before && before.then) {
-        before.then(this.getSuggestions);
-      } else if (before !== false) {
-        this.getSuggestions();
-      } else {
-        this.filtering = false;
-      }
-    });
-
-    addResizeListener(this.$el, this.updateStyle);
-  },
-
-  beforeDestroy() {
-    removeResizeListener(this.$el, this.updateStyle);
-  },
-
-  methods: {
-    getMigratingConfig() {
-      return {
-        props: {
-          "expand-trigger":
-            "expand-trigger is removed, use `props.expandTrigger` instead.",
-          "change-on-select":
-            "change-on-select is removed, use `props.checkStrictly` instead.",
-          "hover-threshold":
-            "hover-threshold is removed, use `props.hoverThreshold` instead",
-        },
-        events: {
-          "active-item-change":
-            "active-item-change is renamed to expand-change",
-        },
-      };
-    },
-
-    toggleDropDownVisible(visible) {
-      if (this.isDisabled) return;
-      const { dropDownVisible } = this;
-      const { input } = this.$refs;
-      visible = isDef(visible) ? visible : !dropDownVisible;
-      if (visible !== dropDownVisible) {
-        this.dropDownVisible = visible;
-        if (visible) {
-          this.$nextTick(() => {
-            this.updatePopper();
-            this.panel.scrollIntoView();
-            this.setBackground();
-            if (this.filterable && this.$refs.filterInput)
-              this.$refs.filterInput.focus();
-          });
-        }
-        input.$refs.input.setAttribute("aria-expanded", visible);
-        this.$emit("visible-change", visible);
-      }
-    },
-
-    handleDropdownLeave() {
-      this.filtering = false;
-      this.inputValue = this.presentText;
-      this.doDestroy();
-    },
-
-    handleKeyDown(event) {
-      switch (event.keyCode) {
-        case KeyCode.enter:
-          this.toggleDropDownVisible();
-          break;
-        case KeyCode.down:
-          this.toggleDropDownVisible(true);
-          this.focusFirstNode();
-          event.preventDefault();
-          break;
-        case KeyCode.esc:
-        case KeyCode.tab:
-          this.toggleDropDownVisible(false);
-          break;
-      }
-    },
-
-    handleCompositionStart(evt) {
-      this.isOnComposition = true;
-    },
-
-    handleCompositionEnd(evt) {
-      this.isOnComposition = false;
-    },
-
-    handleFocus(e) {
-      console.log("focuse");
-      this.$emit("focus", e);
-    },
-
-    handleBlur(e) {
-      console.log("handleBlur");
-      this.$emit("blur", e);
-    },
-
-    handleInput(val, event) {
-      !this.dropDownVisible && this.toggleDropDownVisible(true);
-
-      if (event && event.isComposing) return;
-      if (val) {
-        this.filterHandler();
-      } else {
-        this.filtering = false;
-      }
-    },
-
-    handleClear() {
-      this.presentText = "";
-      this.panel.clearCheckedNodes();
-    },
-
-    handleExpandChange(value) {
-      this.$nextTick(this.updatePopper.bind(this));
-      this.$emit("expand-change", value);
-      this.$emit("active-item-change", value); // Deprecated
-    },
-
-    focusFirstNode() {
-      this.$nextTick(() => {
-        const { filtering } = this;
-        const { popper, suggestionPanel } = this.$refs;
-        let firstNode = null;
-
-        if (filtering && suggestionPanel) {
-          firstNode = suggestionPanel.$el.querySelector(
-            ".tu-cascader__suggestion-item"
-          );
-        } else {
-          const firstMenu = popper.querySelector(".tu-cascader-menu");
-          firstNode = firstMenu.querySelector(
-            '.tu-cascader-node[tabindex="-1"]'
-          );
-        }
-        if (firstNode) {
-          firstNode.focus();
-          !filtering && firstNode.click();
-        }
-      });
-    },
-
-    computePresentContent() {
-      this.$nextTick(() => {
-        if (this.config.multiple) {
-          this.computePresentTags();
-          this.presentText = this.presentTags.length ? " " : null;
-        } else {
-          this.computePresentText();
-        }
-      });
-    },
-
-    isEmptyValue(val) {
-      const { multiple } = this;
-      const { emitPath } = this.panel.config;
-      if (multiple || emitPath) {
-        return isEmpty(val);
-      }
-      return false;
-    },
-
-    computePresentText() {
-      const { checkedValue, config } = this;
-      if (!this.isEmptyValue(checkedValue)) {
-        const node = this.panel.getNodeByValue(checkedValue);
-        if (node && (config.checkStrictly || node.isLeaf)) {
-          this.presentText = node.getText(this.showAllLevels, this.separator);
-          return;
-        }
-      }
-      this.presentText = null;
-    },
-
-    computePresentTags() {
-      const { isDisabled, leafOnly, showAllLevels, separator, collapseTags } =
-        this;
-      const checkedNodes = this.getCheckedNodes(leafOnly);
-      const tags = [];
-
-      const genTag = (node) => ({
-        node,
-        key: node.uid,
-        text: node.getText(showAllLevels, separator),
-        hitState: false,
-        closable: !isDisabled && !node.isDisabled,
-      });
-
-      if (checkedNodes.length) {
-        const [first, ...rest] = checkedNodes;
-        const restCount = rest.length;
-        tags.push(genTag(first));
-
-        if (restCount) {
-          if (collapseTags) {
-            tags.push({
-              key: -1,
-              text: `+ ${restCount}`,
-              closable: false,
-            });
-          } else {
-            rest.forEach((node) => tags.push(genTag(node)));
-          }
-        }
-      }
-
-      this.checkedNodes = checkedNodes;
-      this.presentTags = tags;
-    },
-
-    getSuggestions() {
-      let { filterMethod } = this;
-      if (!isFunction(filterMethod)) {
-        filterMethod = (node, keyword) => node.text.includes(keyword);
-      }
-
-      const suggestions = this.panel
-        .getFlattedNodes(this.leafOnly)
-        .filter((node) => {
-          if (node.isDisabled) return false;
-          node.text = node.getText(this.showAllLevels, this.separator) || "";
-          return filterMethod(node, this.inputValue);
-        });
-
-      if (this.multiple) {
-        this.presentTags.forEach((tag) => {
-          tag.hitState = false;
-        });
-      } else {
-        suggestions.forEach((node) => {
-          node.checked = isEqual(this.checkedValue, node.getValueByOption());
-        });
-      }
-
-      this.filtering = true;
-      this.suggestions = suggestions;
-      this.$nextTick(this.updatePopper);
-    },
-
-    handleSuggestionKeyDown(event) {
-      const { keyCode, target } = event;
-      switch (keyCode) {
-        case KeyCode.enter:
-          target.click();
-          break;
-        case KeyCode.up:
-          const prev = target.previousElementSibling;
-          prev && prev.focus();
-          break;
-        case KeyCode.down:
-          const next = target.nextElementSibling;
-          next && next.focus();
-          break;
-        case KeyCode.esc:
-        case KeyCode.tab:
-          this.toggleDropDownVisible(false);
-          break;
-      }
-    },
-
-    handleDelete() {
-      const { inputValue, pressDeleteCount, presentTags } = this;
-      const lastIndex = presentTags.length - 1;
-      const lastTag = presentTags[lastIndex];
-      this.pressDeleteCount = inputValue ? 0 : pressDeleteCount + 1;
-
-      if (!lastTag) return;
-
-      if (this.pressDeleteCount) {
-        if (lastTag.hitState) {
-          this.deleteTag(lastTag);
-        } else {
-          lastTag.hitState = true;
-        }
-      }
-    },
-
-    handleSuggestionClick(index) {
-      const { multiple } = this;
-      const targetNode = this.suggestions[index];
-
-      if (multiple) {
-        const { checked } = targetNode;
-        targetNode.doCheck(!checked);
-        this.panel.calculateMultiCheckedValue();
-      } else {
-        this.checkedValue = targetNode.getValueByOption();
-        this.toggleDropDownVisible(false);
-      }
-    },
-
-    deleteTag(tag) {
-      const { checkedValue } = this;
-      const current = tag.node.getValueByOption();
-      const val = checkedValue.find((n) => isEqual(n, current));
-      this.checkedValue = checkedValue.filter((n) => !isEqual(n, current));
-      this.$emit("remove-tag", val);
-    },
-
-    updateStyle() {
-      const { $el, inputInitialHeight } = this;
-      if (this.$isServer || !$el) return;
-
-      const { suggestionPanel } = this.$refs;
-      const inputInner = $el.querySelector(".tu-input__inner");
-
-      if (!inputInner) return;
-
-      const tags = $el.querySelector(".tu-cascader__tags");
-      let suggestionPanelEl = null;
-
-      if (suggestionPanel && (suggestionPanelEl = suggestionPanel.$el)) {
-        const suggestionList = suggestionPanelEl.querySelector(
-          ".tu-cascader__suggestion-list"
-        );
-        suggestionList.style.minWidth = inputInner.offsetWidth + "px";
-      }
-
-      if (tags) {
-        const offsetHeight = Math.round(tags.getBoundingClientRect().height);
-        const height = Math.max(offsetHeight + 6, inputInitialHeight) + "px";
-        inputInner.style.height = height;
-        if (this.dropDownVisible) {
-          this.updatePopper();
-        }
-      }
-    },
-
-    getCheckedNodes(leafOnly) {
-      return this.panel.getCheckedNodes(leafOnly);
-    },
-
-    setBackground() {
-      const { reference, popper } = this.$refs;
-      const background = getBackground(reference);
-      if (background) popper.style.background = background;
-    },
-  },
-};
+	import Popper from "@packages/src/utils/vue-popper";
+	import Clickoutside from "@packages/src/utils/clickoutside";
+	import Emitter from "@packages/src/mixins/emitter";
+	import Locale from "@packages/src/mixins/locale";
+	import Migrating from "@packages/src/mixins/migrating";
+	import AriaUtils from "@packages/src/utils/aria-utils";
+	import { t } from "@packages/src/locale";
+	import { isEqual, isEmpty, kebabCase } from "@packages/src/utils/util";
+	import { isUndefined, isFunction } from "@packages/src/utils/types";
+	import { isDef } from "@packages/src/utils/shared";
+	import { addResizeListener, removeResizeListener } from "@packages/src/utils/resize-event";
+	import { debounce } from "@packages/src/utils/throttle-debounce";
+	import { getBackground } from "@packages/src/utils/get-background";
+
+	const { keys: KeyCode } = AriaUtils;
+	const MigratingProps = {
+		expandTrigger: {
+			newProp: "expandTrigger",
+			type: String,
+		},
+		changeOnSelect: {
+			newProp: "checkStrictly",
+			type: Boolean,
+		},
+		hoverThreshold: {
+			newProp: "hoverThreshold",
+			type: Number,
+		},
+	};
+
+	const PopperMixin = {
+		props: {
+			placement: {
+				type: String,
+				default: "bottom-start",
+			},
+			appendToBody: Popper.props.appendToBody,
+			visibleArrow: {
+				type: Boolean,
+				default: false,
+			},
+			arrowOffset: Popper.props.arrowOffset,
+			offset: Popper.props.offset,
+			boundariesPadding: Popper.props.boundariesPadding,
+			popperOptions: Popper.props.popperOptions,
+			transformOrigin: Popper.props.transformOrigin,
+		},
+		methods: Popper.methods,
+		data: Popper.data,
+		beforeDestroy: Popper.beforeDestroy,
+	};
+
+	const InputSizeMap = {
+		medium: 36,
+		small: 32,
+		mini: 28,
+	};
+
+	export default {
+		name: "TuCascader",
+
+		directives: { Clickoutside },
+
+		mixins: [PopperMixin, Emitter, Locale, Migrating],
+
+		inject: {
+			tuForm: {
+				default: "",
+			},
+			tuFormItem: {
+				default: "",
+			},
+		},
+
+		components: {},
+
+		props: {
+			value: {},
+			options: Array,
+			props: Object,
+			size: {
+				type: String,
+				default: "medium",
+			},
+			placeholder: {
+				type: String,
+				default: () => t("tu.cascader.placeholder"),
+			},
+			disabled: Boolean,
+			clearable: Boolean,
+			filterable: Boolean,
+			filterMethod: Function,
+			separator: {
+				type: String,
+				default: " / ",
+			},
+			showAllLevels: {
+				type: Boolean,
+				default: true,
+			},
+			collapseTags: Boolean,
+			debounce: {
+				type: Number,
+				default: 300,
+			},
+			beforeFilter: {
+				type: Function,
+				default: () => () => {},
+			},
+			popperClass: String,
+		},
+
+		data() {
+			return {
+				dropDownVisible: false,
+				checkedValue: this.value,
+				inputHover: false,
+				inputValue: null,
+				presentText: null,
+				presentTags: [],
+				checkedNodes: [],
+				filtering: false,
+				suggestions: [],
+				inputInitialHeight: 0,
+				pressDeleteCount: 0,
+				isOnComposition: false,
+			};
+		},
+
+		computed: {
+			realSize() {
+				const _tuFormItemSize = (this.tuFormItem || {}).tuFormItemSize;
+				return this.size || _tuFormItemSize || (this.$TUVIEW || {}).size;
+			},
+
+			tagSize() {
+				return this.realSize;
+			},
+
+			isDisabled() {
+				return this.disabled || (this.elForm || {}).disabled;
+			},
+
+			config() {
+				const config = this.props || {};
+				const { $attrs } = this;
+				Object.keys(MigratingProps).forEach(oldProp => {
+					const { newProp, type } = MigratingProps[oldProp];
+					let oldValue = $attrs[oldProp] || $attrs[kebabCase(oldProp)];
+					if (isDef(oldProp) && !isDef(config[newProp])) {
+						if (type === Boolean && oldValue === "") {
+							oldValue = true;
+						}
+						config[newProp] = oldValue;
+					}
+				});
+				return config;
+			},
+
+			multiple() {
+				return this.config.multiple;
+			},
+
+			leafOnly() {
+				return !this.config.checkStrictly;
+			},
+
+			readonly() {
+				return !this.filterable || this.multiple;
+			},
+
+			clearBtnVisible() {
+				if (!this.clearable || this.isDisabled || this.filtering || !this.inputHover) {
+					return false;
+				}
+				return this.multiple
+					? !!this.checkedNodes.filter(node => !node.isDisabled).length
+					: !!this.presentText;
+			},
+
+			panel() {
+				return this.$refs.panel;
+			},
+
+			currentPlaceholder() {
+				return this.isOnComposition ? "" : this.inputValue ? "" : this.placeholder;
+			},
+		},
+
+		watch: {
+			disabled() {
+				this.computePresentContent();
+			},
+
+			value(val) {
+				if (!isEqual(val, this.checkedValue)) {
+					this.checkedValue = val;
+					this.computePresentContent();
+				}
+			},
+
+			checkedValue(val) {
+				const { value, dropDownVisible } = this;
+				const { checkStrictly, multiple } = this.config;
+				if (!isEqual(val, value) || isUndefined(value)) {
+					this.computePresentContent();
+					if (!multiple && !checkStrictly && dropDownVisible) {
+						this.toggleDropDownVisible(false);
+					}
+					this.$emit("input", val);
+					this.$emit("change", val);
+					this.dispatch("TuFormItem", "tu.form.change", [val]);
+				}
+			},
+
+			options: {
+				handler: function () {
+					this.$nextTick(this.computePresentContent);
+				},
+				deep: true,
+			},
+
+			presentText(val) {
+				this.inputValue = val;
+			},
+
+			presentTags(val, oldVal) {
+				if (this.multiple && (val.length || oldVal.length)) {
+					this.$nextTick(this.updateStyle);
+				}
+			},
+
+			filtering(val) {
+				this.$nextTick(this.updatePopper);
+			},
+		},
+
+		filters: {
+			tagSizeMap(size) {
+				const maps = {
+					large: "medium",
+					medium: "small",
+					small: "mini",
+				};
+				return maps[size] || "medium";
+			},
+		},
+
+		mounted() {
+			const { input } = this.$refs;
+			if (input && input.$el) {
+				this.inputInitialHeight = input.$el.offsetHeight || InputSizeMap[this.realSize] || 40;
+			}
+
+			if (!this.isEmptyValue(this.value)) {
+				this.computePresentContent();
+			}
+
+			this.filterHandler = debounce(this.debounce, () => {
+				const { inputValue } = this;
+
+				if (!inputValue) {
+					this.filtering = false;
+					return;
+				}
+
+				const before = this.beforeFilter(inputValue);
+				if (before && before.then) {
+					before.then(this.getSuggestions);
+				} else if (before !== false) {
+					this.getSuggestions();
+				} else {
+					this.filtering = false;
+				}
+			});
+
+			addResizeListener(this.$el, this.updateStyle);
+		},
+
+		beforeDestroy() {
+			removeResizeListener(this.$el, this.updateStyle);
+		},
+
+		methods: {
+			getMigratingConfig() {
+				return {
+					props: {
+						"expand-trigger": "expand-trigger is removed, use `props.expandTrigger` instead.",
+						"change-on-select": "change-on-select is removed, use `props.checkStrictly` instead.",
+						"hover-threshold": "hover-threshold is removed, use `props.hoverThreshold` instead",
+					},
+					events: {
+						"active-item-change": "active-item-change is renamed to expand-change",
+					},
+				};
+			},
+
+			toggleDropDownVisible(visible) {
+				if (this.isDisabled) return;
+				const { dropDownVisible } = this;
+				const { input } = this.$refs;
+				visible = isDef(visible) ? visible : !dropDownVisible;
+				if (visible !== dropDownVisible) {
+					this.dropDownVisible = visible;
+					if (visible) {
+						this.$nextTick(() => {
+							this.updatePopper();
+							this.panel.scrollIntoView();
+							this.setBackgroundColor();
+							if (this.filterable && this.$refs.filterInput) this.$refs.filterInput.focus();
+						});
+					}
+					input.$refs.input.setAttribute("aria-expanded", visible);
+					this.$emit("visible-change", visible);
+				}
+			},
+
+			handleDropdownLeave() {
+				this.filtering = false;
+				this.inputValue = this.presentText;
+				this.doDestroy();
+			},
+
+			handleKeyDown(event) {
+				switch (event.keyCode) {
+					case KeyCode.enter:
+						this.toggleDropDownVisible();
+						break;
+					case KeyCode.down:
+						this.toggleDropDownVisible(true);
+						this.focusFirstNode();
+						event.preventDefault();
+						break;
+					case KeyCode.esc:
+					case KeyCode.tab:
+						this.toggleDropDownVisible(false);
+						break;
+				}
+			},
+
+			handleCompositionStart(evt) {
+				this.isOnComposition = true;
+			},
+
+			handleCompositionEnd(evt) {
+				this.isOnComposition = false;
+			},
+
+			handleFocus(e) {
+				console.log("focuse");
+				this.$emit("focus", e);
+			},
+
+			handleBlur(e) {
+				console.log("handleBlur");
+				this.$emit("blur", e);
+			},
+
+			handleInput(val, event) {
+				!this.dropDownVisible && this.toggleDropDownVisible(true);
+
+				if (event && event.isComposing) return;
+				if (val) {
+					this.filterHandler();
+				} else {
+					this.filtering = false;
+				}
+			},
+
+			handleClear() {
+				this.presentText = "";
+				this.panel.clearCheckedNodes();
+			},
+
+			handleExpandChange(value) {
+				this.$nextTick(this.updatePopper.bind(this));
+				this.$emit("expand-change", value);
+				this.$emit("active-item-change", value); // Deprecated
+			},
+
+			focusFirstNode() {
+				this.$nextTick(() => {
+					const { filtering } = this;
+					const { popper, suggestionPanel } = this.$refs;
+					let firstNode = null;
+
+					if (filtering && suggestionPanel) {
+						firstNode = suggestionPanel.$el.querySelector(".tu-cascader__suggestion-item");
+					} else {
+						const firstMenu = popper.querySelector(".tu-cascader-menu");
+						firstNode = firstMenu.querySelector('.tu-cascader-node[tabindex="-1"]');
+					}
+					if (firstNode) {
+						firstNode.focus();
+						!filtering && firstNode.click();
+					}
+				});
+			},
+
+			computePresentContent() {
+				this.$nextTick(() => {
+					if (this.config.multiple) {
+						this.computePresentTags();
+						this.presentText = this.presentTags.length ? " " : null;
+					} else {
+						this.computePresentText();
+					}
+				});
+			},
+
+			isEmptyValue(val) {
+				const { multiple } = this;
+				const { emitPath } = this.panel.config;
+				if (multiple || emitPath) {
+					return isEmpty(val);
+				}
+				return false;
+			},
+
+			computePresentText() {
+				const { checkedValue, config } = this;
+				if (!this.isEmptyValue(checkedValue)) {
+					const node = this.panel.getNodeByValue(checkedValue);
+					if (node && (config.checkStrictly || node.isLeaf)) {
+						this.presentText = node.getText(this.showAllLevels, this.separator);
+						return;
+					}
+				}
+				this.presentText = null;
+			},
+
+			computePresentTags() {
+				const { isDisabled, leafOnly, showAllLevels, separator, collapseTags } = this;
+				const checkedNodes = this.getCheckedNodes(leafOnly);
+				const tags = [];
+
+				const genTag = node => ({
+					node,
+					key: node.uid,
+					text: node.getText(showAllLevels, separator),
+					hitState: false,
+					closable: !isDisabled && !node.isDisabled,
+				});
+
+				if (checkedNodes.length) {
+					const [first, ...rest] = checkedNodes;
+					const restCount = rest.length;
+					tags.push(genTag(first));
+
+					if (restCount) {
+						if (collapseTags) {
+							tags.push({
+								key: -1,
+								text: `+ ${restCount}`,
+								closable: false,
+							});
+						} else {
+							rest.forEach(node => tags.push(genTag(node)));
+						}
+					}
+				}
+
+				this.checkedNodes = checkedNodes;
+				this.presentTags = tags;
+			},
+
+			getSuggestions() {
+				let { filterMethod } = this;
+				if (!isFunction(filterMethod)) {
+					filterMethod = (node, keyword) => node.text.includes(keyword);
+				}
+
+				const suggestions = this.panel.getFlattedNodes(this.leafOnly).filter(node => {
+					if (node.isDisabled) return false;
+					node.text = node.getText(this.showAllLevels, this.separator) || "";
+					return filterMethod(node, this.inputValue);
+				});
+
+				if (this.multiple) {
+					this.presentTags.forEach(tag => {
+						tag.hitState = false;
+					});
+				} else {
+					suggestions.forEach(node => {
+						node.checked = isEqual(this.checkedValue, node.getValueByOption());
+					});
+				}
+
+				this.filtering = true;
+				this.suggestions = suggestions;
+				this.$nextTick(this.updatePopper);
+			},
+
+			handleSuggestionKeyDown(event) {
+				const { keyCode, target } = event;
+				switch (keyCode) {
+					case KeyCode.enter:
+						target.click();
+						break;
+					case KeyCode.up:
+						const prev = target.previousElementSibling;
+						prev && prev.focus();
+						break;
+					case KeyCode.down:
+						const next = target.nextElementSibling;
+						next && next.focus();
+						break;
+					case KeyCode.esc:
+					case KeyCode.tab:
+						this.toggleDropDownVisible(false);
+						break;
+				}
+			},
+
+			handleDelete() {
+				const { inputValue, pressDeleteCount, presentTags } = this;
+				const lastIndex = presentTags.length - 1;
+				const lastTag = presentTags[lastIndex];
+				this.pressDeleteCount = inputValue ? 0 : pressDeleteCount + 1;
+
+				if (!lastTag) return;
+
+				if (this.pressDeleteCount) {
+					if (lastTag.hitState) {
+						this.deleteTag(lastTag);
+					} else {
+						lastTag.hitState = true;
+					}
+				}
+			},
+
+			handleSuggestionClick(index) {
+				const { multiple } = this;
+				const targetNode = this.suggestions[index];
+
+				if (multiple) {
+					const { checked } = targetNode;
+					targetNode.doCheck(!checked);
+					this.panel.calculateMultiCheckedValue();
+				} else {
+					this.checkedValue = targetNode.getValueByOption();
+					this.toggleDropDownVisible(false);
+				}
+			},
+
+			deleteTag(tag) {
+				const { checkedValue } = this;
+				const current = tag.node.getValueByOption();
+				const val = checkedValue.find(n => isEqual(n, current));
+				this.checkedValue = checkedValue.filter(n => !isEqual(n, current));
+				this.$emit("remove-tag", val);
+			},
+
+			updateStyle() {
+				const { $el, inputInitialHeight } = this;
+				if (this.$isServer || !$el) return;
+
+				const { suggestionPanel } = this.$refs;
+				const inputInner = $el.querySelector(".tu-input__inner");
+
+				if (!inputInner) return;
+
+				const tags = $el.querySelector(".tu-cascader__tags");
+				let suggestionPanelEl = null;
+
+				if (suggestionPanel && (suggestionPanelEl = suggestionPanel.$el)) {
+					const suggestionList = suggestionPanelEl.querySelector(".tu-cascader__suggestion-list");
+					suggestionList.style.minWidth = inputInner.offsetWidth + "px";
+				}
+
+				if (tags) {
+					const offsetHeight = Math.round(tags.getBoundingClientRect().height);
+					const height = Math.max(offsetHeight + 6, inputInitialHeight) + "px";
+					inputInner.style.height = height;
+					if (this.dropDownVisible) {
+						this.updatePopper();
+					}
+				}
+			},
+
+			getCheckedNodes(leafOnly) {
+				return this.panel.getCheckedNodes(leafOnly);
+			},
+
+			setBackgroundColor() {
+				const { reference, popper } = this.$refs;
+				const background = getBackground(reference);
+				if (background) popper.style.background = background;
+			},
+		},
+	};
 </script>

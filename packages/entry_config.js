@@ -185,5 +185,9 @@ module.exports = {
 			name: "badge",
 			author: "tujindong",
 		},
+		{
+			name: "dialog",
+			author: "tujindong",
+		},
 	],
 };
