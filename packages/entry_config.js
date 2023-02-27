@@ -86,6 +86,10 @@ module.exports = {
 			author: "tujindong",
 		},
 		{
+			name: "table-column",
+			author: "tujindong",
+		},
+		{
 			name: "progress",
 			author: "tujindong",
 		},

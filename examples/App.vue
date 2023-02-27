@@ -13,7 +13,6 @@
 		<DemoSelect />
 		<DemoTag />
 		<DemoLayout />
-		<DemoTable />
 		<DemoScrollbar />
 		<DemoForm />
 		<DemoDatePicker />
@@ -34,6 +33,7 @@
 		<DemoTreeSelect />
 		<DemoBadge />
 		<DemoModal />
+		<DemoTable />
 	</div>
 </template>
 

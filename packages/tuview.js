@@ -20,6 +20,7 @@ import Row from "./components/row";
 import Col from "./components/col";
 import Tag from "./components/tag";
 import Table from "./components/table";
+import TableColumn from "./components/table-column";
 import Progress from "./components/progress";
 import Pagination from "./components/pagination";
 import Tooltip from "./components/tooltip";
@@ -68,6 +69,7 @@ const componentsList = [
 	Col,
 	Tag,
 	Table,
+	TableColumn,
 	Progress,
 	Pagination,
 	Tooltip,

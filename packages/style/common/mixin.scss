@@ -73,6 +73,18 @@
 	}
 }
 
+@mixin extend-rule($name) {
+	@extend #{"%shared-" + $name};
+}
+
+@mixin share-rule($name) {
+	$rule-name: "%shared-" + $name;
+
+	@at-root #{$rule-name} {
+		@content;
+	}
+}
+
 @mixin pseudo($pseudo) {
 	@at-root #{&}#{":#{$pseudo}"} {
 		@content;

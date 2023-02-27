@@ -27,6 +27,9 @@ $--border-color-base: rgba($--color-greyLight-3, 0.38);
 $--border-color-light: rgba($--color-greyLight-3, 0.28);
 $--border-color-lighter: rgba($--color-greyLight-3, 0.18);
 $--border-color-extra-light: rgba($--color-greyLight-3, 0.1);
+$--background-color-hover: rgba($--color-greyLight-3, 0.25);
+$--background-color-hover-light: rgba($--color-greyLight-3, 0.15);
+$--background-color-hover-white: rgba($--color-white, 0.25);
 
 /*primary color*/
 $--color-primary-light: #8abdff;
@@ -274,7 +277,7 @@ $--card-large-body-padding-horizontal: 20px;
 -------------------------- */
 $--popover-background-color: $--color-white;
 $--popover-font-size: $--font-size-base;
-$--popover-border-color: $--border-color-lighter;
+$--popover-border-color: $--border-color-light;
 $--popover-arrow-size: 6px;
 $--popover-padding: 12px;
 $--popover-padding-large: 18px 20px;
@@ -515,6 +518,17 @@ $--modal-font-line-height: $--font-line-height-primary;
 $--modal-padding-primary: 20px;
 $--modal-padding-horizontal: 18px;
 $--modal-padding-vertical: 12px;
+
+/* Table
+-------------------------- */
+$--table-border-color: $--border-color-base;
+$--table-border: 1px solid $--table-border-color;
+$--table-font-color: $--color-greyDark;
+$--table-header-font-color: $--color-greyDark;
+$--table-row-hover-background-color: rgb(199, 255, 199);
+$--table-current-row-background-color: rgb(255, 184, 184);
+$--table-header-background-color: $--color-white;
+$--table-fixed-box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
 
 /* Break-point
 --------------------------*/

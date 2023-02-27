@@ -87,7 +87,7 @@ export default {
 			},
 		}).$mount();
 
-		this.debounceClose = debounce(200, () => this.handlePopperClose());
+		this.debounceClose = debounce(200, () => this.handleClosePopper());
 	},
 
 	mounted() {
@@ -182,7 +182,7 @@ export default {
 			}
 		},
 
-		handlePopperClose() {
+		handleClosePopper() {
 			if ((this.enterable && this.expectedState) || this.manual) return;
 			clearTimeout(this.timeout);
 
