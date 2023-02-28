@@ -18,7 +18,7 @@
 	font-size: 14px;
 	line-height: 20px;
 	transition: all 0.3s ease;
-	color: $--color-greyDark;
+	color: $--color-text-primary;
 }
 
 .time-select-item.selected:not(.disabled) {
@@ -26,7 +26,7 @@
 }
 
 .time-select-item:hover:not(.disabled) {
-	background: rgba($--color-greyDark, 0.25);
+	background: rgba($--color-text-primary, 0.25);
 	cursor: pointer;
 }
 

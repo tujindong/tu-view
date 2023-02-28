@@ -30,7 +30,7 @@
 		}
 
 		.tu-icon-close-circle-fill:hover {
-			color: $--color-greyDark;
+			color: $--color-text-primary;
 		}
 
 		@include when(focus) {
@@ -124,7 +124,7 @@
 		outline: none;
 		box-sizing: border-box;
 		background-color: transparent;
-		color: $--color-greyDark;
+		color: $--color-text-primary;
 		font-size: $--font-size-base;
 
 		&::placeholder {

@@ -19,7 +19,7 @@
 				z-index: #{$--index-normal + 2};
 
 				&:hover {
-					color: $--color-greyDark;
+					color: $--color-text-primary;
 				}
 			}
 
@@ -51,7 +51,7 @@
 						font-size: 14px;
 						font-weight: 500;
 						position: relative;
-						color: $--color-greyDark;
+						color: $--color-text-primary;
 
 						&:focus,
 						&:focus:active {
@@ -67,7 +67,7 @@
 							font-size: 12px;
 
 							&:hover {
-								color: $--color-greyDark;
+								color: $--color-text-primary;
 							}
 						}
 
@@ -101,7 +101,7 @@
 			margin: 12px;
 
 			&:hover {
-				color: $--color-greyDark;
+				color: $--color-text-primary;
 			}
 		}
 	}

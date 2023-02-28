@@ -13,7 +13,7 @@
 	@include e(button) {
 		display: block;
 		margin: 0 auto;
-		color: $--color-greyDark;
+		color: $--color-text-primary;
 
 		@include when(disabled) {
 			color: $--color-greyLight-3;

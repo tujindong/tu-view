@@ -4,7 +4,7 @@
 @include b(pagination) {
 	white-space: nowrap;
 	padding: 2px 5px;
-	color: $--color-greyDark;
+	color: $--color-text-primary;
 	@include utils-clearfix;
 
 	span:not([class*="suffix"]),
@@ -152,13 +152,13 @@
 	@include e(total) {
 		margin-right: 10px;
 		font-weight: normal;
-		color: $--color-greyDark;
+		color: $--color-text-primary;
 	}
 
 	@include e(jump) {
 		margin-left: 24px;
 		font-weight: normal;
-		color: $--color-greyDark;
+		color: $--color-text-primary;
 
 		.tu-input__inner {
 			padding: 0 3px;
@@ -195,7 +195,7 @@
 		.btn-next,
 		.tu-pager li {
 			margin: 0 5px;
-			color: $--color-greyDark;
+			color: $--color-text-primary;
 			min-width: 30px;
 			border-radius: 2px;
 			box-shadow: $--box-shadow-convex;

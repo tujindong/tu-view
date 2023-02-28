@@ -49,7 +49,7 @@
 		align-items: center;
 		padding: $--radio-bordered-padding-vertical calc(#{$--radio-bordered-padding-horizontal} + 6px)
 			$--radio-bordered-padding-vertical $--radio-bordered-padding-horizontal;
-		color: $--color-greyDark;
+		color: $--color-text-primary;
 		background: transparent;
 		box-shadow: $--box-shadow-convex;
 		box-sizing: border-box;
@@ -174,7 +174,7 @@
 				position: absolute;
 				width: 38%;
 				height: 38%;
-				background: $--color-greyDark;
+				background: $--color-text-primary;
 				border-radius: 50%;
 				transition: 0.3s ease;
 			}

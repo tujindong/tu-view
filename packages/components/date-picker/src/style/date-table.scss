@@ -13,7 +13,7 @@
 					background-color: rgba($--color-greyLight-2, 0.38);
 				}
 				td.available:hover {
-					color: $--color-greyDark;
+					color: $--color-text-primary;
 				}
 				td:first-child div {
 					margin-left: 5px;
@@ -45,7 +45,7 @@
 		text-align: center;
 		cursor: pointer;
 		position: relative;
-		color: $--color-greyDark;
+		color: $--color-text-primary;
 		transition: all 0.3s;
 		border: none;
 
@@ -148,7 +148,7 @@
 
 	th {
 		padding: 5px;
-		color: $--color-greyDark;
+		color: $--color-text-primary;
 		font-weight: 400;
 		border-bottom: solid 1px rgba($--color-greyLight-3, 0.38);
 	}

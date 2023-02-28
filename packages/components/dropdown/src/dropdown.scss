@@ -3,7 +3,7 @@
 @include b(dropdown) {
 	display: inline-block;
 	position: relative;
-	color: $--color-greyDark;
+	color: $--color-text-primary;
 	font-size: $--font-size-base;
 
 	& .tu-dropdown__caret-button {
@@ -68,7 +68,7 @@
 		padding: 0 20px;
 		margin: 0;
 		font-size: $--font-size-base;
-		color: $--color-greyDark;
+		color: $--color-text-primary;
 		cursor: pointer;
 		outline: none;
 		transition: all 0.3s;
@@ -93,7 +93,7 @@
 				left: 0;
 				top: -6px;
 				width: 100%;
-				border-top: 1px solid rgba($--color-greyDark, 0.25);
+				border-top: 1px solid rgba($--color-text-primary, 0.25);
 			}
 		}
 

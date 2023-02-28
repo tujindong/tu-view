@@ -1,7 +1,7 @@
 @include b(time-range-picker) {
 	width: 354px;
 	overflow: visible;
-	color: $--color-greyDark;
+	color: $--color-text-primary;
 
 	@include e(content) {
 		position: relative;

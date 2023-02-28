@@ -101,7 +101,7 @@
 	}
 
 	@include m(default) {
-		color: $--color-greyDark;
+		color: $--color-text-primary;
 		background: transparent;
 
 		&:hover {
@@ -120,7 +120,7 @@
 			&:hover,
 			&:focus,
 			&:active {
-				color: $--color-greyDark;
+				color: $--color-text-primary;
 				box-shadow: $--box-shadow-convex;
 
 				&::before {
@@ -144,7 +144,7 @@
 			&:hover,
 			&:focus,
 			&:active {
-				color: $--color-greyDark;
+				color: $--color-text-primary;
 				box-shadow: $--box-shadow-convex;
 
 				&::before {
