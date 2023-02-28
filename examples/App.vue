@@ -10,12 +10,12 @@
 		<DemoCard />
 		<DemoTooltip />
 		<DemoTabs />
-		<DemoSelect />
 		<DemoTag />
 		<DemoLayout />
 		<DemoScrollbar />
 		<DemoForm />
 		<DemoDatePicker />
+		<DemoSelect />
 		<DemoTimePicker />
 		<DemoDateTimePicker />
 		<DemoDropdown />

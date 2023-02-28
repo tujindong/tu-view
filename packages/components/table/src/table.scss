@@ -22,7 +22,7 @@
 	@include e(empty-text) {
 		line-height: 60px;
 		width: 50%;
-		color: $--color-text-secondary;
+		color: $--table-font-color;
 	}
 
 	@include e(expand-column) {

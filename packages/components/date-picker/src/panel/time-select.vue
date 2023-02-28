@@ -11,10 +11,7 @@
 			:class="popperClass"
 			class="tu-picker-panel time-select tu-popper"
 		>
-			<tu-scrollbar
-				style="height: 200px"
-				wrap-class="tu-picker-panel__content"
-			>
+			<tu-scrollbar wrap-class="tu-picker-panel__content">
 				<div
 					class="time-select-item"
 					v-for="item in items"

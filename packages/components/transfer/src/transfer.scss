@@ -55,7 +55,9 @@
 	transition: 0.3s ease;
 
 	@include e(wrapper) {
-		height: $--transfer-panel-body-height;
+		.tu-scrollbar__view {
+			height: $--transfer-panel-body-height;
+		}
 	}
 
 	@include e(body) {
