@@ -35,9 +35,8 @@
 	white-space: nowrap;
 	outline: none;
 	&:focus {
-		/* focus */
 		> .tu-tree-node__content {
-			background-color: $--tree-node-hover-background-color;
+			color: $--color-primary;
 		}
 	}
 
@@ -63,7 +62,7 @@
 			margin-right: 8px;
 		}
 		&:hover {
-			background-color: $--tree-node-hover-background-color;
+			color: $--color-primary;
 		}
 
 		.tu-tree.is-dragging & {

@@ -175,7 +175,7 @@
 			<tu-table-column
 				fixed="right"
 				label="操作"
-				width="100"
+				width="120"
 			>
 				<template slot-scope="scope">
 					<tu-button
@@ -409,10 +409,10 @@
 </script>
 <style>
 	.tu-table .warning-row {
-		background: oldlace;
+		color: rgb(153, 99, 0);
 	}
 
 	.tu-table .success-row {
-		background: #f0f9eb;
+		color: #339100;
 	}
 </style>

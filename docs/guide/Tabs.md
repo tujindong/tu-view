@@ -235,7 +235,7 @@
 				if (action === "add") {
 					let newTabName = ++this.tabIndex + "";
 					this.editableTabs.push({
-						title: "新标签",
+						title: `新标签${this.editableTabs.length + 1}`,
 						name: newTabName,
 						content: "新标签内容",
 					});
@@ -318,7 +318,7 @@
 			addTab(targetName) {
 				let newTabName = ++this.tabIndex + "";
 				this.editableTabs.push({
-					title: "新标签",
+					title: `新标签${this.editableTabs.length + 1}`,
 					name: newTabName,
 					content: "新标签内容",
 				});

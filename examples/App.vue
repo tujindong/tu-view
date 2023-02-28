@@ -15,7 +15,6 @@
 		<DemoScrollbar />
 		<DemoForm />
 		<DemoDatePicker />
-		<DemoSelect />
 		<DemoTimePicker />
 		<DemoDateTimePicker />
 		<DemoDropdown />
@@ -24,6 +23,7 @@
 		<DemoUpload />
 		<DemoPagination />
 		<DemoCascader />
+		<DemoSelect />
 		<DemoSlider />
 		<DemoRate />
 		<DemoTransfer />

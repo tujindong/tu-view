@@ -23,6 +23,7 @@ $--color-text-primary: #8394be;
 $--color-text-regular: #9baacf;
 $--color-text-secondary: #bec8e4;
 $--color-text-placeholder: #c8d0e7;
+$--border-color-white: rgba($--color-white, 0.78);
 $--border-color-base: rgba($--color-greyLight-3, 0.38);
 $--border-color-light: rgba($--color-greyLight-3, 0.28);
 $--border-color-lighter: rgba($--color-greyLight-3, 0.18);
@@ -521,11 +522,10 @@ $--modal-padding-vertical: 12px;
 
 /* Table
 -------------------------- */
-$--table-border-color: $--border-color-base;
-$--table-border: 1px solid $--table-border-color;
+$--table-border: 1px solid $--border-color-base;
 $--table-font-color: $--color-text-primary;
 $--table-header-font-color: $--color-text-primary;
-$--table-row-hover-background-color: rgb(199, 255, 199);
+$--table-row-hover-background-color: $--background-color-hover-white;
 $--table-current-row-background-color: rgb(255, 184, 184);
 $--table-header-background-color: $--color-white;
 $--table-fixed-box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);

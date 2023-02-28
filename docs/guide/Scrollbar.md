@@ -4,11 +4,11 @@
 
 ### 基础用法
 
-:::demo 虚拟滚动条效果，使用区域滚动时，需要给定 tu-scrollbar 高度和宽度。
+:::demo 虚拟滚动条效果，使用区域滚动时，需要给定 tu-scrollbar 宽度以及子元素高度。
 
 ```html
-<tu-scrollbar style="height: 120px; width: 380px; background: rgba(255,255,255,0.28)">
-	<div style="width: 500px; padding: 0 16px">
+<tu-scrollbar style="width: 380px; background: rgba(255,255,255,0.28)">
+	<div style="width: 500px; height: 180px; padding: 0 16px">
 		<p
 			v-for="i in 20"
 			:key="i"
