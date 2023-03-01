@@ -1,4 +1,5 @@
 @import "~@packages/style/common/mixin.scss";
+@import "~@packages/style/common/utils.scss";
 
 @include b(table) {
 	position: relative;
@@ -9,6 +10,16 @@
 	max-width: 100%;
 	font-size: 14px;
 	color: $--table-font-color;
+
+	tr th,
+	tr td {
+		border: none;
+	}
+	tr,
+	tr:nth-child(2n),
+	tr:nth-child(2n + 1) {
+		background: transparent;
+	}
 
 	@include e(empty-block) {
 		min-height: 60px;
@@ -84,12 +95,14 @@
 	@include m(scrollable-x) {
 		.tu-table__body-wrapper {
 			overflow-x: auto;
+			@include utils-scroll;
 		}
 	}
 
 	@include m(scrollable-y) {
 		.tu-table__body-wrapper {
 			overflow-y: auto;
+			@include utils-scroll;
 		}
 	}
 
@@ -122,7 +135,7 @@
 		}
 
 		&.gutter {
-			width: 15px;
+			width: 8px;
 			border-right-width: 0;
 			border-bottom-width: 0;
 			padding: 0;
@@ -233,7 +246,7 @@
 		@include share-rule(border-pseudo) {
 			content: "";
 			position: absolute;
-			// background-color: $--table-border-color;
+			background-color: $--border-color-base;
 			z-index: 1;
 		}
 
@@ -302,7 +315,7 @@
 			bottom: 0;
 			width: 100%;
 			height: 1px;
-			background-color: $--border-color-lighter;
+			background-color: $--border-color-base;
 			z-index: 4;
 		}
 	}
@@ -469,8 +482,12 @@
 					background: $--background-color-hover-white;
 				}
 
-				&.current-row td.tu-table__cell {
-					background-color: $--table-current-row-background-color;
+				// &.current-row td.tu-table__cell {
+				// 	background-color: $--table-current-row-background-color;
+				// }
+
+				tr.current-row {
+					box-shadow: $--box-shadow-concave;
 				}
 			}
 		}
@@ -489,8 +506,12 @@
 			}
 		}
 
-		tr.current-row > td.tu-table__cell {
-			background-color: $--table-current-row-background-color;
+		// tr.current-row > td.tu-table__cell {
+		// 	background-color: $--table-current-row-background-color;
+		// }
+
+		tr.current-row {
+			box-shadow: $--box-shadow-concave;
 		}
 	}
 
@@ -524,7 +545,7 @@
 
 	@include m(enable-row-hover) {
 		.tu-table__body tr:hover > td.tu-table__cell {
-			// background-color: $--table-row-hover-background-color;
+			background-color: $--table-row-hover-background-color;
 		}
 	}
 

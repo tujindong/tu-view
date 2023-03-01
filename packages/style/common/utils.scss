@@ -1,71 +1,73 @@
 @import "./variable.scss";
 
 @mixin utils-user-select($value) {
-    -moz-user-select: $value;
-    -webkit-user-select: $value;
-    -ms-user-select: $value;
+	-moz-user-select: $value;
+	-webkit-user-select: $value;
+	-ms-user-select: $value;
 }
 
 @mixin utils-clearfix {
-    $selector: &;
+	$selector: &;
 
-    @at-root {
+	@at-root {
+		#{$selector}::before,
+		#{$selector}::after {
+			display: table;
+			content: "";
+		}
 
-        #{$selector}::before,
-        #{$selector}::after {
-            display: table;
-            content: "";
-        }
-
-        #{$selector}::after {
-            clear: both
-        }
-    }
+		#{$selector}::after {
+			clear: both;
+		}
+	}
 }
 
 @mixin utils-vertical-center {
-    $selector: &;
+	$selector: &;
 
-    @at-root {
-        #{$selector}::after {
-            display: inline-block;
-            content: "";
-            height: 100%;
-            vertical-align: middle
-        }
-    }
+	@at-root {
+		#{$selector}::after {
+			display: inline-block;
+			content: "";
+			height: 100%;
+			vertical-align: middle;
+		}
+	}
 }
 
 @mixin utils-ellipsis {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 @mixin utils-scroll {
-    &::-webkit-scrollbar-track-piece {
-        background-color: transparent;
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        border-radius: 4px;
-    }
+	// chrome
+	&::-webkit-scrollbar-track-piece {
+		background-color: transparent;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+	}
 
-    &::-webkit-scrollbar {
-        width: 8px;
-    }
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
 
-    &::-webkit-scrollbar-thumb {
-        background-color: $--color-greyLight-2;
-        background-clip: padding-box;
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        border-radius: 4px;
-        transition: 0.3s ease;
-        z-index: 100;
-    }
+	&::-webkit-scrollbar-thumb {
+		background-color: $--color-greyLight-2;
+		background-clip: padding-box;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		transition: 0.3s ease;
+		z-index: 100;
+	}
 
-    &::-webkit-scrollbar-thumb:hover {
-        background-color: $--color-greyLight-3;
-        cursor: pointer;
-    }
+	&::-webkit-scrollbar-thumb:hover {
+		background-color: $--color-greyLight-3;
+		cursor: pointer;
+	}
+	//firfox
+	scrollbar-width: thin; // 默认值
 }

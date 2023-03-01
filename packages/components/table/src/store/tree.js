@@ -19,7 +19,6 @@ export default {
 	},
 
 	computed: {
-		// 嵌入型的数据，watch 无法是检测到变化 https://github.com/ElemeFE/element/issues/14998
 		// TODO: 使用 computed 解决该问题，是否会造成性能问题？
 		// @return { id: { level, children } }
 		normalizedData() {

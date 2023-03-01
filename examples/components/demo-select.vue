@@ -84,26 +84,6 @@
 						value: "durian",
 						label: "榴莲",
 					},
-					{
-						value: "strawberry",
-						label: "草莓",
-					},
-					{
-						value: "durian",
-						label: "榴莲",
-					},
-					{
-						value: "strawberry",
-						label: "草莓",
-					},
-					{
-						value: "durian",
-						label: "榴莲",
-					},
-					{
-						value: "strawberry",
-						label: "草莓",
-					},
 				],
 				value1: "",
 				value2: "",

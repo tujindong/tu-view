@@ -55,6 +55,7 @@ module.exports = {
 					title: "数据组件",
 					collapsable: false,
 					children: [
+						["../guide/table.md", "Table 表格"],
 						["../guide/tag.md", "Tag 标签"],
 						["../guide/progress.md", "Progress 进度条"],
 						["../guide/tree.md", "Tree 树形控件"],

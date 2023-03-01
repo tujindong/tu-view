@@ -30,7 +30,7 @@ $--border-color-lighter: rgba($--color-greyLight-3, 0.18);
 $--border-color-extra-light: rgba($--color-greyLight-3, 0.1);
 $--background-color-hover: rgba($--color-greyLight-3, 0.25);
 $--background-color-hover-light: rgba($--color-greyLight-3, 0.15);
-$--background-color-hover-white: rgba($--color-white, 0.25);
+$--background-color-hover-white: rgba($--color-white, 0.15);
 
 /*primary color*/
 $--color-primary-light: #8abdff;
@@ -525,8 +525,8 @@ $--modal-padding-vertical: 12px;
 $--table-border: 1px solid $--border-color-base;
 $--table-font-color: $--color-text-primary;
 $--table-header-font-color: $--color-text-primary;
-$--table-row-hover-background-color: $--background-color-hover-white;
-$--table-current-row-background-color: rgb(255, 184, 184);
+$--table-row-hover-background-color: rgba($--color-white, 0.25);
+$--table-current-row-background-color: $--color-white;
 $--table-header-background-color: $--color-white;
 $--table-fixed-box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
 

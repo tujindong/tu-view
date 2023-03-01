@@ -17,6 +17,7 @@
 			},
 			tableSize ? `tu-table--${tableSize}` : '',
 		]"
+		ref="table"
 		@mouseleave="handleMouseLeave($event)"
 	>
 		<div
@@ -275,6 +276,7 @@
 	import TableHeader from "./table-header";
 	import TableFooter from "./table-footer";
 	import { parseHeight } from "./util";
+	import { getBackground } from "@packages/src/utils/get-background";
 
 	let tableIdSeed = 1;
 
@@ -556,6 +558,7 @@
 				}
 			});
 			this.$ready = true;
+			this.setBackgroundColor();
 		},
 
 		destroyed() {
@@ -716,6 +719,21 @@
 
 			toggleAllSelection() {
 				this.store.commit("toggleAllSelection");
+			},
+
+			setBackgroundColor() {
+				this.$nextTick(() => {
+					const backgroundColor = getBackground(this.$refs.table);
+					if (this.$refs.fixedWrapper) {
+						this.$refs.fixedWrapper.style.background = backgroundColor;
+					}
+					if (this.$refs.rightFixedWrapper) {
+						this.$refs.rightFixedWrapper.style.background = backgroundColor;
+					}
+					if (this.$refs.rightFixedPatch) {
+						this.$refs.rightFixedPatch.style.background = backgroundColor;
+					}
+				});
 			},
 		},
 	};

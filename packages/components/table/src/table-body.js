@@ -84,8 +84,6 @@ export default {
 	},
 
 	watch: {
-		// don't trigger getter of currentRow in getCellClass. see https://jsfiddle.net/oe2b4hqt/
-		// update DOM manually. see https://github.com/ElemeFE/element/pull/13954/files#diff-9b450c00d0a9dec0ffad5a3176972e40
 		"store.states.hoverRow"(newVal, oldVal) {
 			if (!this.store.states.isComplex || this.$isServer) return;
 			let raf = window.requestAnimationFrame;
@@ -388,7 +386,7 @@ export default {
 				const renderExpanded = this.table.renderExpanded;
 				const tr = this.rowRender(row, $index);
 				if (!renderExpanded) {
-					console.error("[Element Error]renderExpanded is required.");
+					console.error("[TuView Error]renderExpanded is required.");
 					return tr;
 				}
 				// 使用二维数组，避免修改 $index

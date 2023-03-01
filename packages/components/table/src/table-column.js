@@ -146,7 +146,7 @@ export default {
 			// renderHeader 属性不推荐使用。
 			if (this.renderHeader) {
 				console.warn(
-					"[Element Warn][TableColumn]Comparing to render-header, scoped-slot header is easier to use. We recommend users to use scoped-slot header."
+					"[TuView Warn][TableColumn]Comparing to render-header, scoped-slot header is easier to use. We recommend users to use scoped-slot header."
 				);
 			} else if (column.type !== "selection") {
 				column.renderHeader = (h, scope) => {
