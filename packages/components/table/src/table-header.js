@@ -141,11 +141,7 @@ export default {
 											<span
 												class="tu-table__column-filter-trigger"
 												on-click={$event => this.handleFilterClick($event, column)}>
-												<i
-													class={[
-														"tu-icon-arrow-down",
-														column.filterOpened ? "tu-icon-arrow-up" : "",
-													]}></i>
+												<i class={["tu-icon-down", column.filterOpened ? "tu-icon-up" : ""]}></i>
 											</span>
 										) : (
 											""

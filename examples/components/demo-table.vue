@@ -1,48 +1,63 @@
 <template>
 	<div>
+		<tu-button @click="resetDateFilter">清除日期过滤器</tu-button>
+		<tu-button
+			style="margin-left: 4px"
+			@click="clearFilter"
+			>清除所有过滤器</tu-button
+		>
 		<tu-table
-			ref="singleTable"
+			ref="filterTable"
 			:data="tableData"
-			highlight-current-row
-			@current-change="handleCurrentChange"
 			style="width: 100%"
 		>
 			<tu-table-column
-				type="index"
-				width="50"
-			>
-			</tu-table-column>
-			<tu-table-column
-				property="date"
+				prop="date"
 				label="日期"
-				width="120"
+				sortable
+				width="180"
+				column-key="date"
+				:filters="[
+					{ text: '2016-05-01', value: '2016-05-01' },
+					{ text: '2016-05-02', value: '2016-05-02' },
+					{ text: '2016-05-03', value: '2016-05-03' },
+					{ text: '2016-05-04', value: '2016-05-04' },
+				]"
+				:filter-method="filterHandler"
 			>
 			</tu-table-column>
 			<tu-table-column
-				property="name"
+				prop="name"
 				label="姓名"
-				width="120"
+				width="180"
 			>
 			</tu-table-column>
 			<tu-table-column
-				property="address"
+				prop="address"
 				label="地址"
+				:formatter="formatter"
 			>
+			</tu-table-column>
+			<tu-table-column
+				prop="tag"
+				label="标签"
+				width="100"
+				:filters="[
+					{ text: '家', value: '家' },
+					{ text: '公司', value: '公司' },
+				]"
+				:filter-method="filterTag"
+				filter-placement="bottom-end"
+			>
+				<template slot-scope="scope">
+					<tu-tag
+						:type="scope.row.tag === '家' ? 'primary' : 'success'"
+						disable-transitions
+						>{{ scope.row.tag }}</tu-tag
+					>
+				</template>
 			</tu-table-column>
 		</tu-table>
-		<div style="margin-top: 20px">
-			<tu-button
-				size="small"
-				@click="setCurrent(tableData[1])"
-				>选中第二行</tu-button
-			>
-			<tu-button
-				size="small"
-				style="margin-left: 4px"
-				@click="setCurrent()"
-				>取消选择</tu-button
-			>
-		</div>
 	</div>
 </template>
 
@@ -55,33 +70,45 @@
 						date: "2016-05-02",
 						name: "王小虎",
 						address: "上海市普陀区金沙江路 1518 弄",
+						tag: "家",
 					},
 					{
 						date: "2016-05-04",
 						name: "王小虎",
 						address: "上海市普陀区金沙江路 1517 弄",
+						tag: "公司",
 					},
 					{
 						date: "2016-05-01",
 						name: "王小虎",
 						address: "上海市普陀区金沙江路 1519 弄",
+						tag: "家",
 					},
 					{
 						date: "2016-05-03",
 						name: "王小虎",
 						address: "上海市普陀区金沙江路 1516 弄",
+						tag: "公司",
 					},
 				],
-				currentRow: null,
 			};
 		},
-
 		methods: {
-			setCurrent(row) {
-				this.$refs.singleTable.setCurrentRow(row);
+			resetDateFilter() {
+				this.$refs.filterTable.clearFilter("date");
 			},
-			handleCurrentChange(val) {
-				this.currentRow = val;
+			clearFilter() {
+				this.$refs.filterTable.clearFilter();
+			},
+			formatter(row, column) {
+				return row.address;
+			},
+			filterTag(value, row) {
+				return row.tag === value;
+			},
+			filterHandler(value, row, column) {
+				const property = column["property"];
+				return row[property] === value;
 			},
 		},
 	};

@@ -921,13 +921,8 @@
 		</tu-table-column>
 	</tu-table>
 	<div style="margin-top: 20px">
+		<tu-button @click="setCurrent(tableData[1])">选中第二行</tu-button>
 		<tu-button
-			size="small"
-			@click="setCurrent(tableData[1])"
-			>选中第二行</tu-button
-		>
-		<tu-button
-			size="small"
 			style="margin-left: 4px"
 			@click="setCurrent()"
 			>取消选择</tu-button
@@ -971,6 +966,313 @@
 			},
 			handleCurrentChange(val) {
 				this.currentRow = val;
+			},
+		},
+	};
+</script>
+```
+
+:::
+
+### 多选
+
+选择多行数据时使用 Checkbox。
+
+:::demo 实现多选非常简单: 手动添加一个`tu-table-column`，设`type`属性为`selection`即可；默认情况下若内容过多会折行显示，若需要单行显示可以使用`show-overflow-tooltip`属性，它接受一个`Boolean`，为`true`时多余的内容会在 hover 时以 tooltip 的形式显示出来。
+
+```html
+<template>
+	<tu-table
+		ref="multipleTable"
+		:data="tableData"
+		tooltip-effect="dark"
+		style="width: 100%"
+		@selection-change="handleSelectionChange"
+	>
+		<tu-table-column
+			type="selection"
+			width="55"
+		>
+		</tu-table-column>
+		<tu-table-column
+			label="日期"
+			width="120"
+		>
+			<template slot-scope="scope">{{ scope.row.date }}</template>
+		</tu-table-column>
+		<tu-table-column
+			prop="name"
+			label="姓名"
+			width="120"
+		>
+		</tu-table-column>
+		<tu-table-column
+			prop="address"
+			label="地址"
+			show-overflow-tooltip
+		>
+		</tu-table-column>
+	</tu-table>
+	<div style="margin-top: 20px">
+		<tu-button @click="toggleSelection([tableData[1], tableData[2]])"
+			>切换第二、第三行的选中状态</tu-button
+		>
+		<tu-button
+			style="margin-left: 4px"
+			@click="toggleSelection()"
+			>取消选择</tu-button
+		>
+	</div>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				tableData: [
+					{
+						date: "2016-05-03",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1518 弄",
+					},
+					{
+						date: "2016-05-02",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1518 弄",
+					},
+					{
+						date: "2016-05-04",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1518 弄",
+					},
+					{
+						date: "2016-05-01",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1518 弄",
+					},
+					{
+						date: "2016-05-08",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1518 弄",
+					},
+					{
+						date: "2016-05-06",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1518 弄",
+					},
+					{
+						date: "2016-05-07",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1518 弄",
+					},
+				],
+				multipleSelection: [],
+			};
+		},
+
+		methods: {
+			toggleSelection(rows) {
+				if (rows) {
+					rows.forEach(row => {
+						this.$refs.multipleTable.toggleRowSelection(row);
+					});
+				} else {
+					this.$refs.multipleTable.clearSelection();
+				}
+			},
+			handleSelectionChange(val) {
+				this.multipleSelection = val;
+			},
+		},
+	};
+</script>
+```
+
+:::
+
+### 排序
+
+对表格进行排序，可快速查找或对比数据。
+
+:::demo 在列中设置`sortable`属性即可实现以该列为基准的排序，接受一个`Boolean`，默认为`false`。可以通过 Table 的`default-sort`属性设置默认的排序列和排序顺序。可以使用`sort-method`或者`sort-by`使用自定义的排序规则。如果需要后端排序，需将`sortable`设置为`custom`，同时在 Table 上监听`sort-change`事件，在事件回调中可以获取当前排序的字段名和排序顺序，从而向接口请求排序后的表格数据。在本例中，我们还使用了`formatter`属性，它用于格式化指定列的值，接受一个`Function`，会传入两个参数：`row`和`column`，可以根据自己的需求进行处理。
+
+```html
+<template>
+	<tu-table
+		:data="tableData"
+		style="width: 100%"
+		:default-sort="{prop: 'date', order: 'descending'}"
+	>
+		<tu-table-column
+			prop="date"
+			label="日期"
+			sortable
+			width="180"
+		>
+		</tu-table-column>
+		<tu-table-column
+			prop="name"
+			label="姓名"
+			sortable
+			width="180"
+		>
+		</tu-table-column>
+		<tu-table-column
+			prop="address"
+			label="地址"
+			:formatter="formatter"
+		>
+		</tu-table-column>
+	</tu-table>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				tableData: [
+					{
+						date: "2016-05-02",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1518 弄",
+					},
+					{
+						date: "2016-05-04",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1517 弄",
+					},
+					{
+						date: "2016-05-01",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1519 弄",
+					},
+					{
+						date: "2016-05-03",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1516 弄",
+					},
+				],
+			};
+		},
+		methods: {
+			formatter(row, column) {
+				return row.address;
+			},
+		},
+	};
+</script>
+```
+
+:::
+
+### 筛选
+
+对表格进行筛选，可快速查找到自己想看的数据。
+
+:::demo 在列中设置`filters` `filter-method`属性即可开启该列的筛选，filters 是一个数组，`filter-method`是一个方法，它用于决定某些数据是否显示，会传入三个参数：`value`, `row` 和 `column`。
+
+```html
+<template>
+	<tu-button @click="resetDateFilter">清除日期过滤器</tu-button>
+	<tu-button
+		style="margin-left: 4px"
+		@click="clearFilter"
+		>清除所有过滤器</tu-button
+	>
+	<tu-table
+		ref="filterTable"
+		:data="tableData"
+		style="width: 100%"
+	>
+		<tu-table-column
+			prop="date"
+			label="日期"
+			sortable
+			width="180"
+			column-key="date"
+			:filters="[{text: '2016-05-01', value: '2016-05-01'}, {text: '2016-05-02', value: '2016-05-02'}, {text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-04', value: '2016-05-04'}]"
+			:filter-method="filterHandler"
+		>
+		</tu-table-column>
+		<tu-table-column
+			prop="name"
+			label="姓名"
+			width="180"
+		>
+		</tu-table-column>
+		<tu-table-column
+			prop="address"
+			label="地址"
+			:formatter="formatter"
+		>
+		</tu-table-column>
+		<tu-table-column
+			prop="tag"
+			label="标签"
+			width="100"
+			:filters="[{ text: '家', value: '家' }, { text: '公司', value: '公司' }]"
+			:filter-method="filterTag"
+			filter-placement="bottom-end"
+		>
+			<template slot-scope="scope">
+				<tu-tag
+					:type="scope.row.tag === '家' ? 'primary' : 'success'"
+					disable-transitions
+					>{{scope.row.tag}}</tu-tag
+				>
+			</template>
+		</tu-table-column>
+	</tu-table>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				tableData: [
+					{
+						date: "2016-05-02",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1518 弄",
+						tag: "家",
+					},
+					{
+						date: "2016-05-04",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1517 弄",
+						tag: "公司",
+					},
+					{
+						date: "2016-05-01",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1519 弄",
+						tag: "家",
+					},
+					{
+						date: "2016-05-03",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1516 弄",
+						tag: "公司",
+					},
+				],
+			};
+		},
+		methods: {
+			resetDateFilter() {
+				this.$refs.filterTable.clearFilter("date");
+			},
+			clearFilter() {
+				this.$refs.filterTable.clearFilter();
+			},
+			formatter(row, column) {
+				return row.address;
+			},
+			filterTag(value, row) {
+				return row.tag === value;
+			},
+			filterHandler(value, row, column) {
+				const property = column["property"];
+				return row[property] === value;
 			},
 		},
 	};
