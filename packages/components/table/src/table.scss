@@ -118,7 +118,7 @@
 	}
 
 	.tu-table__cell {
-		padding: 12px 0;
+		padding: 8px 0;
 		min-width: 0;
 		box-sizing: border-box;
 		text-overflow: ellipsis;
@@ -192,8 +192,7 @@
 			box-sizing: border-box;
 			position: relative;
 			vertical-align: middle;
-			padding-left: 10px;
-			padding-right: 10px;
+			padding: 4px 10px;
 			width: 100%;
 
 			&.highlight {
@@ -230,8 +229,7 @@
 		white-space: normal;
 		word-break: break-all;
 		line-height: 23px;
-		padding-left: 10px;
-		padding-right: 10px;
+		padding: 4px 10px;
 
 		&.tu-tooltip {
 			white-space: nowrap;
@@ -306,7 +304,7 @@
 		left: 0;
 		overflow-x: hidden;
 		overflow-y: hidden;
-		box-shadow: $--table-fixed-box-shadow;
+		box-shadow: 0px -6px 10px rgba(0, 0, 0, 0.12);
 
 		&::before {
 			content: "";
@@ -331,6 +329,7 @@
 		top: 0;
 		left: auto;
 		right: 0;
+		box-shadow: -6px -4px 10px rgba(100, 100, 100, 0.1);
 
 		.tu-table__fixed-header-wrapper,
 		.tu-table__fixed-body-wrapper,
