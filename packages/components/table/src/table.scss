@@ -357,7 +357,7 @@
 
 		& tbody td.tu-table__cell {
 			border-top: $--table-border;
-			background-color: $--table-row-hover-background-color;
+			background: $--background-color-hover-white;
 			color: $--table-font-color;
 		}
 	}
@@ -391,7 +391,7 @@
 		overflow: hidden;
 
 		& tbody td.tu-table__cell {
-			background-color: $--table-row-hover-background-color;
+			background-color: $--background-color-hover-white;
 			color: $--table-font-color;
 		}
 	}

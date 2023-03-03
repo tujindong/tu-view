@@ -81,6 +81,7 @@ module.exports = {
 					collapsable: false,
 					children: [
 						["../guide/tooltip.md", "Tooltip 文字提示"],
+						["../guide/popover.md", "Popover 弹出框"],
 						["../guide/modal.md", "Modal 模态框"],
 						["../guide/card.md", "Card 卡片"],
 						["../guide/scrollbar.md", "Scrollbar 区域滚动"],
