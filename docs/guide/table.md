@@ -1173,56 +1173,61 @@
 
 ```html
 <template>
-	<tu-button @click="resetDateFilter">清除日期过滤器</tu-button>
-	<tu-button
-		style="margin-left: 4px"
-		@click="clearFilter"
-		>清除所有过滤器</tu-button
-	>
-	<tu-table
-		ref="filterTable"
-		:data="tableData"
-		style="width: 100%"
-	>
-		<tu-table-column
-			prop="date"
-			label="日期"
-			sortable
-			width="180"
-			column-key="date"
-			:filters="[{text: '2016-05-01', value: '2016-05-01'}, {text: '2016-05-02', value: '2016-05-02'}, {text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-04', value: '2016-05-04'}]"
-			:filter-method="filterHandler"
+	<div>
+		<tu-table
+			ref="filterTable"
+			:data="tableData"
+			style="width: 100%"
 		>
-		</tu-table-column>
-		<tu-table-column
-			prop="name"
-			label="姓名"
-			width="180"
-		>
-		</tu-table-column>
-		<tu-table-column
-			prop="address"
-			label="地址"
-			:formatter="formatter"
-		>
-		</tu-table-column>
-		<tu-table-column
-			prop="tag"
-			label="标签"
-			width="100"
-			:filters="[{ text: '家', value: '家' }, { text: '公司', value: '公司' }]"
-			:filter-method="filterTag"
-			filter-placement="bottom-end"
-		>
-			<template slot-scope="scope">
-				<tu-tag
-					:type="scope.row.tag === '家' ? 'primary' : 'success'"
-					disable-transitions
-					>{{scope.row.tag}}</tu-tag
-				>
-			</template>
-		</tu-table-column>
-	</tu-table>
+			<tu-table-column
+				prop="date"
+				label="日期"
+				sortable
+				width="180"
+				column-key="date"
+				:filters="[{text: '2016-05-01', value: '2016-05-01'}, {text: '2016-05-02', value: '2016-05-02'}, {text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-04', value: '2016-05-04'}]"
+				:filter-method="filterHandler"
+			>
+			</tu-table-column>
+			<tu-table-column
+				prop="name"
+				label="姓名"
+				width="180"
+			>
+			</tu-table-column>
+			<tu-table-column
+				prop="address"
+				label="地址"
+				:formatter="formatter"
+			>
+			</tu-table-column>
+			<tu-table-column
+				prop="tag"
+				label="标签"
+				width="100"
+				:filters="[{ text: '家', value: '家' }, { text: '公司', value: '公司' }]"
+				:filter-method="filterTag"
+				filter-placement="bottom-end"
+			>
+				<template slot-scope="scope">
+					<tu-tag
+						effect="plain"
+						:color="scope.row.tag === '家' ? '#6d5dfc' : '#6bc43f'"
+						disable-transitions
+						>{{scope.row.tag}}</tu-tag
+					>
+				</template>
+			</tu-table-column>
+		</tu-table>
+		<div style="margin-top: 20px">
+			<tu-button @click="resetDateFilter">清除日期过滤器</tu-button>
+			<tu-button
+				style="margin-left: 4px"
+				@click="clearFilter"
+				>清除所有过滤器</tu-button
+			>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -1273,6 +1278,641 @@
 			filterHandler(value, row, column) {
 				const property = column["property"];
 				return row[property] === value;
+			},
+		},
+	};
+</script>
+```
+
+:::
+
+### 自定义列模板
+
+自定义列的显示内容，可组合其他组件使用。
+:::demo 通过 `Scoped slot` 可以获取到 row, column, $index 和 store（table 内部的状态管理）的数据，用法参考 demo。
+
+```html
+<template>
+	<tu-table
+		:data="tableData"
+		style="width: 100%"
+	>
+		<tu-table-column label="日期">
+			<template slot-scope="scope">
+				<i class="tu-icon-time-circle"></i>
+				<span style="margin-left: 10px">{{ scope.row.date }}</span>
+			</template>
+		</tu-table-column>
+		<tu-table-column label="姓名">
+			<template slot-scope="scope">
+				<tu-popover
+					trigger="hover"
+					placement="top"
+				>
+					<p>姓名: {{ scope.row.name }}</p>
+					<p>住址: {{ scope.row.address }}</p>
+					<div
+						slot="reference"
+						style="display: inline-block"
+					>
+						<tu-tag size="medium">{{ scope.row.name }}</tu-tag>
+					</div>
+				</tu-popover>
+			</template>
+		</tu-table-column>
+		<tu-table-column label="操作">
+			<template slot-scope="scope">
+				<tu-button
+					size="mini"
+					@click="handleEdit(scope.$index, scope.row)"
+					>编辑</tu-button
+				>
+				<tu-button
+					size="mini"
+					type="danger"
+					style="margin-left: 4px"
+					@click="handleDelete(scope.$index, scope.row)"
+					>删除</tu-button
+				>
+			</template>
+		</tu-table-column>
+	</tu-table>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				tableData: [
+					{
+						date: "2016-05-02",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1518 弄",
+					},
+					{
+						date: "2016-05-04",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1517 弄",
+					},
+					{
+						date: "2016-05-01",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1519 弄",
+					},
+					{
+						date: "2016-05-03",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1516 弄",
+					},
+				],
+			};
+		},
+		methods: {
+			handleEdit(index, row) {
+				console.log(index, row);
+			},
+			handleDelete(index, row) {
+				console.log(index, row);
+			},
+		},
+	};
+</script>
+```
+
+:::
+
+### 展开行
+
+当行内容过多并且不想显示横向滚动条时，可以使用 Table 展开行功能。
+:::demo 通过设置 type="expand" 和 `Scoped slot` 可以开启展开行功能，`tu-table-column` 的模板会被渲染成为展开行的内容，展开行可访问的属性与使用自定义列模板时的 `Scoped slot` 相同。
+
+```html
+<template>
+	<tu-table
+		:data="tableData"
+		style="width: 100%"
+	>
+		<tu-table-column type="expand">
+			<template slot-scope="props">
+				<tu-form
+					labtu-position="left"
+					inline
+					class="demo-table-expand"
+				>
+					<tu-form-item label="商品名称">
+						<span>{{ props.row.name }}</span>
+					</tu-form-item>
+					<tu-form-item label="所属店铺">
+						<span>{{ props.row.shop }}</span>
+					</tu-form-item>
+					<tu-form-item label="商品 ID">
+						<span>{{ props.row.id }}</span>
+					</tu-form-item>
+					<tu-form-item label="店铺 ID">
+						<span>{{ props.row.shopId }}</span>
+					</tu-form-item>
+					<tu-form-item label="商品分类">
+						<span>{{ props.row.category }}</span>
+					</tu-form-item>
+					<tu-form-item label="店铺地址">
+						<span>{{ props.row.address }}</span>
+					</tu-form-item>
+					<tu-form-item label="商品描述">
+						<span>{{ props.row.desc }}</span>
+					</tu-form-item>
+				</tu-form>
+			</template>
+		</tu-table-column>
+		<tu-table-column
+			label="商品 ID"
+			prop="id"
+		>
+		</tu-table-column>
+		<tu-table-column
+			label="商品名称"
+			prop="name"
+		>
+		</tu-table-column>
+		<tu-table-column
+			label="描述"
+			prop="desc"
+		>
+		</tu-table-column>
+	</tu-table>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				tableData: [
+					{
+						id: "12987122",
+						name: "好滋好味鸡蛋仔",
+						category: "江浙小吃、小吃零食",
+						desc: "荷兰优质淡奶，奶香浓而不腻",
+						address: "上海市普陀区真北路",
+						shop: "王小虎夫妻店",
+						shopId: "10333",
+					},
+					{
+						id: "12987123",
+						name: "好滋好味鸡蛋仔",
+						category: "江浙小吃、小吃零食",
+						desc: "荷兰优质淡奶，奶香浓而不腻",
+						address: "上海市普陀区真北路",
+						shop: "王小虎夫妻店",
+						shopId: "10333",
+					},
+					{
+						id: "12987125",
+						name: "好滋好味鸡蛋仔",
+						category: "江浙小吃、小吃零食",
+						desc: "荷兰优质淡奶，奶香浓而不腻",
+						address: "上海市普陀区真北路",
+						shop: "王小虎夫妻店",
+						shopId: "10333",
+					},
+					{
+						id: "12987126",
+						name: "好滋好味鸡蛋仔",
+						category: "江浙小吃、小吃零食",
+						desc: "荷兰优质淡奶，奶香浓而不腻",
+						address: "上海市普陀区真北路",
+						shop: "王小虎夫妻店",
+						shopId: "10333",
+					},
+				],
+			};
+		},
+	};
+</script>
+<style>
+	.demo-table-expand {
+		font-size: 0;
+	}
+	.demo-table-expand label {
+		width: 90px;
+		color: #9baacf;
+	}
+	.demo-table-expand .tu-form-item {
+		margin-right: 0;
+		margin-bottom: 0;
+		width: 50%;
+	}
+</style>
+```
+
+:::
+
+### 树形数据与懒加载
+
+:::demo 支持树类型的数据的显示。当 row 中包含 `children` 字段时，被视为树形数据。渲染树形数据时，必须要指定 `row-key`。支持子节点数据异步加载。设置 Table 的 `lazy` 属性为 true 与加载函数 `load` 。通过指定 row 中的 `hasChildren` 字段来指定哪些行是包含子节点。`children` 与 `hasChildren` 都可以通过 `tree-props` 配置。
+
+```html
+<template>
+	<div>
+		<tu-table
+			:data="tableData"
+			style="width: 100%;margin-bottom: 20px;"
+			row-key="id"
+			border
+			default-expand-all
+			:tree-props="{children: 'children', hasChildren: 'hasChildren'}"
+		>
+			<tu-table-column
+				prop="date"
+				label="日期"
+				sortable
+				width="180"
+			>
+			</tu-table-column>
+			<tu-table-column
+				prop="name"
+				label="姓名"
+				sortable
+				width="180"
+			>
+			</tu-table-column>
+			<tu-table-column
+				prop="address"
+				label="地址"
+			>
+			</tu-table-column>
+		</tu-table>
+
+		<tu-table
+			:data="tableData1"
+			style="width: 100%"
+			row-key="id"
+			border
+			lazy
+			:load="load"
+			:tree-props="{children: 'children', hasChildren: 'hasChildren'}"
+		>
+			<tu-table-column
+				prop="date"
+				label="日期"
+				width="180"
+			>
+			</tu-table-column>
+			<tu-table-column
+				prop="name"
+				label="姓名"
+				width="180"
+			>
+			</tu-table-column>
+			<tu-table-column
+				prop="address"
+				label="地址"
+			>
+			</tu-table-column>
+		</tu-table>
+	</div>
+</template>
+<script>
+	export default {
+		data() {
+			return {
+				tableData: [
+					{
+						id: 1,
+						date: "2016-05-02",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1518 弄",
+					},
+					{
+						id: 2,
+						date: "2016-05-04",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1517 弄",
+					},
+					{
+						id: 3,
+						date: "2016-05-01",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1519 弄",
+						children: [
+							{
+								id: 31,
+								date: "2016-05-01",
+								name: "王小虎",
+								address: "上海市普陀区金沙江路 1519 弄",
+							},
+							{
+								id: 32,
+								date: "2016-05-01",
+								name: "王小虎",
+								address: "上海市普陀区金沙江路 1519 弄",
+							},
+						],
+					},
+					{
+						id: 4,
+						date: "2016-05-03",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1516 弄",
+					},
+				],
+				tableData1: [
+					{
+						id: 1,
+						date: "2016-05-02",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1518 弄",
+					},
+					{
+						id: 2,
+						date: "2016-05-04",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1517 弄",
+					},
+					{
+						id: 3,
+						date: "2016-05-01",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1519 弄",
+						hasChildren: true,
+					},
+					{
+						id: 4,
+						date: "2016-05-03",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1516 弄",
+					},
+				],
+			};
+		},
+		methods: {
+			load(tree, treeNode, resolve) {
+				setTimeout(() => {
+					resolve([
+						{
+							id: 31,
+							date: "2016-05-01",
+							name: "王小虎",
+							address: "上海市普陀区金沙江路 1519 弄",
+						},
+						{
+							id: 32,
+							date: "2016-05-01",
+							name: "王小虎",
+							address: "上海市普陀区金沙江路 1519 弄",
+						},
+					]);
+				}, 1000);
+			},
+		},
+	};
+</script>
+```
+
+:::
+
+### 自定义表头
+
+表头支持自定义。
+
+:::demo 通过设置 [Scoped slot](https://cn.vuejs.org/v2/guide/components-slots.html#%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%92%E6%A7%BD) 来自定义表头。
+
+```html
+<template>
+	<tu-table
+		:data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
+		style="width: 100%"
+	>
+		<tu-table-column
+			label="Date"
+			prop="date"
+		>
+		</tu-table-column>
+		<tu-table-column
+			label="Name"
+			prop="name"
+		>
+		</tu-table-column>
+		<tu-table-column align="right">
+			<template
+				slot="header"
+				slot-scope="scope"
+			>
+				<tu-input
+					v-model="search"
+					size="mini"
+					placeholder="输入关键字搜索"
+				/>
+			</template>
+			<template slot-scope="scope">
+				<tu-button
+					size="mini"
+					@click="handleEdit(scope.$index, scope.row)"
+					>编辑</tu-button
+				>
+				<tu-button
+					size="mini"
+					type="danger"
+					style="margin-left: 4px"
+					@click="handleDelete(scope.$index, scope.row)"
+					>删除</tu-button
+				>
+			</template>
+		</tu-table-column>
+	</tu-table>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				tableData: [
+					{
+						date: "2016-05-02",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1518 弄",
+					},
+					{
+						date: "2016-05-04",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1517 弄",
+					},
+					{
+						date: "2016-05-01",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1519 弄",
+					},
+					{
+						date: "2016-05-03",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1516 弄",
+					},
+				],
+				search: "",
+			};
+		},
+		methods: {
+			handleEdit(index, row) {
+				console.log(index, row);
+			},
+			handleDelete(index, row) {
+				console.log(index, row);
+			},
+		},
+	};
+</script>
+```
+
+:::
+
+### 表尾合计行
+
+若表格展示的是各类数字，可以在表尾显示各列的合计。
+:::demo 将`show-summary`设置为`true`就会在表格尾部展示合计行。默认情况下，对于合计行，第一列不进行数据求合操作，而是显示「合计」二字（可通过`sum-text`配置），其余列会将本列所有数值进行求合操作，并显示出来。当然，你也可以定义自己的合计逻辑。使用`summary-method`并传入一个方法，返回一个数组，这个数组中的各项就会显示在合计行的各列中，具体可以参考本例中的第二个表格。
+
+```html
+<template>
+	<tu-table
+		:data="tableData"
+		border
+		show-summary
+		style="width: 100%"
+	>
+		<tu-table-column
+			prop="id"
+			label="ID"
+			width="180"
+		>
+		</tu-table-column>
+		<tu-table-column
+			prop="name"
+			label="姓名"
+		>
+		</tu-table-column>
+		<tu-table-column
+			prop="amount1"
+			sortable
+			label="数值 1"
+		>
+		</tu-table-column>
+		<tu-table-column
+			prop="amount2"
+			sortable
+			label="数值 2"
+		>
+		</tu-table-column>
+		<tu-table-column
+			prop="amount3"
+			sortable
+			label="数值 3"
+		>
+		</tu-table-column>
+	</tu-table>
+
+	<tu-table
+		:data="tableData"
+		border
+		height="200"
+		:summary-method="getSummaries"
+		show-summary
+		style="width: 100%; margin-top: 20px"
+	>
+		<tu-table-column
+			prop="id"
+			label="ID"
+			width="180"
+		>
+		</tu-table-column>
+		<tu-table-column
+			prop="name"
+			label="姓名"
+		>
+		</tu-table-column>
+		<tu-table-column
+			prop="amount1"
+			label="数值 1（元）"
+		>
+		</tu-table-column>
+		<tu-table-column
+			prop="amount2"
+			label="数值 2（元）"
+		>
+		</tu-table-column>
+		<tu-table-column
+			prop="amount3"
+			label="数值 3（元）"
+		>
+		</tu-table-column>
+	</tu-table>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				tableData: [
+					{
+						id: "12987122",
+						name: "王小虎",
+						amount1: "234",
+						amount2: "3.2",
+						amount3: 10,
+					},
+					{
+						id: "12987123",
+						name: "王小虎",
+						amount1: "165",
+						amount2: "4.43",
+						amount3: 12,
+					},
+					{
+						id: "12987124",
+						name: "王小虎",
+						amount1: "324",
+						amount2: "1.9",
+						amount3: 9,
+					},
+					{
+						id: "12987125",
+						name: "王小虎",
+						amount1: "621",
+						amount2: "2.2",
+						amount3: 17,
+					},
+					{
+						id: "12987126",
+						name: "王小虎",
+						amount1: "539",
+						amount2: "4.1",
+						amount3: 15,
+					},
+				],
+			};
+		},
+		methods: {
+			getSummaries(param) {
+				const { columns, data } = param;
+				const sums = [];
+				columns.forEach((column, index) => {
+					if (index === 0) {
+						sums[index] = "总价";
+						return;
+					}
+					const values = data.map(item => Number(item[column.property]));
+					if (!values.every(value => isNaN(value))) {
+						sums[index] = values.reduce((prev, curr) => {
+							const value = Number(curr);
+							if (!isNaN(value)) {
+								return prev + curr;
+							} else {
+								return prev;
+							}
+						}, 0);
+						sums[index] += " 元";
+					} else {
+						sums[index] = "N/A";
+					}
+				});
+
+				return sums;
 			},
 		},
 	};

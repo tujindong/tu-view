@@ -34,6 +34,18 @@
 		<DemoBadge />
 		<DemoModal />
 		<DemoTable />
+		<DemoPopconfrim />
+		<DemoCarousel />
+		<DemoDrawer />
+		<DemoCalendar />
+		<DemoTimeline />
+		<DemoDivider />
+		<DemoCollapse />
+		<DemoSteps />
+		<DemoBreadcrumb />
+		<DemoMessageBox />
+		<DemoAvatar />
+		<DemoPopover />
 	</div>
 </template>
 
@@ -72,6 +84,18 @@
 	import DemoTreeSelect from "./components/demo-treeSelect";
 	import DemoBadge from "./components/demo-badge";
 	import DemoModal from "./components/demo-modal";
+	import DemoPopconfrim from "./components/demo-popconfrim";
+	import DemoCarousel from "./components/demo-carousel.vue";
+	import DemoDrawer from "./components/demo-drawer.vue";
+	import DemoCalendar from "./components/demo-calendar.vue";
+	import DemoTimeline from "./components/demo-timeline.vue";
+	import DemoDivider from "./components/demo-divider.vue";
+	import DemoCollapse from "./components/demo-collapse.vue";
+	import DemoSteps from "./components/demo-steps.vue";
+	import DemoBreadcrumb from "./components/demo-breadcrumb.vue";
+	import DemoMessageBox from "./components/demo-messageBox.vue";
+	import DemoAvatar from "./components/demo-avatar.vue";
+	import DemoPopover from "./components/demo-popover";
 
 	export default {
 		components: {
@@ -109,6 +133,18 @@
 			DemoTreeSelect,
 			DemoBadge,
 			DemoModal,
+			DemoPopover,
+			DemoPopconfrim,
+			DemoCarousel,
+			DemoDrawer,
+			DemoCalendar,
+			DemoTimeline,
+			DemoDivider,
+			DemoCollapse,
+			DemoSteps,
+			DemoBreadcrumb,
+			DemoMessageBox,
+			DemoAvatar,
 		},
 
 		data() {

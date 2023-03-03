@@ -339,7 +339,7 @@ export default {
 			const rowClasses = this.getRowClass(row, $index);
 			let display = true;
 			if (treeRowData) {
-				rowClasses.push("tu-table__row--levtu-" + treeRowData.level);
+				rowClasses.push("tu-table__row--level-" + treeRowData.level);
 				display = treeRowData.display;
 			}
 			let displayStyle = display

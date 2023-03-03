@@ -22,14 +22,20 @@
 				</tu-scrollbar>
 			</div>
 			<div class="tu-table-filter__bottom">
-				<button
+				<tu-button
+					size="mini"
+					@click="handleReset"
+					>{{ t("tu.table.resetFilter") }}
+				</tu-button>
+				<tu-button
+					type="primary"
+					size="mini"
 					@click="handleConfirm"
-					:class="{ 'is-disabled': filteredValue.length === 0 }"
+					:class="['tu-table-filter__confirm-btn', { 'is-disabled': filteredValue.length === 0 }]"
 					:disabled="filteredValue.length === 0"
 				>
 					{{ t("tu.table.confirmFilter") }}
-				</button>
-				<button @click="handleReset">{{ t("tu.table.resetFilter") }}</button>
+				</tu-button>
 			</div>
 		</div>
 		<div
@@ -67,6 +73,7 @@
 	import Locale from "@packages/src/mixins/locale";
 	import Clickoutside from "@packages/src/utils/clickoutside";
 	import Dropdown from "./dropdown";
+	import { getBackground } from "@packages/src/utils/get-background";
 
 	export default {
 		name: "TuTableFilterPanel",
@@ -83,49 +90,6 @@
 			placement: {
 				type: String,
 				default: "bottom-end",
-			},
-		},
-
-		methods: {
-			isActive(filter) {
-				return filter.value === this.filterValue;
-			},
-
-			handleOutsideClick() {
-				setTimeout(() => {
-					this.showPopper = false;
-				}, 16);
-			},
-
-			handleConfirm() {
-				this.confirmFilter(this.filteredValue);
-				this.handleOutsideClick();
-			},
-
-			handleReset() {
-				this.filteredValue = [];
-				this.confirmFilter(this.filteredValue);
-				this.handleOutsideClick();
-			},
-
-			handleSelect(filterValue) {
-				this.filterValue = filterValue;
-
-				if (typeof filterValue !== "undefined" && filterValue !== null) {
-					this.confirmFilter(this.filteredValue);
-				} else {
-					this.confirmFilter([]);
-				}
-
-				this.handleOutsideClick();
-			},
-
-			confirmFilter(filteredValue) {
-				this.table.store.commit("filterChange", {
-					column: this.column,
-					values: filteredValue,
-				});
-				this.table.store.updateAllSelected();
 			},
 		},
 
@@ -205,6 +169,58 @@
 					Dropdown.close(this);
 				}
 			});
+			this.setBackgroundColor();
+		},
+
+		methods: {
+			isActive(filter) {
+				return filter.value === this.filterValue;
+			},
+
+			handleOutsideClick() {
+				setTimeout(() => {
+					this.showPopper = false;
+				}, 16);
+			},
+
+			handleConfirm() {
+				this.confirmFilter(this.filteredValue);
+				this.handleOutsideClick();
+			},
+
+			handleReset() {
+				this.filteredValue = [];
+				this.confirmFilter(this.filteredValue);
+				this.handleOutsideClick();
+			},
+
+			handleSelect(filterValue) {
+				this.filterValue = filterValue;
+
+				if (typeof filterValue !== "undefined" && filterValue !== null) {
+					this.confirmFilter(this.filteredValue);
+				} else {
+					this.confirmFilter([]);
+				}
+
+				this.handleOutsideClick();
+			},
+
+			confirmFilter(filteredValue) {
+				this.table.store.commit("filterChange", {
+					column: this.column,
+					values: filteredValue,
+				});
+				this.table.store.updateAllSelected();
+			},
+
+			setBackgroundColor() {
+				this.$nextTick(() => {
+					const { popperElm, referenceElm } = this;
+					const background = getBackground(referenceElm);
+					if (background) popperElm.style.background = background;
+				});
+			},
 		},
 	};
 </script>

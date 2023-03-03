@@ -101,6 +101,7 @@ $--border-radius-zero: 0;
 -------------------------- */
 $--box-shadow-concave: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white; //凹
 $--box-shadow-convex: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white; //凸
+$--box-shadow-light: 0 2px 12px 0 $--color-greyLight-2;
 
 /* Button
 -------------------------- */
@@ -529,6 +530,17 @@ $--table-row-hover-background-color: rgba($--color-white, 0.25);
 $--table-current-row-background-color: $--color-white;
 $--table-header-background-color: $--color-white;
 $--table-fixed-box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+
+/* Popover
+-------------------------- */
+$--popover-background-color: $--color-white;
+$--popover-font-size: $--font-size-base;
+$--popover-border-color: $--border-color-lighter;
+$--popover-arrow-size: 6px;
+$--popover-padding: 12px;
+$--popover-padding-large: 18px 20px;
+$--popover-title-font-size: 16px;
+$--popover-title-font-color: $--color-text-primary;
 
 /* Break-point
 --------------------------*/

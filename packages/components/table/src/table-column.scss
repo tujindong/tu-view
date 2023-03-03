@@ -1,0 +1,76 @@
+@import "~@packages/style/common/mixin.scss";
+
+@include b(table-column) {
+	@include m(selection) {
+		.cell {
+			padding-left: 14px;
+			padding-right: 14px;
+		}
+	}
+}
+
+@include b(table-filter) {
+	border: solid 1px $--border-color-lighter;
+	border-radius: 2px;
+	box-shadow: $--box-shadow-convex;
+	box-sizing: border-box;
+	margin: 2px 0;
+
+	@include e(list) {
+		padding: 5px 0;
+		margin: 0;
+		list-style: none;
+		min-width: 100px;
+	}
+
+	@include e(list-item) {
+		line-height: 36px;
+		padding: 0 10px;
+		cursor: pointer;
+		font-size: $--font-size-base;
+
+		&:hover {
+			// background-color: $--dropdown-menuItem-hover-fill;
+			// color: $--dropdown-menuItem-hover-color;
+		}
+
+		@include when(active) {
+			background-color: $--color-primary;
+			color: $--color-white;
+		}
+	}
+
+	@include e(content) {
+		min-width: 100px;
+	}
+
+	@include e(bottom) {
+		border-top: 1px solid $--border-color-base;
+		padding: 4px;
+		height: 28px;
+		line-height: 28px;
+		text-align: right;
+		.tu-table-filter__confirm-btn {
+			margin-left: 8px;
+		}
+	}
+
+	@include e(wrap) {
+		max-height: 280px;
+	}
+
+	@include e(checkbox-group) {
+		padding: 10px;
+
+		label.tu-checkbox {
+			display: flex;
+			margin-right: 5px;
+			margin-bottom: 12px;
+			margin-left: 5px;
+		}
+
+		.tu-checkbox:last-child {
+			margin-bottom: 0;
+		}
+	}
+}

@@ -15,6 +15,7 @@
 	tr td {
 		border: none;
 	}
+
 	tr,
 	tr:nth-child(2n),
 	tr:nth-child(2n + 1) {
@@ -46,7 +47,7 @@
 	@include e(expand-icon) {
 		position: relative;
 		cursor: pointer;
-		color: #666;
+		color: $--color-text-primary;
 		font-size: 12px;
 		transition: transform 0.2s ease-in-out;
 		height: 20px;
@@ -156,6 +157,7 @@
 
 	@include m(small) {
 		font-size: 12px;
+
 		.tu-table__cell {
 			padding: 8px 0;
 		}
@@ -163,6 +165,7 @@
 
 	@include m(mini) {
 		font-size: 12px;
+
 		.tu-table__cell {
 			padding: 6px 0;
 		}
@@ -373,6 +376,7 @@
 
 	@include e(footer-wrapper) {
 		margin-top: -1px;
+
 		td.tu-table__cell {
 			border-top: $--table-border;
 		}
@@ -435,7 +439,7 @@
 		flex-direction: column;
 		align-items: center;
 		height: 34px;
-		width: 24px;
+		width: 22px;
 		vertical-align: middle;
 		cursor: pointer;
 		overflow: initial;
@@ -452,11 +456,21 @@
 		&.ascending {
 			border-bottom-color: $--color-text-placeholder;
 			top: 5px;
+			transition: border-color 0.3s;
+
+			&:hover {
+				border-bottom-color: $--color-text-regular;
+			}
 		}
 
 		&.descending {
 			border-top-color: $--color-text-placeholder;
 			bottom: 7px;
+			transition: border-color 0.3s;
+
+			&:hover {
+				border-top-color: $--color-text-regular;
+			}
 		}
 	}
 
@@ -528,11 +542,16 @@
 		display: inline-block;
 		line-height: 34px;
 		cursor: pointer;
+		margin-left: 2px;
 
 		& i {
 			color: $--color-text-regular;
 			font-size: 12px;
-			transform: scale(0.75);
+			transition: color 0.3s;
+
+			&:hover {
+				color: $--color-primary;
+			}
 		}
 	}
 
@@ -564,6 +583,10 @@
 			height: 20px;
 			text-align: center;
 			margin-right: 3px;
+			> i {
+				width: 12px;
+				height: 12px;
+			}
 		}
 	}
 }

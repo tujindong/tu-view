@@ -1,29 +1,47 @@
 <template>
 	<div>
-		<tu-button @click="resetDateFilter">清除日期过滤器</tu-button>
-		<tu-button
-			style="margin-left: 4px"
-			@click="clearFilter"
-			>清除所有过滤器</tu-button
-		>
 		<tu-table
-			ref="filterTable"
 			:data="tableData"
-			style="width: 100%"
+			style="width: 100%; margin-bottom: 20px"
+			row-key="id"
+			border
+			default-expand-all
+			:tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
 		>
 			<tu-table-column
 				prop="date"
 				label="日期"
 				sortable
 				width="180"
-				column-key="date"
-				:filters="[
-					{ text: '2016-05-01', value: '2016-05-01' },
-					{ text: '2016-05-02', value: '2016-05-02' },
-					{ text: '2016-05-03', value: '2016-05-03' },
-					{ text: '2016-05-04', value: '2016-05-04' },
-				]"
-				:filter-method="filterHandler"
+			>
+			</tu-table-column>
+			<tu-table-column
+				prop="name"
+				label="姓名"
+				sortable
+				width="180"
+			>
+			</tu-table-column>
+			<tu-table-column
+				prop="address"
+				label="地址"
+			>
+			</tu-table-column>
+		</tu-table>
+
+		<tu-table
+			:data="tableData1"
+			style="width: 100%"
+			row-key="id"
+			border
+			lazy
+			:load="load"
+			:tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
+		>
+			<tu-table-column
+				prop="date"
+				label="日期"
+				width="180"
 			>
 			</tu-table-column>
 			<tu-table-column
@@ -35,80 +53,102 @@
 			<tu-table-column
 				prop="address"
 				label="地址"
-				:formatter="formatter"
 			>
-			</tu-table-column>
-			<tu-table-column
-				prop="tag"
-				label="标签"
-				width="100"
-				:filters="[
-					{ text: '家', value: '家' },
-					{ text: '公司', value: '公司' },
-				]"
-				:filter-method="filterTag"
-				filter-placement="bottom-end"
-			>
-				<template slot-scope="scope">
-					<tu-tag
-						:type="scope.row.tag === '家' ? 'primary' : 'success'"
-						disable-transitions
-						>{{ scope.row.tag }}</tu-tag
-					>
-				</template>
 			</tu-table-column>
 		</tu-table>
 	</div>
 </template>
-
 <script>
 	export default {
 		data() {
 			return {
 				tableData: [
 					{
+						id: 1,
 						date: "2016-05-02",
 						name: "王小虎",
 						address: "上海市普陀区金沙江路 1518 弄",
-						tag: "家",
 					},
 					{
+						id: 2,
 						date: "2016-05-04",
 						name: "王小虎",
 						address: "上海市普陀区金沙江路 1517 弄",
-						tag: "公司",
 					},
 					{
+						id: 3,
 						date: "2016-05-01",
 						name: "王小虎",
 						address: "上海市普陀区金沙江路 1519 弄",
-						tag: "家",
+						children: [
+							{
+								id: 31,
+								date: "2016-05-01",
+								name: "王小虎",
+								address: "上海市普陀区金沙江路 1519 弄",
+							},
+							{
+								id: 32,
+								date: "2016-05-01",
+								name: "王小虎",
+								address: "上海市普陀区金沙江路 1519 弄",
+							},
+						],
 					},
 					{
+						id: 4,
 						date: "2016-05-03",
 						name: "王小虎",
 						address: "上海市普陀区金沙江路 1516 弄",
-						tag: "公司",
+					},
+				],
+				tableData1: [
+					{
+						id: 1,
+						date: "2016-05-02",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1518 弄",
+					},
+					{
+						id: 2,
+						date: "2016-05-04",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1517 弄",
+					},
+					{
+						id: 3,
+						date: "2016-05-01",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1519 弄",
+						hasChildren: true,
+					},
+					{
+						id: 4,
+						date: "2016-05-03",
+						name: "王小虎",
+						address: "上海市普陀区金沙江路 1516 弄",
 					},
 				],
 			};
 		},
 		methods: {
-			resetDateFilter() {
-				this.$refs.filterTable.clearFilter("date");
-			},
-			clearFilter() {
-				this.$refs.filterTable.clearFilter();
-			},
-			formatter(row, column) {
-				return row.address;
-			},
-			filterTag(value, row) {
-				return row.tag === value;
-			},
-			filterHandler(value, row, column) {
-				const property = column["property"];
-				return row[property] === value;
+			load(tree, treeNode, resolve) {
+				setTimeout(() => {
+					resolve([
+						{
+							id: 31,
+							date: "2016-05-01",
+							name: "王小虎",
+							address: "上海市普陀区金沙江路 1519 弄",
+						},
+						{
+							id: 32,
+							date: "2016-05-01",
+							name: "王小虎",
+							address: "上海市普陀区金沙江路 1519 弄",
+						},
+					]);
+				}, 1000);
 			},
 		},
 	};

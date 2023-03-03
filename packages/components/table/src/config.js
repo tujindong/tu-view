@@ -88,7 +88,7 @@ export const cellForced = {
 				<div
 					class={classes}
 					on-click={callback}>
-					<i class="tu-icon tu-icon-arrow-right"></i>
+					<i class="tu-icon tu-icon-right"></i>
 				</div>
 			);
 		},
@@ -126,15 +126,15 @@ export function treeCellPrefix(h, { row, treeNode, store }) {
 			"tu-table__expand-icon",
 			treeNode.expanded ? "tu-table__expand-icon--expanded" : "",
 		];
-		let iconClasses = ["tu-icon-arrow-right"];
+		let iconName = "right";
 		if (treeNode.loading) {
-			iconClasses = ["tu-icon-loading"];
+			iconName = "loading";
 		}
 		ele.push(
 			<div
 				class={expandClasses}
 				on-click={callback}>
-				<i class={iconClasses}></i>
+				<tu-icon name={iconName}></tu-icon>
 			</div>
 		);
 	} else {

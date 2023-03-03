@@ -46,6 +46,19 @@ import Tree from "./components/tree";
 import TreeSelect from "./components/tree-select";
 import Badge from "./components/badge";
 import Modal from "./components/modal";
+import Popover from "./components/popover";
+import Popconfirm from "./components/popconfirm";
+import Carousel from "./components/carousel";
+import Drawer from "./components/drawer";
+import Image from "./components/image";
+import Calendar from "./components/calendar";
+import Timeline from "./components/timeline";
+import Divider from "./components/divider";
+import Collapse from "./components/collapse";
+import Steps from "./components/steps";
+import Breadcrumb from "./components/breadcrumb";
+import MessageBox from "./components/messageBox";
+import Avatar from "./components/avatar";
 
 const componentsList = [
 	Button,
@@ -95,6 +108,19 @@ const componentsList = [
 	TreeSelect,
 	Badge,
 	Modal,
+	Popover,
+	Popconfirm,
+	Carousel,
+	Drawer,
+	Image,
+	Calendar,
+	Timeline,
+	Divider,
+	Collapse,
+	Steps,
+	Breadcrumb,
+	MessageBox,
+	Avatar,
 ];
 
 const install = function (Vue, opts = {}) {

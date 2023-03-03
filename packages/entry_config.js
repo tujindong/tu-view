@@ -193,5 +193,57 @@ module.exports = {
 			name: "modal",
 			author: "tujindong",
 		},
+		{
+			name: "popover",
+			author: "tujindong",
+		},
+		{
+			name: "popconfirm",
+			author: "tujindong",
+		},
+		{
+			name: "carousel",
+			author: "tujindong",
+		},
+		{
+			name: "drawer",
+			author: "tujindong",
+		},
+		{
+			name: "image",
+			author: "tujindong",
+		},
+		{
+			name: "calendar",
+			author: "tujindong",
+		},
+		{
+			name: "timeline",
+			author: "tujindong",
+		},
+		{
+			name: "divider",
+			author: "tujindong",
+		},
+		{
+			name: "collapse",
+			author: "tujindong",
+		},
+		{
+			name: "steps",
+			author: "tujindong",
+		},
+		{
+			name: "breadcrumb",
+			author: "tujindong",
+		},
+		{
+			name: "messageBox",
+			author: "tujindong",
+		},
+		{
+			name: "avatar",
+			author: "tujindong",
+		},
 	],
 };
