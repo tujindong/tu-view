@@ -27,10 +27,7 @@
 					:class="['tu-input__icon', 'tu-icon-search']"
 				></i>
 			</tu-input>
-			<tu-scrollbar
-				tag="div"
-				class="tu-transfer-panel__wrapper"
-			>
+			<div class="tu-transfer-panel__wrapper">
 				<tu-checkbox-group
 					v-model="checked"
 					v-show="!hasNoMatch && data.length > 0"
@@ -60,7 +57,7 @@
 				>
 					{{ t("tu.transfer.noData") }}
 				</p>
-			</tu-scrollbar>
+			</div>
 		</div>
 
 		<p

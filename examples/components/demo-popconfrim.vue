@@ -6,6 +6,13 @@
 		<tu-popconfirm title="这是一段内容确定删除吗？">
 			<tu-button slot="reference">删除</tu-button>
 		</tu-popconfirm>
+		<tu-popconfirm title="这是一段内容确定删除吗？">
+			<tu-button
+				type="primary"
+				slot="reference"
+				>删除</tu-button
+			>
+		</tu-popconfirm>
 	</div>
 </template>
 

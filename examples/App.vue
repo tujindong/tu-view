@@ -34,7 +34,6 @@
 		<DemoBadge />
 		<DemoModal />
 		<DemoTable />
-		<DemoPopconfrim />
 		<DemoCarousel />
 		<DemoDrawer />
 		<DemoCalendar />
@@ -46,6 +45,7 @@
 		<DemoMessageBox />
 		<DemoAvatar />
 		<DemoPopover />
+		<DemoPopconfrim />
 	</div>
 </template>
 

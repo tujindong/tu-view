@@ -27,7 +27,10 @@
 			class="tu-popover__reference-wrapper"
 			ref="wrapper"
 		>
-			<slot name="reference"></slot>
+			<slot
+				name="reference"
+				ref="reference"
+			></slot>
 		</span>
 	</span>
 </template>
@@ -37,6 +40,7 @@
 	import { on, off } from "@packages/src/utils/dom";
 	import { addClass, removeClass } from "@packages/src/utils/dom";
 	import { generateId } from "@packages/src/utils/util";
+	import { getBackground, getStyle } from "@packages/src/utils/get-background";
 
 	export default {
 		name: "TuPopover",
@@ -93,6 +97,7 @@
 				}
 				if (val) {
 					this.$emit("show");
+					this.setBackgroundColor();
 				} else {
 					this.$emit("hide");
 				}
@@ -262,6 +267,15 @@
 			cleanup() {
 				if (this.openDelay || this.closeDelay) {
 					clearTimeout(this._timer);
+				}
+			},
+
+			setBackgroundColor() {
+				const el = this.$slots.reference[0].elm || {};
+				if (el && el.parentElement) {
+					const color = getBackground(el.parentElement);
+					this.$refs.popper.style.backgroundColor = color;
+					this.$refs.popper.style.borderColor = color;
 				}
 			},
 		},

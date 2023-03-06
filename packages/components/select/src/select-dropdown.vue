@@ -77,8 +77,8 @@
 
 		methods: {
 			setBackgroundColor() {
-				const background = getBackground(this.referenceElm);
-				this.$refs.dropdown.style.background = background;
+				const backgroundColor = getBackground(this.referenceElm);
+				if (backgroundColor) this.$refs.dropdown.style.backgroundColor = backgroundColor;
 			},
 		},
 	};

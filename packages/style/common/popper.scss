@@ -30,13 +30,13 @@
 		bottom: -$--popover-arrow-size;
 		left: 50%;
 		margin-right: #{$--tooltip-arrow-size / 2};
-		border-top-color: $--popover-border-color;
+		border-top-color: inherit;
 		border-bottom-width: 0;
 
 		&::after {
 			bottom: 1px;
 			margin-left: -$--popover-arrow-size;
-			border-top-color: $--popover-background-color;
+			border-top-color: inherit;
 			border-bottom-width: 0;
 		}
 	}
@@ -50,13 +50,13 @@
 		left: 50%;
 		margin-right: #{$--tooltip-arrow-size / 2};
 		border-top-width: 0;
-		border-bottom-color: $--popover-border-color;
+		border-bottom-color: inherit;
 
 		&::after {
 			top: 1px;
 			margin-left: -$--popover-arrow-size;
 			border-top-width: 0;
-			border-bottom-color: $--popover-background-color;
+			border-bottom-color: inherit;
 		}
 	}
 
@@ -68,13 +68,13 @@
 		top: 50%;
 		left: -$--popover-arrow-size;
 		margin-bottom: #{$--tooltip-arrow-size / 2};
-		border-right-color: $--popover-border-color;
+		border-right-color: inherit;
 		border-left-width: 0;
 
 		&::after {
 			bottom: -$--popover-arrow-size;
 			left: 1px;
-			border-right-color: $--popover-background-color;
+			border-right-color: inherit;
 			border-left-width: 0;
 		}
 	}
@@ -88,14 +88,14 @@
 		right: -$--popover-arrow-size;
 		margin-bottom: #{$--tooltip-arrow-size / 2};
 		border-right-width: 0;
-		border-left-color: $--popover-border-color;
+		border-left-color: inherit;
 
 		&::after {
 			right: 1px;
 			bottom: -$--popover-arrow-size;
 			margin-left: -$--popover-arrow-size;
 			border-right-width: 0;
-			border-left-color: $--popover-background-color;
+			border-left-color: inherit;
 		}
 	}
 }
