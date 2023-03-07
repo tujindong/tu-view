@@ -249,5 +249,9 @@ module.exports = {
 			name: "avatar",
 			author: "tujindong",
 		},
+		{
+			name: "message-box",
+			author: "tujindong",
+		},
 	],
 };

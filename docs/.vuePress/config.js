@@ -74,7 +74,10 @@ module.exports = {
 				{
 					title: "通知组件",
 					collapsable: false,
-					children: [["../guide/message.md", "Message 消息通知"]],
+					children: [
+						["../guide/message.md", "Message 消息通知"],
+						["../guide/message-box.md", "MessageBox 弹框"],
+					],
 				},
 				{
 					title: "其他组件",

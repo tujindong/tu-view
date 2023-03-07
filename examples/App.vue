@@ -40,12 +40,12 @@
 		<DemoCollapse />
 		<DemoSteps />
 		<DemoBreadcrumb />
-		<DemoMessageBox />
 		<DemoAvatar />
 		<DemoPopover />
 		<DemoPopconfrim />
 		<DemoTimeline />
 		<DemoDrawer />
+		<DemoMessageBox />
 	</div>
 </template>
 

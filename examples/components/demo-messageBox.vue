@@ -1,29 +1,29 @@
 <template>
-	<div class="demo-icon-wrapper">
-		<h2>messageBox</h2>
-		<br />
-		<p>基本配置</p>
-		<tu-button
-			type="text"
-			@click="open"
-			>点击打开 Message Box</tu-button
-		>
-	</div>
+	<tu-button @click="open">点击打开 Message Box</tu-button>
 </template>
 
 <script>
 	export default {
 		methods: {
 			open() {
-				this.$alert("这是一段内容", "标题名称", {
+				this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
 					confirmButtonText: "确定",
-					callback: action => {
+					cancelButtonText: "取消",
+					type: "warning",
+					center: true,
+				})
+					.then(() => {
+						this.$message({
+							type: "success",
+							message: "删除成功!",
+						});
+					})
+					.catch(() => {
 						this.$message({
 							type: "info",
-							message: `action: ${action}`,
+							message: "已取消删除",
 						});
-					},
-				});
+					});
 			},
 		},
 	};

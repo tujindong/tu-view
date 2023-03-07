@@ -58,7 +58,7 @@ import Divider from "./components/divider";
 import Collapse from "./components/collapse";
 import Steps from "./components/steps";
 import Breadcrumb from "./components/breadcrumb";
-import MessageBox from "./components/messageBox";
+import MessageBox from "./components/message-box";
 import Avatar from "./components/avatar";
 
 const componentsList = [
@@ -132,6 +132,14 @@ const install = function (Vue, opts = {}) {
 		Vue.component(component.name, component);
 	});
 
+	Vue.prototype.$message = Message;
+
+	// Vue.prototype.$loading = Loading.service;
+	Vue.prototype.$msgbox = MessageBox;
+	Vue.prototype.$alert = MessageBox.alert;
+	Vue.prototype.$confirm = MessageBox.confirm;
+	Vue.prototype.$prompt = MessageBox.prompt;
+	// Vue.prototype.$notify = Notification;
 	Vue.prototype.$message = Message;
 };
 

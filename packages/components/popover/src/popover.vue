@@ -40,7 +40,7 @@
 	import { on, off } from "@packages/src/utils/dom";
 	import { addClass, removeClass } from "@packages/src/utils/dom";
 	import { generateId } from "@packages/src/utils/util";
-	import { getBackground, getStyle } from "@packages/src/utils/get-background";
+	import { getBackground } from "@packages/src/utils/get-background";
 
 	export default {
 		name: "TuPopover",

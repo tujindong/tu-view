@@ -13,6 +13,7 @@ $--color-transition-base: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) !defau
 
 /* color
 -------------------------- */
+$--color-background: #e4ebf5;
 $--color-white: #ffffff;
 $--color-black: #000000;
 $--color-greyLight-1: #e4ebf5;
@@ -549,6 +550,23 @@ $--timeline-node-size-normal: 12px;
 $--timeline-node-size-large: 14px;
 $--timeline-node-color: $--color-greyLight-3;
 $--timeline-border-color: $--border-color-base;
+
+/* MessageBox
+-------------------------- */
+$--messagebox-title-color: $--color-text-primary;
+$--messagebox-width: 420px;
+$--messagebox-border-radius: 4px;
+$--messagebox-font-size: $--font-size-base;
+$--messagebox-content-font-size: $--font-size-base;
+$--messagebox-content-color: $--color-text-regular;
+$--messagebox-error-font-size: 12px;
+$--messagebox-padding-primary: 16px;
+$--messagebox-padding-horizontal: 18px;
+$--messagebox-padding-vertical: 12px;
+$--messagebox-success-color: $--color-success;
+$--messagebox-info-color: $--color-greyDark;
+$--messagebox-warning-color: $--color-warning;
+$--messagebox-danger-color: $--color-danger;
 
 /* Break-point
 --------------------------*/
