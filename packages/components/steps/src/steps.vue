@@ -3,6 +3,8 @@
 </template>
 
 <script>
+	import Migrating from "@packages/src/mixins/migrating";
+
 	export default {
 		name: "TuSteps",
 	};

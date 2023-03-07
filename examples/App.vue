@@ -13,7 +13,6 @@
 		<DemoTag />
 		<DemoLayout />
 		<DemoScrollbar />
-		<DemoForm />
 		<DemoDatePicker />
 		<DemoTimePicker />
 		<DemoDateTimePicker />
@@ -38,7 +37,6 @@
 		<DemoCalendar />
 		<DemoDivider />
 		<DemoCollapse />
-		<DemoSteps />
 		<DemoBreadcrumb />
 		<DemoAvatar />
 		<DemoPopover />
@@ -46,6 +44,8 @@
 		<DemoTimeline />
 		<DemoDrawer />
 		<DemoMessageBox />
+		<DemoSteps />
+		<DemoForm />
 	</div>
 </template>
 

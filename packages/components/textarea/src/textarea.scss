@@ -6,7 +6,6 @@
 	display: inline-flex;
 	vertical-align: bottom;
 	width: 100%;
-	font-family: inherit;
 
 	@include when(disabled) {
 		cursor: not-allowed;

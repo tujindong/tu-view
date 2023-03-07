@@ -70,6 +70,10 @@
 			visibleArrow: {
 				default: true,
 			},
+			placement: {
+				type: String,
+				default: "top",
+			},
 			arrowOffset: {
 				type: Number,
 				default: 0,
