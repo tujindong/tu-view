@@ -1,1 +1,229 @@
 @import "~@packages/style/common/mixin.scss";
+
+@keyframes tu-drawer-fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@mixin drawer-animation($direction) {
+	@keyframes #{$direction}-drawer-in {
+		0% {
+			@if $direction == ltr {
+				transform: translate(-100%, 0px);
+			}
+
+			@if $direction == rtl {
+				transform: translate(100%, 0px);
+			}
+
+			@if $direction == ttb {
+				transform: translate(0px, -100%);
+			}
+
+			@if $direction == btt {
+				transform: translate(0px, 100%);
+			}
+		}
+
+		100% {
+			@if $direction == ltr {
+				transform: translate(0px, 0px);
+			}
+
+			@if $direction == rtl {
+				transform: translate(0px, 0px);
+			}
+
+			@if $direction == ttb {
+				transform: translate(0px, 0px);
+			}
+
+			@if $direction == btt {
+				transform: translate(0px, 0px);
+			}
+		}
+	}
+
+	@keyframes #{$direction}-drawer-out {
+		0% {
+			@if $direction == ltr {
+				transform: translate(0px, 0px);
+			}
+
+			@if $direction == rtl {
+				transform: translate(0px, 0px);
+			}
+
+			@if $direction == ttb {
+				transform: translate(0px, 0px);
+			}
+
+			@if $direction == btt {
+				transform: translate(0px, 0);
+			}
+		}
+
+		100% {
+			@if $direction == ltr {
+				transform: translate(-100%, 0px);
+			}
+
+			@if $direction == rtl {
+				transform: translate(100%, 0px);
+			}
+
+			@if $direction == ttb {
+				transform: translate(0px, -100%);
+			}
+
+			@if $direction == btt {
+				transform: translate(0px, 100%);
+			}
+		}
+	}
+}
+
+@mixin animation-in($direction) {
+	.tu-drawer__open &.#{$direction} {
+		animation: #{$direction}-drawer-in 0.3s 1ms;
+	}
+}
+
+@mixin animation-out($direction) {
+	&.#{$direction} {
+		animation: #{$direction}-drawer-out 0.3s;
+	}
+}
+
+@include drawer-animation(rtl);
+@include drawer-animation(ltr);
+@include drawer-animation(ttb);
+@include drawer-animation(btt);
+
+$directions: rtl, ltr, ttb, btt;
+
+@include b(drawer) {
+	position: absolute;
+	box-sizing: border-box;
+	background-color: $--modal-background-color;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	outline: 0;
+
+	@each $direction in $directions {
+		@include animation-out($direction);
+		@include animation-in($direction);
+	}
+
+	&__wrapper {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		overflow: hidden;
+		margin: 0;
+	}
+
+	&__header {
+		padding: $--modal-padding-vertical $--modal-padding-horizontal;
+		align-items: center;
+		color: $--color-text-primary;
+		font-size: $--modal-title-font-size;
+		font-weight: $--font-weight-bold;
+		display: flex;
+		line-height: 22px;
+		border-bottom: 1px solid $--border-color-base;
+		& > :first-child {
+			flex: 1;
+		}
+	}
+
+	&__title {
+		margin: 0;
+		flex: 1;
+		line-height: inherit;
+		color: $--color-text-primary;
+		font-size: $--modal-title-font-size;
+		font-weight: $--font-weight-bold;
+	}
+
+	&__close-btn {
+		border: none;
+		cursor: pointer;
+		font-size: $--message-close-size;
+		color: inherit;
+		background-color: transparent;
+		transition: color 0.3s;
+
+		&:focus,
+		&:hover {
+			color: $--color-primary;
+		}
+	}
+
+	&__body {
+		flex: 1;
+		overflow: auto;
+		padding: ($--modal-padding-vertical + 12px) $--modal-padding-horizontal;
+		color: $--color-text-primary;
+		font-size: $--modal-content-font-size;
+		word-break: break-all;
+		& > * {
+			box-sizing: border-box;
+		}
+	}
+
+	&.ltr,
+	&.rtl {
+		height: 100%;
+		top: 0;
+		bottom: 0;
+	}
+
+	&.ttb,
+	&.btt {
+		width: 100%;
+		left: 0;
+		right: 0;
+	}
+
+	&.ltr {
+		left: 0;
+	}
+
+	&.rtl {
+		right: 0;
+	}
+
+	&.ttb {
+		top: 0;
+	}
+
+	&.btt {
+		bottom: 0;
+	}
+}
+
+.tu-drawer__container {
+	position: relative;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.tu-drawer-fade-enter-active {
+	animation: tu-drawer-fade-in 0.3s;
+}
+
+.tu-drawer-fade-leave-active {
+	animation: tu-drawer-fade-in 0.3s reverse;
+}

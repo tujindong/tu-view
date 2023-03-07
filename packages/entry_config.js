@@ -222,6 +222,10 @@ module.exports = {
 			author: "tujindong",
 		},
 		{
+			name: "timeline-item",
+			author: "tujindong",
+		},
+		{
 			name: "divider",
 			author: "tujindong",
 		},

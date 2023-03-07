@@ -1,12 +1,13 @@
 <template>
-	<div class="demo-icon-wrapper">
-		<h2>timeline</h2>
-		<br />
-		<p>基本配置</p>
-		<tu-timeline :reverse="reverse">
+	<div class="timeline-block">
+		<tu-timeline>
 			<tu-timeline-item
 				v-for="(activity, index) in activities"
 				:key="index"
+				:icon="activity.icon"
+				:type="activity.type"
+				:color="activity.color"
+				:size="activity.size"
 				:timestamp="activity.timestamp"
 			>
 				{{ activity.content }}
@@ -17,31 +18,32 @@
 
 <script>
 	export default {
-		name: "deme-popover",
-
 		data() {
 			return {
-				reverse: true,
 				activities: [
 					{
-						content: "活动按期开始",
-						timestamp: "2018-04-15",
+						content: "支持使用图标",
+						timestamp: "2022-04-12 20:46",
+						size: "large",
+						icon: "bell",
+						type: "danger",
 					},
 					{
-						content: "通过审核",
-						timestamp: "2018-04-13",
+						content: "支持自定义颜色",
+						timestamp: "2022-04-03 20:46",
+						color: "#0bbd87",
 					},
 					{
-						content: "创建成功",
-						timestamp: "2018-04-11",
+						content: "支持自定义尺寸",
+						timestamp: "2022-04-03 20:46",
+						size: "large",
+					},
+					{
+						content: "默认样式的节点",
+						timestamp: "2022-04-03 20:46",
 					},
 				],
 			};
 		},
 	};
 </script>
-
-<style lang="scss" scoped>
-	.demo-icon-wrapper {
-	}
-</style>

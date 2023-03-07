@@ -161,12 +161,12 @@ Popover 的属性与 Tooltip 很类似，它们都是基于`Vue-popper`开发的
 		<div style="text-align: right; margin: 0">
 			<tu-button
 				size="mini"
-				type="text"
 				@click="visible = false"
 				>取消</tu-button
 			>
 			<tu-button
-				type="primary"
+				style="margin-left: 4px"
+				type="danger"
 				size="mini"
 				@click="visible = false"
 				>确定</tu-button

@@ -53,6 +53,7 @@ import Drawer from "./components/drawer";
 import Image from "./components/image";
 import Calendar from "./components/calendar";
 import Timeline from "./components/timeline";
+import TimelineItem from "./components/timeline-item";
 import Divider from "./components/divider";
 import Collapse from "./components/collapse";
 import Steps from "./components/steps";
@@ -115,6 +116,7 @@ const componentsList = [
 	Image,
 	Calendar,
 	Timeline,
+	TimelineItem,
 	Divider,
 	Collapse,
 	Steps,

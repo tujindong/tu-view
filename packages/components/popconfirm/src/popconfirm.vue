@@ -59,7 +59,7 @@
 			},
 			cancelButtonType: {
 				type: String,
-				default: "text",
+				default: "default",
 			},
 			icon: {
 				type: String,
@@ -87,14 +87,6 @@
 			},
 			displayCancelButtonText() {
 				return this.cancelButtonText || t("tu.popconfirm.cancelButtonText");
-			},
-		},
-
-		watch: {
-			visible(val) {
-				if (val) {
-					this.setBackgroundColor();
-				}
 			},
 		},
 

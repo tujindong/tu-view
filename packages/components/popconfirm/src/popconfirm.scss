@@ -11,5 +11,8 @@
 	@include e(action) {
 		text-align: right;
 		margin: 0;
+		.tu-button + .tu-button {
+			margin-left: 8px;
+		}
 	}
 }

@@ -33,6 +33,16 @@
 			content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。"
 		>
 		</tu-popover>
+		<tu-popover
+			ref="popover"
+			placement="right"
+			title="标题"
+			width="200"
+			trigger="focus"
+			content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。"
+		>
+		</tu-popover>
+		<tu-button v-popover:popover>focus 激活</tu-button>
 	</div>
 </template>
 

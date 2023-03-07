@@ -82,8 +82,11 @@ module.exports = {
 					children: [
 						["../guide/tooltip.md", "Tooltip 文字提示"],
 						["../guide/popover.md", "Popover 弹出框"],
+						["../guide/popconfirm.md", "Popconfirm 弹出确认框"],
 						["../guide/modal.md", "Modal 模态框"],
+						["../guide/drawer.md", "Drawer 抽屉"],
 						["../guide/card.md", "Card 卡片"],
+						["../guide/timeline.md", "Timeline 时间线"],
 						["../guide/scrollbar.md", "Scrollbar 区域滚动"],
 						["../guide/backtop.md", "Backtop 回到顶部"],
 					],

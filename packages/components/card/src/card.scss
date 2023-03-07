@@ -44,6 +44,7 @@
 			float: right;
 			margin-left: auto;
 			padding: 0 $--card-header-padding-horizontal;
+			color: $--card-font-color;
 		}
 	}
 
@@ -51,6 +52,11 @@
 		padding: $--card-body-padding-vertical $--card-body-padding-horizontal;
 		font-size: $--card-font-size;
 		color: $--card-font-color;
+		p,
+		span,
+		div {
+			color: $--card-font-color;
+		}
 	}
 
 	@include m(small) {

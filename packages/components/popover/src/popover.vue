@@ -1,5 +1,5 @@
 <template>
-	<span>
+	<span ref="popperWrapper">
 		<transition
 			:name="transition"
 			@after-enter="handleAfterEnter"
@@ -271,12 +271,9 @@
 			},
 
 			setBackgroundColor() {
-				const el = this.$slots.reference[0].elm || {};
-				if (el && el.parentElement) {
-					const color = getBackground(el.parentElement);
-					this.$refs.popper.style.backgroundColor = color;
-					this.$refs.popper.style.borderColor = color;
-				}
+				const color = getBackground(this.$refs.popperWrapper);
+				this.$refs.popper.style.backgroundColor = color;
+				this.$refs.popper.style.borderColor = color;
 			},
 		},
 	};

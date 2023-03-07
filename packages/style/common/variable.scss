@@ -543,6 +543,13 @@ $--popover-padding-large: 18px 20px;
 $--popover-title-font-size: 16px;
 $--popover-title-font-color: $--color-text-primary;
 
+/* Timeline
+--------------------------*/
+$--timeline-node-size-normal: 12px;
+$--timeline-node-size-large: 14px;
+$--timeline-node-color: $--color-greyLight-3;
+$--timeline-border-color: $--border-color-base;
+
 /* Break-point
 --------------------------*/
 $--sm: 768px !default;
