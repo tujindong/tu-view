@@ -132,6 +132,11 @@ const install = function (Vue, opts = {}) {
 		Vue.component(component.name, component);
 	});
 
+	Vue.prototype.$TUVIEW = {
+		size: opts.size || "",
+		zIndex: opts.zIndex || 2000,
+	};
+
 	Vue.prototype.$message = Message;
 
 	// Vue.prototype.$loading = Loading.service;

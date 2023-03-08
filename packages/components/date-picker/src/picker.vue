@@ -561,7 +561,7 @@
 			},
 
 			pickerSize() {
-				return this.size || this._tuFormItemSize || (this.$ELEMENT || {}).size;
+				return this.size || this._tuFormItemSize || (this.$TUVIEW || {}).size;
 			},
 
 			pickerDisabled() {

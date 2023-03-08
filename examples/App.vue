@@ -22,7 +22,6 @@
 		<DemoUpload />
 		<DemoPagination />
 		<DemoCascader />
-		<DemoSelect />
 		<DemoSlider />
 		<DemoRate />
 		<DemoTransfer />
@@ -46,6 +45,7 @@
 		<DemoMessageBox />
 		<DemoSteps />
 		<DemoForm />
+		<DemoSelect />
 	</div>
 </template>
 
