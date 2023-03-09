@@ -104,8 +104,15 @@
 				},
 			},
 
+			_tuFormItemSize() {
+				return (this.tuFormItem || {}).tuFormItemSize;
+			},
+
 			checkboxSize() {
-				return this.isGroup ? this._checkboxGroup.checkboxGroupSize : this.size;
+				const temCheckboxSize = this.size || this._tuFormItemSize || (this.$TUVIEW || {}).size;
+				return this.isGroup
+					? this._checkboxGroup.checkboxGroupSize || temCheckboxSize
+					: temCheckboxSize;
 			},
 
 			isChecked() {
@@ -119,7 +126,7 @@
 			},
 
 			isBorder() {
-				return this.isGroup ? this._checkboxGroup.border : this.border;
+				return this.isGroup ? this._checkboxGroup.border || this.border : this.border;
 			},
 
 			isGroup() {

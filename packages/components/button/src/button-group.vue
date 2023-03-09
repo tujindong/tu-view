@@ -1,19 +1,34 @@
 <template>
-  <div class="tu-button-group">
-    <slot></slot>
-  </div>
+	<div class="tu-button-group">
+		<slot></slot>
+	</div>
 </template>
 <script>
-import Emitter from "@packages/src/mixins/emitter";
-export default {
-  name: "TuButtonGroup",
+	import Emitter from "@packages/src/mixins/emitter";
+	export default {
+		name: "TuButtonGroup",
 
-  componentName: "TuButtonGroup",
+		componentName: "TuButtonGroup",
 
-  mixins: [Emitter],
+		mixins: [Emitter],
 
-  props: {
-    size: String,
-  },
-};
+		inject: {
+			tuFormItem: {
+				default: "",
+			},
+		},
+
+		props: {
+			size: String,
+		},
+
+		computed: {
+			_tuFormItemSize() {
+				return (this.tuFormItem || {}).tuFormItemSize;
+			},
+			buttonGroupSize() {
+				return this.size || this._tuFormItemSize || (this.$TUVIEW || {}).size;
+			},
+		},
+	};
 </script>

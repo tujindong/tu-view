@@ -4,7 +4,6 @@
 			v-model="size"
 			style="margin-bottom: 20px"
 		>
-			<tu-radio label="mini">超小</tu-radio>
 			<tu-radio label="small">较小</tu-radio>
 			<tu-radio label="medium">中等</tu-radio>
 			<tu-radio label="large">较大</tu-radio>
@@ -59,7 +58,10 @@
 				</tu-col>
 			</tu-form-item>
 			<tu-form-item label="活动性质">
-				<tu-checkbox-group v-model="form.type">
+				<tu-checkbox-group
+					v-model="form.type"
+					border
+				>
 					<tu-checkbox
 						label="美食/餐厅线上活动"
 						name="type"
@@ -75,10 +77,7 @@
 				</tu-checkbox-group>
 			</tu-form-item>
 			<tu-form-item label="特殊资源">
-				<tu-radio-group
-					v-model="form.resource"
-					size="medium"
-				>
+				<tu-radio-group v-model="form.resource">
 					<tu-radio
 						border
 						label="线上品牌商赞助"
@@ -89,7 +88,7 @@
 					></tu-radio>
 				</tu-radio-group>
 			</tu-form-item>
-			<tu-form-item size="large">
+			<tu-form-item>
 				<tu-button
 					type="primary"
 					@click="submit"

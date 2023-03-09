@@ -58,7 +58,8 @@
 		}
 
 		@include e(label) {
-			padding-left: 0;
+			padding-left: 4px;
+			line-height: 1;
 		}
 
 		@include when(checked) {
@@ -175,7 +176,7 @@
 				border-left: 0;
 				border-top: 0;
 				height: 50%;
-				transform: translate(0, -10%) rotate(45deg) scaleY(1);
+				transform: translate(0, -15%) rotate(45deg) scaleY(1);
 				width: 25%;
 				transition: 0.3s ease;
 				transform-origin: center;

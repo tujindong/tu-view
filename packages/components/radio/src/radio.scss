@@ -61,6 +61,7 @@
 
 		@include e(label) {
 			padding-left: 0;
+			line-height: 1;
 		}
 
 		@include when(checked) {

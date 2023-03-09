@@ -130,7 +130,7 @@
 		<transition
 			name="tu-zoom-in-top"
 			@beforeEnter="handleMenuEnter"
-			@afterLeave="resetInputHeight"
+			@afterLeave="doDestroy"
 		>
 			<tu-select-dropdown
 				ref="popper"

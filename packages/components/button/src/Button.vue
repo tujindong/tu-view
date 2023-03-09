@@ -41,6 +41,15 @@
 	export default {
 		name: "TuButton",
 
+		inject: {
+			tuForm: {
+				default: "",
+			},
+			tuFormItem: {
+				default: "",
+			},
+		},
+
 		props: {
 			type: {
 				type: String,
@@ -75,8 +84,13 @@
 				return false;
 			},
 
+			_tuFormItemSize() {
+				return (this.tuFormItem || {}).tuFormItemSize;
+			},
+
 			buttonSize() {
-				return this.isGroup ? this._buttonGroup.size : this.size;
+				const temButtonSize = this.size || this._tuFormItemSize || (this.$TUVIEW || {}).size;
+				return this.isGroup ? this._buttonGroup.checkboxGroupSize || temButtonSize : temButtonSize;
 			},
 		},
 

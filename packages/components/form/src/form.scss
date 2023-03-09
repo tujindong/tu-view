@@ -52,6 +52,57 @@
 		display: none;
 	}
 
+	@include m(large) {
+		.tu-form-item__label {
+			line-height: 40px;
+		}
+
+		.tu-form-item__content {
+			line-height: 40px;
+		}
+
+		.tu-checkbox,
+		.tu-radio {
+			line-height: 40px;
+		}
+	}
+
+	@include m(medium) {
+		.tu-form-item__label {
+			line-height: 32px;
+		}
+
+		.tu-form-item__content {
+			line-height: 32px;
+		}
+		.tu-checkbox,
+		.tu-radio {
+			line-height: 32px;
+		}
+	}
+
+	@include m(small) {
+		.tu-form-item__label {
+			line-height: 28px;
+		}
+
+		.tu-form-item__content {
+			line-height: 28px;
+		}
+
+		&.tu-form-item {
+			margin-bottom: 18px;
+		}
+
+		.tu-form-item__error {
+			padding-top: 2px;
+		}
+		.tu-checkbox,
+		.tu-radio {
+			line-height: 28px;
+		}
+	}
+
 	@include e(label-wrap) {
 		float: left;
 

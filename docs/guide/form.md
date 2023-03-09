@@ -776,7 +776,6 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
 			v-model="size"
 			style="margin-bottom: 20px"
 		>
-			<tu-radio label="mini">超小</tu-radio>
 			<tu-radio label="small">较小</tu-radio>
 			<tu-radio label="medium">中等</tu-radio>
 			<tu-radio label="large">较大</tu-radio>
@@ -831,7 +830,10 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
 				</tu-col>
 			</tu-form-item>
 			<tu-form-item label="活动性质">
-				<tu-checkbox-group v-model="form.type">
+				<tu-checkbox-group
+					v-model="form.type"
+					border
+				>
 					<tu-checkbox
 						label="美食/餐厅线上活动"
 						name="type"
@@ -849,19 +851,13 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
 			<tu-form-item label="特殊资源">
 				<tu-radio-group
 					v-model="form.resource"
-					size="medium"
+					border
 				>
-					<tu-radio
-						border
-						label="线上品牌商赞助"
-					></tu-radio>
-					<tu-radio
-						border
-						label="线下场地免费"
-					></tu-radio>
+					<tu-radio label="线上品牌商赞助"></tu-radio>
+					<tu-radio label="线下场地免费"></tu-radio>
 				</tu-radio-group>
 			</tu-form-item>
-			<tu-form-item size="large">
+			<tu-form-item>
 				<tu-button
 					type="primary"
 					@click="submit"
