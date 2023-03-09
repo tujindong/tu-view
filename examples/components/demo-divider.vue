@@ -1,25 +1,15 @@
 <template>
-	<div class="demo-icon-wrapper">
-		<h2>divider</h2>
-		<br />
-		<p>基本配置</p>
-		<span>青春是一个短暂的美梦, 当你醒来时, 它早已消失无踪</span>
-		<tu-divider></tu-divider>
-		<span>少量的邪恶足以抵消全部高贵的品质, 害得人声名狼藉</span>
+	<div class="divider-block">
+		<span>头上一片晴天，心中一个想念</span>
+		<tu-divider content-position="left">少年包青天</tu-divider>
+		<span>饿了别叫妈, 叫饿了么</span>
+		<tu-divider><i class="tu-icon-fire"></i></tu-divider>
+		<span>为了无法计算的价值</span>
+		<tu-divider content-position="right">阿里云</tu-divider>
 	</div>
 </template>
-
-<script>
-	export default {
-		name: "deme-popover",
-
-		data() {
-			return {};
-		},
-	};
-</script>
-
-<style lang="scss" scoped>
-	.demo-icon-wrapper {
+<style>
+	.divider-block p {
+		color: #9baacf;
 	}
 </style>

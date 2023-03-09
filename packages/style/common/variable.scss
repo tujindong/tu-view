@@ -568,6 +568,17 @@ $--messagebox-info-color: $--color-greyDark;
 $--messagebox-warning-color: $--color-warning;
 $--messagebox-danger-color: $--color-danger;
 
+/* Avatar
+--------------------------*/
+$--avatar-font-color: $--color-white;
+$--avatar-background-color: $--color-background;
+$--avatar-text-font-size: 14px;
+$--avatar-icon-font-size: 18px;
+$--avatar-border-radius: $--border-radius-base;
+$--avatar-large-size: 40px;
+$--avatar-medium-size: 36px;
+$--avatar-small-size: 28px;
+
 /* Break-point
 --------------------------*/
 $--sm: 768px !default;

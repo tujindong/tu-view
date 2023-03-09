@@ -61,6 +61,7 @@ module.exports = {
 						["../guide/tree.md", "Tree 树形控件"],
 						["../guide/pagination.md", "Pagination 分页"],
 						["../guide/badge.md", "Badge 标记"],
+						["../guide/avatar.md", "Avatar 头像"],
 					],
 				},
 				{
@@ -90,6 +91,7 @@ module.exports = {
 						["../guide/drawer.md", "Drawer 抽屉"],
 						["../guide/card.md", "Card 卡片"],
 						["../guide/timeline.md", "Timeline 时间线"],
+						["../guide/divider.md", "Divider 分割线"],
 						["../guide/scrollbar.md", "Scrollbar 区域滚动"],
 						["../guide/backtop.md", "Backtop 回到顶部"],
 					],
