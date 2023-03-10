@@ -92,19 +92,19 @@
 ```html
 <template>
 	<div class="demo-type">
-		<div>
-			<tu-avatar icon="tu-icon-user-solid"></tu-avatar>
-		</div>
-		<div>
-			<tu-avatar
-				src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-			></tu-avatar>
-		</div>
-		<div>
-			<tu-avatar> user </tu-avatar>
-		</div>
+		<tu-avatar icon="tu-icon-user"></tu-avatar>
+		<tu-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></tu-avatar>
+		<tu-avatar> user </tu-avatar>
 	</div>
 </template>
+<style>
+	.demo-type {
+		display: flex;
+	}
+	.demo-type .tu-avatar {
+		margin-right: 20px;
+	}
+</style>
 ```
 
 :::
@@ -154,7 +154,7 @@
 			v-for="fit in fits"
 			:key="fit"
 		>
-			<span class="title">{{ fit }}</span>
+			<p class="title">{{ fit }}</p>
 			<tu-avatar
 				shape="square"
 				:size="100"
@@ -174,6 +174,19 @@
 		},
 	};
 </script>
+<style>
+	.demo-fit {
+		display: flex;
+		text-align: center;
+		justify-content: space-between;
+	}
+	.demo-fit .block {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		flex-grow: 0;
+	}
+</style>
 ```
 
 :::

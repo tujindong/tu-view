@@ -33,7 +33,6 @@
 		<DemoModal />
 		<DemoTable />
 		<DemoCarousel />
-		<DemoCalendar />
 		<DemoCollapse />
 		<DemoBreadcrumb />
 		<DemoPopover />
@@ -46,6 +45,7 @@
 		<DemoSelect />
 		<DemoDivider />
 		<DemoAvatar />
+		<DemoCalendar />
 	</div>
 </template>
 

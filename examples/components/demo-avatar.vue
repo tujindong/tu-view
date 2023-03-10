@@ -1,12 +1,14 @@
 <template>
-	<div class="demo-icon-wrapper">
-		<h2>timeline</h2>
-		<br />
-		<p>基本配置</p>
-		<tu-avatar
-			:size="50"
-			:src="circleUrl"
-		></tu-avatar>
+	<div class="demo-type">
+		<div>
+			<tu-avatar icon="tu-icon-user"></tu-avatar>
+		</div>
+		<div>
+			<tu-avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></tu-avatar>
+		</div>
+		<div>
+			<tu-avatar> user </tu-avatar>
+		</div>
 	</div>
 </template>
 
@@ -15,9 +17,7 @@
 		name: "deme-popover",
 
 		data() {
-			return {
-				circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
-			};
+			return {};
 		},
 	};
 </script>

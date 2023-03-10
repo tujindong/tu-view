@@ -571,13 +571,19 @@ $--messagebox-danger-color: $--color-danger;
 /* Avatar
 --------------------------*/
 $--avatar-font-color: $--color-white;
-$--avatar-background-color: $--color-background;
+$--avatar-background-color: rgb(192, 196, 204);
 $--avatar-text-font-size: 14px;
 $--avatar-icon-font-size: 18px;
 $--avatar-border-radius: $--border-radius-base;
 $--avatar-large-size: 40px;
 $--avatar-medium-size: 36px;
 $--avatar-small-size: 28px;
+
+/* Calendar
+--------------------------*/
+$--calendar-border: $--table-border;
+$--calendar-selected-background-color: #f2f8fe;
+$--calendar-cell-width: 85px;
 
 /* Break-point
 --------------------------*/
