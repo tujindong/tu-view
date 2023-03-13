@@ -253,5 +253,9 @@ module.exports = {
 			name: "message-box",
 			author: "tujindong",
 		},
+		{
+			name: "notification",
+			author: "tujindong",
+		},
 	],
 };

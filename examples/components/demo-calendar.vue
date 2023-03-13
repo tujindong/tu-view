@@ -4,6 +4,13 @@
 		<br />
 		<p>基本配置</p>
 		<tu-calendar v-model="value"> </tu-calendar>
+		<br />
+		<p>卡片格式</p>
+		<tu-calendar
+			type="card"
+			v-model="value"
+		>
+		</tu-calendar>
 	</div>
 </template>
 

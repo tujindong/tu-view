@@ -1,5 +1,5 @@
 <template>
-	<div class="tu-calendar">
+	<div :class="['tu-calendar', type ? `tu-calendar--${type}` : '']">
 		<div class="tu-calendar__header">
 			<div class="tu-calendar__title">
 				{{ currentDate }}
@@ -107,6 +107,7 @@
 				type: Number,
 				default: 1,
 			},
+			type: String,
 		},
 
 		data() {

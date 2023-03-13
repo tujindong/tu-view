@@ -46,6 +46,7 @@
 		<DemoDivider />
 		<DemoAvatar />
 		<DemoCalendar />
+		<DemoNotification />
 	</div>
 </template>
 
@@ -96,6 +97,7 @@
 	import DemoMessageBox from "./components/demo-messageBox.vue";
 	import DemoAvatar from "./components/demo-avatar.vue";
 	import DemoPopover from "./components/demo-popover";
+	import DemoNotification from "./components/demo-notification";
 
 	export default {
 		components: {
@@ -145,6 +147,7 @@
 			DemoBreadcrumb,
 			DemoMessageBox,
 			DemoAvatar,
+			DemoNotification,
 		},
 
 		data() {

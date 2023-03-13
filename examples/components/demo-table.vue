@@ -1,77 +1,43 @@
 <template>
 	<div>
 		<tu-table
+			ref="singleTable"
 			:data="tableData"
-			border
-			show-summary
+			highlight-current-row
+			@current-change="handleCurrentChange"
 			style="width: 100%"
 		>
 			<tu-table-column
-				prop="id"
-				label="ID"
-				width="180"
+				type="index"
+				width="50"
 			>
 			</tu-table-column>
 			<tu-table-column
-				prop="name"
+				property="date"
+				label="日期"
+				width="120"
+			>
+			</tu-table-column>
+			<tu-table-column
+				property="name"
 				label="姓名"
+				width="120"
 			>
 			</tu-table-column>
 			<tu-table-column
-				prop="amount1"
-				sortable
-				label="数值 1"
-			>
-			</tu-table-column>
-			<tu-table-column
-				prop="amount2"
-				sortable
-				label="数值 2"
-			>
-			</tu-table-column>
-			<tu-table-column
-				prop="amount3"
-				sortable
-				label="数值 3"
+				property="address"
+				label="地址"
 			>
 			</tu-table-column>
 		</tu-table>
-
-		<tu-table
-			:data="tableData"
-			border
-			height="200"
-			:summary-method="getSummaries"
-			show-summary
-			style="width: 100%; margin-top: 20px"
-		>
-			<tu-table-column
-				prop="id"
-				label="ID"
-				width="180"
+		<div style="margin-top: 20px">
+			<tu-button @click="setCurrent(tableData[1])">选中第二行</tu-button>
+			<tu-button
+				style="margin-left: 4px"
+				@click="setCurrent()"
+				>取消选择</tu-button
 			>
-			</tu-table-column>
-			<tu-table-column
-				prop="name"
-				label="姓名"
-			>
-			</tu-table-column>
-			<tu-table-column
-				prop="amount1"
-				label="数值 1（元）"
-			>
-			</tu-table-column>
-			<tu-table-column
-				prop="amount2"
-				label="数值 2（元）"
-			>
-			</tu-table-column>
-			<tu-table-column
-				prop="amount3"
-				label="数值 3（元）"
-			>
-			</tu-table-column>
-		</tu-table>
+		</div>
 	</div>
 </template>
 
@@ -81,69 +47,36 @@
 			return {
 				tableData: [
 					{
-						id: "12987122",
-						name: "王小虎",
-						amount1: "234",
-						amount2: "3.2",
-						amount3: 10,
+						date: "2022-05-02",
+						name: "唐小虎",
+						address: "上海市普陀区金沙江路 1518 弄",
 					},
 					{
-						id: "12987123",
-						name: "王小虎",
-						amount1: "165",
-						amount2: "4.43",
-						amount3: 12,
+						date: "2022-05-04",
+						name: "唐小虎",
+						address: "上海市普陀区金沙江路 1517 弄",
 					},
 					{
-						id: "12987124",
-						name: "王小虎",
-						amount1: "324",
-						amount2: "1.9",
-						amount3: 9,
+						date: "2022-05-01",
+						name: "唐小虎",
+						address: "上海市普陀区金沙江路 1519 弄",
 					},
 					{
-						id: "12987125",
-						name: "王小虎",
-						amount1: "621",
-						amount2: "2.2",
-						amount3: 17,
-					},
-					{
-						id: "12987126",
-						name: "王小虎",
-						amount1: "539",
-						amount2: "4.1",
-						amount3: 15,
+						date: "2022-05-03",
+						name: "唐小虎",
+						address: "上海市普陀区金沙江路 1516 弄",
 					},
 				],
+				currentRow: null,
 			};
 		},
-		methods: {
-			getSummaries(param) {
-				const { columns, data } = param;
-				const sums = [];
-				columns.forEach((column, index) => {
-					if (index === 0) {
-						sums[index] = "总价";
-						return;
-					}
-					const values = data.map(item => Number(item[column.property]));
-					if (!values.every(value => isNaN(value))) {
-						sums[index] = values.reduce((prev, curr) => {
-							const value = Number(curr);
-							if (!isNaN(value)) {
-								return prev + curr;
-							} else {
-								return prev;
-							}
-						}, 0);
-						sums[index] += " 元";
-					} else {
-						sums[index] = "N/A";
-					}
-				});
 
-				return sums;
+		methods: {
+			setCurrent(row) {
+				this.$refs.singleTable.setCurrentRow(row);
+			},
+			handleCurrentChange(val) {
+				this.currentRow = val;
 			},
 		},
 	};

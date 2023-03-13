@@ -29,11 +29,6 @@
 		cursor: pointer;
 		font-size: $--font-size-base;
 
-		&:hover {
-			// background-color: $--dropdown-menuItem-hover-fill;
-			// color: $--dropdown-menuItem-hover-color;
-		}
-
 		@include when(active) {
 			background-color: $--color-primary;
 			color: $--color-white;
