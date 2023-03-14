@@ -1,0 +1,28 @@
+<template>
+	<div class="alert-block">
+		<tu-alert
+			title="成功提示的文案"
+			type="success"
+			show-icon
+		>
+		</tu-alert>
+		<tu-alert
+			title="消息提示的文案"
+			type="info"
+			show-icon
+		>
+		</tu-alert>
+		<tu-alert
+			title="警告提示的文案"
+			type="warning"
+			show-icon
+		>
+		</tu-alert>
+		<tu-alert
+			title="错误提示的文案"
+			type="error"
+			show-icon
+		>
+		</tu-alert>
+	</div>
+</template>

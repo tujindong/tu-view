@@ -31,7 +31,6 @@
 		<DemoTreeSelect />
 		<DemoBadge />
 		<DemoModal />
-		<DemoTable />
 		<DemoCarousel />
 		<DemoCollapse />
 		<DemoBreadcrumb />
@@ -47,6 +46,8 @@
 		<DemoAvatar />
 		<DemoCalendar />
 		<DemoNotification />
+		<DemoAlert />
+		<DemoTable />
 	</div>
 </template>
 
@@ -98,6 +99,7 @@
 	import DemoAvatar from "./components/demo-avatar.vue";
 	import DemoPopover from "./components/demo-popover";
 	import DemoNotification from "./components/demo-notification";
+	import DemoAlert from "./components/demo-alert.vue";
 
 	export default {
 		components: {
@@ -148,6 +150,7 @@
 			DemoMessageBox,
 			DemoAvatar,
 			DemoNotification,
+			DemoAlert,
 		},
 
 		data() {

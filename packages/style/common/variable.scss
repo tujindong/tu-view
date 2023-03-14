@@ -585,6 +585,23 @@ $--calendar-border: $--table-border;
 $--calendar-hover-background-color: $--background-color-hover-white;
 $--calendar-cell-width: 85px;
 
+/* Alert
+-------------------------- */
+$--alert-padding: 8px 16px;
+$--alert-border-radius: $--border-radius-base;
+$--alert-title-font-size: 13px;
+$--alert-description-font-size: 12px;
+$--alert-close-font-size: 12px;
+$--alert-close-customed-font-size: 13px;
+
+$--alert-success-color: $--color-success-lighter;
+$--alert-info-color: $--color-info-lighter;
+$--alert-warning-color: $--color-warning-lighter;
+$--alert-danger-color: $--color-danger-lighter;
+
+$--alert-icon-size: 16px;
+$--alert-icon-large-size: 28px;
+
 /* Break-point
 --------------------------*/
 $--sm: 768px !default;

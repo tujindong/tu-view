@@ -257,5 +257,9 @@ module.exports = {
 			name: "notification",
 			author: "tujindong",
 		},
+		{
+			name: "alert",
+			author: "tujindong",
+		},
 	],
 };

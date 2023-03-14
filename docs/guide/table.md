@@ -890,43 +890,45 @@
 
 ```html
 <template>
-	<tu-table
-		ref="singleTable"
-		:data="tableData"
-		highlight-current-row
-		@current-change="handleCurrentChange"
-		style="width: 100%"
-	>
-		<tu-table-column
-			type="index"
-			width="50"
+	<div>
+		<tu-table
+			ref="singleTable"
+			:data="tableData"
+			highlight-current-row
+			@current-change="handleCurrentChange"
+			style="width: 100%"
 		>
-		</tu-table-column>
-		<tu-table-column
-			property="date"
-			label="日期"
-			width="120"
-		>
-		</tu-table-column>
-		<tu-table-column
-			property="name"
-			label="姓名"
-			width="120"
-		>
-		</tu-table-column>
-		<tu-table-column
-			property="address"
-			label="地址"
-		>
-		</tu-table-column>
-	</tu-table>
-	<div style="margin-top: 20px">
-		<tu-button @click="setCurrent(tableData[1])">选中第二行</tu-button>
-		<tu-button
-			style="margin-left: 4px"
-			@click="setCurrent()"
-			>取消选择</tu-button
-		>
+			<tu-table-column
+				type="index"
+				width="50"
+			>
+			</tu-table-column>
+			<tu-table-column
+				property="date"
+				label="日期"
+				width="120"
+			>
+			</tu-table-column>
+			<tu-table-column
+				property="name"
+				label="姓名"
+				width="120"
+			>
+			</tu-table-column>
+			<tu-table-column
+				property="address"
+				label="地址"
+			>
+			</tu-table-column>
+		</tu-table>
+		<div style="margin-top: 20px">
+			<tu-button @click="setCurrent(tableData[1])">选中第二行</tu-button>
+			<tu-button
+				style="margin-left: 4px"
+				@click="setCurrent()"
+				>取消选择</tu-button
+			>
+		</div>
 	</div>
 </template>
 
@@ -982,46 +984,48 @@
 
 ```html
 <template>
-	<tu-table
-		ref="multipleTable"
-		:data="tableData"
-		tooltip-effect="dark"
-		style="width: 100%"
-		@selection-change="handleSelectionChange"
-	>
-		<tu-table-column
-			type="selection"
-			width="55"
+	<div>
+		<tu-table
+			ref="multipleTable"
+			:data="tableData"
+			tooltip-effect="dark"
+			style="width: 100%"
+			@selection-change="handleSelectionChange"
 		>
-		</tu-table-column>
-		<tu-table-column
-			label="日期"
-			width="120"
-		>
-			<template slot-scope="scope">{{ scope.row.date }}</template>
-		</tu-table-column>
-		<tu-table-column
-			prop="name"
-			label="姓名"
-			width="120"
-		>
-		</tu-table-column>
-		<tu-table-column
-			prop="address"
-			label="地址"
-			show-overflow-tooltip
-		>
-		</tu-table-column>
-	</tu-table>
-	<div style="margin-top: 20px">
-		<tu-button @click="toggleSelection([tableData[1], tableData[2]])"
-			>切换第二、第三行的选中状态</tu-button
-		>
-		<tu-button
-			style="margin-left: 4px"
-			@click="toggleSelection()"
-			>取消选择</tu-button
-		>
+			<tu-table-column
+				type="selection"
+				width="55"
+			>
+			</tu-table-column>
+			<tu-table-column
+				label="日期"
+				width="120"
+			>
+				<template slot-scope="scope">{{ scope.row.date }}</template>
+			</tu-table-column>
+			<tu-table-column
+				prop="name"
+				label="姓名"
+				width="120"
+			>
+			</tu-table-column>
+			<tu-table-column
+				prop="address"
+				label="地址"
+				show-overflow-tooltip
+			>
+			</tu-table-column>
+		</tu-table>
+		<div style="margin-top: 20px">
+			<tu-button @click="toggleSelection([tableData[1], tableData[2]])"
+				>切换第二、第三行的选中状态</tu-button
+			>
+			<tu-button
+				style="margin-left: 4px"
+				@click="toggleSelection()"
+				>取消选择</tu-button
+			>
+		</div>
 	</div>
 </template>
 

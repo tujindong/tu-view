@@ -76,6 +76,7 @@ module.exports = {
 					title: "通知组件",
 					collapsable: false,
 					children: [
+						["../guide/alert.md", "Alert 警告"],
 						["../guide/message.md", "Message 消息通知"],
 						["../guide/message-box.md", "MessageBox 弹框"],
 					],

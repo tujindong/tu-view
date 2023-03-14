@@ -61,6 +61,7 @@ import Breadcrumb from "./components/breadcrumb";
 import MessageBox from "./components/message-box";
 import Avatar from "./components/avatar";
 import Notification from "./components/notification";
+import Alert from "./components/alert";
 
 const componentsList = [
 	Button,
@@ -125,6 +126,7 @@ const componentsList = [
 	MessageBox,
 	Avatar,
 	Notification,
+	Alert,
 ];
 
 const install = function (Vue, opts = {}) {

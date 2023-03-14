@@ -90,10 +90,10 @@
 				padding: 0;
 			}
 			tr {
-				border: none;
+				border-color: transparent;
 			}
 			td {
-				border: none;
+				border-color: transparent;
 				box-shadow: none;
 				@include when(selected) {
 					box-shadow: none;
@@ -104,7 +104,7 @@
 			}
 			tr:first-child td,
 			tr td:first-child {
-				border: none;
+				border-color: transparent;
 			}
 			@include b(calendar-day) {
 				height: 20px;

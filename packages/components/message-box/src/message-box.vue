@@ -118,7 +118,7 @@
 		success: "check-circle-fill",
 		info: "info-circle-fill",
 		warning: "warning-circle-fill",
-		error: "close-circle",
+		error: "close-circle-fill",
 	};
 
 	export default {

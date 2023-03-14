@@ -86,6 +86,7 @@
 | value / v-model   | 绑定值                                                                                               | Date/string/number | —      | —      |
 | range             | 时间范围，包括开始时间与结束时间。开始时间必须是周一，结束时间必须是周日，且时间跨度不能超过两个月。 | Array              | —      | —      |
 | first-day-of-week | 周起始日                                                                                             | Number             | 1 到 7 | 1      |
+| type              | 类型，可以切换日历显示为卡片格式                                                                     | string             | 'card' | —      |
 
 ### dateCell scoped slot 参数
 
