@@ -261,5 +261,9 @@ module.exports = {
 			name: "alert",
 			author: "tujindong",
 		},
+		{
+			name: "loading",
+			author: "tujindong",
+		},
 	],
 };

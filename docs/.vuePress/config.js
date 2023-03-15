@@ -79,6 +79,7 @@ module.exports = {
 						["../guide/alert.md", "Alert 警告"],
 						["../guide/message.md", "Message 消息通知"],
 						["../guide/message-box.md", "MessageBox 弹框"],
+						["../guide/notification.md", "Notification 通知"],
 					],
 				},
 				{

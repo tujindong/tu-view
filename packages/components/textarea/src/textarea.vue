@@ -1,5 +1,11 @@
 <template>
-	<div :class="['tu-textarea', { 'is-disabled': isDisabled }]">
+	<div
+		:class="[
+			'tu-textarea',
+			textareaSize ? `tu-input--${textareaSize}` : '',
+			{ 'is-disabled': isDisabled },
+		]"
+	>
 		<textarea
 			ref="textarea"
 			class="tu-textarea__inner"
@@ -29,12 +35,24 @@
 <script>
 	import calcTextareaHeight from "./calcTextareaHeight";
 	import merge from "@packages/src/utils/merge.js";
+	import emitter from "@packages/src/mixins/emitter";
 	export default {
 		name: "TuTextarea",
 
 		componentName: "TuTextarea",
 
 		inheritAttrs: false,
+
+		mixins: [emitter],
+
+		inject: {
+			tuForm: {
+				default: "",
+			},
+			tuFormItem: {
+				default: "",
+			},
+		},
 
 		props: {
 			value: [String, Number],
@@ -55,6 +73,10 @@
 				type: [Boolean, Object],
 				default: false,
 			},
+			validateEvent: {
+				type: Boolean,
+				default: true,
+			},
 		},
 
 		data() {
@@ -67,6 +89,14 @@
 		},
 
 		computed: {
+			_tuFormItemSize() {
+				return (this.tuFormItem || {}).tuFormItemSize;
+			},
+
+			textareaSize() {
+				return this.size || this._tuFormItemSize || (this.$TUVIEW || {}).size;
+			},
+
 			nativeInputValue() {
 				this.$nextTick(this.resizeTextarea);
 				return this.value !== null || this.value !== undefined ? String(this.value) : "";
@@ -99,6 +129,11 @@
 		watch: {
 			nativeInputValue() {
 				this.setNativeInputValue();
+			},
+			value(val) {
+				if (this.validateEvent) {
+					this.dispatch("TuFormItem", "tu.form.change", val);
+				}
 			},
 		},
 
@@ -154,6 +189,9 @@
 			handleBlur(evt) {
 				this.focused = false;
 				this.$emit("blur", evt);
+				if (this.validateEvent) {
+					this.dispatch("TuFormItem", "tu.form.blur", this.value);
+				}
 			},
 
 			handleClear() {

@@ -7,16 +7,16 @@
 	box-sizing: border-box;
 	border-radius: $--alert-border-radius;
 	position: relative;
-	background-color: $--color-white;
 	overflow: hidden;
 	opacity: 1;
 	display: flex;
 	align-items: center;
 	transition: opacity 0.2s;
+	color: $--color-text-primary;
 
 	@include when(light) {
 		.tu-alert__closebtn {
-			color: $--color-text-placeholder;
+			color: $--color-text-regular;
 		}
 	}
 
@@ -31,6 +31,24 @@
 
 	@include when(center) {
 		justify-content: center;
+	}
+
+	@include m(default) {
+		box-shadow: $--box-shadow-convex;
+		color: $--color-text-primary;
+		&.is-light {
+			.tu-alert__description {
+				color: $--color-text-primary;
+			}
+		}
+
+		&.is-dark {
+			color: $--color-text-regular;
+
+			.tu-alert__closebtn {
+				color: $--color-text-regular;
+			}
+		}
 	}
 
 	@include m(success) {
@@ -100,6 +118,7 @@
 	@include e(content) {
 		display: table-cell;
 		padding: 0 8px;
+		line-height: 1;
 	}
 
 	@include e(icon) {
@@ -114,6 +133,7 @@
 	@include e(title) {
 		font-size: $--alert-title-font-size;
 		line-height: 18px;
+		height: 18px;
 		@include when(bold) {
 			font-weight: bold;
 		}
@@ -128,9 +148,14 @@
 		font-size: $--alert-close-font-size;
 		opacity: 1;
 		position: absolute;
-		top: 13px;
+		top: 12px;
 		right: 15px;
 		cursor: pointer;
+		transition: opacity 0.3s;
+
+		&:hover {
+			opacity: 0.8;
+		}
 
 		@include when(customed) {
 			font-style: normal;

@@ -593,14 +593,34 @@ $--alert-title-font-size: 13px;
 $--alert-description-font-size: 12px;
 $--alert-close-font-size: 12px;
 $--alert-close-customed-font-size: 13px;
-
 $--alert-success-color: $--color-success-lighter;
 $--alert-info-color: $--color-info-lighter;
 $--alert-warning-color: $--color-warning-lighter;
 $--alert-danger-color: $--color-danger-lighter;
-
 $--alert-icon-size: 16px;
 $--alert-icon-large-size: 28px;
+
+/* Notification
+-------------------------- */
+$--notification-width: 330px;
+$--notification-padding: 14px 26px 14px 13px;
+$--notification-radius: 2px;
+$--notification-shadow: $--box-shadow-light;
+$--notification-border-color: $--border-color-lighter;
+$--notification-icon-size: 24px;
+$--notification-close-font-size: $--message-close-size;
+$--notification-group-margin-left: 13px;
+$--notification-group-margin-right: 8px;
+$--notification-content-font-size: $--font-size-base;
+$--notification-content-color: $--color-text-primary;
+$--notification-title-font-size: $--font-size-base;
+$--notification-title-color: $--color-text-primary;
+$--notification-close-color: $--color-text-secondary;
+$--notification-close-hover-color: $--color-text-regular;
+$--notification-success-icon-color: $--color-success;
+$--notification-info-icon-color: $--color-info;
+$--notification-warning-icon-color: $--color-warning;
+$--notification-danger-icon-color: $--color-danger;
 
 /* Break-point
 --------------------------*/

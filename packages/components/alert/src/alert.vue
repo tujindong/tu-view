@@ -65,7 +65,7 @@
 			},
 			type: {
 				type: String,
-				default: "info",
+				default: "default",
 			},
 			closable: {
 				type: Boolean,
@@ -98,7 +98,7 @@
 			},
 
 			iconClass() {
-				return TYPE_CLASSES_MAP[this.type] || "tu-icon-info";
+				return TYPE_CLASSES_MAP[this.type] || "tu-icon-info-circle-fill";
 			},
 
 			isBigIcon() {

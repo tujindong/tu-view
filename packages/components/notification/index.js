@@ -1,4 +1,4 @@
-import Notification from "./src/notification.vue";
+import Notification from "./src/notification";
 import "./src/notification.scss";
 
 Notification.install = function (Vue) {

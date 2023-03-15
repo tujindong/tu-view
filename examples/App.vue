@@ -32,7 +32,6 @@
 		<DemoBadge />
 		<DemoModal />
 		<DemoCarousel />
-		<DemoCollapse />
 		<DemoBreadcrumb />
 		<DemoPopover />
 		<DemoPopconfrim />
@@ -40,14 +39,16 @@
 		<DemoDrawer />
 		<DemoMessageBox />
 		<DemoSteps />
-		<DemoForm />
 		<DemoSelect />
 		<DemoDivider />
 		<DemoAvatar />
 		<DemoCalendar />
-		<DemoNotification />
 		<DemoAlert />
 		<DemoTable />
+		<DemoLoading />
+		<DemoNotification />
+		<DemoCollapse />
+		<DemoForm />
 	</div>
 </template>
 
@@ -100,6 +101,7 @@
 	import DemoPopover from "./components/demo-popover";
 	import DemoNotification from "./components/demo-notification";
 	import DemoAlert from "./components/demo-alert.vue";
+	import DemoLoading from "./components/demo-loading.vue";
 
 	export default {
 		components: {
@@ -151,6 +153,7 @@
 			DemoAvatar,
 			DemoNotification,
 			DemoAlert,
+			DemoLoading,
 		},
 
 		data() {

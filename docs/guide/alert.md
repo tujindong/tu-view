@@ -6,28 +6,30 @@
 
 页面中的非浮层元素，不会自动消失。
 
-:::demo Alert 组件提供四种主题，由`type`属性指定，默认值为`info`。
+:::demo Alert 组件提供五种主题，由`type`属性指定，默认值为`default`。
 
 ```html
 <template>
 	<div class="alert-block">
+		<tu-alert title="默认提示"></tu-alert>
+
 		<tu-alert
-			title="成功提示的文案"
+			title="成功提示"
 			type="success"
 		>
 		</tu-alert>
 		<tu-alert
-			title="消息提示的文案"
+			title="消息提示"
 			type="info"
 		>
 		</tu-alert>
 		<tu-alert
-			title="警告提示的文案"
+			title="警告提示"
 			type="warning"
 		>
 		</tu-alert>
 		<tu-alert
-			title="错误提示的文案"
+			title="错误提示"
 			type="error"
 		>
 		</tu-alert>
@@ -52,25 +54,31 @@ Alert 组件提供了两个不同的主题：`light`和`dark`。
 <template>
 	<div class="alert-block">
 		<tu-alert
-			title="成功提示的文案"
+			title="成功提示"
+			effect="dark"
+		>
+		</tu-alert>
+
+		<tu-alert
+			title="成功提示"
 			type="success"
 			effect="dark"
 		>
 		</tu-alert>
 		<tu-alert
-			title="消息提示的文案"
+			title="消息提示"
 			type="info"
 			effect="dark"
 		>
 		</tu-alert>
 		<tu-alert
-			title="警告提示的文案"
+			title="警告提示"
 			type="warning"
 			effect="dark"
 		>
 		</tu-alert>
 		<tu-alert
-			title="错误提示的文案"
+			title="错误提示"
 			type="error"
 			effect="dark"
 		>
@@ -144,31 +152,36 @@ Alert 组件提供了两个不同的主题：`light`和`dark`。
 <template>
 	<div class="alert-block">
 		<tu-alert
-			title="成功提示的文案"
+			title="成功提示"
 			type="success"
 			show-icon
 		>
 		</tu-alert>
 		<tu-alert
-			title="消息提示的文案"
+			title="消息提示"
 			type="info"
 			show-icon
 		>
 		</tu-alert>
 		<tu-alert
-			title="警告提示的文案"
+			title="警告提示"
 			type="warning"
 			show-icon
 		>
 		</tu-alert>
 		<tu-alert
-			title="错误提示的文案"
+			title="错误提示"
 			type="error"
 			show-icon
 		>
 		</tu-alert>
 	</div>
 </template>
+<style>
+	.alert-block .tu-alert {
+		margin-bottom: 20px;
+	}
+</style>
 ```
 
 :::
@@ -181,35 +194,42 @@ Alert 组件提供了两个不同的主题：`light`和`dark`。
 
 ```html
 <template>
-	<tu-alert
-		title="成功提示的文案"
-		type="success"
-		center
-		show-icon
-	>
-	</tu-alert>
-	<tu-alert
-		title="消息提示的文案"
-		type="info"
-		center
-		show-icon
-	>
-	</tu-alert>
-	<tu-alert
-		title="警告提示的文案"
-		type="warning"
-		center
-		show-icon
-	>
-	</tu-alert>
-	<tu-alert
-		title="错误提示的文案"
-		type="error"
-		center
-		show-icon
-	>
-	</tu-alert>
+	<div class="alert-block">
+		<tu-alert
+			title="成功提示"
+			type="success"
+			center
+			show-icon
+		>
+		</tu-alert>
+		<tu-alert
+			title="消息提示"
+			type="info"
+			center
+			show-icon
+		>
+		</tu-alert>
+		<tu-alert
+			title="警告提示"
+			type="warning"
+			center
+			show-icon
+		>
+		</tu-alert>
+		<tu-alert
+			title="错误提示"
+			type="error"
+			center
+			show-icon
+		>
+		</tu-alert>
+	</div>
 </template>
+<style>
+	.alert-block .tu-alert {
+		margin-bottom: 20px;
+	}
+</style>
 ```
 
 :::
@@ -224,8 +244,7 @@ Alert 组件提供了两个不同的主题：`light`和`dark`。
 <template>
 	<tu-alert
 		title="带辅助性文字介绍"
-		type="success"
-		description="这是一句绕口令：黑灰化肥会挥发发灰黑化肥挥发；灰黑化肥会挥发发黑灰化肥发挥。 黑灰化肥会挥发发灰黑化肥黑灰挥发化为灰……"
+		description="他可以想象成功的生活，却不能触碰它；可以想象永久的幸福，却知道自己会死亡，可以想象一个更美好的世界，但知道，在自己有生之年，有改善也微乎其微；可以想象轻松的生活，当下过得却磕磕碰碰。意愿无限，干起事来却总是受限制；愿望无边，行动却接受界限的奴役"
 	>
 	</tu-alert>
 </template>
@@ -239,35 +258,42 @@ Alert 组件提供了两个不同的主题：`light`和`dark`。
 
 ```html
 <template>
-	<tu-alert
-		title="成功提示的文案"
-		type="success"
-		description="文字说明文字说明文字说明文字说明文字说明文字说明"
-		show-icon
-	>
-	</tu-alert>
-	<tu-alert
-		title="消息提示的文案"
-		type="info"
-		description="文字说明文字说明文字说明文字说明文字说明文字说明"
-		show-icon
-	>
-	</tu-alert>
-	<tu-alert
-		title="警告提示的文案"
-		type="warning"
-		description="文字说明文字说明文字说明文字说明文字说明文字说明"
-		show-icon
-	>
-	</tu-alert>
-	<tu-alert
-		title="错误提示的文案"
-		type="error"
-		description="文字说明文字说明文字说明文字说明文字说明文字说明"
-		show-icon
-	>
-	</tu-alert>
+	<div class="alert-block">
+		<tu-alert
+			title="成功提示"
+			type="success"
+			description="漂泊的人生都梦想着平静，童年，杜鹃花，正如平静的人生梦想着伏特加，乐队和醉生梦死。"
+			show-icon
+		>
+		</tu-alert>
+		<tu-alert
+			title="消息提示"
+			type="info"
+			description="漂泊的人生都梦想着平静，童年，杜鹃花，正如平静的人生梦想着伏特加，乐队和醉生梦死。"
+			show-icon
+		>
+		</tu-alert>
+		<tu-alert
+			title="警告提示"
+			type="warning"
+			description="漂泊的人生都梦想着平静，童年，杜鹃花，正如平静的人生梦想着伏特加，乐队和醉生梦死。"
+			show-icon
+		>
+		</tu-alert>
+		<tu-alert
+			title="错误提示"
+			type="error"
+			description="漂泊的人生都梦想着平静，童年，杜鹃花，正如平静的人生梦想着伏特加，乐队和醉生梦死。"
+			show-icon
+		>
+		</tu-alert>
+	</div>
 </template>
+<style>
+	.alert-block .tu-alert {
+		margin-bottom: 20px;
+	}
+</style>
 ```
 
 :::

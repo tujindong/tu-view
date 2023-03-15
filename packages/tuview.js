@@ -62,6 +62,7 @@ import MessageBox from "./components/message-box";
 import Avatar from "./components/avatar";
 import Notification from "./components/notification";
 import Alert from "./components/alert";
+import Loading from "./components/loading";
 
 const componentsList = [
 	Button,
@@ -127,6 +128,7 @@ const componentsList = [
 	Avatar,
 	Notification,
 	Alert,
+	Loading,
 ];
 
 const install = function (Vue, opts = {}) {
@@ -148,7 +150,7 @@ const install = function (Vue, opts = {}) {
 	Vue.prototype.$alert = MessageBox.alert;
 	Vue.prototype.$confirm = MessageBox.confirm;
 	Vue.prototype.$prompt = MessageBox.prompt;
-	// Vue.prototype.$notify = Notification;
+	Vue.prototype.$notify = Notification;
 	Vue.prototype.$message = Message;
 };
 
