@@ -56,6 +56,7 @@ import Timeline from "./components/timeline";
 import TimelineItem from "./components/timeline-item";
 import Divider from "./components/divider";
 import Collapse from "./components/collapse";
+import Step from "./components/step";
 import Steps from "./components/steps";
 import Breadcrumb from "./components/breadcrumb";
 import MessageBox from "./components/message-box";
@@ -122,6 +123,7 @@ const componentsList = [
 	TimelineItem,
 	Divider,
 	Collapse,
+	Step,
 	Steps,
 	Breadcrumb,
 	MessageBox,

@@ -1,20 +1,21 @@
 <template>
-	<div class="demo-icon-wrapper">
-		<h2>steps</h2>
-		<br />
-		<p>基本配置</p>
-		<tu-steps :active="1">
+	<div>
+		<tu-steps :current="1">
 			<tu-step
-				title="步骤 1"
-				icon="tu-icon-edit"
+				title="已完成"
+				content="这里是该步骤的描述信息"
 			></tu-step>
 			<tu-step
-				title="步骤 2"
-				icon="tu-icon-upload"
+				title="进行中"
+				content="这里是该步骤的描述信息"
 			></tu-step>
 			<tu-step
-				title="步骤 3"
-				icon="tu-icon-picture"
+				title="待进行"
+				content="这里是该步骤的描述信息"
+			></tu-step>
+			<tu-step
+				title="待进行"
+				content="这里是该步骤的描述信息"
 			></tu-step>
 		</tu-steps>
 	</div>
@@ -25,7 +26,15 @@
 		name: "deme-popover",
 
 		data() {
-			return {};
+			return {
+				active: 0,
+			};
+		},
+
+		methods: {
+			next() {
+				if (this.active++ > 2) this.active = 0;
+			},
 		},
 	};
 </script>

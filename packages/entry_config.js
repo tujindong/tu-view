@@ -234,6 +234,10 @@ module.exports = {
 			author: "tujindong",
 		},
 		{
+			name: "step",
+			author: "tujindong",
+		},
+		{
 			name: "steps",
 			author: "tujindong",
 		},

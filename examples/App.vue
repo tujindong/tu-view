@@ -38,7 +38,6 @@
 		<DemoTimeline />
 		<DemoDrawer />
 		<DemoMessageBox />
-		<DemoSteps />
 		<DemoSelect />
 		<DemoDivider />
 		<DemoAvatar />
@@ -49,6 +48,7 @@
 		<DemoNotification />
 		<DemoCollapse />
 		<DemoForm />
+		<DemoSteps />
 	</div>
 </template>
 
