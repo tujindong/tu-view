@@ -70,6 +70,7 @@ module.exports = {
 					children: [
 						["../guide/tabs.md", "Tabs 标签页"],
 						["../guide/dropdown.md", "Dropdown 下拉菜单"],
+						["../guide/steps.md", "Steps 步骤条"],
 					],
 				},
 				{
