@@ -206,6 +206,10 @@ module.exports = {
 			author: "tujindong",
 		},
 		{
+			name: "carousel-item",
+			author: "tujindong",
+		},
+		{
 			name: "drawer",
 			author: "tujindong",
 		},
@@ -231,6 +235,10 @@ module.exports = {
 		},
 		{
 			name: "collapse",
+			author: "tujindong",
+		},
+		{
+			name: "collapse-item",
 			author: "tujindong",
 		},
 		{

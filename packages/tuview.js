@@ -48,6 +48,7 @@ import Modal from "./components/modal";
 import Popover from "./components/popover";
 import Popconfirm from "./components/popconfirm";
 import Carousel from "./components/carousel";
+import CarouselItem from "./components/carousel-item";
 import Drawer from "./components/drawer";
 import Image from "./components/image";
 import Calendar from "./components/calendar";
@@ -55,6 +56,7 @@ import Timeline from "./components/timeline";
 import TimelineItem from "./components/timeline-item";
 import Divider from "./components/divider";
 import Collapse from "./components/collapse";
+import CollapseItem from "./components/collapse-item";
 import Step from "./components/step";
 import Steps from "./components/steps";
 import Breadcrumb from "./components/breadcrumb";
@@ -119,6 +121,7 @@ const componentsList = [
 	Popover,
 	Popconfirm,
 	Carousel,
+	CarouselItem,
 	Drawer,
 	Image,
 	Calendar,
@@ -126,6 +129,7 @@ const componentsList = [
 	TimelineItem,
 	Divider,
 	Collapse,
+	CollapseItem,
 	Step,
 	Steps,
 	Breadcrumb,
