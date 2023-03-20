@@ -201,34 +201,36 @@
 
 ```html
 <template>
-	<tu-steps
-		:active="1"
-		simple
-	>
-		<tu-step
-			title="步骤 1"
-			icon="tu-icon-frown"
-		></tu-step>
-		<tu-step
-			title="步骤 2"
-			icon="tu-icon-meh"
-		></tu-step>
-		<tu-step
-			title="步骤 3"
-			icon="tu-icon-smile"
-		></tu-step>
-	</tu-steps>
+	<div>
+		<tu-steps
+			:active="1"
+			simple
+		>
+			<tu-step
+				title="步骤 1"
+				icon="tu-icon-frown"
+			></tu-step>
+			<tu-step
+				title="步骤 2"
+				icon="tu-icon-meh"
+			></tu-step>
+			<tu-step
+				title="步骤 3"
+				icon="tu-icon-smile"
+			></tu-step>
+		</tu-steps>
 
-	<tu-steps
-		:active="1"
-		finish-status="success"
-		simple
-		style="margin-top: 20px"
-	>
-		<tu-step title="步骤 1"></tu-step>
-		<tu-step title="步骤 2"></tu-step>
-		<tu-step title="步骤 3"></tu-step>
-	</tu-steps>
+		<tu-steps
+			:active="1"
+			finish-status="success"
+			simple
+			style="margin-top: 20px"
+		>
+			<tu-step title="步骤 1"></tu-step>
+			<tu-step title="步骤 2"></tu-step>
+			<tu-step title="步骤 3"></tu-step>
+		</tu-steps>
+	</div>
 </template>
 ```
 

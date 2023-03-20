@@ -1,163 +1,97 @@
 <template>
 	<div class="container">
-		<DemoButton />
-		<DemoIcon />
-		<DemoRadio />
-		<DemoCheckbox />
-		<DemoInput />
-		<DemoSwitch />
-		<DemoInputNumber />
-		<DemoCard />
-		<DemoTooltip />
-		<DemoTabs />
-		<DemoTag />
-		<DemoLayout />
-		<DemoScrollbar />
-		<DemoDatePicker />
-		<DemoTimePicker />
-		<DemoDateTimePicker />
-		<DemoDropdown />
-		<DemoMessage />
-		<DemoProgress />
-		<DemoUpload />
-		<DemoPagination />
-		<DemoCascader />
-		<DemoSlider />
-		<DemoRate />
-		<DemoTransfer />
-		<DemoColorPicker />
-		<DemoBacktop />
-		<DemoTree />
-		<DemoTreeSelect />
-		<DemoBadge />
-		<DemoModal />
-		<DemoCarousel />
-		<DemoBreadcrumb />
-		<DemoPopover />
-		<DemoPopconfrim />
-		<DemoTimeline />
-		<DemoDrawer />
-		<DemoMessageBox />
-		<DemoSelect />
-		<DemoDivider />
-		<DemoAvatar />
-		<DemoCalendar />
-		<DemoAlert />
-		<DemoTable />
-		<DemoLoading />
-		<DemoNotification />
-		<DemoCollapse />
-		<DemoForm />
-		<DemoSteps />
+		<tu-radio-group v-model="size">
+			<tu-radio label="">默认</tu-radio>
+			<tu-radio label="medium">中等</tu-radio>
+			<tu-radio label="small">小型</tu-radio>
+			<tu-radio label="mini">超小</tu-radio>
+		</tu-radio-group>
+
+		<tu-descriptions
+			class="margin-top"
+			title="带边框列表"
+			:column="3"
+			:size="size"
+			border
+		>
+			<template slot="extra">
+				<tu-button
+					type="primary"
+					size="small"
+					>操作</tu-button
+				>
+			</template>
+			<tu-descriptions-item>
+				<template slot="label">
+					<i class="tu-icon-user"></i>
+					用户名
+				</template>
+				kooriookami
+			</tu-descriptions-item>
+			<tu-descriptions-item>
+				<template slot="label">
+					<i class="tu-icon-mobile-phone"></i>
+					手机号
+				</template>
+				18100000000
+			</tu-descriptions-item>
+			<tu-descriptions-item>
+				<template slot="label">
+					<i class="tu-icon-location-outline"></i>
+					居住地
+				</template>
+				苏州市
+			</tu-descriptions-item>
+			<tu-descriptions-item>
+				<template slot="label">
+					<i class="tu-icon-tickets"></i>
+					备注
+				</template>
+				<tu-tag size="small">学校</tu-tag>
+			</tu-descriptions-item>
+			<tu-descriptions-item>
+				<template slot="label">
+					<i class="tu-icon-office-building"></i>
+					联系地址
+				</template>
+				江苏省苏州市吴中区吴中大道 1188 号
+			</tu-descriptions-item>
+		</tu-descriptions>
+
+		<tu-descriptions
+			class="margin-top"
+			title="无边框列表"
+			:column="3"
+			:size="size"
+		>
+			<template slot="extra">
+				<tu-button
+					type="primary"
+					size="small"
+					>操作</tu-button
+				>
+			</template>
+			<tu-descriptions-item label="用户名">kooriookami</tu-descriptions-item>
+			<tu-descriptions-item label="手机号">18100000000</tu-descriptions-item>
+			<tu-descriptions-item label="居住地">苏州市</tu-descriptions-item>
+			<tu-descriptions-item label="备注">
+				<tu-tag size="small">学校</tu-tag>
+			</tu-descriptions-item>
+			<tu-descriptions-item label="联系地址"
+				>江苏省苏州市吴中区吴中大道 1188 号</tu-descriptions-item
+			>
+		</tu-descriptions>
 	</div>
 </template>
 
 <script>
-	import DemoButton from "./components/demo-button.vue";
-	import DemoIcon from "./components/demo-icon.vue";
-	import DemoRadio from "./components/demo-radio.vue";
-	import DemoCheckbox from "./components/demo-checkbox.vue";
-	import DemoInput from "./components/demo-input.vue";
-	import DemoSwitch from "./components/demo-switch.vue";
-	import DemoInputNumber from "./components/demo-inputNumber.vue";
-	import DemoTabs from "./components/demo-tabs.vue";
-	import DemoSelect from "./components/demo-select.vue";
-	import DemoCard from "./components/demo-card.vue";
-	import DemoLayout from "./components/demo-layout.vue";
-	import DemoTag from "./components/demo-tag.vue";
-	import DemoTable from "./components/demo-table.vue";
-	import DemoProgress from "./components/demo-progress.vue";
-	import DemoPagination from "./components/demo-pagination.vue";
-	import DemoTooltip from "./components/demo-tooltip.vue";
-	import DemoScrollbar from "./components/demo-scrollbar.vue";
-	import DemoRate from "./components/demo-rate.vue";
-	import DemoSlider from "./components/demo-slider.vue";
-	import DemoForm from "./components/demo-form.vue";
-	import DemoDatePicker from "./components/demo-datePicker.vue";
-	import DemoTimePicker from "./components/demo-timePicker.vue";
-	import DemoDateTimePicker from "./components/demo-dateTimePicker.vue";
-	import DemoDropdown from "./components/demo-dropdown.vue";
-	import DemoMessage from "./components/demo-message.vue";
-	import DemoCascader from "./components/demo-cascader.vue";
-	import DemoTransfer from "./components/demo-transfer.vue";
-	import DemoColorPicker from "./components/demo-colorPicker.vue";
-	import DemoBacktop from "./components/demo-backtop.vue";
-	import DemoUpload from "./components/demo-upload.vue";
-	import DemoTree from "./components/demo-tree.vue";
-	import DemoTreeSelect from "./components/demo-treeSelect";
-	import DemoBadge from "./components/demo-badge";
-	import DemoModal from "./components/demo-modal";
-	import DemoPopconfrim from "./components/demo-popconfrim";
-	import DemoCarousel from "./components/demo-carousel.vue";
-	import DemoDrawer from "./components/demo-drawer.vue";
-	import DemoCalendar from "./components/demo-calendar.vue";
-	import DemoTimeline from "./components/demo-timeline.vue";
-	import DemoDivider from "./components/demo-divider.vue";
-	import DemoCollapse from "./components/demo-collapse.vue";
-	import DemoSteps from "./components/demo-steps.vue";
-	import DemoBreadcrumb from "./components/demo-breadcrumb.vue";
-	import DemoMessageBox from "./components/demo-messageBox.vue";
-	import DemoAvatar from "./components/demo-avatar.vue";
-	import DemoPopover from "./components/demo-popover";
-	import DemoNotification from "./components/demo-notification";
-	import DemoAlert from "./components/demo-alert.vue";
-	import DemoLoading from "./components/demo-loading.vue";
-
 	export default {
-		components: {
-			DemoButton,
-			DemoIcon,
-			DemoRadio,
-			DemoCheckbox,
-			DemoInput,
-			DemoSwitch,
-			DemoInputNumber,
-			DemoTabs,
-			DemoSelect,
-			DemoCard,
-			DemoLayout,
-			DemoTag,
-			DemoTable,
-			DemoProgress,
-			DemoPagination,
-			DemoTooltip,
-			DemoScrollbar,
-			DemoRate,
-			DemoSlider,
-			DemoForm,
-			DemoDatePicker,
-			DemoTimePicker,
-			DemoDateTimePicker,
-			DemoDropdown,
-			DemoMessage,
-			DemoCascader,
-			DemoTransfer,
-			DemoColorPicker,
-			DemoBacktop,
-			DemoUpload,
-			DemoTree,
-			DemoTreeSelect,
-			DemoBadge,
-			DemoModal,
-			DemoPopover,
-			DemoPopconfrim,
-			DemoCarousel,
-			DemoDrawer,
-			DemoCalendar,
-			DemoTimeline,
-			DemoDivider,
-			DemoCollapse,
-			DemoSteps,
-			DemoBreadcrumb,
-			DemoMessageBox,
-			DemoAvatar,
-			DemoNotification,
-			DemoAlert,
-			DemoLoading,
-		},
+		components: {},
 
 		data() {
-			return {};
+			return {
+				size: "",
+			};
 		},
 	};
 </script>

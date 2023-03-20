@@ -269,5 +269,13 @@ module.exports = {
 			name: "loading",
 			author: "tujindong",
 		},
+		{
+			name: "descriptions",
+			author: "tujindong",
+		},
+		{
+			name: "descriptions-item",
+			author: "tujindong",
+		},
 	],
 };

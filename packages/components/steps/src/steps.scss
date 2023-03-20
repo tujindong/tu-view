@@ -276,12 +276,12 @@
 			background: transparent;
 			width: 16px;
 			height: 16px;
-			font-size: 12px;
+			font-size: 14px;
 		}
 
 		@include e(icon-inner) {
 			&[class*="tu-icon"]:not(.is-status) {
-				font-size: 14px;
+				font-size: 20px;
 			}
 
 			&.is-status {

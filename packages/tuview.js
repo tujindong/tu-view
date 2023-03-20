@@ -1,4 +1,3 @@
-/* 组件库对外导出的组件集合，对整个组件进行导出 */
 import Button from "./components/button";
 import ButtonGroup from "./components/button-group";
 import Icon from "./components/icon";
@@ -64,6 +63,8 @@ import Avatar from "./components/avatar";
 import Notification from "./components/notification";
 import Alert from "./components/alert";
 import Loading from "./components/loading";
+import Descriptions from "./components/descriptions";
+import DescriptionsItem from "./components/descriptions-item";
 
 const componentsList = [
 	Button,
@@ -131,6 +132,8 @@ const componentsList = [
 	Notification,
 	Alert,
 	Loading,
+	Descriptions,
+	DescriptionsItem,
 ];
 
 const install = function (Vue, opts = {}) {

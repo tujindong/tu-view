@@ -622,6 +622,13 @@ $--notification-info-icon-color: $--color-info;
 $--notification-warning-icon-color: $--color-warning;
 $--notification-danger-icon-color: $--color-danger;
 
+/* Descriptions
+-------------------------- */
+$--descriptions-header-margin-bottom: 20px;
+$--descriptions-title-font-size: 14px;
+$--descriptions-table-border: 1px solid $--border-color-lighter;
+$--descriptions-item-bordered-label-background: #fafafa;
+
 /* Break-point
 --------------------------*/
 $--sm: 768px !default;
