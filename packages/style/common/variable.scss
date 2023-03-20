@@ -624,10 +624,19 @@ $--notification-danger-icon-color: $--color-danger;
 
 /* Descriptions
 -------------------------- */
-$--descriptions-header-margin-bottom: 20px;
+$--descriptions-header-margin-bottom: 12px;
 $--descriptions-title-font-size: 14px;
-$--descriptions-table-border: 1px solid $--border-color-lighter;
-$--descriptions-item-bordered-label-background: #fafafa;
+$--descriptions-table-border: 1px solid $--border-color-base;
+$--descriptions-item-bordered-label-background: rgba($--color-white, 0.25);
+
+/* Skeleton 
+--------------------------*/
+$--skeleton-color: $--background-color-hover;
+$--skeleton-to-color: $--background-color-hover-light;
+
+/* Svg
+--------------- */
+$--svg-monochrome-grey: $--color-text-regular;
 
 /* Break-point
 --------------------------*/

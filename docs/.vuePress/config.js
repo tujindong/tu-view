@@ -62,6 +62,8 @@ module.exports = {
 						["../guide/pagination.md", "Pagination 分页"],
 						["../guide/badge.md", "Badge 标记"],
 						["../guide/avatar.md", "Avatar 头像"],
+						["../guide/skeleton.md", "Skeleton 骨架屏"],
+						["../guide/descriptions.md", "Descriptions 描述列表"],
 					],
 				},
 				{

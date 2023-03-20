@@ -65,6 +65,8 @@ import Alert from "./components/alert";
 import Loading from "./components/loading";
 import Descriptions from "./components/descriptions";
 import DescriptionsItem from "./components/descriptions-item";
+import Skeleton from "./components/skeleton";
+import SkeletonItem from "./components/skeleton-item";
 
 const componentsList = [
 	Button,
@@ -134,6 +136,8 @@ const componentsList = [
 	Loading,
 	Descriptions,
 	DescriptionsItem,
+	Skeleton,
+	SkeletonItem,
 ];
 
 const install = function (Vue, opts = {}) {

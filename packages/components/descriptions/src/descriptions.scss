@@ -20,6 +20,11 @@
 	@include e(body) {
 		color: $--color-text-regular;
 
+		tr,
+		tr td {
+			border: none;
+		}
+
 		.tu-descriptions__table {
 			border-collapse: collapse;
 			width: 100%;
@@ -60,16 +65,16 @@
 		}
 	}
 
-	@include m(medium) {
+	@include m(large) {
 		&.is-bordered {
 			.tu-descriptions-item__cell {
-				padding: 10px;
+				padding: 16px 14px;
 			}
 		}
 
 		&:not(.is-bordered) {
 			.tu-descriptions-item__cell {
-				padding-bottom: 10px;
+				padding-bottom: 14px;
 			}
 		}
 	}
@@ -124,6 +129,7 @@
 	}
 
 	@include e(label) {
+		color: $--color-text-regular;
 		&.has-colon {
 			&::after {
 				content: ":";
@@ -133,7 +139,6 @@
 		}
 		&.is-bordered-label {
 			font-weight: bold;
-			color: $--color-text-secondary;
 			background: $--descriptions-item-bordered-label-background;
 		}
 		&:not(.is-bordered-label) {
