@@ -1,5 +1,10 @@
 <template>
 	<div class="container">
+		<tu-button
+			style="margin-bottom: 20px"
+			@click="loading = !loading"
+			>切换loading</tu-button
+		>
 		<tu-table
 			v-loading="loading"
 			:data="tableData"
