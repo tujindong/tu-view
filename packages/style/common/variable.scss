@@ -439,7 +439,7 @@ $--pagination-hover-color: $--color-primary;
 
 // $--message-shadow: $--box-shadow-base;
 $--message-min-width: 380px;
-$--message-color: $--color-white;
+$--message-color: $--color-text-primary;
 $--message-padding: 15px 15px 15px 20px;
 $--message-close-icon-color: $--color-greyLight-3;
 $--message-close-size: 16px;
@@ -633,6 +633,17 @@ $--descriptions-item-bordered-label-background: rgba($--color-white, 0.25);
 --------------------------*/
 $--skeleton-color: $--background-color-hover;
 $--skeleton-to-color: $--background-color-hover-light;
+
+/* Collapse
+--------------------------*/
+$--collapse-border-color: $--border-color-lighter;
+$--collapse-header-height: 48px;
+$--collapse-header-background-color: $--color-white;
+$--collapse-header-font-color: $--color-text-primary;
+$--collapse-header-font-size: 13px;
+$--collapse-content-background-color: $--color-white;
+$--collapse-content-font-size: 13px;
+$--collapse-content-font-color: $--color-text-primary;
 
 /* Svg
 --------------- */

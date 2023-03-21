@@ -1,6 +1,7 @@
 <template>
 	<div
 		class="tu-collapse"
+		:class="[{ 'is-bordered': border }]"
 		role="tablist"
 		aria-multiselectable="true"
 	>
@@ -22,6 +23,7 @@
 
 		props: {
 			accordion: Boolean,
+			border: Boolean,
 			value: {
 				type: [Array, String, Number],
 				default() {
