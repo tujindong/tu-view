@@ -649,6 +649,11 @@ $--collapse-content-font-color: $--color-text-primary;
 --------------- */
 $--svg-monochrome-grey: $--color-text-regular;
 
+/* Loading
+--------------------------*/
+$--loading-spinner-size: 42px;
+$--loading-fullscreen-spinner-size: 50px;
+
 /* Break-point
 --------------------------*/
 $--sm: 768px !default;
