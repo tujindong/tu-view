@@ -71,6 +71,7 @@ module.exports = {
 					collapsable: false,
 					children: [
 						["../guide/tabs.md", "Tabs 标签页"],
+						["../guide/breadcrumb.md", "Breadcrumb 面包屑"],
 						["../guide/dropdown.md", "Dropdown 下拉菜单"],
 						["../guide/steps.md", "Steps 步骤条"],
 					],

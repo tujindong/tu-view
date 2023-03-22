@@ -254,6 +254,10 @@ module.exports = {
 			author: "tujindong",
 		},
 		{
+			name: "breadcrumb-item",
+			author: "tujindong",
+		},
+		{
 			name: "messageBox",
 			author: "tujindong",
 		},

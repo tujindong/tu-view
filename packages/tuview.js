@@ -60,6 +60,7 @@ import CollapseItem from "./components/collapse-item";
 import Step from "./components/step";
 import Steps from "./components/steps";
 import Breadcrumb from "./components/breadcrumb";
+import BreadcrumbItem from "./components/breadcrumb-item";
 import MessageBox from "./components/message-box";
 import Avatar from "./components/avatar";
 import Notification from "./components/notification";
@@ -133,6 +134,7 @@ const componentsList = [
 	Step,
 	Steps,
 	Breadcrumb,
+	BreadcrumbItem,
 	MessageBox,
 	Avatar,
 	Notification,
