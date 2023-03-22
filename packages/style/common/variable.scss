@@ -13,7 +13,6 @@ $--color-transition-base: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) !defau
 
 /* color
 -------------------------- */
-$--color-background: #e4ebf5;
 $--color-white: #ffffff;
 $--color-black: #000000;
 $--color-greyLight-1: #e4ebf5;
@@ -29,6 +28,10 @@ $--border-color-base: rgba($--color-greyLight-3, 0.38);
 $--border-color-light: rgba($--color-greyLight-3, 0.28);
 $--border-color-lighter: rgba($--color-greyLight-3, 0.18);
 $--border-color-extra-light: rgba($--color-greyLight-3, 0.1);
+
+/* background
+-------------------------- */
+$--color-background: #e4ebf5;
 $--background-color-hover: rgba($--color-greyLight-3, 0.25);
 $--background-color-hover-light: rgba($--color-greyLight-3, 0.15);
 $--background-color-hover-white: rgba($--color-white, 0.15);
@@ -653,6 +656,10 @@ $--svg-monochrome-grey: $--color-text-regular;
 --------------------------*/
 $--loading-spinner-size: 42px;
 $--loading-fullscreen-spinner-size: 50px;
+
+/* Avatar
+--------------------------*/
+$--image-background-color: rgb(223, 226, 231);
 
 /* Break-point
 --------------------------*/

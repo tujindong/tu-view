@@ -101,6 +101,7 @@ module.exports = {
 						["../guide/timeline.md", "Timeline 时间线"],
 						["../guide/divider.md", "Divider 分割线"],
 						["../guide/calendar.md", "Calendar 日历"],
+						["../guide/image.md", "Image 图片"],
 						["../guide/scrollbar.md", "Scrollbar 区域滚动"],
 						["../guide/backtop.md", "Backtop 回到顶部"],
 					],

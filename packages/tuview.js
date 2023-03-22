@@ -70,6 +70,7 @@ import Descriptions from "./components/descriptions";
 import DescriptionsItem from "./components/descriptions-item";
 import Skeleton from "./components/skeleton";
 import SkeletonItem from "./components/skeleton-item";
+import InfiniteScroll from "./components/infinite-scroll";
 
 const componentsList = [
 	Button,
@@ -143,6 +144,7 @@ const componentsList = [
 	DescriptionsItem,
 	Skeleton,
 	SkeletonItem,
+	InfiniteScroll,
 ];
 
 const install = function (Vue, opts = {}) {
@@ -152,6 +154,7 @@ const install = function (Vue, opts = {}) {
 		Vue.component(component.name, component);
 	});
 
+	Vue.use(InfiniteScroll);
 	Vue.use(Loading.directive);
 
 	Vue.prototype.$TUVIEW = {
