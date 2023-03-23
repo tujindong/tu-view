@@ -107,3 +107,34 @@ p {
 .theme-container .page .demo-block .demo-content{
     padding: 12px;
 }
+
+#滚动条样式
+::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+  background-clip: padding-box;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  transition: 0.3s ease;
+  z-index: 100;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+*{
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+}

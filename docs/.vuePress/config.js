@@ -97,6 +97,7 @@ module.exports = {
 						["../guide/modal.md", "Modal 模态框"],
 						["../guide/drawer.md", "Drawer 抽屉"],
 						["../guide/card.md", "Card 卡片"],
+						["../guide/carousel.md", "Carousel 走马灯"],
 						["../guide/collapse.md", "Collapse 折叠面板"],
 						["../guide/timeline.md", "Timeline 时间线"],
 						["../guide/divider.md", "Divider 分割线"],
