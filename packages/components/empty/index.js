@@ -1,8 +1,8 @@
-import Breadcrumb from "./src/breadcrumb.vue";
-import "./src/breadcrumb.scss";
+import Empty from "./src/empty.vue";
+import "./src/empty.scss";
 
-Breadcrumb.install = function (Vue) {
-	Vue.component(Breadcrumb.name, Breadcrumb);
+Empty.install = function (Vue) {
+	Vue.component(Empty.name, Empty);
 };
 
-export default Breadcrumb;
+export default Empty;

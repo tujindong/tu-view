@@ -301,5 +301,9 @@ module.exports = {
 			name: "infinite-scroll",
 			author: "tujindong",
 		},
+		{
+			name: "empty",
+			author: "tujindong",
+		},
 	],
 };

@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<tu-empty description="描述文字"></tu-empty>
+		<tu-empty icon="tu-icon-folder-open"></tu-empty>
 	</div>
 </template>
 

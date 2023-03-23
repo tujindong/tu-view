@@ -63,6 +63,7 @@ module.exports = {
 						["../guide/badge.md", "Badge 标记"],
 						["../guide/avatar.md", "Avatar 头像"],
 						["../guide/skeleton.md", "Skeleton 骨架屏"],
+						["../guide/empty.md", "Empty 空状态"],
 						["../guide/descriptions.md", "Descriptions 描述列表"],
 					],
 				},

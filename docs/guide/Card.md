@@ -66,7 +66,7 @@
 	>
 		<tu-card :body-style="{ padding: '0px' }">
 			<img
-				style="width: 243px; height: 300px"
+				style="width: 250px; height: 300px"
 				src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
 			/>
 			<div style="padding: 14px">
