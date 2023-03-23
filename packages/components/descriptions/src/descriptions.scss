@@ -21,7 +21,8 @@
 		color: $--color-text-regular;
 
 		tr,
-		tr td {
+		th,
+		td {
 			border: none;
 		}
 
@@ -139,7 +140,6 @@
 		}
 		&.is-bordered-label {
 			font-weight: bold;
-			background: $--descriptions-item-bordered-label-background;
 		}
 		&:not(.is-bordered-label) {
 			margin-right: 10px;

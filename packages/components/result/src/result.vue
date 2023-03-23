@@ -1,5 +1,5 @@
 <template>
-	<div>面包屑Breadcrumb</div>
+	<div>result</div>
 </template>
 
 <script>

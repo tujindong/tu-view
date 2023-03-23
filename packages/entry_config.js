@@ -305,5 +305,9 @@ module.exports = {
 			name: "empty",
 			author: "tujindong",
 		},
+		{
+			name: "result",
+			author: "tujindong",
+		},
 	],
 };

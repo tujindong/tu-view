@@ -72,6 +72,7 @@ import Skeleton from "./components/skeleton";
 import SkeletonItem from "./components/skeleton-item";
 import InfiniteScroll from "./components/infinite-scroll";
 import Empty from "./components/empty";
+import Result from "./components/result";
 
 const componentsList = [
 	Button,
@@ -147,6 +148,7 @@ const componentsList = [
 	SkeletonItem,
 	InfiniteScroll,
 	Empty,
+	Result,
 ];
 
 const install = function (Vue, opts = {}) {
