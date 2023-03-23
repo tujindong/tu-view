@@ -297,5 +297,9 @@ module.exports = {
 			name: "skeleton-item",
 			author: "tujindong",
 		},
+		{
+			name: "infinite-scroll",
+			author: "tujindong",
+		},
 	],
 };

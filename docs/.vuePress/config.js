@@ -104,6 +104,7 @@ module.exports = {
 						["../guide/image.md", "Image 图片"],
 						["../guide/scrollbar.md", "Scrollbar 区域滚动"],
 						["../guide/backtop.md", "Backtop 回到顶部"],
+						["../guide/infinite-scroll.md", "InfiniteScroll 无限滚动"],
 					],
 				},
 			],
