@@ -65,6 +65,8 @@ module.exports = {
 						["../guide/skeleton.md", "Skeleton 骨架屏"],
 						["../guide/empty.md", "Empty 空状态"],
 						["../guide/descriptions.md", "Descriptions 描述列表"],
+						["../guide/result.md", "Result 结果"],
+						["../guide/statistic.md", "Statistic 统计数值"],
 					],
 				},
 				{

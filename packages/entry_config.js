@@ -309,5 +309,25 @@ module.exports = {
 			name: "result",
 			author: "tujindong",
 		},
+		{
+			name: "statistic",
+			author: "tujindong",
+		},
+		{
+			name: "menu",
+			author: "tujindong",
+		},
+		{
+			name: "sub-menu",
+			author: "tujindong",
+		},
+		{
+			name: "menu-item",
+			author: "tujindong",
+		},
+		{
+			name: "menu-item-group",
+			author: "tujindong",
+		},
 	],
 };

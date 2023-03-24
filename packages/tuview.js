@@ -73,6 +73,11 @@ import SkeletonItem from "./components/skeleton-item";
 import InfiniteScroll from "./components/infinite-scroll";
 import Empty from "./components/empty";
 import Result from "./components/result";
+import Statistic from "./components/statistic";
+import Menu from "./components/menu";
+import Submenu from "./components/submenu";
+import MenuItem from "./components/menu-item";
+import MenuItemGroup from "./components/menu-item-group";
 
 const componentsList = [
 	Button,
@@ -149,6 +154,11 @@ const componentsList = [
 	InfiniteScroll,
 	Empty,
 	Result,
+	Statistic,
+	Menu,
+	Submenu,
+	MenuItem,
+	MenuItemGroup,
 ];
 
 const install = function (Vue, opts = {}) {

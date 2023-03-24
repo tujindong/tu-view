@@ -14,6 +14,68 @@
 
 :::
 
+### 其他 Icon
+
+:::demo
+
+```html
+<template>
+	<div>
+		<tu-row :gutter="20">
+			<tu-col :span="6">
+				<tu-empty description="默认图标"></tu-empty>
+			</tu-col>
+			<tu-col :span="6">
+				<tu-empty
+					description="404"
+					icon="404"
+				></tu-empty>
+			</tu-col>
+			<tu-col :span="6">
+				<tu-empty
+					description="暂无收藏"
+					icon="collect-empty"
+				></tu-empty>
+			</tu-col>
+			<tu-col :span="6">
+				<tu-empty
+					description="网络不给力"
+					icon="connect-failed"
+				></tu-empty>
+			</tu-col>
+		</tu-row>
+		<tu-row :gutter="20">
+			<tu-col :span="6">
+				<tu-empty
+					description="列表为空"
+					icon="list-empty"
+				></tu-empty>
+			</tu-col>
+			<tu-col :span="6">
+				<tu-empty
+					description="加载失败"
+					icon="load-failed"
+				></tu-empty>
+			</tu-col>
+			<tu-col :span="6">
+				<tu-empty
+					description="暂无消息"
+					icon="message-empty"
+				></tu-empty>
+			</tu-col>
+			<tu-col :span="6">
+				<tu-empty
+					description="无搜索结果"
+					icon="search-empty"
+				></tu-empty>
+			</tu-col>
+		</tu-row>
+	</div>
+</template>
+```
+
+:::
+
 ### 自定义图片
 
 通过设置 `image` 属性传入图片 URL。
@@ -60,11 +122,12 @@
 
 ### Empty Attributes
 
-| 参数        | 说明             | 类型   | 可选值 | 默认值 |
-| ----------- | ---------------- | ------ | ------ | ------ |
-| image       | 图片地址         | string | —      | —      |
-| image-size  | 图片大小（宽度） | number | —      | —      |
-| description | 文本描述         | string | —      | —      |
+| 参数        | 说明             | 类型   | 可选值                                                                                                 | 默认值 |
+| ----------- | ---------------- | ------ | ------------------------------------------------------------------------------------------------------ | ------ |
+| image       | 图片地址         | string | —                                                                                                      | —      |
+| image-size  | 图片大小（宽度） | number | —                                                                                                      | —      |
+| icon        | 其他图标         | string | empty / 404 / collect-empty / connect-failed / list-empty / load-failed / message-empty / search-empty | empty  |
+| description | 文本描述         | string | —                                                                                                      | —      |
 
 ### Empty Slots
 

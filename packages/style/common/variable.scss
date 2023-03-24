@@ -680,6 +680,26 @@ $--empty-image-width: 160px;
 $--empty-description-margin-top: 12px;
 $--empty-bottom-margin-top: 20px;
 
+/* Result
+-------------------------- */
+$--result-padding: 40px 30px;
+$--result-icon-font-size: 64px;
+$--result-title-font-size: 20px;
+$--result-title-margin-top: 20px;
+$--result-subtitle-margin-top: 10px;
+$--result-extra-margin-top: 30px;
+$--result-info-color: $--color-info;
+$--result-success-color: $--color-success;
+$--result-warning-color: $--color-warning;
+$--result-danger-color: $--color-danger;
+
+/* Menu
+--------------------------*/
+$--menu-item-font-size: $--font-size-base;
+$--menu-item-font-color: $--color-text-primary;
+$--menu-background-color: $--color-white;
+$--menu-item-hover-fill: $--color-primary-light;
+
 /* Break-point
 --------------------------*/
 $--sm: 768px !default;

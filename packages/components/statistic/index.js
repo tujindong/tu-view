@@ -1,8 +1,8 @@
-import Breadcrumb from "./src/breadcrumb.vue";
-import "./src/breadcrumb.scss";
+import Statistic from "./src/statistic.vue";
+import "./src/statistic.scss";
 
-Breadcrumb.install = function (Vue) {
-	Vue.component(Breadcrumb.name, Breadcrumb);
+Statistic.install = function (Vue) {
+	Vue.component(Statistic.name, Statistic);
 };
 
-export default Breadcrumb;
+export default Statistic;

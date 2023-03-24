@@ -154,9 +154,8 @@
 				z-index: 1;
 				transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 				list-style: none;
-				border-radius: 50%;
-				box-shadow: 3px 1px 2px $--color-greyLight-2, -2px -2px 3px $--color-white,
-					inset 3px 3px 2px $--color-greyLight-2, inset -2px -2px 2px $--color-white;
+				height: 2px;
+				background-color: $--color-primary;
 			}
 		}
 	}
@@ -256,8 +255,8 @@
 		&.tu-tabs--line {
 			.tu-tabs__active-bar.is-left,
 			.tu-tabs__active-bar.is-right {
-				box-shadow: 2px 2px 3px $--color-greyLight-2, -2px -2px 3px $--color-white,
-					inset 3px 3px 2px $--color-greyLight-2, inset -2px -2px 2px $--color-white;
+				width: 2px;
+				background: $--color-primary;
 			}
 		}
 
@@ -293,7 +292,7 @@
 		}
 
 		.tu-tabs__active-bar.is-left {
-			right: 1px;
+			right: 2px;
 			left: auto;
 		}
 
