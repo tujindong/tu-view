@@ -4,6 +4,7 @@ import TuCollapseTransition from "@packages/src/transitions/collapse-transition"
 import menuMixin from "./menu-mixin";
 import Emitter from "@packages/src/mixins/emitter";
 import Popper from "@packages/src/utils/vue-popper";
+import { getBackground } from "@packages/src/utils/get-background";
 
 const poperMixins = {
   props: {
@@ -49,6 +50,7 @@ export default {
       type: Boolean,
       default: undefined,
     },
+    title: String,
   },
 
   data() {
@@ -157,10 +159,12 @@ export default {
 
   created() {
     this.$on("toggle-collapse", this.handleCollapseToggle);
+
     this.$on("mouse-enter-child", () => {
       this.mouseInChild = true;
       clearTimeout(this.timeout);
     });
+
     this.$on("mouse-leave-child", () => {
       this.mouseInChild = false;
       clearTimeout(this.timeout);
@@ -186,18 +190,23 @@ export default {
         this.doDestroy();
       }
     },
+
     addItem(item) {
       this.$set(this.items, item.index, item);
     },
+
     removeItem(item) {
       delete this.items[item.index];
     },
+
     addSubmenu(item) {
       this.$set(this.submenus, item.index, item);
     },
+
     removeSubmenu(item) {
       delete this.submenus[item.index];
     },
+
     handleClick() {
       const { rootMenu, disabled } = this;
       if (
@@ -209,6 +218,7 @@ export default {
       }
       this.dispatch("TuMenu", "submenu-click", this);
     },
+
     handleMouseenter(event, showTimeout = this.showTimeout) {
       if (
         !("ActiveXObject" in window) &&
@@ -235,6 +245,7 @@ export default {
         this.$parent.$el.dispatchEvent(new MouseEvent("mouseenter"));
       }
     },
+
     handleMouseleave(deepDispatch = false) {
       const { rootMenu } = this;
       if (
@@ -255,27 +266,41 @@ export default {
         }
       }
     },
+
     handleTitleMouseenter() {
       if (this.mode === "horizontal" && !this.rootMenu.backgroundColor) return;
       const title = this.$refs["submenu-title"];
       title && (title.style.backgroundColor = this.rootMenu.hoverBackground);
     },
+
     handleTitleMouseleave() {
       if (this.mode === "horizontal" && !this.rootMenu.backgroundColor) return;
       const title = this.$refs["submenu-title"];
       title &&
         (title.style.backgroundColor = this.rootMenu.backgroundColor || "");
     },
+
     updatePlacement() {
       this.currentPlacement =
         this.mode === "horizontal" && this.isFirstLevel
           ? "bottom-start"
           : "right-start";
     },
+
     initPopper() {
       this.referenceElm = this.$el;
       this.popperElm = this.$refs.menu;
       this.updatePlacement();
+      this.setBackgroundColor();
+    },
+
+    setBackgroundColor() {
+      if (!this.backgroundColor) {
+        const backgroundColor = getBackground(this.$el);
+        console.log("backgroundColor", backgroundColor);
+        if (backgroundColor)
+          this.$refs.menu.style.backgroundColor = backgroundColor;
+      }
     },
   },
 
@@ -294,6 +319,7 @@ export default {
       popperClass,
       $slots,
       isFirstLevel,
+      title,
     } = this;
 
     const popupMenu = (
@@ -362,7 +388,7 @@ export default {
           on-mouseleave={this.handleTitleMouseleave}
           style={[paddingStyle, titleStyle, { backgroundColor }]}
         >
-          {$slots.title}
+          {$slots.title || title}
           <i class={["tu-submenu__icon-arrow", submenuTitleIcon]}></i>
         </div>
         {this.isMenuPopup ? popupMenu : inlineMenu}

@@ -114,12 +114,33 @@
 :::demo 将`type`设置为`border-card`。
 
 ```html
-<tu-tabs type="border-card">
-	<tu-tab-pane label="香蕉">香蕉</tu-tab-pane>
-	<tu-tab-pane label="苹果">苹果</tu-tab-pane>
-	<tu-tab-pane label="橙子">橙子</tu-tab-pane>
-	<tu-tab-pane label="火龙果">火龙果</tu-tab-pane>
-</tu-tabs>
+<template>
+	<tu-tabs type="border-card">
+		<tu-tab-pane label="香蕉">香蕉</tu-tab-pane>
+		<tu-tab-pane label="苹果">苹果</tu-tab-pane>
+		<tu-tab-pane label="橙子">橙子</tu-tab-pane>
+		<tu-tab-pane label="火龙果">火龙果</tu-tab-pane>
+	</tu-tabs>
+</template>
+```
+
+:::
+
+### 标签化
+
+标签页样式。
+
+:::demo 将`type`设置为`tag`。
+
+```html
+<template>
+	<tu-tabs type="tag">
+		<tu-tab-pane label="香蕉">香蕉</tu-tab-pane>
+		<tu-tab-pane label="苹果">苹果</tu-tab-pane>
+		<tu-tab-pane label="橙子">橙子</tu-tab-pane>
+		<tu-tab-pane label="火龙果">火龙果</tu-tab-pane>
+	</tu-tabs>
+</template>
 ```
 
 :::

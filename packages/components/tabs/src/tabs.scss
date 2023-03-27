@@ -117,9 +117,6 @@
 	@include m(line) {
 		@include e(header) {
 			@include e(nav-wrap) {
-				@include e((nav-next, nav-prev)) {
-				}
-
 				@include e(nav-next) {
 					box-shadow: -6px -1px 6px -3px $--color-greyLight-3;
 				}
@@ -140,12 +137,6 @@
 				}
 			}
 
-			@include e(nav-scroll) {
-			}
-
-			@include e(nav) {
-			}
-
 			@include e(active-bar) {
 				position: absolute;
 				bottom: 2px;
@@ -163,14 +154,6 @@
 	@include m(card) {
 		@include e(header) {
 			box-shadow: $--box-shadow-convex;
-			@include e(nav-wrap) {
-			}
-
-			@include e(nav-scroll) {
-			}
-
-			@include e(nav) {
-			}
 
 			@include e(active-bar) {
 				position: absolute;
@@ -188,17 +171,8 @@
 	}
 
 	@include m(border-card) {
+		box-shadow: $--box-shadow-convex;
 		@include e(header) {
-			box-shadow: $--box-shadow-convex;
-			@include e(nav-wrap) {
-			}
-
-			@include e(nav-scroll) {
-			}
-
-			@include e(nav) {
-			}
-
 			@include e(active-bar) {
 				position: absolute;
 				bottom: 3px;
@@ -214,7 +188,32 @@
 		}
 
 		@include e(content) {
-			box-shadow: $--box-shadow-concave;
+			margin-top: 1px solid $--border-color-base;
+		}
+	}
+
+	@include m(tag) {
+		@include e(item) {
+			position: relative;
+			&::after {
+				content: "";
+				display: block;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: -11px;
+				margin-left: -41%;
+				height: 22px;
+				width: 84%;
+				box-shadow: $--box-shadow-convex;
+				border-radius: $--border-radius-small;
+			}
+
+			@include when(active) {
+				&::after {
+					box-shadow: $--box-shadow-concave;
+				}
+			}
 		}
 	}
 

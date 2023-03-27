@@ -55,18 +55,45 @@
       >
     </tu-menu>
 
-    <br />
-    <br />
-    <tu-radio-group v-model="tabPosition" style="margin-bottom: 30px">
-      <tu-radio label="top">上方</tu-radio>
-      <tu-radio label="right">右方</tu-radio>
-      <tu-radio label="bottom">下方</tu-radio>
-      <tu-radio label="left">左方</tu-radio>
-    </tu-radio-group>
+    <tu-menu
+      :default-active="activeIndex2"
+      class="tu-menu-demo"
+      mode="horizontal"
+      @select="handleSelect"
+      background-color="#999fff"
+      text-color="#fff"
+      active-text-color="#ffd04b"
+    >
+      <tu-menu-item index="1">处理中心</tu-menu-item>
+      <tu-submenu index="2">
+        <template slot="title">我的工作台</template>
+        <tu-menu-item index="2-1">选项1</tu-menu-item>
+        <tu-menu-item index="2-2">选项2</tu-menu-item>
+        <tu-menu-item index="2-3">选项3</tu-menu-item>
+        <tu-submenu index="2-4">
+          <template slot="title">选项4</template>
+          <tu-menu-item index="2-4-1">选项1</tu-menu-item>
+          <tu-menu-item index="2-4-2">选项2</tu-menu-item>
+          <tu-menu-item index="2-4-3">选项3</tu-menu-item>
+        </tu-submenu>
+      </tu-submenu>
+      <tu-menu-item index="3" disabled>消息中心</tu-menu-item>
+      <tu-menu-item index="4"
+        ><a href="https://www.ele.me" target="_blank">订单管理</a></tu-menu-item
+      >
+    </tu-menu>
 
-    <tu-tabs :tab-position="tabPosition" style="height: 200px">
-      <tu-tab-pane label="香蕉">香蕉</tu-tab-pane>
-      <tu-tab-pane label="苹果">苹果</tu-tab-pane>
+    <br />
+    <br />
+    <tu-tabs type="border-card">
+      <tu-tab-pane label="香蕉">香蕉 </tu-tab-pane>
+      <tu-tab-pane label="苹果">
+        <span slot="label">
+          <i class="tu-icon-apple"></i>
+          苹果
+        </span>
+        苹果
+      </tu-tab-pane>
       <tu-tab-pane label="橙子">橙子</tu-tab-pane>
       <tu-tab-pane label="火龙果">火龙果</tu-tab-pane>
     </tu-tabs>

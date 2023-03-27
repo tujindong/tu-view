@@ -25,36 +25,36 @@
 	&:hover,
 	&:focus {
 		outline: none;
-		background-color: $--menu-item-hover-fill;
+		color: $--color-primary;
 	}
 
 	@include when(disabled) {
-		opacity: 0.25;
+		opacity: 0.48;
 		cursor: not-allowed;
 		background: none !important;
 	}
 }
 
 @include b(menu) {
-	border-right: solid 1px #e6e6e6;
+	border-right: solid 1px $--border-color-base;
 	list-style: none;
 	position: relative;
 	margin: 0;
 	padding-left: 0;
 	@include utils-clearfix;
 	&.tu-menu--horizontal {
-		border-bottom: solid 1px #e6e6e6;
+		border-bottom: solid 1px $--border-color-base;
 	}
 
 	@include m(horizontal) {
 		border-right: none;
 		& > .tu-menu-item {
 			float: left;
-			height: 60px;
-			line-height: 60px;
+			height: 46px;
+			line-height: 46px;
 			margin: 0;
 			border-bottom: 2px solid transparent;
-			color: $--color-text-secondary;
+			color: $--color-text-primary;
 
 			a,
 			a:hover {
@@ -63,7 +63,7 @@
 
 			&:not(.is-disabled):hover,
 			&:not(.is-disabled):focus {
-				background-color: #fff;
+				color: $--color-primary;
 			}
 		}
 		& > .tu-submenu {
@@ -73,25 +73,25 @@
 			&:hover {
 				outline: none;
 				.tu-submenu__title {
-					color: $--color-text-primary;
+					color: $--color-primary;
 				}
 			}
 
 			&.is-active {
 				.tu-submenu__title {
 					border-bottom: 2px solid $--color-primary;
-					color: $--color-text-primary;
+					color: $--color-primary;
 				}
 			}
 
 			& .tu-submenu__title {
-				height: 60px;
-				line-height: 60px;
+				height: 46px;
+				line-height: 46px;
 				border-bottom: 2px solid transparent;
-				color: $--color-text-secondary;
+				color: $--color-text-primary;
 
 				&:hover {
-					background-color: #fff;
+					color: $--color-primary;
 				}
 			}
 			& .tu-submenu__icon-arrow {
@@ -104,26 +104,25 @@
 		& .tu-menu {
 			& .tu-menu-item,
 			& .tu-submenu__title {
-				background-color: $--color-white;
 				float: none;
 				height: 36px;
 				line-height: 36px;
 				padding: 0 10px;
-				color: $--color-text-secondary;
+				color: $--color-text-primary;
 			}
 			& .tu-menu-item.is-active,
 			& .tu-submenu.is-active > .tu-submenu__title {
-				color: $--color-text-primary;
+				color: $--color-primary;
 			}
 		}
 		& .tu-menu-item:not(.is-disabled):hover,
 		& .tu-menu-item:not(.is-disabled):focus {
 			outline: none;
-			color: $--color-text-primary;
+			color: $--color-primary;
 		}
 		& > .tu-menu-item.is-active {
 			border-bottom: 2px solid $--color-primary;
-			color: $--color-text-primary;
+			color: $--color-primary;
 		}
 	}
 	@include m(collapse) {
@@ -221,7 +220,7 @@
 		@include menu-item;
 
 		&:hover {
-			background-color: $--menu-item-hover-fill;
+			color: $--color-primary;
 		}
 	}
 	& .tu-menu {
@@ -255,6 +254,7 @@
 		.tu-submenu__title,
 		.tu-menu-item {
 			opacity: 0.25;
+			color: $--color-text-secondary;
 			cursor: not-allowed;
 			background: none !important;
 		}

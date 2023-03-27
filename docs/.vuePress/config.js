@@ -73,6 +73,7 @@ module.exports = {
 					title: "导航组件",
 					collapsable: false,
 					children: [
+						["../guide/menu.md", "Menu 导航菜单"],
 						["../guide/tabs.md", "Tabs 标签页"],
 						["../guide/breadcrumb.md", "Breadcrumb 面包屑"],
 						["../guide/dropdown.md", "Dropdown 下拉菜单"],
