@@ -18,10 +18,6 @@
 		vertical-align: middle;
 	}
 
-	i {
-		color: $--color-text-secondary;
-	}
-
 	&:hover,
 	&:focus {
 		outline: none;
@@ -269,6 +265,7 @@
 }
 
 @include b(menu-item-group) {
+	color: $--color-text-primary;
 	> ul {
 		padding: 0;
 	}
@@ -276,7 +273,7 @@
 		padding: 7px 0 7px 20px;
 		line-height: normal;
 		font-size: 12px;
-		color: $--color-text-secondary;
+		opacity: 0.6;
 	}
 }
 

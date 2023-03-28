@@ -2,7 +2,7 @@
   <li class="tu-menu-item-group">
     <div
       class="tu-menu-item-group__title"
-      :style="{ paddingLeft: levelPadding + 'px' }"
+      :style="{ paddingLeft: levelPadding + 'px', color: textColor }"
     >
       <template v-if="!$slots.title">{{ title }}</template>
       <slot v-else name="title"></slot>
@@ -34,6 +34,10 @@ export default {
   },
 
   computed: {
+    textColor() {
+      return this.rootMenu.textColor || "";
+    },
+
     levelPadding() {
       let padding = 20;
       let parent = this.$parent;
