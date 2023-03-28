@@ -26,6 +26,10 @@ module.exports = {
 			author: "tujindong",
 		},
 		{
+			name: "checkbox-button",
+			author: "tujindong",
+		},
+		{
 			name: "checkbox-group",
 			author: "tujindong",
 		},

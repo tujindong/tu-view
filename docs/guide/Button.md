@@ -238,19 +238,35 @@
 
 ```html
 <div class="button-group-block">
-	<tu-button-group>
-		<tu-button icon="tu-icon-left">上一页</tu-button>
-		<tu-button>下一页<i class="tu-icon-right"></i></tu-button>
-	</tu-button-group>
-	<tu-button-group>
-		<tu-button icon="tu-icon-edit"></tu-button>
-		<tu-button icon="tu-icon-share"></tu-button>
-		<tu-button icon="tu-icon-delete"></tu-button>
-	</tu-button-group>
+	<div>
+		<tu-button-group>
+			<tu-button icon="tu-icon-left">上一页</tu-button>
+			<tu-button>下一页<i class="tu-icon-right"></i></tu-button>
+		</tu-button-group>
+		<tu-button-group>
+			<tu-button icon="tu-icon-edit"></tu-button>
+			<tu-button icon="tu-icon-share"></tu-button>
+			<tu-button icon="tu-icon-delete"></tu-button>
+		</tu-button-group>
+	</div>
+	<div>
+		<tu-button-group type="primary">
+			<tu-button icon="tu-icon-left">上一页</tu-button>
+			<tu-button>下一页<i class="tu-icon-right"></i></tu-button>
+		</tu-button-group>
+		<tu-button-group type="primary">
+			<tu-button icon="tu-icon-edit"></tu-button>
+			<tu-button icon="tu-icon-share"></tu-button>
+			<tu-button icon="tu-icon-delete"></tu-button>
+		</tu-button-group>
+	</div>
 </div>
 <style>
 	.button-group-block .tu-button-group + .tu-button-group {
 		margin-left: 15px;
+	}
+	.button-group-block > div + div {
+		margin-top: 20px;
 	}
 </style>
 ```

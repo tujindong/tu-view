@@ -186,6 +186,7 @@ export default {
     handleCollapseToggle(value) {
       if (value) {
         this.initPopper();
+        this.setBackgroundColor();
       } else {
         this.doDestroy();
       }
@@ -291,7 +292,6 @@ export default {
       this.referenceElm = this.$el;
       this.popperElm = this.$refs.menu;
       this.updatePlacement();
-      this.setBackgroundColor();
     },
 
     setBackgroundColor() {

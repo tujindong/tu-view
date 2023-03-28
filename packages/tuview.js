@@ -4,6 +4,7 @@ import Icon from "./components/icon";
 import Radio from "./components/radio";
 import RadioGroup from "./components/radio-group";
 import Checkbox from "./components/checkbox";
+import CheckboxButton from "./components/checkbox-button";
 import CheckboxGroup from "./components/checkbox-group";
 import Input from "./components/input";
 import Textarea from "./components/textarea";
@@ -86,6 +87,7 @@ const componentsList = [
 	Radio,
 	RadioGroup,
 	Checkbox,
+	CheckboxButton,
 	CheckboxGroup,
 	Input,
 	Textarea,

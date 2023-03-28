@@ -9,8 +9,10 @@
 
 ```html
 <template>
-	Scroll down to see the bottom-right button.
-	<tu-backtop></tu-backtop>
+	<div>
+		<p>滚动到底部查看右下角按钮</p>
+		<tu-backtop></tu-backtop>
+	</div>
 </template>
 ```
 
@@ -23,10 +25,12 @@
 
 ```html
 <template>
-	Scroll down to see the bottom-right button.
-	<tu-backtop :bottom="100">
-		<div>返回顶部</div>
-	</tu-backtop>
+	<div>
+		<p>滚动到底部查看右下角按钮</p>
+		<tu-backtop :bottom="100">
+			<div>返回顶部</div>
+		</tu-backtop>
+	</div>
 </template>
 ```
 
