@@ -1,35 +1,21 @@
 <template>
   <div class="container">
     <div>
-      <tu-checkbox-group v-model="checkboxGroup1">
-        <tu-checkbox-button v-for="city in cities" :label="city" :key="city">{{
-          city
-        }}</tu-checkbox-button>
+      <br />
+      <tu-checkbox-group v-model="checkboxGroup1" border>
+        <tu-checkbox label="北京" key="北京">北京</tu-checkbox>
+        <tu-checkbox label="上海" key="上海">上海</tu-checkbox>
+        <tu-checkbox label="合肥" key="合肥">合肥</tu-checkbox>
+        <tu-checkbox label="广州" key="广州">广州</tu-checkbox>
       </tu-checkbox-group>
-    </div>
-    <div style="margin-top: 20px">
-      <tu-checkbox-group v-model="checkboxGroup2" size="medium">
-        <tu-checkbox-button v-for="city in cities" :label="city" :key="city">{{
-          city
-        }}</tu-checkbox-button>
-      </tu-checkbox-group>
-    </div>
-    <div style="margin-top: 20px">
-      <tu-checkbox-group v-model="checkboxGroup3" size="small">
-        <tu-checkbox-button
-          v-for="city in cities"
-          :label="city"
-          :disabled="city === '北京'"
-          :key="city"
-          >{{ city }}</tu-checkbox-button
-        >
-      </tu-checkbox-group>
-    </div>
-    <div style="margin-top: 20px">
-      <tu-checkbox-group v-model="checkboxGroup4" size="mini" disabled>
-        <tu-checkbox-button v-for="city in cities" :label="city" :key="city">{{
-          city
-        }}</tu-checkbox-button>
+      <br />
+      <br />
+      <br />
+      <tu-checkbox-group v-model="checkboxGroup2" button>
+        <tu-checkbox label="北京" key="北京">北京</tu-checkbox>
+        <tu-checkbox label="上海" key="上海">上海</tu-checkbox>
+        <tu-checkbox label="合肥" key="合肥">合肥</tu-checkbox>
+        <tu-checkbox label="广州" key="广州">广州</tu-checkbox>
       </tu-checkbox-group>
     </div>
   </div>
@@ -40,13 +26,9 @@ export default {
   components: {},
 
   data() {
-    const cityOptions = ["上海", "北京", "广州", "深圳"];
     return {
       checkboxGroup1: ["上海"],
       checkboxGroup2: ["上海"],
-      checkboxGroup3: ["上海"],
-      checkboxGroup4: ["上海"],
-      cities: cityOptions,
     };
   },
 

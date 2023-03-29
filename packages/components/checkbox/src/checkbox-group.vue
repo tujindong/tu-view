@@ -1,5 +1,9 @@
 <template>
-  <div class="tu-checkbox-group" role="group" aria-label="checkbox-group">
+  <div
+    :class="['tu-checkbox-group', button ? 'is-button' : '']"
+    role="group"
+    aria-label="checkbox-group"
+  >
     <slot></slot>
   </div>
 </template>
@@ -23,6 +27,7 @@ export default {
     value: {},
     size: String,
     border: Boolean,
+    button: Boolean,
     disabled: Boolean,
     min: Number,
     max: Number,

@@ -33,7 +33,7 @@
 	white-space: nowrap;
 	outline: none;
 	font-size: $--font-size-base;
-	margin-right: 30px;
+	margin-right: 16px;
 	@include utils-user-select(none);
 
 	&:hover {
