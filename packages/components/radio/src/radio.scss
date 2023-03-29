@@ -6,9 +6,11 @@
 	$radio-bordered-padding-horizontal,
 	$radio-input-width,
 	$radio-input-height,
-	$radio-font-size
+	$radio-font-size,
+	$radio-line-height
 ) {
-	&.is-bordered {
+	&.is-bordered,
+	&.is-button {
 		padding: $radio-bordered-padding-vertical calc(#{$radio-bordered-padding-horizontal} + 6px)
 			$radio-bordered-padding-vertical $radio-bordered-padding-horizontal;
 
@@ -19,6 +21,7 @@
 
 		@include e(label) {
 			font-size: $radio-font-size;
+			line-height: $radio-line-height;
 		}
 	}
 }
@@ -33,7 +36,7 @@
 	white-space: nowrap;
 	outline: none;
 	font-size: $--font-size-base;
-	margin-right: 16px;
+	margin-right: 18px;
 	@include utils-user-select(none);
 
 	&:hover {
@@ -71,6 +74,11 @@
 				box-shadow: none;
 			}
 		}
+	}
+
+	@include when(button) {
+		padding: $--radio-bordered-padding-vertical calc(#{$--radio-bordered-padding-horizontal} + 6px)
+			$--radio-bordered-padding-vertical $--radio-bordered-padding-horizontal;
 	}
 
 	@include when(disabled) {
@@ -126,7 +134,8 @@
 			$--radio-mini-bordered-padding-horizontal,
 			$--radio-mini-input-width,
 			$--radio-mini-input-height,
-			$--radio-mini-font-size
+			$--radio-mini-font-size,
+			$--radio-mini-line-height
 		);
 	}
 
@@ -136,7 +145,8 @@
 			$--radio-small-bordered-padding-horizontal,
 			$--radio-small-input-width,
 			$--radio-small-input-height,
-			$--radio-small-font-size
+			$--radio-small-font-size,
+			$--radio-small-line-height
 		);
 	}
 
@@ -146,7 +156,8 @@
 			$--radio-large-bordered-padding-horizontal,
 			$--radio-large-input-width,
 			$--radio-large-input-height,
-			$--radio-large-font-size
+			$--radio-large-font-size,
+			$--radio-large-line-height
 		);
 	}
 
@@ -201,5 +212,30 @@
 
 	&:last-child {
 		margin-right: 0;
+	}
+}
+
+@include b(radio-group) {
+	display: inline-block;
+	font-size: 0;
+
+	@include when(button) {
+		box-shadow: $--box-shadow-convex;
+
+		@include b(radio) {
+			margin: 0;
+			&:not(.is-disabled) {
+				&:hover {
+					.tu-radio__label {
+						color: $--color-primary;
+					}
+				}
+			}
+
+			&.is-checked {
+				color: $--color-primary;
+				box-shadow: $--box-shadow-concave;
+			}
+		}
 	}
 }

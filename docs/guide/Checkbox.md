@@ -186,6 +186,82 @@
 
 :::
 
+### 按钮组样式
+
+按钮样式的多选组合。
+
+:::demo 设置`button`属性可以渲染为按钮组样式的多选框。此外，还提供了`size`属性。
+
+```html
+<template>
+	<div style="margin-top: 20px">
+		<p>超小</p>
+		<tu-checkbox-group
+			v-model="checkboxGroup1"
+			size="mini"
+			button
+		>
+			<tu-checkbox label="苹果"></tu-checkbox>
+			<tu-checkbox label="香蕉"></tu-checkbox>
+			<tu-checkbox label="西瓜"></tu-checkbox>
+		</tu-checkbox-group>
+	</div>
+	<div style="margin-top: 20px">
+		<p>较小</p>
+		<tu-checkbox-group
+			v-model="checkboxGroup2"
+			size="small"
+			button
+		>
+			<tu-checkbox label="苹果"></tu-checkbox>
+			<tu-checkbox label="香蕉"></tu-checkbox>
+			<tu-checkbox label="西瓜"></tu-checkbox>
+		</tu-checkbox-group>
+	</div>
+	<div style="margin-top: 20px">
+		<p>中等</p>
+		<tu-checkbox-group
+			v-model="checkboxGroup3"
+			size="medium"
+			button
+		>
+			<tu-checkbox label="苹果"></tu-checkbox>
+			<tu-checkbox label="香蕉"></tu-checkbox>
+			<tu-checkbox
+				label="西瓜"
+				disabled
+			></tu-checkbox>
+		</tu-checkbox-group>
+	</div>
+	<div style="margin-top: 20px">
+		<p>较大</p>
+		<tu-checkbox-group
+			v-model="checkboxGroup4"
+			size="large"
+			button
+		>
+			<tu-checkbox label="苹果"></tu-checkbox>
+			<tu-checkbox label="香蕉"></tu-checkbox>
+			<tu-checkbox label="西瓜"></tu-checkbox>
+		</tu-checkbox-group>
+	</div>
+</template>
+<script>
+	export default {
+		data() {
+			return {
+				checkboxGroup1: [],
+				checkboxGroup2: [],
+				checkboxGroup3: [],
+				checkboxGroup4: [],
+			};
+		},
+	};
+</script>
+```
+
+:::
+
 ### 带有边框
 
 :::demo 设置`border`属性可以渲染为带有边框的多选框。
@@ -246,9 +322,6 @@
 	export default {
 		data() {
 			return {
-				checked1: true,
-				checked2: false,
-				checked3: false,
 				checkboxGroup1: [],
 				checkboxGroup2: [],
 				checkboxGroup3: [],

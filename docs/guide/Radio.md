@@ -103,6 +103,85 @@
 
 :::
 
+### 按钮组样式
+
+按钮样式的多选组合。
+
+:::demo 设置`button`属性可以渲染为按钮组样式的多选框。此外，还提供了`size`属性。
+
+```html
+<template>
+	<div>
+		<div style="margin-top: 20px">
+			<p>超小</p>
+			<tu-radio-group
+				v-model="radio1"
+				size="mini"
+				button
+			>
+				<tu-radio label="1">苹果</tu-radio>
+				<tu-radio label="2">香蕉</tu-radio>
+				<tu-radio label="3">西瓜</tu-radio>
+			</tu-radio-group>
+		</div>
+		<div style="margin-top: 20px">
+			<p>较小</p>
+			<tu-radio-group
+				v-model="radio2"
+				size="small"
+				button
+			>
+				<tu-radio label="1">苹果</tu-radio>
+				<tu-radio label="2">香蕉</tu-radio>
+				<tu-radio label="3">西瓜</tu-radio>
+			</tu-radio-group>
+		</div>
+		<div style="margin-top: 20px">
+			<p>中等</p>
+			<tu-radio-group
+				v-model="radio3"
+				size="medium"
+				button
+			>
+				<tu-radio label="1">苹果</tu-radio>
+				<tu-radio label="2">香蕉</tu-radio>
+				<tu-radio
+					label="3"
+					disabled
+					>西瓜</tu-radio
+				>
+			</tu-radio-group>
+		</div>
+		<div style="margin-top: 20px">
+			<p>较大</p>
+			<tu-radio-group
+				v-model="radio4"
+				size="large"
+				button
+			>
+				<tu-radio label="1">苹果</tu-radio>
+				<tu-radio label="2">香蕉</tu-radio>
+				<tu-radio label="3">西瓜</tu-radio>
+			</tu-radio-group>
+		</div>
+	</div>
+</template>
+<script>
+	export default {
+		data() {
+			return {
+				radio1: "1",
+				radio2: "1",
+				radio3: "1",
+				radio4: "1",
+			};
+		},
+	};
+</script>
+```
+
+:::
+
 ### 带有边框
 
 :::demo 设置`border`属性可以渲染为带有边框的单选框，此外，TuView 还提供了`size`属性。

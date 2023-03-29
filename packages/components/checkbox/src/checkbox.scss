@@ -6,9 +6,11 @@
 	$checkbox-bordered-padding-horizontal,
 	$checkbox-input-width,
 	$checkbox-input-height,
-	$checkbox-font-size
+	$checkbox-font-size,
+	$checkbox-line-height
 ) {
-	&.is-bordered {
+	&.is-bordered,
+	&.is-button {
 		padding: $checkbox-bordered-padding-vertical
 			calc(#{$checkbox-bordered-padding-horizontal} + 6px) $checkbox-bordered-padding-vertical
 			$checkbox-bordered-padding-horizontal;
@@ -20,6 +22,7 @@
 
 		@include e(label) {
 			font-size: $checkbox-font-size;
+			line-height: $checkbox-line-height;
 		}
 	}
 }
@@ -42,7 +45,7 @@
 	white-space: nowrap;
 	outline: none;
 	cursor: pointer;
-	margin-right: 16px;
+	margin-right: 18px;
 
 	&:hover {
 		@include e(inner) {
@@ -139,7 +142,8 @@
 			$--checkbox-mini-bordered-padding-horizontal,
 			$--checkbox-mini-input-width,
 			$--checkbox-mini-input-height,
-			$--checkbox-mini-font-size
+			$--checkbox-mini-font-size,
+			$--checkbox-mini-line-height
 		);
 	}
 
@@ -149,7 +153,8 @@
 			$--checkbox-small-bordered-padding-horizontal,
 			$--checkbox-small-input-width,
 			$--checkbox-small-input-height,
-			$--checkbox-small-font-size
+			$--checkbox-small-font-size,
+			$--checkbox-small-line-height
 		);
 	}
 
@@ -159,7 +164,8 @@
 			$--checkbox-large-bordered-padding-horizontal,
 			$--checkbox-large-input-width,
 			$--checkbox-large-input-height,
-			$--checkbox-large-font-size
+			$--checkbox-large-font-size,
+			$--checkbox-large-line-height
 		);
 	}
 
@@ -213,7 +219,8 @@
 		display: inline-block;
 		font-size: $--checkbox-font-size;
 		padding-left: 8px;
-		transform: color 0.3s;
+		transition: color 0.3s;
+		line-height: $--checkbox-line-height;
 	}
 
 	@include when(indeterminate) {
@@ -244,19 +251,21 @@
 
 	@include when(button) {
 		box-shadow: $--box-shadow-convex;
-		.tu-checkbox {
-			margin: 0;
-		}
-	}
 
-	@include b(checkbox) {
-		&:hover {
-			.tu-checkbox__label {
-				color: $--color-primary;
+		@include b(checkbox) {
+			margin: 0;
+			&:not(.is-disabled) {
+				&:hover {
+					.tu-checkbox__label {
+						color: $--color-primary;
+					}
+				}
 			}
-		}
-		&.is-checked {
-			box-shadow: $--box-shadow-concave;
+
+			&.is-checked {
+				color: $--color-primary;
+				box-shadow: $--box-shadow-concave;
+			}
 		}
 	}
 }

@@ -1,13 +1,13 @@
 <template>
-	<div>表格</div>
+  <div>TreeSelect</div>
 </template>
 
 <script>
-	export default {
-		name: "TuTreeSelect",
+export default {
+  name: "TuTreeSelect",
 
-		components: {},
+  components: {},
 
-		props: {},
-	};
+  props: {},
+};
 </script>

@@ -1,23 +1,6 @@
 <template>
   <div class="container">
-    <div>
-      <br />
-      <tu-checkbox-group v-model="checkboxGroup1" border>
-        <tu-checkbox label="北京" key="北京">北京</tu-checkbox>
-        <tu-checkbox label="上海" key="上海">上海</tu-checkbox>
-        <tu-checkbox label="合肥" key="合肥">合肥</tu-checkbox>
-        <tu-checkbox label="广州" key="广州">广州</tu-checkbox>
-      </tu-checkbox-group>
-      <br />
-      <br />
-      <br />
-      <tu-checkbox-group v-model="checkboxGroup2" button>
-        <tu-checkbox label="北京" key="北京">北京</tu-checkbox>
-        <tu-checkbox label="上海" key="上海">上海</tu-checkbox>
-        <tu-checkbox label="合肥" key="合肥">合肥</tu-checkbox>
-        <tu-checkbox label="广州" key="广州">广州</tu-checkbox>
-      </tu-checkbox-group>
-    </div>
+    <tu-tree-select v-model="value" :data="data" :render-after-expand="false" />
   </div>
 </template>
 
@@ -26,20 +9,83 @@ export default {
   components: {},
 
   data() {
+    const data = [
+      {
+        value: "1",
+        label: "Level one 1",
+        children: [
+          {
+            value: "1-1",
+            label: "Level two 1-1",
+            children: [
+              {
+                value: "1-1-1",
+                label: "Level three 1-1-1",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        value: "2",
+        label: "Level one 2",
+        children: [
+          {
+            value: "2-1",
+            label: "Level two 2-1",
+            children: [
+              {
+                value: "2-1-1",
+                label: "Level three 2-1-1",
+              },
+            ],
+          },
+          {
+            value: "2-2",
+            label: "Level two 2-2",
+            children: [
+              {
+                value: "2-2-1",
+                label: "Level three 2-2-1",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        value: "3",
+        label: "Level one 3",
+        children: [
+          {
+            value: "3-1",
+            label: "Level two 3-1",
+            children: [
+              {
+                value: "3-1-1",
+                label: "Level three 3-1-1",
+              },
+            ],
+          },
+          {
+            value: "3-2",
+            label: "Level two 3-2",
+            children: [
+              {
+                value: "3-2-1",
+                label: "Level three 3-2-1",
+              },
+            ],
+          },
+        ],
+      },
+    ];
     return {
-      checkboxGroup1: ["上海"],
-      checkboxGroup2: ["上海"],
+      data,
+      value: "",
     };
   },
 
-  methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
-    },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
-    },
-  },
+  methods: {},
 };
 </script>
 

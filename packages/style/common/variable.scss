@@ -151,12 +151,14 @@ $--radio-mini-input-height: 14px;
 $--radio-mini-input-width: 14px;
 $--radio-mini-bordered-padding-vertical: 4px;
 $--radio-mini-bordered-padding-horizontal: 3px;
+$--radio-mini-line-height: 14px;
 /*较小 small*/
 $--radio-small-font-size: $--font-size-small;
 $--radio-small-input-height: 16px;
 $--radio-small-input-width: 16px;
 $--radio-small-bordered-padding-vertical: 6px;
 $--radio-small-bordered-padding-horizontal: 6px;
+$--radio-small-line-height: 16px;
 /*中等 medium*/
 $--radio-font-size: $--font-size-base;
 $--radio-input-height: 20px;
@@ -164,12 +166,14 @@ $--radio-input-width: 20px;
 $--radio-font-size: $--font-size-base;
 $--radio-bordered-padding-vertical: 6px;
 $--radio-bordered-padding-horizontal: 6px;
+$--radio-line-height: 18px;
 /*较大 large*/
 $--radio-large-font-size: $--font-size-base;
 $--radio-large-input-height: 22px;
 $--radio-large-input-width: 22px;
 $--radio-large-bordered-padding-vertical: 9px;
 $--radio-large-bordered-padding-horizontal: 13px;
+$--radio-large-line-height: 22px;
 
 /* Checkbox
 -------------------------- */
@@ -181,14 +185,16 @@ $--checkbox-checked-icon-color: $--color-primary;
 $--checkbox-mini-font-size: $--font-size-extra-small;
 $--checkbox-mini-input-height: 14px;
 $--checkbox-mini-input-width: 14px;
-$--checkbox-mini-bordered-padding-vertical: 3px;
+$--checkbox-mini-bordered-padding-vertical: 4px;
 $--checkbox-mini-bordered-padding-horizontal: 4px;
+$--checkbox-mini-line-height: 14px;
 /*较小 small*/
 $--checkbox-small-font-size: $--font-size-small;
 $--checkbox-small-input-height: 16px;
 $--checkbox-small-input-width: 16px;
 $--checkbox-small-bordered-padding-vertical: 6px;
 $--checkbox-small-bordered-padding-horizontal: 8px;
+$--checkbox-small-line-height: 16px;
 /*中等 medium*/
 $--checkbox-font-size: $--font-size-base;
 $--checkbox-input-height: 18px;
@@ -196,12 +202,14 @@ $--checkbox-input-width: 18px;
 $--checkbox-border-radius: $--border-radius-small;
 $--checkbox-bordered-padding-vertical: 7px;
 $--checkbox-bordered-padding-horizontal: 8px;
+$--checkbox-line-height: 18px;
 /*较大 large*/
 $--checkbox-large-font-size: $--font-size-base;
 $--checkbox-large-input-height: 22px;
 $--checkbox-large-input-width: 22px;
 $--checkbox-large-bordered-padding-vertical: 9px;
 $--checkbox-large-bordered-padding-horizontal: 13px;
+$--checkbox-large-line-height: 22px;
 
 /* Input
 -------------------------- */
