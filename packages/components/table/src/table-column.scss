@@ -13,6 +13,7 @@
 	border: solid 1px $--border-color-lighter;
 	border-radius: 2px;
 	box-shadow: $--box-shadow-convex;
+	background-color: $--color-background;
 	box-sizing: border-box;
 	margin: 2px 0;
 
@@ -28,6 +29,7 @@
 		padding: 0 10px;
 		cursor: pointer;
 		font-size: $--font-size-base;
+		font-weight: 500;
 
 		@include when(active) {
 			background-color: $--color-primary;

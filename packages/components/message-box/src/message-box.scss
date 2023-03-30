@@ -11,6 +11,7 @@
 	text-align: left;
 	overflow: hidden;
 	backface-visibility: hidden;
+	background-color: $--color-background;
 
 	@include e(wrapper) {
 		position: fixed;

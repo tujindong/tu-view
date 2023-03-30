@@ -15,6 +15,7 @@
 	@include e(tip) {
 		font-size: 12px;
 		margin-top: 7px;
+		color: $--color-text-regular;
 	}
 
 	iframe {
@@ -109,7 +110,7 @@
 }
 
 @include b(upload-list) {
-	margin: 0;
+	margin: 16px 0 0 0;
 	padding: 0;
 	list-style: none;
 
@@ -118,7 +119,7 @@
 		font-size: 14px;
 		height: 32px;
 		line-height: 32px;
-		margin-top: 8px;
+		margin-top: 12px;
 		position: relative;
 		box-sizing: border-box;
 		border-radius: 4px;
@@ -127,13 +128,22 @@
 		box-shadow: $--box-shadow-convex;
 		.tu-progress {
 			position: absolute;
-			bottom: -4px;
+			bottom: 0;
 			width: 100%;
+			.tu-progress-bar__outer {
+				box-shadow: none;
+				border-radius: 4px;
+			}
+
+			.tu-progress-bar__inner {
+				border-radius: 4px;
+				opacity: 0.1;
+			}
 
 			.tu-progress__text {
 				position: absolute;
-				right: 0;
-				top: -13px;
+				right: 25px;
+				top: 9px;
 				font-size: 13px !important;
 			}
 
@@ -152,7 +162,6 @@
 		}
 
 		.tu-icon-close {
-			// display: none;
 			position: absolute;
 			top: 9px;
 			right: 5px;
@@ -160,6 +169,7 @@
 			opacity: 0.75;
 			color: $--color-text-primary;
 			transition: all 0.3s;
+			z-index: 100;
 
 			&:hover {
 				opacity: 1;
@@ -182,10 +192,6 @@
 
 			.tu-icon-close {
 				display: inline-block;
-			}
-
-			.tu-progress__text {
-				display: none;
 			}
 		}
 
@@ -239,6 +245,7 @@
 		text-overflow: ellipsis;
 		transition: color 0.3s;
 		white-space: nowrap;
+		color: $--color-text-primary;
 
 		[class^="tu-icon"] {
 			height: 100%;

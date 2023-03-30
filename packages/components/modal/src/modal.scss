@@ -8,6 +8,7 @@
 	box-sizing: border-box;
 	color: $--color-text-primary;
 	width: 50%;
+	background-color: $--color-background;
 
 	@include when(fullscreen) {
 		width: 100%;

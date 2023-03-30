@@ -14,6 +14,8 @@
 	font-size: $--popover-font-size;
 	box-shadow: $--box-shadow-light;
 	word-break: break-all;
+	background-color: $--color-background;
+	border-color: $--color-background;
 
 	@include m(plain) {
 		padding: $--popover-padding-large;

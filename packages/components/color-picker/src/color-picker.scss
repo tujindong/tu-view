@@ -193,6 +193,7 @@
 	margin-top: 12px;
 	width: 300px;
 	box-shadow: $--box-shadow-convex;
+	background-color: $--color-background;
 	@include e(main-wrapper) {
 		margin-bottom: 6px;
 
@@ -383,11 +384,9 @@
 	@include e(panel) {
 		position: absolute;
 		z-index: 10;
-		padding: 6px;
+		padding: 10px;
 		box-sizing: content-box;
-		// background-color: $--color-white;
 		border: 1px solid $--border-color-lighter;
 		border-radius: $--border-radius-base;
-		// box-shadow: $--dropdown-menu-box-shadow;
 	}
 }

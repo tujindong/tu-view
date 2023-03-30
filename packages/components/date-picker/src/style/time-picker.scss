@@ -12,6 +12,7 @@
 	box-sizing: content-box;
 	color: $--color-text-primary;
 	box-shadow: $--box-shadow-convex;
+	background-color: $--color-background;
 	@include e(content) {
 		font-size: 0;
 		position: relative;

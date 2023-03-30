@@ -62,6 +62,8 @@
 	margin: 5px 0;
 	border-radius: $--border-radius-base;
 	box-shadow: $--box-shadow-convex;
+	background-color: $--color-background;
+
 	@include e(item) {
 		list-style: none;
 		line-height: 36px;

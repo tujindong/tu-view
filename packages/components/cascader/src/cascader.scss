@@ -50,6 +50,7 @@
 	@include e(dropdown) {
 		margin: 5px 0;
 		box-shadow: $--box-shadow-convex;
+		background-color: $--color-background;
 	}
 
 	@include e(tags) {

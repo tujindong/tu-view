@@ -1,4 +1,3 @@
-import { getBackground } from '@packages/src/utils/get-background';
 <template>
   <div
     class="tu-progress"

@@ -314,6 +314,7 @@
 		overflow-x: hidden;
 		overflow-y: hidden;
 		box-shadow: 0px -6px 10px rgba(0, 0, 0, 0.12);
+		background-color: $--color-background;
 
 		&::before {
 			content: "";

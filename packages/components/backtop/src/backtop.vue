@@ -23,7 +23,6 @@
 
 <script>
 import { throttle } from "@packages/src/utils/throttle-debounce";
-import { getBackground } from "@packages/src/utils/get-background";
 
 const cubic = (value) => Math.pow(value, 3);
 const easeInOutCubic = (value) =>
@@ -64,14 +63,6 @@ export default {
       return `${this.right}px`;
     },
     styleBackgroundColor() {},
-  },
-
-  watch: {
-    visible(val) {
-      if (val) {
-        this.setBackgroundColor();
-      }
-    },
   },
 
   mounted() {
@@ -123,14 +114,6 @@ export default {
         }
       };
       rAF(frameFunc);
-    },
-
-    setBackgroundColor() {
-      this.$nextTick(() => {
-        const backgroundColor = getBackground(this.$refs.backtop);
-        if (backgroundColor)
-          this.$refs.inner.style.backgroundColor = backgroundColor;
-      });
     },
   },
 };

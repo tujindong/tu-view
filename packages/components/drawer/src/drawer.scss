@@ -109,7 +109,7 @@ $directions: rtl, ltr, ttb, btt;
 @include b(drawer) {
 	position: absolute;
 	box-sizing: border-box;
-	background-color: $--modal-background-color;
+	background-color: $--color-background;
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;

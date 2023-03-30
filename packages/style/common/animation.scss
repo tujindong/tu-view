@@ -1,19 +1,19 @@
- @-webkit-keyframes spin {
-     0% {
-         -webkit-transform: rotate(0deg);
-     }
+@-webkit-keyframes spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
 
-     to {
-         -webkit-transform: rotate(1turn);
-     }
- }
+	to {
+		-webkit-transform: rotate(1turn);
+	}
+}
 
- @keyframes spin {
-     0% {
-         transform: rotate(0deg);
-     }
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
 
-     to {
-         transform: rotate(1turn);
-     }
- }
+	to {
+		transform: rotate(1turn);
+	}
+}

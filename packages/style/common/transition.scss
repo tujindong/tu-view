@@ -110,6 +110,7 @@
 	transition: 0.3s width ease-in-out, 0.3s padding-left ease-in-out, 0.3s padding-right ease-in-out;
 }
 
+//tu-list
 .tu-list-enter-active,
 .tu-list-leave-active {
 	transition: all 0.48s;
@@ -119,6 +120,18 @@
 .tu-list-leave-active {
 	opacity: 0;
 	transform: translateX(-40px);
+}
+
+//tu-cascader-menu
+.tu-cascader-menu-enter-active,
+.tu-cascader-menu-leave-active {
+	transition: all 0.3s;
+}
+
+.tu-cascader-menu-enter,
+.tu-cascader-menu-leave-active {
+	opacity: 0;
+	margin-right: -180px;
 }
 
 .tu-opacity-transition {

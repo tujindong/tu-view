@@ -1,6 +1,7 @@
 @include b(date-picker) {
 	width: 322px;
 	box-shadow: $--box-shadow-convex;
+	background-color: $--color-background;
 	&.has-sidebar.has-time {
 		width: 414px;
 	}

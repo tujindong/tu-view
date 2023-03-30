@@ -48,6 +48,7 @@ module.exports = {
 						["../guide/rate.md", "Rate 评分"],
 						["../guide/color-picker.md", "ColorPicker 颜色选择器"],
 						["../guide/transfer.md", "Transfer 穿梭框"],
+						["../guide/upload.md", "Upload 上传"],
 						["../guide/form.md", "Form 表单"],
 					],
 				},

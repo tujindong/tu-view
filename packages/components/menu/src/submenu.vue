@@ -4,7 +4,6 @@ import TuCollapseTransition from "@packages/src/transitions/collapse-transition"
 import menuMixin from "./menu-mixin";
 import Emitter from "@packages/src/mixins/emitter";
 import Popper from "@packages/src/utils/vue-popper";
-import { getBackground } from "@packages/src/utils/get-background";
 
 const poperMixins = {
   props: {
@@ -186,7 +185,6 @@ export default {
     handleCollapseToggle(value) {
       if (value) {
         this.initPopper();
-        this.setBackgroundColor();
       } else {
         this.doDestroy();
       }
@@ -292,15 +290,6 @@ export default {
       this.referenceElm = this.$el;
       this.popperElm = this.$refs.menu;
       this.updatePlacement();
-    },
-
-    setBackgroundColor() {
-      if (!this.backgroundColor) {
-        const backgroundColor = getBackground(this.$el);
-        console.log("backgroundColor", backgroundColor);
-        if (backgroundColor)
-          this.$refs.menu.style.backgroundColor = backgroundColor;
-      }
     },
   },
 

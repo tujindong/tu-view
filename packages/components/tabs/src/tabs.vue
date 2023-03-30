@@ -1,6 +1,5 @@
 <script>
 import TabNav from "./tab-nav.vue";
-import { getBackground } from "@packages/src/utils/get-background";
 export default {
   name: "TuTabs",
 
@@ -64,7 +63,6 @@ export default {
 
   mounted() {
     this.calcPaneInstances();
-    this.setBackgroundColor();
   },
 
   updated() {
@@ -115,10 +113,6 @@ export default {
     handleTabAdd() {
       this.$emit("edit", null, "add");
       this.$emit("tab-add");
-    },
-
-    setBackgroundColor() {
-      this.background = getBackground(this.$refs.tabs);
     },
   },
 

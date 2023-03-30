@@ -28,6 +28,7 @@ $--border-color-base: rgba($--color-greyLight-3, 0.38);
 $--border-color-light: rgba($--color-greyLight-3, 0.28);
 $--border-color-lighter: rgba($--color-greyLight-3, 0.18);
 $--border-color-extra-light: rgba($--color-greyLight-3, 0.1);
+$--box-shadow-color: #c8d0e7;
 
 /* background
 -------------------------- */
@@ -103,9 +104,9 @@ $--border-radius-zero: 0;
 
 /* BoxShadow
 -------------------------- */
-$--box-shadow-concave: inset 2px 2px 5px $--color-greyLight-2, inset -2px -2px 5px $--color-white; //凹
-$--box-shadow-convex: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white; //凸
-$--box-shadow-light: 0 2px 12px 0 $--color-greyLight-2;
+$--box-shadow-concave: inset 2px 2px 5px $--box-shadow-color, inset -2px -2px 5px $--color-white; //凹
+$--box-shadow-convex: 3px 3px 6px $--box-shadow-color, -2px -2px 5px $--color-white; //凸
+$--box-shadow-light: 0 2px 12px 0 $--box-shadow-color;
 $--box-shadow-white: 0 2px 12px 0 $--color-white;
 
 /* Button

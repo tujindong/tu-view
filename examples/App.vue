@@ -1,6 +1,21 @@
 <template>
   <div class="container">
-    <tu-tree-select v-model="value" :data="data" :render-after-expand="false" />
+    <tu-upload
+      class="upload-demo"
+      action="https://jsonplaceholder.typicode.com/posts/"
+      :on-preview="handlePreview"
+      :on-remove="handleRemove"
+      :before-remove="beforeRemove"
+      multiple
+      :limit="3"
+      :on-exceed="handleExceed"
+      :file-list="fileList"
+    >
+      <tu-button size="small" type="primary">点击上传</tu-button>
+      <div slot="tip" class="tu-upload__tip">
+        只能上传jpg/png文件，且不超过500kb
+      </div>
+    </tu-upload>
   </div>
 </template>
 
@@ -9,83 +24,40 @@ export default {
   components: {},
 
   data() {
-    const data = [
-      {
-        value: "1",
-        label: "Level one 1",
-        children: [
-          {
-            value: "1-1",
-            label: "Level two 1-1",
-            children: [
-              {
-                value: "1-1-1",
-                label: "Level three 1-1-1",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        value: "2",
-        label: "Level one 2",
-        children: [
-          {
-            value: "2-1",
-            label: "Level two 2-1",
-            children: [
-              {
-                value: "2-1-1",
-                label: "Level three 2-1-1",
-              },
-            ],
-          },
-          {
-            value: "2-2",
-            label: "Level two 2-2",
-            children: [
-              {
-                value: "2-2-1",
-                label: "Level three 2-2-1",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        value: "3",
-        label: "Level one 3",
-        children: [
-          {
-            value: "3-1",
-            label: "Level two 3-1",
-            children: [
-              {
-                value: "3-1-1",
-                label: "Level three 3-1-1",
-              },
-            ],
-          },
-          {
-            value: "3-2",
-            label: "Level two 3-2",
-            children: [
-              {
-                value: "3-2-1",
-                label: "Level three 3-2-1",
-              },
-            ],
-          },
-        ],
-      },
-    ];
     return {
-      data,
-      value: "",
+      fileList: [
+        {
+          name: "food.jpeg",
+          url: "https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100",
+          status: "done",
+          percentage: 100,
+        },
+        {
+          name: "food2.jpeg",
+          url: "https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100",
+        },
+      ],
     };
   },
 
-  methods: {},
+  methods: {
+    handleRemove(file, fileList) {
+      console.log(file, fileList);
+    },
+    handlePreview(file) {
+      console.log(file);
+    },
+    handleExceed(files, fileList) {
+      this.$message.warning(
+        `当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${
+          files.length + fileList.length
+        } 个文件`
+      );
+    },
+    beforeRemove(file, fileList) {
+      return this.$confirm(`确定移除 ${file.name}？`);
+    },
+  },
 };
 </script>
 
@@ -93,7 +65,6 @@ export default {
 .container {
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
-  background: #e4ebf5;
   padding: 10px 10px 500px;
 }
 </style>
