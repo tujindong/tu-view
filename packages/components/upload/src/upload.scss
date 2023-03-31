@@ -61,8 +61,6 @@
 }
 
 @include b(upload-dragger) {
-	background-color: #fff;
-	border: 1px dashed #d9d9d9;
 	border-radius: 2px;
 	box-sizing: border-box;
 	width: 360px;
@@ -71,8 +69,9 @@
 	cursor: pointer;
 	position: relative;
 	overflow: hidden;
+	box-shadow: $--box-shadow-concave;
 
-	.tu-icon-upload {
+	[class^="tu-icon"] {
 		font-size: 67px;
 		color: $--color-text-placeholder;
 		margin: 40px 0 16px;

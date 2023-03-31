@@ -1,6 +1,6 @@
 <template>
   <div
-    class="el-upload-dragger"
+    class="tu-upload-dragger"
     :class="{
       'is-dragover': dragover,
     }"
@@ -13,20 +13,24 @@
 </template>
 <script>
 export default {
-  name: "ElUploadDrag",
-  props: {
-    disabled: Boolean,
-  },
+  name: "TuUploadDrag",
+
   inject: {
     uploader: {
       default: "",
     },
   },
+
+  props: {
+    disabled: Boolean,
+  },
+
   data() {
     return {
       dragover: false,
     };
   },
+
   methods: {
     onDragover() {
       if (!this.disabled) {

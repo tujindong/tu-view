@@ -51,7 +51,7 @@
       action="https://jsonplaceholder.typicode.com/posts/"
       multiple
     >
-      <i class="tu-icon-upload"></i>
+      <i class="tu-icon-cloud-upload"></i>
       <div class="tu-upload__text">将文件拖到此处，或<em>点击上传</em></div>
       <div class="tu-upload__tip" slot="tip">
         只能上传jpg/png文件，且不超过500kb
