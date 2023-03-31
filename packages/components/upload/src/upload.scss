@@ -32,10 +32,10 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		border-radius: 6px;
+		border-radius: 2px;
 		box-sizing: border-box;
-		width: 148px;
-		height: 148px;
+		width: 80px;
+		height: 80px;
 		cursor: pointer;
 		box-shadow: $--box-shadow-concave;
 
@@ -45,10 +45,11 @@
 		}
 
 		&:hover {
-			border-color: $--color-primary;
+			box-shadow: $--box-shadow-convex;
 			color: $--color-primary;
 		}
 	}
+
 	&:focus {
 		border-color: $--color-primary;
 		color: $--color-primary;
@@ -62,7 +63,7 @@
 @include b(upload-dragger) {
 	background-color: #fff;
 	border: 1px dashed #d9d9d9;
-	border-radius: 6px;
+	border-radius: 2px;
 	box-sizing: border-box;
 	width: 360px;
 	height: 180px;
@@ -122,36 +123,10 @@
 		margin-top: 12px;
 		position: relative;
 		box-sizing: border-box;
-		border-radius: 4px;
+		border-radius: 2px;
 		width: 100%;
 		color: $--color-text-primary;
 		box-shadow: $--box-shadow-convex;
-		.tu-progress {
-			position: absolute;
-			bottom: 0;
-			width: 100%;
-			.tu-progress-bar__outer {
-				box-shadow: none;
-				border-radius: 4px;
-			}
-
-			.tu-progress-bar__inner {
-				border-radius: 4px;
-				opacity: 0.1;
-			}
-
-			.tu-progress__text {
-				position: absolute;
-				right: 25px;
-				top: 9px;
-				font-size: 13px !important;
-			}
-
-			.tu-progress-bar {
-				margin-right: 0;
-				padding-right: 0;
-			}
-		}
 
 		&:first-child {
 			margin-top: 10px;
@@ -188,8 +163,6 @@
 		}
 
 		&:hover {
-			// background-color: $--background-color-base;
-
 			.tu-icon-close {
 				display: inline-block;
 			}
@@ -202,12 +175,10 @@
 
 			.tu-upload-list__item-name:hover,
 			.tu-upload-list__item-name:focus {
-				// color: $--link-hover-color;
 				cursor: pointer;
 			}
 
 			&:focus:not(:hover) {
-				/* 键盘focus */
 				.tu-icon-close-tip {
 					display: inline-block;
 				}
@@ -238,15 +209,20 @@
 	}
 
 	@include e(item-name) {
+		position: relative;
+		z-index: 1;
 		display: block;
 		margin-right: 40px;
+		height: 100%;
 		overflow: hidden;
-		padding-left: 4px;
 		text-overflow: ellipsis;
 		transition: color 0.3s;
 		white-space: nowrap;
 		color: $--color-text-primary;
+	}
 
+	@include e(item-empty) {
+		position: absolute;
 		[class^="tu-icon"] {
 			height: 100%;
 			margin-right: 7px;
@@ -276,6 +252,43 @@
 		}
 	}
 
+	@include m(text) {
+		.tu-upload-list__item-empty {
+			margin-left: 8px;
+		}
+		.tu-upload-list__item-name {
+			padding-left: 28px;
+		}
+		.tu-progress {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			z-index: 0;
+			.tu-progress-bar__outer {
+				box-shadow: none;
+				border-radius: 2px;
+			}
+
+			.tu-progress-bar__inner {
+				border-radius: 2px;
+				background: #005eff;
+				opacity: 0.1;
+			}
+
+			.tu-progress__text {
+				position: absolute;
+				right: 25px;
+				top: 9px;
+				font-size: 13px !important;
+			}
+
+			.tu-progress-bar {
+				margin-right: 0;
+				padding-right: 0;
+			}
+		}
+	}
+
 	@include m(picture-card) {
 		margin: 0;
 		display: inline;
@@ -283,12 +296,10 @@
 
 		.tu-upload-list__item {
 			overflow: hidden;
-			// background-color: #fff;
-			// border: 1px solid #c0ccda;
-			border-radius: 6px;
+			border-radius: 2px;
 			box-sizing: border-box;
-			width: 148px;
-			height: 148px;
+			width: 80px;
+			height: 80px;
 			margin: 0 8px 8px 0;
 			display: inline-block;
 			box-shadow: $--box-shadow-concave;
@@ -325,17 +336,17 @@
 			position: absolute;
 			right: -15px;
 			top: -6px;
-			width: 40px;
-			height: 24px;
-			background: #13ce66;
+			width: 36px;
+			height: 18px;
+			background: $--color-success;
 			text-align: center;
 			transform: rotate(45deg);
-			box-shadow: 0 0 1pc 1px rgba(0, 0, 0, 0.2);
+			box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
 
 			i {
-				font-size: 12px;
-				margin-top: 11px;
-				transform: rotate(-45deg);
+				position: relative;
+				font-size: 9px;
+				transform: translateX(2px) translateY(-3px) scale(0.6) rotate(-45deg);
 			}
 		}
 
@@ -347,9 +358,9 @@
 			top: 0;
 			cursor: default;
 			text-align: center;
-			color: #fff;
+			color: rgba(255, 255, 255, 0.8);
 			opacity: 0;
-			font-size: 20px;
+			font-size: 14px;
 			background-color: rgba(0, 0, 0, 0.5);
 			transition: opacity 0.3s;
 			&::after {
@@ -362,6 +373,10 @@
 			span {
 				display: none;
 				cursor: pointer;
+				transition: color 0.3s;
+				&:hover {
+					color: rgba(255, 255, 255, 1);
+				}
 			}
 
 			span + span {
@@ -387,7 +402,9 @@
 			left: 50%;
 			transform: translate(-50%, -50%);
 			bottom: auto;
-			width: 126px;
+			width: 76px;
+			height: 76px;
+			z-index: 1;
 
 			.tu-progress__text {
 				top: 50%;
@@ -399,27 +416,12 @@
 		.tu-upload-list__item {
 			overflow: hidden;
 			z-index: 0;
-			background-color: #fff;
-			border: 1px solid #c0ccda;
-			border-radius: 6px;
+			border-radius: 2px;
 			box-sizing: border-box;
-			margin-top: 10px;
-			padding: 10px 10px 10px 90px;
-			height: 92px;
-
-			.tu-icon-check,
-			.tu-icon-circle-check {
-				color: $--color-white;
-			}
+			padding: 10px 10px 10px 80px;
+			height: 80px;
 
 			&:hover {
-				.tu-upload-list__item-status-label {
-					background: transparent;
-					box-shadow: none;
-					top: -2px;
-					right: -12px;
-				}
-
 				.tu-progress__text {
 					display: block;
 				}
@@ -427,8 +429,6 @@
 
 			&.is-success {
 				.tu-upload-list__item-name {
-					line-height: 70px;
-					margin-top: 0;
 					i {
 						display: none;
 					}
@@ -439,49 +439,76 @@
 		.tu-upload-list__item-thumbnail {
 			vertical-align: middle;
 			display: inline-block;
-			width: 70px;
-			height: 70px;
+			width: 60px;
+			height: 60px;
 			float: left;
 			position: relative;
 			z-index: 1;
+			left: 10px;
 			margin-left: -80px;
 			background-color: $--color-white;
 		}
 
-		.tu-upload-list__item-name {
-			display: block;
-			margin-top: 20px;
+		.tu-upload-list__item-empty {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			position: absolute;
+			left: 10px;
+			top: 10px;
+			width: 60px;
+			height: 60px;
+			background: $--background-color-hover;
 
 			i {
-				font-size: 70px;
-				line-height: 1;
-				position: absolute;
-				left: 9px;
-				top: 10px;
+				width: 18px;
+				height: 18px;
+				font-size: 18px;
+				line-height: 18px;
+				color: $--color-text-regular;
 			}
+		}
+
+		.tu-upload-list__item-name {
+			position: relative;
+			display: block;
+			line-height: 60px;
+			z-index: 100;
 		}
 
 		.tu-upload-list__item-status-label {
-			position: absolute;
-			right: -17px;
-			top: -7px;
-			width: 46px;
-			height: 26px;
-			background: #13ce66;
-			text-align: center;
-			transform: rotate(45deg);
-			box-shadow: 0 1px 1px #ccc;
-
-			i {
-				font-size: 12px;
-				margin-top: 12px;
-				transform: rotate(-45deg);
-			}
+			display: none;
 		}
 
 		.tu-progress {
-			position: relative;
-			top: -7px;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			height: 80px;
+			width: 100%;
+			z-index: 1;
+			.tu-progress-bar__outer {
+				box-shadow: none;
+				border-radius: 2px;
+			}
+
+			.tu-progress-bar__inner {
+				border-radius: 2px;
+				background: #005eff;
+				opacity: 0.1;
+			}
+
+			.tu-progress__text {
+				position: absolute;
+				right: 25px;
+				top: 9px;
+				font-size: 13px !important;
+			}
+
+			.tu-progress-bar {
+				margin-right: 0;
+				padding-right: 0;
+			}
 		}
 	}
 }
@@ -509,10 +536,10 @@
 		top: -6px;
 		width: 40px;
 		height: 24px;
-		background: #13ce66;
+		background: $--color-success;
 		text-align: center;
 		transform: rotate(45deg);
-		box-shadow: 0 0 1pc 1px rgba(0, 0, 0, 0.2);
+		box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
 
 		i {
 			font-size: 12px;

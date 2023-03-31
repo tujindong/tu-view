@@ -32,16 +32,22 @@
           :src="file.url"
           alt=""
         />
+        <span
+          v-if="listType !== 'picture-card'"
+          class="tu-upload-list__item-empty"
+        >
+          <i class="tu-icon-file-unknown"></i>
+        </span>
         <a class="tu-upload-list__item-name" @click="handleClick(file)">
-          <i class="tu-icon-document"></i>{{ file.name }}
+          {{ file.name }}
         </a>
         <label class="tu-upload-list__item-status-label">
           <i
             :class="{
               'tu-icon-upload-success': true,
-              'tu-icon-check-circle': listType === 'text',
-              'tu-icon-check':
-                ['picture-card', 'picture'].indexOf(listType) > -1,
+              'tu-icon-check-circle':
+                listType === 'text' || listType === 'picture',
+              'tu-icon-check': ['picture-card'].indexOf(listType) > -1,
             }"
           ></i>
         </label>
@@ -53,7 +59,7 @@
         <tu-progress
           v-if="file.status === 'uploading'"
           :type="listType === 'picture-card' ? 'circle' : 'line'"
-          :stroke-width="listType === 'picture-card' ? 6 : 32"
+          :stroke-width="strokeWidth"
           :percentage="parsePercentage(file.percentage)"
         >
         </tu-progress>
@@ -111,6 +117,16 @@ export default {
   },
 
   components: {},
+
+  computed: {
+    strokeWidth() {
+      return this.listType === "picture-card"
+        ? 6
+        : this.listType === "picture"
+        ? 80
+        : 32;
+    },
+  },
 
   methods: {
     parsePercentage(val) {

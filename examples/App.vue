@@ -16,6 +16,47 @@
         只能上传jpg/png文件，且不超过500kb
       </div>
     </tu-upload>
+    <br />
+    <br />
+    <tu-upload
+      action="https://jsonplaceholder.typicode.com/posts/"
+      list-type="picture-card"
+      :on-preview="handlePictureCardPreview"
+      :on-remove="handleRemove"
+      :file-list="fileList"
+    >
+      <i class="tu-icon-plus"></i>
+    </tu-upload>
+    <br />
+    <br />
+    <tu-upload
+      class="upload-demo"
+      action="https://jsonplaceholder.typicode.com/posts/"
+      :on-preview="handlePreview"
+      :on-remove="handleRemove"
+      :file-list="fileList"
+      list-type="picture"
+    >
+      <tu-button size="small" type="primary">点击上传</tu-button>
+      <div slot="tip" class="tu-upload__tip">
+        只能上传jpg/png文件，且不超过500kb
+      </div>
+    </tu-upload>
+
+    <br />
+    <br />
+    <tu-upload
+      class="upload-demo"
+      drag
+      action="https://jsonplaceholder.typicode.com/posts/"
+      multiple
+    >
+      <i class="tu-icon-upload"></i>
+      <div class="tu-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+      <div class="tu-upload__tip" slot="tip">
+        只能上传jpg/png文件，且不超过500kb
+      </div>
+    </tu-upload>
   </div>
 </template>
 
@@ -29,12 +70,24 @@ export default {
         {
           name: "food.jpeg",
           url: "https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100",
-          status: "done",
-          percentage: 100,
+          status: "uploading",
+          percentage: 0,
+        },
+        {
+          name: "food.jpeg",
+          url: "https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100",
+          status: "uploading",
+          percentage: 80,
+        },
+        {
+          name: "food.jpeg",
+          url: "https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100",
         },
         {
           name: "food2.jpeg",
           url: "https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100",
+          status: "uploading",
+          percentage: 100,
         },
       ],
     };
@@ -46,16 +99,6 @@ export default {
     },
     handlePreview(file) {
       console.log(file);
-    },
-    handleExceed(files, fileList) {
-      this.$message.warning(
-        `当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${
-          files.length + fileList.length
-        } 个文件`
-      );
-    },
-    beforeRemove(file, fileList) {
-      return this.$confirm(`确定移除 ${file.name}？`);
     },
   },
 };

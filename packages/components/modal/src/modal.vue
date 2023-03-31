@@ -23,20 +23,20 @@
         ]"
         :style="style"
       >
-        <div class="tu-modal__header">
+        <div class="tu-modal__header" v-if="title">
           <slot name="title">
             <span class="tu-modal__title">{{ title }}</span>
           </slot>
-          <button
-            type="button"
-            class="tu-modal__headerbtn"
-            aria-label="Close"
-            v-if="showClose"
-            @click="handleClose"
-          >
-            <i class="tu-modal__close tu-icon tu-icon-close"></i>
-          </button>
         </div>
+        <button
+          type="button"
+          class="tu-modal__headerbtn"
+          aria-label="Close"
+          v-if="showClose"
+          @click="handleClose"
+        >
+          <i class="tu-modal__close tu-icon tu-icon-close"></i>
+        </button>
         <div class="tu-modal__body" v-if="rendered">
           <slot></slot>
         </div>
