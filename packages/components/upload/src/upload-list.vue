@@ -38,9 +38,9 @@
         >
           <i class="tu-icon-file-unknown"></i>
         </span>
-        <a class="tu-upload-list__item-name" @click="handleClick(file)">
+        <span class="tu-upload-list__item-name" @click="handleClick(file)">
           {{ file.name }}
-        </a>
+        </span>
         <label class="tu-upload-list__item-status-label">
           <i
             :class="{

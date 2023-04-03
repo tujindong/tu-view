@@ -117,28 +117,37 @@ module.exports = {
 		},
 		sidebarDepth: 0,
 	},
-	plugins: {
-		"demo-container": {
-			locales: [
-				{
-					lang: "zh-CN",
-					"demo-block": {
-						"hide-text": "隐藏代码",
-						"show-text": "显示代码",
-						"copy-text": "复制代码",
-						"copy-success": "复制成功",
+	plugins: [
+		[
+			"demo-container",
+			{
+				locales: [
+					{
+						lang: "zh-CN",
+						"demo-block": {
+							"hide-text": "隐藏代码",
+							"show-text": "显示代码",
+							"copy-text": "复制代码",
+							"copy-success": "复制成功",
+						},
 					},
-				},
-				{
-					lang: "en-US",
-					"demo-block": {
-						"hide-text": "Hide",
-						"show-text": "Expand",
-						"copy-text": "Copy",
-						"copy-success": "Successful",
+					{
+						lang: "en-US",
+						"demo-block": {
+							"hide-text": "Hide",
+							"show-text": "Expand",
+							"copy-text": "Copy",
+							"copy-success": "Successful",
+						},
 					},
-				},
-			],
-		},
-	},
+				],
+			},
+		],
+		[
+			"vuepress-plugin-anchor-toc",
+			{
+				ignore: ["/", "/api/"],
+			},
+		],
+	],
 };
