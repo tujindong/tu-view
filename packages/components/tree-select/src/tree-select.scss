@@ -1,1 +1,123 @@
 @import "~@packages/style/common/mixin.scss";
+
+@include b(tree-select) {
+	display: inline-flex;
+	align-items: center;
+	position: relative;
+	width: 100%;
+
+	.tu-select__tags > span {
+		display: contents;
+	}
+
+	.tu-input__inner {
+		cursor: pointer;
+		padding-right: 35px;
+		transition: none;
+	}
+
+	.tu-input {
+		& .tu-select__caret {
+			color: $--select-input-color;
+			transition: transform 0.3s;
+			transform: rotateZ(180deg);
+			cursor: pointer;
+
+			@include when(reverse) {
+				transform: rotateZ(0deg);
+			}
+
+			@include when(show-close) {
+				font-size: $--select-font-size;
+				text-align: center;
+				transform: rotateZ(180deg);
+				color: $--select-input-color;
+				transition: $--color-transition-base;
+
+				&:hover {
+					color: $--select-close-hover-color;
+				}
+			}
+		}
+
+		& .tu-icon-reload {
+			animation: spin 1s linear infinite;
+		}
+
+		&.is-disabled {
+			& .tu-input__inner {
+				cursor: not-allowed;
+			}
+		}
+
+		&.is-focus {
+			& .tu-input__inner {
+				box-shadow: $--box-shadow-convex;
+			}
+		}
+	}
+
+	> .tu-input {
+		display: block;
+	}
+
+	@include e(input) {
+		border: none;
+		outline: none;
+		padding: 0;
+		margin-left: 15px;
+		color: $--select-multiple-input-color;
+		font-size: $--select-font-size;
+		appearance: none;
+		height: 28px;
+		background-color: transparent;
+		flex-grow: 1;
+
+		&::-moz-placeholder {
+			color: $--input-placeholder-font-color;
+		}
+
+		&:-ms-input-placeholder {
+			color: $--input-placeholder-font-color;
+		}
+
+		&::placeholder {
+			color: $--input-placeholder-font-color;
+		}
+	}
+
+	@include e(close) {
+		cursor: pointer;
+		position: absolute;
+		top: 8px;
+		z-index: $--index-top;
+		right: 25px;
+		color: $--select-input-color;
+		line-height: 18px;
+		font-size: $--select-input-font-size;
+
+		&:hover {
+			color: $--select-close-hover-color;
+		}
+	}
+
+	@include e(tags) {
+		display: flex;
+		width: calc(100% - 30px);
+		position: absolute;
+		line-height: normal;
+		white-space: normal;
+		z-index: $--index-normal;
+		top: 50%;
+		transform: translateY(-50%);
+		flex-wrap: wrap;
+
+		.tu-tag {
+			margin: 4px 0 4px 6px;
+
+			&.tu-tag--mini {
+				margin-right: -4px;
+			}
+		}
+	}
+}
