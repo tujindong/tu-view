@@ -148,6 +148,7 @@
           }"
         >
           <tu-tree
+            ref="tree"
             :data="data"
             :props="defaultProps"
             @node-click="handleNodeClick"
@@ -275,14 +276,27 @@ export default {
       }
     },
 
-    visible(val) {
+    visible(val, oldVal) {
+      let defaultSelect;
       if (!val) {
         this.menuVisibleOnFocus = false;
       } else {
+        if (this.multiple) {
+          this.resetInputHeight();
+          if (oldVal) {
+            defaultSelect = oldVal.filter((item) => {
+              return !val.includes(item);
+            });
+          }
+        } else {
+          defaultSelect = oldVal;
+        }
         this.$nextTick(() => {
           this.broadcast("TuTreeSelectDropdown", "updatePopper");
         });
       }
+      this.setSelected();
+      this.setDefaultSelected(defaultSelect);
     },
 
     options() {
@@ -320,6 +334,7 @@ export default {
         this.inputWidth = reference.$el.getBoundingClientRect().width;
       }
     });
+    this.setSelected();
   },
 
   beforeDestroy() {
@@ -389,6 +404,26 @@ export default {
       this.$refs.popper && this.$refs.popper.doDestroy();
     },
 
+    setSelected() {
+      const tree = this.$refs.tree;
+      if (this.multiple) {
+      } else {
+        const node = tree.getNode(this.value);
+      }
+    },
+
+    setDefaultSelected(item) {
+      const tree = this.$refs.tree;
+
+      if (this.multiple) {
+      } else {
+        const node = tree.getNode(item);
+        if (node) {
+          this.$set(node, "selected", false);
+        }
+      }
+    },
+
     handleNodeClick(data, node, comp) {
       console.log("handleNodeClick", { data, node, comp });
       if (this.multiple) {
@@ -402,7 +437,21 @@ export default {
 
     handleMultipSelect(data, node, comp) {},
 
-    handleSingleSelect(data, node, comp) {},
+    handleSingleSelect(data, node, comp) {
+      if (node.selected) {
+        return;
+      }
+
+      if (this.value) {
+        const tree = this.$refs.tree;
+        const oldNode = tree.getNode(this.value);
+        if (oldNode) {
+          oldNode.selected = false;
+        }
+      }
+      this.selectedLabel = node.label;
+      this.$emit("input", node.key);
+    },
   },
 };
 </script>
