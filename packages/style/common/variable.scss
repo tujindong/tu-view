@@ -709,6 +709,21 @@ $--menu-item-font-color: $--color-text-primary;
 $--menu-background-color: $--color-white;
 $--menu-item-hover-fill: $--color-primary-light;
 
+/* Tree-select
+-------------------------- */
+$--tree-select-input-color: $--color-greyLight-3;
+$--tree-select-font-size: $--font-size-base;
+$--tree-select-input-font-size: $--font-size-base;
+$--tree-select-close-hover-color: $--color-text-primary;
+$--tree-select-multiple-input-color: $--color-greyLight-3;
+
+$--tree-select-dropdown-max-height: 272px;
+$--tree-select-dropdown-padding: 6px 0;
+
+$--tree-select-mini-dropdown-max-height: 176px;
+$--tree-select-small-dropdown-max-height: 216px;
+$--tree-select-large-dropdown-max-height: 386px;
+
 /* Break-point
 --------------------------*/
 $--sm: 768px !default;

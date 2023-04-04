@@ -18,7 +18,7 @@
 
 	.tu-input {
 		& .tu-select__caret {
-			color: $--select-input-color;
+			color: $--tree-select-input-color;
 			transition: transform 0.3s;
 			transform: rotateZ(180deg);
 			cursor: pointer;
@@ -28,14 +28,14 @@
 			}
 
 			@include when(show-close) {
-				font-size: $--select-font-size;
+				font-size: $--tree-select-font-size;
 				text-align: center;
 				transform: rotateZ(180deg);
-				color: $--select-input-color;
+				color: $--tree-select-input-color;
 				transition: $--color-transition-base;
 
 				&:hover {
-					color: $--select-close-hover-color;
+					color: $--tree-select-close-hover-color;
 				}
 			}
 		}
@@ -66,8 +66,8 @@
 		outline: none;
 		padding: 0;
 		margin-left: 15px;
-		color: $--select-multiple-input-color;
-		font-size: $--select-font-size;
+		color: $--tree-select-multiple-input-color;
+		font-size: $--tree-select-font-size;
 		appearance: none;
 		height: 28px;
 		background-color: transparent;
@@ -92,12 +92,12 @@
 		top: 8px;
 		z-index: $--index-top;
 		right: 25px;
-		color: $--select-input-color;
+		color: $--tree-select-input-color;
 		line-height: 18px;
-		font-size: $--select-input-font-size;
+		font-size: $--tree-select-input-font-size;
 
 		&:hover {
-			color: $--select-close-hover-color;
+			color: $--tree-select-close-hover-color;
 		}
 	}
 

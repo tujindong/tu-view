@@ -4,6 +4,7 @@
     v-clickoutside="handleClose"
     @click.stop="toggleMenu"
   >
+    ~~{{ value }}
     <div
       class="tu-tree-select__tags"
       v-if="multiple"
@@ -75,7 +76,6 @@
         }"
       />
     </div>
-
     <tu-input
       :class="{ 'is-focus': visible }"
       ref="reference"
@@ -151,8 +151,17 @@
             ref="tree"
             :data="data"
             :props="defaultProps"
+            :expand-on-click-node="true"
+            :check-strictly="checkStrictly"
             @node-click="handleNodeClick"
-          ></tu-tree>
+          >
+            <span
+              slot-scope="{ node, data }"
+              :class="{ 'is-selected': node.selected }"
+            >
+              {{ node.label }}
+            </span>
+          </tu-tree>
         </tu-scrollbar>
       </tu-tree-select-dropdown>
     </transition>
@@ -191,6 +200,7 @@ export default {
     id: String,
     value: {
       required: true,
+      type: [String, Array],
     },
     disabled: Boolean,
     filterable: Boolean,
@@ -208,6 +218,11 @@ export default {
     loadingText: String,
     data: [],
     defaultProps: {},
+    //当属性 check-strictly=true 时，任何节点都可以被选择，否则只有子节点可被选择。
+    checkStrictly: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data() {
@@ -329,6 +344,7 @@ export default {
 
   mounted() {
     const reference = this.$refs.reference;
+    addResizeListener(this.$el, this.handleResize);
     this.$nextTick(() => {
       if (reference && reference.$el) {
         this.inputWidth = reference.$el.getBoundingClientRect().width;
@@ -404,6 +420,17 @@ export default {
       this.$refs.popper && this.$refs.popper.doDestroy();
     },
 
+    resetInputWidth() {
+      this.inputWidth = this.$refs.reference.$el.getBoundingClientRect().width;
+    },
+
+    handleResize() {
+      this.resetInputWidth();
+      if (this.multiple) this.resetInputHeight();
+    },
+
+    resetInputHeight() {},
+
     setSelected() {
       const tree = this.$refs.tree;
       if (this.multiple) {
@@ -430,7 +457,6 @@ export default {
         this.handleMultipSelect(data, node, comp);
       } else {
         this.handleSingleSelect(data, node, comp);
-        this.visible = false;
       }
       this.setSoftFocus();
     },
@@ -441,16 +467,20 @@ export default {
       if (node.selected) {
         return;
       }
-
       if (this.value) {
         const tree = this.$refs.tree;
         const oldNode = tree.getNode(this.value);
+        console.log("oldNode~~", oldNode);
         if (oldNode) {
           oldNode.selected = false;
         }
       }
-      this.selectedLabel = node.label;
-      this.$emit("input", node.key);
+      if (node.childNodes.length === 0) {
+        this.selectedLabel = data.label;
+        this.$set(node, "selected", true);
+        this.$emit("input", data.id);
+        this.visible = false;
+      }
     },
   },
 };

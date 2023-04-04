@@ -9,7 +9,7 @@
       ref="menu"
       v-for="(menu, index) in menus"
       :index="index"
-      :key="index"
+      :key="menu.value"
       :nodes="menu"
     ></cascader-menu>
   </transition-group>
