@@ -156,7 +156,7 @@
             @node-click="handleNodeClick"
           >
             <span
-              slot-scope="{ node, data }"
+              :slot-scope="{ node, data }"
               :class="{ 'is-selected': node.selected }"
             >
               {{ node.label }}
