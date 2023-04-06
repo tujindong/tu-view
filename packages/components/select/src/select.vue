@@ -511,7 +511,6 @@ export default {
       this.currentPlaceholder = "";
     }
     addResizeListener(this.$el, this.handleResize);
-
     const reference = this.$refs.reference;
     if (reference && reference.$el) {
       const sizeMap = {

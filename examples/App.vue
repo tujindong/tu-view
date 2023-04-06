@@ -1,21 +1,39 @@
 <template>
   <div class="container">
+    <p>基本用法</p>
     ++{{ value }}
     <tu-tree-select
       placeholder="请输入节点"
       v-model="value"
       :data="data"
-      :render-after-expand="false"
-      :checkStrictly="true"
+      @change="handleTreeChange"
     />
     <br />
-    <!-- <tu-tree-select
+    <br />
+    <br />
+    <p>check-strictly true 可以选择任意节点</p>
+    ++{{ value1 }}
+    <tu-tree-select
       placeholder="请输入"
-      v-model="value"
+      v-model="value1"
       :data="data"
-      :render-after-expand="false"
-      show-checkbox
-    /> -->
+      :check-strictly="true"
+    />
+    <br />
+    <br />
+    <br />
+    <p>多选</p>
+    <p>基本用法</p>
+    ++{{ value2 }}
+    <tu-tree-select
+      placeholder="请输入节点"
+      v-model="value2"
+      :data="data"
+      multiple
+      @change="handleTreeChange"
+    />
+    <br />
+    <br />
     <br />
     <tu-select v-model="value1" placeholder="请选择">
       <tu-option
@@ -45,15 +63,15 @@ export default {
     return {
       data: [
         {
-          id: "1",
+          value: "1",
           label: "一级 1",
           children: [
             {
-              id: "1-1",
+              value: "1-1",
               label: "二级 1-1",
               children: [
                 {
-                  id: "1-1-1",
+                  value: "1-1-1",
                   label: "三级 1-1-1",
                 },
               ],
@@ -61,25 +79,25 @@ export default {
           ],
         },
         {
-          id: "2",
+          value: "2",
           label: "一级 2",
           children: [
             {
-              id: "2-1",
+              value: "2-1",
               label: "二级 2-1",
               children: [
                 {
-                  id: "2-1-1",
+                  value: "2-1-1",
                   label: "三级 2-1-1",
                 },
               ],
             },
             {
-              id: "2-2",
+              value: "2-2",
               label: "二级 2-2",
               children: [
                 {
-                  id: "2-2-1",
+                  value: "2-2-1",
                   label: "三级 2-2-1",
                 },
               ],
@@ -87,25 +105,25 @@ export default {
           ],
         },
         {
-          id: "3",
+          value: "3",
           label: "一级 3",
           children: [
             {
-              id: "3-1",
+              value: "3-1",
               label: "二级 3-1",
               children: [
                 {
-                  id: "3-1-1",
+                  value: "3-1-1",
                   label: "三级 3-1-1",
                 },
               ],
             },
             {
-              id: "3-2",
+              value: "3-2",
               label: "二级 3-2",
               children: [
                 {
-                  id: "3-2-1",
+                  value: "3-2-1",
                   label: "三级 3-2-1",
                 },
               ],
@@ -114,6 +132,8 @@ export default {
         },
       ],
       value: "",
+      value1: "2-1",
+      value2: ["2-1-1", "3-1-1"],
       defaultProps: {
         children: "children",
         label: "label",
@@ -141,13 +161,16 @@ export default {
           label: "榴莲",
         },
       ],
-      value1: "",
     };
   },
 
   methods: {
     handleNodeClick(data, node, comp) {
       console.log("tree~~", { data, node, comp });
+    },
+
+    handleTreeChange(e) {
+      console.log("handleTreeChange~~", e);
     },
   },
 };

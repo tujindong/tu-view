@@ -4,7 +4,6 @@
     v-clickoutside="handleClose"
     @click.stop="toggleMenu"
   >
-    ~~{{ value }}
     <div
       class="tu-tree-select__tags"
       v-if="multiple"
@@ -40,11 +39,11 @@
           effect="shadow"
           :size="selectSize | tagSize"
           :hit="item.hitState"
-          :key="item.value"
+          :key="item.data.value"
           :closable="!selectDisabled"
           @close="deleteTag($event, item)"
         >
-          {{ item.label }}
+          {{ item.data.label }}
         </tu-tag>
       </transition-group>
 
@@ -151,15 +150,17 @@
             ref="tree"
             :data="data"
             :props="defaultProps"
-            :expand-on-click-node="true"
+            :node-key="_replaceFields['value']"
+            :expand-on-click-node="!checkStrictly"
             :check-strictly="checkStrictly"
+            :default-expanded-keys="defaultExpandedKeys"
             @node-click="handleNodeClick"
           >
             <span
-              :slot-scope="{ node, data }"
+              slot-scope="{ node, data }"
               :class="{ 'is-selected': node.selected }"
             >
-              {{ node.label }}
+              {{ node[_replaceFields["label"]] }}
             </span>
           </tu-tree>
         </tu-scrollbar>
@@ -175,6 +176,7 @@ import {
 } from "@packages/src/utils/resize-event";
 import Emitter from "@packages/src/mixins/emitter";
 import { debounce } from "@packages/src/utils/throttle-debounce";
+import { valueEquals } from "@packages/src/utils/util";
 import TuTreeSelectDropdown from "./tree-select-dropdown.vue";
 export default {
   name: "TuTreeSelect",
@@ -218,11 +220,12 @@ export default {
     loadingText: String,
     data: [],
     defaultProps: {},
-    //当属性 check-strictly=true 时，任何节点都可以被选择，否则只有子节点可被选择。
+    //当属性 check-strictly=true 时，任何节点都可以被选择，否则只有叶子节点可被选择。
     checkStrictly: {
       type: Boolean,
       default: false,
     },
+    replaceFields: Object,
   },
 
   data() {
@@ -240,10 +243,15 @@ export default {
       cachedPlaceHolder: "",
       menuVisibleOnFocus: false,
       inputWidth: 0,
+      defaultExpandedKeys: [],
     };
   },
 
   computed: {
+    selectDisabled() {
+      return this.disabled;
+    },
+
     iconDirection() {
       return this.visible ? "up is-reverse" : "up";
     },
@@ -271,6 +279,15 @@ export default {
         ? this.placeholder
         : "请输入";
     },
+
+    _replaceFields() {
+      return {
+        children: "children",
+        value: "value",
+        label: "label",
+        ...this.replaceFields,
+      };
+    },
   },
 
   watch: {
@@ -280,6 +297,10 @@ export default {
 
     value(val, oldVal) {
       if (this.multiple) {
+        this.$nextTick(() => {
+          this.resetInputHeight();
+          this.broadcast("TuTreeSelectDropdown", "updatePopper");
+        });
         if (
           (val && val.length > 0) ||
           (this.$refs.input && this.query !== "")
@@ -289,6 +310,7 @@ export default {
           this.currentPlaceholder = this.cachedPlaceHolder;
         }
       }
+      this.setSelected();
     },
 
     visible(val, oldVal) {
@@ -298,20 +320,12 @@ export default {
       } else {
         if (this.multiple) {
           this.resetInputHeight();
-          if (oldVal) {
-            defaultSelect = oldVal.filter((item) => {
-              return !val.includes(item);
-            });
-          }
         } else {
-          defaultSelect = oldVal;
         }
         this.$nextTick(() => {
           this.broadcast("TuTreeSelectDropdown", "updatePopper");
         });
       }
-      this.setSelected();
-      this.setDefaultSelected(defaultSelect);
     },
 
     options() {
@@ -343,7 +357,21 @@ export default {
   },
 
   mounted() {
+    if (this.multiple && Array.isArray(this.value) && this.value.length > 0) {
+      this.currentPlaceholder = "";
+    }
+    addResizeListener(this.$el, this.handleResize);
     const reference = this.$refs.reference;
+    if (reference && reference.$el) {
+      const sizeMap = {
+        medium: 36,
+        small: 32,
+        mini: 28,
+      };
+      const input = reference.$el.querySelector("input");
+      this.initialInputHeight =
+        input.getBoundingClientRect().height || sizeMap[this.selectSize];
+    }
     addResizeListener(this.$el, this.handleResize);
     this.$nextTick(() => {
       if (reference && reference.$el) {
@@ -396,7 +424,10 @@ export default {
 
     handleComposition() {},
 
-    deleteTag() {},
+    deleteTag(event, node) {
+      event.stopPropagation();
+      this.handleMultipSelect(node.data, node);
+    },
 
     managePlaceholder() {
       if (this.currentPlaceholder !== "") {
@@ -412,7 +443,10 @@ export default {
 
     handleQueryChange() {},
 
-    handleResize() {},
+    handleResize() {
+      this.resetInputWidth();
+      if (this.multiple) this.resetInputHeight();
+    },
 
     handleMenuEnter() {},
 
@@ -429,30 +463,67 @@ export default {
       if (this.multiple) this.resetInputHeight();
     },
 
-    resetInputHeight() {},
+    resetInputHeight() {
+      if (this.collapseTags && !this.filterable) return;
+      this.$nextTick(() => {
+        if (!this.$refs.reference) return;
+        let inputChildNodes = this.$refs.reference.$el.childNodes;
+        let input = [].filter.call(
+          inputChildNodes,
+          (item) => item.tagName === "INPUT"
+        )[0];
+        const tags = this.$refs.tags;
+        const tagsHeight = tags
+          ? Math.round(tags.getBoundingClientRect().height)
+          : 0;
+        const sizeInMap = this.initialInputHeight || 40;
+        input.style.height =
+          this.selected.length === 0
+            ? sizeInMap + "px"
+            : Math.max(
+                tags ? tagsHeight + (tagsHeight > sizeInMap ? 6 : 0) : 0,
+                sizeInMap
+              ) + "px";
+        if (this.visible && this.emptyText !== false) {
+          this.broadcast("TuTreeSelectDropdown", "updatePopper");
+        }
+      });
+    },
 
-    setSelected() {
-      const tree = this.$refs.tree;
-      if (this.multiple) {
-      } else {
-        const node = tree.getNode(this.value);
+    emitChange(val) {
+      if (!valueEquals(this.value, val)) {
+        this.$emit("change", val);
       }
     },
 
-    setDefaultSelected(item) {
+    setSelected() {
       const tree = this.$refs.tree;
-
-      if (this.multiple) {
-      } else {
-        const node = tree.getNode(item);
+      //单选
+      if (!this.multiple) {
+        const node = tree.getNode(this.value);
+        console.log("node~~", node);
         if (node) {
-          this.$set(node, "selected", false);
+          this.$set(node, "selected", true);
+          this.selected = node;
+          this.selectedLabel = node.label;
         }
+        // this.defaultExpandedKeys = [node.parent];
+      } else {
+        //多选
+        this.value.forEach((val) => {
+          const node = tree.getNode(value);
+          if (node) {
+            this.$set(node, "selected", true);
+            result.push(node);
+          }
+        });
+        console.log("setSelected 多选");
       }
     },
 
     handleNodeClick(data, node, comp) {
       console.log("handleNodeClick", { data, node, comp });
+      if (!this.checkStrictly && node.childNodes.length !== 0) return;
       if (this.multiple) {
         this.handleMultipSelect(data, node, comp);
       } else {
@@ -461,26 +532,40 @@ export default {
       this.setSoftFocus();
     },
 
-    handleMultipSelect(data, node, comp) {},
-
-    handleSingleSelect(data, node, comp) {
-      if (node.selected) {
-        return;
+    handleMultipSelect(data, node) {
+      const currentValue = (this.value || []).slice();
+      const selected = (this.selected || []).slice();
+      const { value } = this._replaceFields;
+      const index = currentValue.indexOf(data[value]);
+      if (index === -1) {
+        selected.push(node);
+        currentValue.push(data[value]);
+        this.$set(node, "selected", true);
+        this.$set(node, "hitState", false);
+      } else {
+        selected.splice(index, 1);
+        currentValue.splice(index, 1);
+        this.$set(node, "selected", false);
       }
+      this.selected = selected;
+      this.$emit("input", currentValue);
+    },
+
+    handleSingleSelect(data, node) {
+      if (node.selected) return;
+      const { value, label } = this._replaceFields;
+      this.selectedLabel = data[label];
+      this.$set(node, "selected", true);
+      this.$emit("input", data[value]);
+      this.emitChange(data[value]);
       if (this.value) {
         const tree = this.$refs.tree;
         const oldNode = tree.getNode(this.value);
-        console.log("oldNode~~", oldNode);
         if (oldNode) {
           oldNode.selected = false;
         }
       }
-      if (node.childNodes.length === 0) {
-        this.selectedLabel = data.label;
-        this.$set(node, "selected", true);
-        this.$emit("input", data.id);
-        this.visible = false;
-      }
+      this.visible = false;
     },
   },
 };

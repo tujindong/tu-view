@@ -25,7 +25,9 @@
 		.tu-tree-node {
 			.tu-tree-node__content {
 				transition: background-color 0.3s;
-				&:hover {
+				color: $--color-text-primary;
+				&:hover,
+				&:focus {
 					background: rgba($--color-greyDark, 0.25);
 					color: $--color-text-primary;
 				}
