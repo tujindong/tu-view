@@ -1,18 +1,19 @@
 <template>
   <div class="container">
     <p>基本用法</p>
-    ++{{ value }}
+    值：{{ value }}
     <tu-tree-select
       placeholder="请输入节点"
       v-model="value"
       :data="data"
+      clearable
       @change="handleTreeChange"
     />
     <br />
     <br />
     <br />
     <p>check-strictly true 可以选择任意节点</p>
-    ++{{ value1 }}
+    值：{{ value1 }}
     <tu-tree-select
       placeholder="请输入"
       v-model="value1"
@@ -23,13 +24,50 @@
     <br />
     <br />
     <p>多选</p>
-    <p>基本用法</p>
-    ++{{ value2 }}
+    值：{{ valueMulti }}
     <tu-tree-select
       placeholder="请输入节点"
-      v-model="value2"
+      v-model="valueMulti"
       :data="data"
       multiple
+      @change="handleTreeChange"
+    />
+    <br />
+    <br />
+    <br />
+    <p>多选 check-strictly true 可以选择任意节点</p>
+    值：{{ valueMulti1 }}
+    <tu-tree-select
+      placeholder="请输入节点"
+      v-model="valueMulti1"
+      :data="data"
+      multiple
+      :check-strictly="true"
+      @change="handleTreeChange"
+    />
+    <br />
+    <br />
+    <br />
+    <p>单选show-checkbox</p>
+    值：{{ valueCheckbox }}
+    <tu-tree-select
+      placeholder="请输入节点"
+      v-model="valueCheckbox"
+      :data="data"
+      show-checkbox
+      @change="handleTreeChange"
+    />
+    <br />
+    <br />
+    <br />
+    <p>单选show-checkbox check-strictly true 可以选择任意节点</p>
+    值：{{ valueCheckbox1 }}
+    <tu-tree-select
+      placeholder="请输入节点"
+      v-model="valueCheckbox1"
+      :data="data"
+      show-checkbox
+      :check-strictly="true"
       @change="handleTreeChange"
     />
     <br />
@@ -115,6 +153,7 @@ export default {
                 {
                   value: "3-1-1",
                   label: "三级 3-1-1",
+                  disabled: true,
                 },
               ],
             },
@@ -133,7 +172,10 @@ export default {
       ],
       value: "",
       value1: "2-1",
-      value2: ["2-1-1", "3-1-1"],
+      valueMulti: ["2-1-1", "3-1-1"],
+      valueMulti1: [],
+      valueCheckbox: "",
+      valueCheckbox1: "",
       defaultProps: {
         children: "children",
         label: "label",
@@ -170,7 +212,7 @@ export default {
     },
 
     handleTreeChange(e) {
-      console.log("handleTreeChange~~", e);
+      // console.log("handleTreeChange~~", e);
     },
   },
 };

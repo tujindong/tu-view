@@ -153,8 +153,10 @@
             :node-key="_replaceFields['value']"
             :expand-on-click-node="!checkStrictly"
             :check-strictly="checkStrictly"
+            :show-checkbox="showCheckbox"
             :default-expanded-keys="defaultExpandedKeys"
             @node-click="handleNodeClick"
+            @check="handleNodeCheck"
           >
             <span
               slot-scope="{ node, data }"
@@ -205,10 +207,12 @@ export default {
       type: [String, Array],
     },
     disabled: Boolean,
+    clearable: Boolean,
     filterable: Boolean,
     multiple: Boolean,
     loading: Boolean,
     collapseTags: Boolean,
+    showCheckbox: Boolean,
     popperAppendToBody: {
       type: Boolean,
       default: true,
@@ -310,11 +314,11 @@ export default {
           this.currentPlaceholder = this.cachedPlaceHolder;
         }
       }
+      this.setOldSelected(oldVal);
       this.setSelected();
     },
 
     visible(val, oldVal) {
-      let defaultSelect;
       if (!val) {
         this.menuVisibleOnFocus = false;
       } else {
@@ -424,6 +428,15 @@ export default {
 
     handleComposition() {},
 
+    handleClearClick(event) {
+      event.stopPropagation();
+      const value = this.multiple ? [] : "";
+      this.$emit("input", value);
+      this.emitChange(value);
+      this.visible = false;
+      this.$emit("clear");
+    },
+
     deleteTag(event, node) {
       event.stopPropagation();
       this.handleMultipSelect(node.data, node);
@@ -497,32 +510,91 @@ export default {
     },
 
     setSelected() {
+      console.log("setSelected");
       const tree = this.$refs.tree;
       //单选
       if (!this.multiple) {
         const node = tree.getNode(this.value);
-        console.log("node~~", node);
         if (node) {
           this.$set(node, "selected", true);
           this.selected = node;
           this.selectedLabel = node.label;
         }
-        // this.defaultExpandedKeys = [node.parent];
       } else {
         //多选
-        this.value.forEach((val) => {
-          const node = tree.getNode(value);
-          if (node) {
-            this.$set(node, "selected", true);
-            result.push(node);
+        const selected = [];
+        if (Array.isArray(this.value)) {
+          this.value.forEach((val) => {
+            const node = tree.getNode(val);
+            if (node) {
+              this.$set(node, "selected", true);
+              selected.push(node);
+            }
+          });
+        }
+        this.selected = selected;
+      }
+    },
+
+    setOldSelected(oldVal) {
+      console.log("setOldSelected", oldVal);
+      const tree = this.$refs.tree;
+      if (this.multiple) {
+      } else {
+        const oldNode = tree.getNode(oldVal);
+        if (oldNode) {
+          this.$set(oldNode, "selected", false);
+        }
+      }
+    },
+
+    findNode(tree, func) {
+      if (tree.isLeaf) return tree;
+      for (const node of tree.childNodes) {
+        if (func(node)) return node;
+        if (node.childNodes && node.childNodes.length) {
+          const res = this.findNode(node, func);
+          if (res) return res;
+        }
+      }
+      return null;
+    },
+
+    handleNodeCheck(data, state, node) {
+      console.log("handleNodeCheck", { data, state, node });
+      // debugger;
+      const tree = this.$refs.tree;
+      const { value, label } = this._replaceFields;
+      if (this.multiple) {
+        //多选
+        this.$emit("input", state.checkedKeys);
+      } else {
+        //单选
+        if (this.checkStrictly) {
+        } else {
+          const firstLeafNode = this.findNode(
+            node,
+            (node) => node.isLeaf && !node.data.disabled
+          );
+          console.log("firstLeafNode", firstLeafNode.data.value);
+          let currentValue = "";
+          let currentLabel = "";
+          if (firstLeafNode.checked) {
+            currentLabel = firstLeafNode.data[label];
+            currentValue = firstLeafNode.data[value];
+            this.$set(firstLeafNode, "selected", true);
           }
-        });
-        console.log("setSelected 多选");
+          tree.setCheckedKeys([currentValue], true);
+          this.selectedLabel = currentLabel;
+          this.$emit("input", currentValue);
+          this.emitChange(currentValue);
+        }
       }
     },
 
     handleNodeClick(data, node, comp) {
-      console.log("handleNodeClick", { data, node, comp });
+      // console.log("handleNodeClick", { data, node, comp });
+      if (this.showCheckbox || node.disabled) return;
       if (!this.checkStrictly && node.childNodes.length !== 0) return;
       if (this.multiple) {
         this.handleMultipSelect(data, node, comp);
@@ -558,13 +630,6 @@ export default {
       this.$set(node, "selected", true);
       this.$emit("input", data[value]);
       this.emitChange(data[value]);
-      if (this.value) {
-        const tree = this.$refs.tree;
-        const oldNode = tree.getNode(this.value);
-        if (oldNode) {
-          oldNode.selected = false;
-        }
-      }
       this.visible = false;
     },
   },
