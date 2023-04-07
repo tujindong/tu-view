@@ -561,7 +561,12 @@ export default {
     },
 
     handleNodeCheck(data, state, node) {
-      console.log("handleNodeCheck", { data, state, node });
+      console.log(
+        "handleNodeCheck",
+        { data, state, node },
+        "value~",
+        this.value
+      );
       // debugger;
       const tree = this.$refs.tree;
       const { value, label } = this._replaceFields;
@@ -572,19 +577,20 @@ export default {
         //单选
         if (this.checkStrictly) {
         } else {
-          const firstLeafNode = this.findNode(
-            node,
-            (node) => node.isLeaf && !node.data.disabled
-          );
+          // select first leaf node when check parent
+          const firstLeafNode = this.findNode(node, (node) => node.isLeaf);
           console.log("firstLeafNode", firstLeafNode.data.value);
           let currentValue = "";
           let currentLabel = "";
-          if (firstLeafNode.checked) {
+          if (
+            firstLeafNode.checked &&
+            !this.findNode(node, (node) => node.data[value] === this.value)
+          ) {
             currentLabel = firstLeafNode.data[label];
             currentValue = firstLeafNode.data[value];
             this.$set(firstLeafNode, "selected", true);
           }
-          tree.setCheckedKeys([currentValue], true);
+          tree.setCheckedKeys([currentValue]);
           this.selectedLabel = currentLabel;
           this.$emit("input", currentValue);
           this.emitChange(currentValue);
