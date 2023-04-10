@@ -8,6 +8,8 @@
       :data="data"
       clearable
       @change="handleTreeChange"
+      filterable
+      :filterMethod="filterMethod"
     />
     <br />
     <br />
@@ -67,6 +69,33 @@
       v-model="valueCheckbox1"
       :data="data"
       show-checkbox
+      :check-strictly="true"
+      @change="handleTreeChange"
+    />
+    <br />
+    <br />
+    <br />
+    <p>多选show-checkbox</p>
+    值：{{ valueCheckbox2 }}
+    <tu-tree-select
+      placeholder="请输入节点"
+      v-model="valueCheckbox2"
+      :data="data"
+      show-checkbox
+      multiple
+      @change="handleTreeChange"
+    />
+    <br />
+    <br />
+    <br />
+    <p>多选show-checkbox</p>
+    值：{{ valueCheckbox3 }}
+    <tu-tree-select
+      placeholder="请输入节点"
+      v-model="valueCheckbox3"
+      :data="data"
+      show-checkbox
+      multiple
       :check-strictly="true"
       @change="handleTreeChange"
     />
@@ -164,6 +193,7 @@ export default {
                 {
                   value: "3-2-1",
                   label: "三级 3-2-1",
+                  disabled: true,
                 },
               ],
             },
@@ -176,6 +206,8 @@ export default {
       valueMulti1: [],
       valueCheckbox: "",
       valueCheckbox1: "",
+      valueCheckbox2: [],
+      valueCheckbox3: [],
       defaultProps: {
         children: "children",
         label: "label",
@@ -213,6 +245,11 @@ export default {
 
     handleTreeChange(e) {
       // console.log("handleTreeChange~~", e);
+    },
+
+    filterMethod(value, data) {
+      if (!value) return true;
+      return data.label.indexOf(value) !== -1;
     },
   },
 };

@@ -23,6 +23,11 @@
 		margin: 0;
 		box-sizing: border-box;
 		.tu-tree-node {
+			&:focus {
+				> .tu-tree-node__content {
+					background: rgba($--color-greyDark, 0.25);
+				}
+			}
 			.tu-tree-node__content {
 				transition: background-color 0.3s;
 				color: $--color-text-primary;

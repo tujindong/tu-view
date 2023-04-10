@@ -151,10 +151,11 @@
             :data="data"
             :props="defaultProps"
             :node-key="_replaceFields['value']"
-            :expand-on-click-node="!checkStrictly"
+            :expand-on-click-node="!checkStrictly || showCheckbox"
             :check-strictly="checkStrictly"
             :show-checkbox="showCheckbox"
             :default-expanded-keys="defaultExpandedKeys"
+            :filter-node-method="filterMethod ? filterMethod : filterNodeMethod"
             @node-click="handleNodeClick"
             @check="handleNodeCheck"
           >
@@ -213,6 +214,7 @@ export default {
     loading: Boolean,
     collapseTags: Boolean,
     showCheckbox: Boolean,
+    filterMethod: Function,
     popperAppendToBody: {
       type: Boolean,
       default: true,
@@ -234,7 +236,6 @@ export default {
 
   data() {
     return {
-      options: [],
       selectedLabel: "",
       visible: false,
       softFocus: false,
@@ -248,6 +249,7 @@ export default {
       menuVisibleOnFocus: false,
       inputWidth: 0,
       defaultExpandedKeys: [],
+      isOnComposition: false,
     };
   },
 
@@ -314,6 +316,8 @@ export default {
           this.currentPlaceholder = this.cachedPlaceHolder;
         }
       }
+      this.query = "";
+      this.handleQueryChange(this.query);
       this.setOldSelected(oldVal);
       this.setSelected();
     },
@@ -331,13 +335,6 @@ export default {
         });
       }
     },
-
-    options() {
-      if (this.$isServer) return;
-      this.$nextTick(() => {
-        this.broadcast("TuTreeSelectDropdown", "updatePopper");
-      });
-    },
   },
 
   filters: {
@@ -353,10 +350,10 @@ export default {
   },
 
   created() {
-    this.options = this.data;
     this.cachedPlaceHolder = this.currentPlaceholder = this.propPlaceholder;
-    this.debouncedQueryChange = debounce(this.debounce, (e) => {
-      this.handleQueryChange(e.target.value);
+
+    this.debouncedOnInputChange = debounce(this.debounce, () => {
+      this.onInputChange();
     });
   },
 
@@ -420,13 +417,28 @@ export default {
 
     handleBlur() {},
 
-    debouncedOnInputChange() {},
-
-    handleNavigate() {},
+    handleNavigate(direction) {
+      if (this.isOnComposition) return;
+      const tree = this.$refs.tree;
+      tree.initFocusedItem(direction);
+    },
 
     selectOption() {},
 
-    handleComposition() {},
+    handleComposition(event) {
+      const text = event.target.value;
+      if (event.type === "compositionend") {
+        this.isOnComposition = false;
+        this.$nextTick((_) => this.handleQueryChange(text));
+      }
+    },
+
+    onInputChange() {
+      if (this.filterable && this.query !== this.selectedLabel) {
+        this.query = this.selectedLabel;
+        this.handleQueryChange(this.query);
+      }
+    },
 
     handleClearClick(event) {
       event.stopPropagation();
@@ -454,7 +466,16 @@ export default {
 
     deletePrevTag() {},
 
-    handleQueryChange() {},
+    handleQueryChange(val) {
+      if (this.isOnComposition) return;
+      const tree = this.$refs.tree;
+      tree.filter(val);
+    },
+
+    filterNodeMethod(value, data) {
+      if (!value) return true;
+      return data.label.indexOf(value) !== -1;
+    },
 
     handleResize() {
       this.resetInputWidth();
@@ -510,20 +531,14 @@ export default {
     },
 
     setSelected() {
-      console.log("setSelected");
+      // console.log("setSelected");
       const tree = this.$refs.tree;
-      //单选
-      if (!this.multiple) {
-        const node = tree.getNode(this.value);
-        if (node) {
-          this.$set(node, "selected", true);
-          this.selected = node;
-          this.selectedLabel = node.label;
-        }
-      } else {
-        //多选
+      if (this.multiple) {
         const selected = [];
         if (Array.isArray(this.value)) {
+          if (this.showCheckbox && this.multiple) {
+            tree.setCheckedKeys(this.value);
+          }
           this.value.forEach((val) => {
             const node = tree.getNode(val);
             if (node) {
@@ -533,13 +548,28 @@ export default {
           });
         }
         this.selected = selected;
+      } else {
+        const node = tree.getNode(this.value);
+        if (node) {
+          this.$set(node, "selected", true);
+          this.selected = node;
+          this.selectedLabel = node.label;
+        }
       }
     },
 
     setOldSelected(oldVal) {
-      console.log("setOldSelected", oldVal);
+      // console.log("setOldSelected", oldVal);
       const tree = this.$refs.tree;
       if (this.multiple) {
+        if (Array.isArray(oldVal)) {
+          oldVal.forEach((val) => {
+            const node = tree.getNode(val);
+            if (node) {
+              this.$set(node, "selected", false);
+            }
+          });
+        }
       } else {
         const oldNode = tree.getNode(oldVal);
         if (oldNode) {
@@ -549,8 +579,8 @@ export default {
     },
 
     findNode(tree, func) {
-      if (tree.isLeaf) return tree;
       for (const node of tree.childNodes) {
+        if (node.data && node.disabled) break;
         if (func(node)) return node;
         if (node.childNodes && node.childNodes.length) {
           const res = this.findNode(node, func);
@@ -567,45 +597,42 @@ export default {
         "value~",
         this.value
       );
-      // debugger;
       const tree = this.$refs.tree;
       const { value, label } = this._replaceFields;
       if (this.multiple) {
-        //多选
         this.$emit("input", state.checkedKeys);
+        this.emitChange(state.checkedKeys);
       } else {
-        //单选
-        if (this.checkStrictly) {
-        } else {
-          // select first leaf node when check parent
-          const firstLeafNode = this.findNode(node, (node) => node.isLeaf);
-          console.log("firstLeafNode", firstLeafNode.data.value);
-          let currentValue = "";
-          let currentLabel = "";
-          if (
-            firstLeafNode.checked &&
-            !this.findNode(node, (node) => node.data[value] === this.value)
-          ) {
-            currentLabel = firstLeafNode.data[label];
-            currentValue = firstLeafNode.data[value];
-            this.$set(firstLeafNode, "selected", true);
-          }
-          tree.setCheckedKeys([currentValue]);
-          this.selectedLabel = currentLabel;
-          this.$emit("input", currentValue);
-          this.emitChange(currentValue);
+        let currentValue = "";
+        let currentLabel = "";
+        let currentNode = "";
+        currentNode = this.checkStrictly
+          ? node
+          : this.findNode(node, (node) => node.isLeaf) || node;
+        const isCheckedNode = this.checkStrictly
+          ? currentNode.checked
+          : currentNode.checked &&
+            !this.findNode(node, (node) => node.data[value] === this.value);
+        if (isCheckedNode) {
+          currentLabel = currentNode.data[label];
+          currentValue = currentNode.data[value];
+          this.$set(currentNode, "selected", true);
         }
+        tree.setCheckedKeys([currentValue]);
+        this.selectedLabel = currentLabel;
+        this.$emit("input", currentValue);
+        this.emitChange(currentValue);
       }
     },
 
-    handleNodeClick(data, node, comp) {
+    handleNodeClick(data, node) {
       // console.log("handleNodeClick", { data, node, comp });
       if (this.showCheckbox || node.disabled) return;
       if (!this.checkStrictly && node.childNodes.length !== 0) return;
       if (this.multiple) {
-        this.handleMultipSelect(data, node, comp);
+        this.handleMultipSelect(data, node);
       } else {
-        this.handleSingleSelect(data, node, comp);
+        this.handleSingleSelect(data, node);
       }
       this.setSoftFocus();
     },
