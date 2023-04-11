@@ -575,7 +575,9 @@ export default {
     },
 
     resetInputWidth() {
-      this.inputWidth = this.$refs.reference.$el.getBoundingClientRect().width;
+      this.inputWidth =
+        this.$refs.reference &&
+        this.$refs.reference.$el.getBoundingClientRect().width;
     },
 
     handleResize() {
