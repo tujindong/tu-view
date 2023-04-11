@@ -24,7 +24,7 @@
     ref="node"
   >
     <div
-      class="tu-tree-node__content"
+      :class="['tu-tree-node__content', { 'is-disabled': node.disabled }]"
       :style="{ 'padding-left': (node.level - 1) * tree.indent + 'px' }"
     >
       <span
@@ -129,7 +129,7 @@ export default {
         ) : tree.$scopedSlots.default ? (
           tree.$scopedSlots.default({ node, data })
         ) : (
-          <span class="tu-tree-node__label">{node.label}</span>
+          <span class={{ "tu-tree-node__label": true }}>{node.label}</span>
         );
       },
     },

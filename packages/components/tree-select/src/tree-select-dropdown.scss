@@ -10,9 +10,6 @@
 	background-color: $--color-background;
 	margin: 0 0 5px;
 
-	@include when(multiple) {
-	}
-
 	@include b(tree-select-dropdown__wrap) {
 		max-height: $--tree-select-dropdown-max-height;
 	}
@@ -24,19 +21,28 @@
 		box-sizing: border-box;
 		.tu-tree-node {
 			&:focus {
-				> .tu-tree-node__content {
+				> .tu-tree-node__content:not(.is-disabled) {
 					background: rgba($--color-greyDark, 0.25);
 				}
 			}
 			.tu-tree-node__content {
 				transition: background-color 0.3s;
 				color: $--color-text-primary;
-				&:hover,
-				&:focus {
+				.tu-tree-node__content-text {
+					font-size: 14px;
+				}
+				&:hover:not(.is-disabled),
+				&:focus:not(.is-disabled) {
 					background: rgba($--color-greyDark, 0.25);
 					color: $--color-text-primary;
 				}
-				.is-selected {
+				&.is-disabled {
+					cursor: not-allowed;
+					> span:not(.tu-tree-node__expand-icon) {
+						color: $--color-text-secondary;
+					}
+				}
+				> .is-selected {
 					color: $--color-primary;
 				}
 			}

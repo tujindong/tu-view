@@ -6,7 +6,7 @@
 	position: relative;
 	width: 100%;
 
-	.tu-select__tags > span {
+	.tu-tree-select__tags > span {
 		display: contents;
 	}
 
@@ -17,7 +17,7 @@
 	}
 
 	.tu-input {
-		& .tu-select__caret {
+		& .tu-tree-select__caret {
 			color: $--tree-select-input-color;
 			transition: transform 0.3s;
 			transform: rotateZ(180deg);
@@ -113,7 +113,7 @@
 		flex-wrap: wrap;
 
 		.tu-tag {
-			margin: 4px 0 4px 6px;
+			margin: 5px 0 5px 6px;
 
 			&.tu-tag--mini {
 				margin-right: -4px;

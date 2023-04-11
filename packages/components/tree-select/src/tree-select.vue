@@ -13,7 +13,7 @@
       <span v-if="collapseTags && selected.length">
         <tu-tag
           effect="shadow"
-          :size="selectSize | tagSize"
+          :size="treeSelectSize | tagSize"
           :hit="selected[0].hitState"
           :closable="!selectDisabled"
           @close="deleteTag($event, selected[0])"
@@ -23,7 +23,7 @@
           effect="shadow"
           v-if="selected.length > 1"
           :closable="false"
-          :size="selectSize | tagSize"
+          :size="treeSelectSize | tagSize"
         >
           {{ selected.length - 1 }}..
         </tu-tag>
@@ -37,7 +37,7 @@
         <tu-tag
           v-for="item in selected"
           effect="shadow"
-          :size="selectSize | tagSize"
+          :size="treeSelectSize | tagSize"
           :hit="item.hitState"
           :key="item.data.value"
           :closable="!selectDisabled"
@@ -85,7 +85,7 @@
       :placeholder="currentPlaceholder"
       :disabled="disabled"
       :readonly="readonly"
-      :size="selectSize"
+      :size="treeSelectSize"
       :validate-event="false"
       :tabindex="multiple && filterable ? '-1' : null"
       @focus="handleFocus"
@@ -125,16 +125,14 @@
       </template>
     </tu-input>
 
-    <transition
-      name="tu-zoom-in-top"
-      @beforeEnter="handleMenuEnter"
-      @afterLeave="doDestroy"
-    >
+    <transition name="tu-zoom-in-top" @afterLeave="doDestroy">
       <tu-tree-select-dropdown
         ref="popper"
         :append-to-body="popperAppendToBody"
         v-show="visible"
-        :class="[selectSize ? `tu-tree-select-dropdown--${selectSize}` : '']"
+        :class="[
+          treeSelectSize ? `tu-tree-select-dropdown--${treeSelectSize}` : '',
+        ]"
       >
         <tu-scrollbar
           tag="ul"
@@ -149,21 +147,27 @@
           <tu-tree
             ref="tree"
             :data="data"
-            :props="defaultProps"
-            :node-key="_replaceFields['value']"
+            :node-key="nodeKey"
             :expand-on-click-node="!checkStrictly || showCheckbox"
             :check-strictly="checkStrictly"
             :show-checkbox="showCheckbox"
+            :accordion="accordion"
             :default-expanded-keys="defaultExpandedKeys"
             :filter-node-method="filterMethod ? filterMethod : filterNodeMethod"
+            :props="props"
+            :lazy="lazy"
+            :load="load"
             @node-click="handleNodeClick"
             @check="handleNodeCheck"
           >
             <span
               slot-scope="{ node, data }"
-              :class="{ 'is-selected': node.selected }"
+              :class="{
+                'tu-tree-node__content-text': true,
+                'is-selected': node.selected,
+              }"
             >
-              {{ node[_replaceFields["label"]] }}
+              {{ data[props["label"]] }}
             </span>
           </tu-tree>
         </tu-scrollbar>
@@ -203,6 +207,10 @@ export default {
   props: {
     name: String,
     id: String,
+    nodeKey: {
+      type: [String, Number],
+      default: "value",
+    },
     value: {
       required: true,
       type: [String, Array],
@@ -214,10 +222,15 @@ export default {
     loading: Boolean,
     collapseTags: Boolean,
     showCheckbox: Boolean,
+    accordion: Boolean,
     filterMethod: Function,
     popperAppendToBody: {
       type: Boolean,
       default: true,
+    },
+    size: {
+      type: String,
+      default: "",
     },
     placeholder: {
       type: String,
@@ -225,13 +238,26 @@ export default {
     },
     loadingText: String,
     data: [],
-    defaultProps: {},
     //当属性 check-strictly=true 时，任何节点都可以被选择，否则只有叶子节点可被选择。
     checkStrictly: {
       type: Boolean,
       default: false,
     },
-    replaceFields: Object,
+    load: Function,
+    props: {
+      default() {
+        return {
+          value: "value",
+          label: "label",
+          children: "children",
+          disabled: "disabled",
+        };
+      },
+    },
+    lazy: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data() {
@@ -250,6 +276,8 @@ export default {
       inputWidth: 0,
       defaultExpandedKeys: [],
       isOnComposition: false,
+      isSilentBlur: false,
+      inputLength: 20,
     };
   },
 
@@ -266,7 +294,7 @@ export default {
       return !this.filterable || this.multiple || !this.visible;
     },
 
-    selectSize() {
+    treeSelectSize() {
       return this.size || this._tuFormItemSize || (this.$TUVIEW || {}).size;
     },
 
@@ -284,15 +312,6 @@ export default {
       return typeof this.placeholder !== "undefined"
         ? this.placeholder
         : "请输入";
-    },
-
-    _replaceFields() {
-      return {
-        children: "children",
-        value: "value",
-        label: "label",
-        ...this.replaceFields,
-      };
     },
   },
 
@@ -324,6 +343,12 @@ export default {
 
     visible(val, oldVal) {
       if (!val) {
+        this.broadcast("TuTreeSelectDropdown", "destroyPopper");
+        if (this.$refs.input) {
+          this.$refs.input.blur();
+        }
+        this.query = "";
+        this.inputLength = 20;
         this.menuVisibleOnFocus = false;
       } else {
         if (this.multiple) {
@@ -352,8 +377,19 @@ export default {
   created() {
     this.cachedPlaceHolder = this.currentPlaceholder = this.propPlaceholder;
 
+    if (this.multiple && !Array.isArray(this.value)) {
+      this.$emit("input", []);
+    }
+    if (!this.multiple && Array.isArray(this.value)) {
+      this.$emit("input", "");
+    }
+
     this.debouncedOnInputChange = debounce(this.debounce, () => {
       this.onInputChange();
+    });
+
+    this.debouncedQueryChange = debounce(this.debounce, (e) => {
+      this.handleQueryChange(e.target.value);
     });
   },
 
@@ -371,7 +407,7 @@ export default {
       };
       const input = reference.$el.querySelector("input");
       this.initialInputHeight =
-        input.getBoundingClientRect().height || sizeMap[this.selectSize];
+        input.getBoundingClientRect().height || sizeMap[this.treeSelectSize];
     }
     addResizeListener(this.$el, this.handleResize);
     this.$nextTick(() => {
@@ -413,9 +449,35 @@ export default {
       }
     },
 
-    handleFocus() {},
+    handleFocus(event) {
+      if (!this.softFocus) {
+        if (this.filterable) {
+          if (this.filterable && !this.visible) {
+            this.menuVisibleOnFocus = true;
+          }
+          this.visible = true;
+        }
+        this.$emit("focus", event);
+      } else {
+        this.softFocus = false;
+      }
+    },
 
-    handleBlur() {},
+    blur() {
+      this.visible = false;
+      this.$refs.reference.blur();
+    },
+
+    handleBlur(event) {
+      setTimeout(() => {
+        if (this.isSilentBlur) {
+          this.isSilentBlur = false;
+        } else {
+          this.$emit("blur", event);
+        }
+      }, 50);
+      this.softFocus = false;
+    },
 
     handleNavigate(direction) {
       if (this.isOnComposition) return;
@@ -423,7 +485,9 @@ export default {
       tree.initFocusedItem(direction);
     },
 
-    selectOption() {},
+    selectOption() {
+      console.log("selectOption");
+    },
 
     handleComposition(event) {
       const text = event.target.value;
@@ -462,9 +526,33 @@ export default {
       }
     },
 
-    resetInputState() {},
+    resetInputState() {
+      if (e.keyCode !== 8) this.toggleLastOptionHitState(false);
+      this.inputLength = this.$refs.input.value.length * 15 + 20;
+      this.resetInputHeight();
+    },
 
-    deletePrevTag() {},
+    toggleLastOptionHitState(hit) {
+      if (!Array.isArray(this.selected)) return;
+      const option = this.selected[this.selected.length - 1];
+      if (!option) return;
+
+      if (hit === true || hit === false) {
+        option.hitState = hit;
+        return hit;
+      }
+      option.hitState = !option.hitState;
+      return option.hitState;
+    },
+
+    deletePrevTag(e) {
+      if (e.target.value.length <= 0 && !this.toggleLastOptionHitState()) {
+        const value = this.value.slice();
+        value.pop();
+        this.$emit("input", value);
+        this.emitChange(value);
+      }
+    },
 
     handleQueryChange(val) {
       if (this.isOnComposition) return;
@@ -481,8 +569,6 @@ export default {
       this.resetInputWidth();
       if (this.multiple) this.resetInputHeight();
     },
-
-    handleMenuEnter() {},
 
     doDestroy() {
       this.$refs.popper && this.$refs.popper.doDestroy();
@@ -531,7 +617,6 @@ export default {
     },
 
     setSelected() {
-      // console.log("setSelected");
       const tree = this.$refs.tree;
       if (this.multiple) {
         const selected = [];
@@ -543,6 +628,7 @@ export default {
             const node = tree.getNode(val);
             if (node) {
               this.$set(node, "selected", true);
+              this.$set(node, "hitState", false);
               selected.push(node);
             }
           });
@@ -559,7 +645,6 @@ export default {
     },
 
     setOldSelected(oldVal) {
-      // console.log("setOldSelected", oldVal);
       const tree = this.$refs.tree;
       if (this.multiple) {
         if (Array.isArray(oldVal)) {
@@ -591,14 +676,8 @@ export default {
     },
 
     handleNodeCheck(data, state, node) {
-      console.log(
-        "handleNodeCheck",
-        { data, state, node },
-        "value~",
-        this.value
-      );
       const tree = this.$refs.tree;
-      const { value, label } = this._replaceFields;
+      const { label } = this.props;
       if (this.multiple) {
         this.$emit("input", state.checkedKeys);
         this.emitChange(state.checkedKeys);
@@ -612,10 +691,13 @@ export default {
         const isCheckedNode = this.checkStrictly
           ? currentNode.checked
           : currentNode.checked &&
-            !this.findNode(node, (node) => node.data[value] === this.value);
+            !this.findNode(
+              node,
+              (node) => node.data[this.nodeKey] === this.value
+            );
         if (isCheckedNode) {
           currentLabel = currentNode.data[label];
-          currentValue = currentNode.data[value];
+          currentValue = currentNode.data[this.nodeKey];
           this.$set(currentNode, "selected", true);
         }
         tree.setCheckedKeys([currentValue]);
@@ -626,7 +708,6 @@ export default {
     },
 
     handleNodeClick(data, node) {
-      // console.log("handleNodeClick", { data, node, comp });
       if (this.showCheckbox || node.disabled) return;
       if (!this.checkStrictly && node.childNodes.length !== 0) return;
       if (this.multiple) {
@@ -640,13 +721,11 @@ export default {
     handleMultipSelect(data, node) {
       const currentValue = (this.value || []).slice();
       const selected = (this.selected || []).slice();
-      const { value } = this._replaceFields;
-      const index = currentValue.indexOf(data[value]);
+      const index = currentValue.indexOf(data[this.nodeKey]);
       if (index === -1) {
         selected.push(node);
-        currentValue.push(data[value]);
+        currentValue.push(data[this.nodeKey]);
         this.$set(node, "selected", true);
-        this.$set(node, "hitState", false);
       } else {
         selected.splice(index, 1);
         currentValue.splice(index, 1);
@@ -658,11 +737,11 @@ export default {
 
     handleSingleSelect(data, node) {
       if (node.selected) return;
-      const { value, label } = this._replaceFields;
+      const { label } = this.props;
       this.selectedLabel = data[label];
       this.$set(node, "selected", true);
-      this.$emit("input", data[value]);
-      this.emitChange(data[value]);
+      this.$emit("input", data[this.nodeKey]);
+      this.emitChange(data[this.nodeKey]);
       this.visible = false;
     },
   },

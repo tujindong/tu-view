@@ -40,6 +40,7 @@ module.exports = {
 						["../guide/input-number.md", "InputNumber 计数器"],
 						["../guide/select.md", "Select 选择器"],
 						["../guide/cascader.md", "Cascader 级联选择器"],
+						["../guide/tree-select.md", "TreeSelect 树形选择器"],
 						["../guide/switch.md", "Switch 开关"],
 						["../guide/slider.md", "Slider 滑块"],
 						["../guide/time-picker.md", "TimePicker 时间选择器"],

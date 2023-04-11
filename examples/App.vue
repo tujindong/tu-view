@@ -10,6 +10,7 @@
       @change="handleTreeChange"
       filterable
       :filterMethod="filterMethod"
+      node-key="value"
     />
     <br />
     <br />
@@ -20,6 +21,7 @@
       placeholder="请输入"
       v-model="value1"
       :data="data"
+      filterable
       :check-strictly="true"
     />
     <br />
@@ -32,6 +34,7 @@
       v-model="valueMulti"
       :data="data"
       multiple
+      filterable
       @change="handleTreeChange"
     />
     <br />
@@ -44,6 +47,7 @@
       v-model="valueMulti1"
       :data="data"
       multiple
+      filterable
       :check-strictly="true"
       @change="handleTreeChange"
     />
@@ -57,6 +61,7 @@
       v-model="valueCheckbox"
       :data="data"
       show-checkbox
+      filterable
       @change="handleTreeChange"
     />
     <br />
@@ -70,6 +75,7 @@
       :data="data"
       show-checkbox
       :check-strictly="true"
+      filterable
       @change="handleTreeChange"
     />
     <br />
@@ -83,6 +89,7 @@
       :data="data"
       show-checkbox
       multiple
+      filterable
       @change="handleTreeChange"
     />
     <br />
@@ -97,6 +104,7 @@
       show-checkbox
       multiple
       :check-strictly="true"
+      filterable
       @change="handleTreeChange"
     />
     <br />
@@ -114,11 +122,22 @@
 
     <br />
     <br />
-    <tu-tree
+    <br />
+    <h2>懒加载</h2>
+    值：{{ valueLazy }}
+    <tu-tree-select
+      :props="props"
+      placeholder="请输入节点"
+      v-model="valueLazy"
       :data="data"
-      :props="defaultProps"
-      @node-click="handleNodeClick"
-    ></tu-tree>
+      clearable
+      @change="handleTreeChange"
+      filterable
+      lazy
+      :filterMethod="filterMethod"
+      :load="loadNode"
+      node-key="value"
+    />
   </div>
 </template>
 
@@ -162,6 +181,7 @@ export default {
             {
               value: "2-2",
               label: "二级 2-2",
+              disabled: true,
               children: [
                 {
                   value: "2-2-1",
@@ -182,7 +202,6 @@ export default {
                 {
                   value: "3-1-1",
                   label: "三级 3-1-1",
-                  disabled: true,
                 },
               ],
             },
@@ -193,48 +212,27 @@ export default {
                 {
                   value: "3-2-1",
                   label: "三级 3-2-1",
-                  disabled: true,
                 },
               ],
             },
           ],
         },
       ],
-      value: "",
+      options: [],
+      value: "3-2-1",
       value1: "2-1",
       valueMulti: ["2-1-1", "3-1-1"],
-      valueMulti1: [],
-      valueCheckbox: "",
-      valueCheckbox1: "",
-      valueCheckbox2: [],
-      valueCheckbox3: [],
-      defaultProps: {
-        children: "children",
-        label: "label",
+      valueMulti1: ["1-1-1"],
+      valueCheckbox: "1-1-1",
+      valueCheckbox1: "1-1-1",
+      valueCheckbox2: ["1-1-1"],
+      valueCheckbox3: ["1-1-1"],
+      props: {
+        label: "name",
+        children: "zones",
+        isLeaf: "leaf",
       },
-
-      options: [
-        {
-          value: "banana",
-          label: "香蕉",
-        },
-        {
-          value: "apple",
-          label: "苹果",
-        },
-        {
-          value: "orange",
-          label: "橙子",
-        },
-        {
-          value: "watermelon",
-          label: "西瓜",
-        },
-        {
-          value: "durian",
-          label: "榴莲",
-        },
-      ],
+      valueLazy: "",
     };
   },
 
@@ -250,6 +248,29 @@ export default {
     filterMethod(value, data) {
       if (!value) return true;
       return data.label.indexOf(value) !== -1;
+    },
+
+    loadNode(node, resolve) {
+      if (node.level === 0) {
+        return resolve([{ name: "主干节点" }]);
+      }
+      if (node.level > 10) return resolve([]);
+
+      setTimeout(() => {
+        const data = [
+          {
+            value: `${node.level}`,
+            name: `叶子节点${node.level}`,
+            leaf: true,
+          },
+          {
+            value: `sub-${node.level}`,
+            name: `分支节点${node.level}`,
+          },
+        ];
+        console.log("data~~", data);
+        resolve(data);
+      }, 500);
     },
   },
 };
