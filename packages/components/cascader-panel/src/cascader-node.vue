@@ -1,4 +1,7 @@
 <script>
+import TuCheckbox from "@packages/components/checkbox";
+import TuRadio from "@packages/components/radio";
+import TuIcon from "@packages/components/icon";
 import { isEqual } from "@packages/src/utils/util";
 
 const stopPropagation = (e) => e.stopPropagation();
@@ -6,7 +9,7 @@ const stopPropagation = (e) => e.stopPropagation();
 export default {
   inject: ["panel"],
 
-  components: {},
+  components: { TuCheckbox, TuRadio, TuIcon },
 
   props: {
     node: {

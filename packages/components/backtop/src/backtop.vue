@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import TuButton from "@packages/components/button";
+import TuIcon from "@packages/components/icon";
 import { throttle } from "@packages/src/utils/throttle-debounce";
 
 const cubic = (value) => Math.pow(value, 3);
@@ -30,6 +32,8 @@ const easeInOutCubic = (value) =>
 
 export default {
   name: "TuBacktop",
+
+  components: { TuButton, TuIcon },
 
   props: {
     visibilityHeight: {

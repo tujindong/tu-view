@@ -223,6 +223,8 @@
 </template>
 
 <script>
+import TuInput from "@packages/components/input";
+import TuButton from "@packages/components/button";
 import {
   formatDate,
   parseDate,
@@ -258,7 +260,7 @@ export default {
 
   directives: { Clickoutside },
 
-  components: { TimePicker, DateTable },
+  components: { TuInput, TuButton, TimePicker, DateTable },
 
   data() {
     return {

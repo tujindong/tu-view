@@ -1,4 +1,6 @@
 <script>
+import TuButton from "@packages/components/button";
+import TuButtonGroup from "@packages/components/button-group";
 import Clickoutside from "@packages/src/utils/clickoutside";
 import Emitter from "@packages/src/mixins/emitter";
 import Migrating from "@packages/src/mixins/migrating";
@@ -19,7 +21,7 @@ export default {
     };
   },
 
-  components: {},
+  components: { TuButton, TuButtonGroup },
 
   props: {
     trigger: {

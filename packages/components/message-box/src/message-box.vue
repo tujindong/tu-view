@@ -100,6 +100,8 @@
 </template>
 
 <script>
+import TuInput from "@packages/components/input";
+import TuButton from "@packages/components/button";
 import Popup from "@packages/src/utils/popup";
 import Locale from "@packages/src/mixins/locale";
 import { addClass, removeClass } from "@packages/src/utils/dom";
@@ -118,6 +120,8 @@ export default {
   name: "TuMessageBox",
 
   mixins: [Popup, Locale],
+
+  components: { TuInput, TuButton },
 
   props: {
     modal: {

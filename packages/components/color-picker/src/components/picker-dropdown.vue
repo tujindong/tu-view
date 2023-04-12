@@ -48,6 +48,8 @@
 </template>
 
 <script>
+import TuInput from "@packages/components/input";
+import TuButton from "@packages/components/button";
 import SvPanel from "./sv-panel";
 import HueSlider from "./hue-slider";
 import AlphaSlider from "./alpha-slider";
@@ -61,6 +63,8 @@ export default {
   mixins: [Popper, Locale],
 
   components: {
+    TuInput,
+    TuButton,
     SvPanel,
     HueSlider,
     AlphaSlider,

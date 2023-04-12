@@ -143,8 +143,8 @@
 <template>
 	<div class="demo-image__lazy">
 		<tu-image
-			v-for="url in urls"
-			:key="url"
+			v-for="(url, index) in urls"
+			:key="index"
 			:src="url"
 			lazy
 		></tu-image>

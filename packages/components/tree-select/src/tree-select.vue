@@ -136,7 +136,7 @@
       >
         <tu-scrollbar
           tag="ul"
-          v-show="data.length && !loading"
+          v-show="lazy || (data.length && !loading)"
           wrap-class="tu-tree-select-dropdown__wrap"
           view-class="tu-tree-select-dropdown__list"
           ref="scrollbar"
@@ -148,7 +148,7 @@
             ref="tree"
             :data="data"
             :node-key="nodeKey"
-            :expand-on-click-node="!checkStrictly || showCheckbox"
+            :expand-on-click-node="!lazy && (!checkStrictly || showCheckbox)"
             :check-strictly="checkStrictly"
             :show-checkbox="showCheckbox"
             :accordion="accordion"
@@ -157,6 +157,12 @@
             :props="props"
             :lazy="lazy"
             :load="load"
+            :emptyText="emptyText"
+            :renderAfterExpand="renderAfterExpand"
+            :defaultExpandAll="defaultExpandAll"
+            :autoExpandParent="autoExpandParent"
+            :indent="indent"
+            :iconClass="iconClass"
             @node-click="handleNodeClick"
             @check="handleNodeCheck"
           >
@@ -176,6 +182,10 @@
   </div>
 </template>
 <script>
+import TuTag from "@packages/components/tag";
+import TuInput from "@packages/components/input";
+import TuTree from "@packages/components/tree";
+import TuScrollbar from "@packages/components/scrollbar";
 import Clickoutside from "@packages/src/utils/clickoutside";
 import {
   addResizeListener,
@@ -185,6 +195,7 @@ import Emitter from "@packages/src/mixins/emitter";
 import { debounce } from "@packages/src/utils/throttle-debounce";
 import { valueEquals } from "@packages/src/utils/util";
 import TuTreeSelectDropdown from "./tree-select-dropdown.vue";
+import { t } from "@packages/src/locale";
 export default {
   name: "TuTreeSelect",
 
@@ -192,7 +203,7 @@ export default {
 
   mixins: [Emitter],
 
-  components: { TuTreeSelectDropdown },
+  components: { TuTag, TuInput, TuTree, TuScrollbar, TuTreeSelectDropdown },
 
   inject: {
     tuForm: {
@@ -258,6 +269,30 @@ export default {
       type: Boolean,
       default: false,
     },
+    emptyText: {
+      type: String,
+      default() {
+        return t("tu.tree.emptyText");
+      },
+    },
+    multipleLimit: {
+      type: Number,
+      default: 0,
+    },
+    renderAfterExpand: {
+      type: Boolean,
+      default: true,
+    },
+    defaultExpandAll: Boolean,
+    autoExpandParent: {
+      type: Boolean,
+      default: true,
+    },
+    indent: {
+      type: Number,
+      default: 22,
+    },
+    iconClass: String,
   },
 
   data() {
@@ -339,6 +374,9 @@ export default {
       this.handleQueryChange(this.query);
       this.setOldSelected(oldVal);
       this.setSelected();
+      if (!valueEquals(val, oldVal)) {
+        this.dispatch("TuFormItem", "tu.form.change", val);
+      }
     },
 
     visible(val, oldVal) {
@@ -359,6 +397,7 @@ export default {
           this.broadcast("TuTreeSelectDropdown", "updatePopper");
         });
       }
+      this.$emit("visible-change", val);
     },
   },
 
@@ -516,6 +555,7 @@ export default {
     deleteTag(event, node) {
       event.stopPropagation();
       this.handleMultipSelect(node.data, node);
+      this.$emit("remove-tag", node);
     },
 
     managePlaceholder() {
@@ -526,7 +566,7 @@ export default {
       }
     },
 
-    resetInputState() {
+    resetInputState(e) {
       if (e.keyCode !== 8) this.toggleLastOptionHitState(false);
       this.inputLength = this.$refs.input.value.length * 15 + 20;
       this.resetInputHeight();
@@ -623,7 +663,7 @@ export default {
       if (this.multiple) {
         const selected = [];
         if (Array.isArray(this.value)) {
-          if (this.showCheckbox && this.multiple) {
+          if (this.showCheckbox) {
             tree.setCheckedKeys(this.value);
           }
           this.value.forEach((val) => {
@@ -639,9 +679,18 @@ export default {
       } else {
         const node = tree.getNode(this.value);
         if (node) {
+          if (this.showCheckbox) {
+            tree.setCheckedKeys([this.value]);
+          }
           this.$set(node, "selected", true);
           this.selected = node;
           this.selectedLabel = node.label;
+        } else {
+          this.selected = {};
+          this.selectedLabel = "";
+          if (this.showCheckbox) {
+            tree.setCheckedKeys([]);
+          }
         }
       }
     },
@@ -678,7 +727,6 @@ export default {
     },
 
     handleNodeCheck(data, state, node) {
-      const tree = this.$refs.tree;
       const { label } = this.props;
       if (this.multiple) {
         this.$emit("input", state.checkedKeys);
@@ -702,11 +750,11 @@ export default {
           currentValue = currentNode.data[this.nodeKey];
           this.$set(currentNode, "selected", true);
         }
-        tree.setCheckedKeys([currentValue]);
         this.selectedLabel = currentLabel;
         this.$emit("input", currentValue);
         this.emitChange(currentValue);
       }
+      this.setSoftFocus();
     },
 
     handleNodeClick(data, node) {

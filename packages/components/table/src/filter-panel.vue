@@ -71,6 +71,10 @@
 </template>
 
 <script>
+import TuScrollbar from "@packages/components/scrollbar";
+import TuCheckbox from "@packages/components/checkbox";
+import TuCheckboxGroup from "@packages/components/checkbox-group";
+import TuButton from "@packages/components/button";
 import Popper from "@packages/src/utils/vue-popper";
 import { PopupManager } from "@packages/src/utils/popup";
 import Locale from "@packages/src/mixins/locale";
@@ -86,7 +90,7 @@ export default {
     Clickoutside,
   },
 
-  components: {},
+  components: { TuScrollbar, TuCheckbox, TuCheckboxGroup, TuButton },
 
   props: {
     placement: {

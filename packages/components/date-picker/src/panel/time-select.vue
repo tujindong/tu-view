@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import TuScrollbar from "@packages/components/scrollbar";
 import scrollIntoView from "@packages/src/utils/scroll-into-view";
 
 const parseTime = function (time) {
@@ -89,6 +90,8 @@ const nextTime = function (time, step) {
 };
 
 export default {
+  components: { TuScrollbar },
+
   data() {
     return {
       popperClass: "",

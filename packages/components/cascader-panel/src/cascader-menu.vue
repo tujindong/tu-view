@@ -1,6 +1,7 @@
 <script>
 import CascaderNode from "./cascader-node.vue";
 import Locale from "@packages/src/mixins/locale";
+import TuScrollbar from "@packages/components/scrollbar";
 import { generateId } from "@packages/src/utils/util";
 
 export default {
@@ -12,6 +13,7 @@ export default {
 
   components: {
     CascaderNode,
+    TuScrollbar,
   },
 
   props: {

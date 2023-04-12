@@ -1,3 +1,4 @@
+import TuTooltip from "@packages/components/tooltip";
 import { arrayFindIndex } from "@packages/src/utils/util";
 import { getCell, getColumnByCell, getRowIdentity } from "./util";
 import { getStyle, hasClass, removeClass, addClass } from "@packages/src/utils/dom";
@@ -12,6 +13,7 @@ export default {
 	mixins: [LayoutObserver],
 
 	components: {
+		TuTooltip,
 		TableRow,
 	},
 

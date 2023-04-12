@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import TuTooltip from "@packages/components/tooltip";
 import Menu from "./menu-mixin";
 import Emitter from "@packages/src/mixins/emitter";
 
@@ -56,6 +57,8 @@ export default {
   componentName: "TuMenuItem",
 
   mixins: [Menu, Emitter],
+
+  components: { TuTooltip },
 
   props: {
     index: {

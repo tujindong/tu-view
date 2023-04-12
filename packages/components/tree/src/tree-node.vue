@@ -76,6 +76,8 @@
 </template>
 
 <script type="text/jsx">
+import TuCheckbox from "@packages/components/checkbox";
+import TuIcon from "@packages/components/icon";
 import TuCollapseTransition from "@packages/src/transitions/collapse-transition";
 import emitter from "@packages/src/mixins/emitter";
 import { getNodeKey } from "./model/util";
@@ -106,6 +108,8 @@ export default {
   },
 
   components: {
+    TuCheckbox,
+    TuIcon,
     TuCollapseTransition,
 
     NodeContent: {

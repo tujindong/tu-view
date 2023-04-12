@@ -258,10 +258,6 @@ module.exports = {
 			author: "tujindong",
 		},
 		{
-			name: "messageBox",
-			author: "tujindong",
-		},
-		{
 			name: "avatar",
 			author: "tujindong",
 		},
@@ -318,7 +314,7 @@ module.exports = {
 			author: "tujindong",
 		},
 		{
-			name: "sub-menu",
+			name: "submenu",
 			author: "tujindong",
 		},
 		{
@@ -327,6 +323,10 @@ module.exports = {
 		},
 		{
 			name: "menu-item-group",
+			author: "tujindong",
+		},
+		{
+			name: "tree-select",
 			author: "tujindong",
 		},
 	],

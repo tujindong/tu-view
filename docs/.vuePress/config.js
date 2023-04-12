@@ -6,6 +6,7 @@ module.exports = {
 		search: true,
 		nav: [
 			{ text: "指南", link: "/guide/" },
+			{ text: "主题", link: "/theme/" },
 			{
 				text: "了解更多",
 				items: [

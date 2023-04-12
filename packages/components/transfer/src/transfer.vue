@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import TuButton from "@packages/components/button";
 import Emitter from "@packages/src/mixins/emitter";
 import Locale from "@packages/src/mixins/locale";
 import Migrating from "@packages/src/mixins/migrating";
@@ -55,7 +56,7 @@ export default {
 
   mixins: [Emitter, Locale, Migrating],
 
-  components: { TransferPanel },
+  components: { TuButton, TransferPanel },
 
   props: {
     data: {

@@ -77,6 +77,7 @@
 </template>
 
 <script>
+import TuInputNumber from "@packages/components/input-number";
 import SliderButton from "./slider-button.vue";
 import SliderMarker from "./slider-marker";
 import Emitter from "@packages/src/mixins/emitter";
@@ -93,6 +94,7 @@ export default {
   },
 
   components: {
+    TuInputNumber,
     SliderButton,
     SliderMarker,
   },

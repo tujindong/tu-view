@@ -71,6 +71,7 @@
 </template>
 
 <script type="text/babel">
+import TuButton from "@packages/components/button";
 import {
   parseDate,
   limitTimeRange,
@@ -111,7 +112,7 @@ const advanceTime = function (date, amount) {
 export default {
   mixins: [Locale],
 
-  components: { TimeSpinner },
+  components: { TuButton, TimeSpinner },
 
   data() {
     return {

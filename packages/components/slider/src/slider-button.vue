@@ -32,10 +32,11 @@
 </template>
 
 <script>
+import TuTooltip from "@packages/components/tooltip";
 export default {
   name: "TuSliderButton",
 
-  components: {},
+  components: { TuTooltip },
 
   props: {
     value: {

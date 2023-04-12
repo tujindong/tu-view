@@ -127,6 +127,10 @@
 </template>
 
 <script>
+import TuInput from "@packages/components/input";
+import TuTag from "@packages/components/tag";
+import TuCascaderPanel from "@packages/components/cascader-panel";
+import TuScrollbar from "@packages/components/scrollbar";
 import Popper from "@packages/src/utils/vue-popper";
 import Clickoutside from "@packages/src/utils/clickoutside";
 import Emitter from "@packages/src/mixins/emitter";
@@ -203,7 +207,12 @@ export default {
     },
   },
 
-  components: {},
+  components: {
+    TuInput,
+    TuTag,
+    TuCascaderPanel,
+    TuScrollbar,
+  },
 
   props: {
     value: {},

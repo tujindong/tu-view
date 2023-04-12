@@ -47,6 +47,7 @@
 </template>
 
 <script type="text/babel">
+import TuButton from "@packages/components/button";
 import {
   limitTimeRange,
   isDate,
@@ -60,6 +61,7 @@ export default {
   mixins: [Locale],
 
   components: {
+    TuButton,
     TimeSpinner,
   },
 
