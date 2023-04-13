@@ -25,6 +25,7 @@
 	}
 
 	@include e(wrap) {
+		min-height: 56px;
 		max-height: 212px;
 		height: calc(100% + 17px);
 	}

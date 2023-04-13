@@ -38,10 +38,10 @@ $--background-color-hover-light: rgba($--color-greyLight-3, 0.15);
 $--background-color-hover-white: rgba($--color-white, 0.15);
 
 /*primary color*/
+// $--color-primary-light: #8abdff;
 $--color-primary-light: #8abdff;
 $--color-primary: #6d5dfc;
 $--color-primary-dark: #510ccf;
-$--color-primary-lighter: mix($--color-white, $--color-primary, 90%);
 
 /*success color*/
 $--color-success-light: #93e769;

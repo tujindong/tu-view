@@ -1,19 +1,54 @@
 <template>
   <div>
-    <tu-input-number placeholder="请忽然" />
-    <tu-tree-select
-      :auto-expand-parent="true"
-      :default-checked-keys="['1-1-1']"
-      placeholder="请选择节点"
-      :show-checkbox="true"
-      :accordion="true"
-      multiple
-      collapseTags
-      :multiple-limit="3"
-      :render-after-expand="true"
-      v-model="form.node"
-      :data="data"
-    />
+    <tu-row :gutter="50">
+      <tu-col :span="8">
+        <tu-card>
+          <tu-form :model="form">
+            <tu-form-item>
+              <tu-input
+                placeholder="Name"
+                v-model="form.name"
+                clearable
+              ></tu-input>
+            </tu-form-item>
+            <tu-form-item>
+              <tu-select placeholder="Gender" v-model="form.gender" clearable>
+                <tu-option label="Female" value="0"></tu-option>
+                <tu-option label="Male" value="1"></tu-option>
+              </tu-select>
+            </tu-form-item>
+            <tu-form-item>
+              <tu-date-picker
+                type="date"
+                placeholder="Date"
+                v-model="form.date"
+              ></tu-date-picker>
+            </tu-form-item>
+            <tu-form-item>
+              <tu-time-picker
+                placeholder="Time"
+                v-model="form.time"
+              ></tu-time-picker>
+            </tu-form-item>
+            <tu-form-item>
+              <tu-checkbox-group v-model="form.checkbox">
+                <tu-checkbox label="Checkbox1"></tu-checkbox>
+              </tu-checkbox-group>
+            </tu-form-item>
+            <tu-form-item>
+              <tu-radio-group v-model="form.radio">
+                <tu-radio label="Radio1"></tu-radio>
+                <tu-radio label="Radio2"></tu-radio>
+              </tu-radio-group>
+            </tu-form-item>
+          </tu-form>
+          <tu-checkbox v-model="form.checked">苹果</tu-checkbox>
+          <tu-cascader v-model="value" :options="[]"></tu-cascader>
+        </tu-card>
+      </tu-col>
+      <tu-col :span="12">12</tu-col>
+      <tu-col :span="4">4</tu-col>
+    </tu-row>
   </div>
 </template>
 
@@ -23,85 +58,12 @@ export default {
     return {
       form: {
         name: "",
-        region: "",
+        gender: "",
         date: "",
         time: "",
-        delivery: false,
-        type: [],
-        resource: "",
-        desc: "",
-        node: "",
+        checkbox: [],
+        radio: "",
       },
-      data: [
-        {
-          value: "1",
-          label: "一级 1",
-          children: [
-            {
-              value: "1-1",
-              label: "二级 1-1",
-              children: [
-                {
-                  value: "1-1-1",
-                  label: "三级 1-1-1",
-                },
-              ],
-            },
-          ],
-        },
-        {
-          value: "2",
-          label: "一级 2",
-          children: [
-            {
-              value: "2-1",
-              label: "二级 2-1",
-              children: [
-                {
-                  value: "2-1-1",
-                  label: "三级 2-1-1",
-                },
-              ],
-            },
-            {
-              value: "2-2",
-              label: "二级 2-2",
-              children: [
-                {
-                  value: "2-2-1",
-                  label: "三级 2-2-1",
-                },
-              ],
-            },
-          ],
-        },
-        {
-          value: "3",
-          label: "一级 3",
-          children: [
-            {
-              value: "3-1",
-              label: "二级 3-1",
-              children: [
-                {
-                  value: "3-1-1",
-                  label: "三级 3-1-1",
-                },
-              ],
-            },
-            {
-              value: "3-2",
-              label: "二级 3-2",
-              children: [
-                {
-                  value: "3-2-1",
-                  label: "三级 3-2-1",
-                },
-              ],
-            },
-          ],
-        },
-      ],
     };
   },
   methods: {
