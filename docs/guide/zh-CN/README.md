@@ -17,7 +17,7 @@ import "tu-view/lib/tuview.css";
 Vue.use(TuView);
 
 // 按需引入
+import Button from "tu-view/lib/packages/button";
 import "tu-view/lib/packages/button/style.css";
-import { Button } from "tu-view";
 Vue.use(Button);
 ```

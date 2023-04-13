@@ -4,7 +4,7 @@ heroImage: /logo.png
 heroText: TuView
 tagline: TuView UI，一款有触觉的UI组件库。
 actionText: 快速上手 →
-actionLink: /guide/
+actionLink: /guide/zh-CN/
 features:
   - title: 指南
     details: 了解设计指南，帮助设计人员搭建逻辑清晰，结构合理的产品。

@@ -15,10 +15,12 @@
 
 	&.right {
 		right: 16px;
+		width: 330px;
 	}
 
 	&.left {
 		left: 16px;
+		width: 330px;
 	}
 
 	@include e(group) {

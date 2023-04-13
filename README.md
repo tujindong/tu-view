@@ -21,4 +21,9 @@ npm i tu-view
 import TuView from "tu-view";
 import "tu-view/lib/tuview.css";
 Vue.use(TuView);
+
+// 按需引入
+import Button from "tu-view/lib/packages/button";
+import "tu-view/lib/packages/button/style.css";
+Vue.use(Button);
 ```

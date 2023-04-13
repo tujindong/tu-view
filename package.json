@@ -1,6 +1,6 @@
 {
   "name": "tu-view",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "一款有触觉的UI组件",
   "main": "lib/tuview.js",
   "scripts": {
@@ -24,14 +24,15 @@
     "tview",
     "UI",
     "ui",
-    "vue"
+    "vue",
+    "components"
   ],
   "author": "tuu",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/tujindong/tu-view/issues"
   },
-  "homepage": "https://github.com/tujindong/tu-view/blob/main/README.md",
+  "homepage": "https://tujindong.github.io/tu-view/",
   "devDependencies": {
     "@babel/core": "^7.7.5",
     "@babel/plugin-syntax-dynamic-import": "^7.7.4",
@@ -55,7 +56,7 @@
     "postcss-pxtorem": "^4.0.1",
     "sass-loader": "^5.0.1",
     "style-loader": "^1.0.1",
-    "tu-view": "^0.1.17",
+    "tu-view": "^0.1.18",
     "url-loader": "^3.0.0",
     "vue-loader": "^15.7.2",
     "vue-template-compiler": "^2.6.10",
