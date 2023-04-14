@@ -1,16 +1,10 @@
 const path = require("path");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const config = require("./config");
 
 module.exports = {
-	externals: {
-		vue: {
-			root: "Vue",
-			commonjs: "vue",
-			commonjs2: "vue",
-			amd: "vue",
-		},
-	},
+	externals: config.externals,
 	module: {
 		rules: [
 			{

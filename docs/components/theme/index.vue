@@ -40,7 +40,6 @@ export default {
       top: 5vh;
       width: 160px;
       height: 90vh;
-      border: 1px solid rgba(255, 255, 255, 0.3);
     }
     section {
       margin-left: 200px;
