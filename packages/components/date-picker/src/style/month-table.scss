@@ -27,7 +27,7 @@
 			}
 			&.start-date .cell,
 			&.end-date .cell {
-				color: $--color-white;
+				color: $--color-primary;
 			}
 		}
 
@@ -45,6 +45,7 @@
 			transition: all 0.3s;
 			border-radius: 2px;
 			color: $--color-text-primary;
+			border: 1px solid transparent;
 			font-weight: $--font-weight-secondary;
 
 			&:hover {
@@ -58,20 +59,17 @@
 
 		&.start-date div .cell,
 		&.end-date div .cell {
-			color: $--color-white;
-			background-color: $--color-primary;
-		}
-
-		&.start-date .cell,
-		&.end-date .cell {
-			color: $--color-white;
-			background-color: $--color-primary;
+			border: 1px solid $--color-primary;
+			color: $--color-primary;
+			box-shadow: $--box-shadow-border;
+			border-radius: 2px;
 		}
 
 		&.current:not(.disabled) .cell {
-			background-color: $--color-primary;
-			color: $--color-white;
 			border-radius: 2px;
+			border: 1px solid $--color-primary;
+			color: $--color-primary;
+			box-shadow: $--box-shadow-border;
 		}
 	}
 }

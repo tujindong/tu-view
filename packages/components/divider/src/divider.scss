@@ -80,4 +80,8 @@
 		color: $--color-text-primary;
 		font-size: 14px;
 	}
+
+	@include when(shadow) {
+		box-shadow: $--box-shadow-border;
+	}
 }

@@ -79,7 +79,7 @@
 			border-radius: 40px;
 			position: relative;
 			cursor: pointer;
-			box-shadow: $--box-shadow-convex;
+			box-shadow: $--box-shadow-border;
 
 			&::before {
 				content: "";

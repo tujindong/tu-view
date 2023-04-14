@@ -32,6 +32,7 @@
 	position: relative;
 	cursor: pointer;
 	display: inline-flex;
+	vertical-align: middle;
 	align-items: center;
 	white-space: nowrap;
 	outline: none;
@@ -220,6 +221,8 @@
 @include b(radio-group) {
 	display: inline-block;
 	font-size: 0;
+	line-height: 1;
+	vertical-align: middle;
 
 	@include when(button) {
 		box-shadow: $--box-shadow-convex;

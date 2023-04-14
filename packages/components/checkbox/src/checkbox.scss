@@ -38,6 +38,7 @@
 
 @include b(checkbox) {
 	display: inline-flex;
+	vertical-align: middle;
 	align-items: center;
 	color: $--checkbox-font-color;
 	font-weight: $--checkbox-font-weight;
@@ -248,6 +249,8 @@
 @include b(checkbox-group) {
 	display: inline-block;
 	font-size: 0;
+	line-height: 1;
+	vertical-align: middle;
 
 	@include when(button) {
 		box-shadow: $--box-shadow-convex;

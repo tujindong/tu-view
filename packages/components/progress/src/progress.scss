@@ -179,14 +179,14 @@
 		);
 
 		@include utils-vertical-center;
-	}
 
-	@include e(innerText) {
-		display: inline-block;
-		vertical-align: middle;
-		color: $--color-white;
-		font-size: 12px;
-		margin: 0 5px;
+		@include e(innerText) {
+			display: inline-block;
+			vertical-align: middle;
+			color: $--color-white;
+			font-size: 12px;
+			margin: 0 5px;
+		}
 	}
 }
 

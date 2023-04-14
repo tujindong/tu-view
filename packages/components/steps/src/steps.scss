@@ -87,6 +87,7 @@
 			border-radius: 50%;
 			border: 1px solid;
 			border-color: inherit;
+			box-shadow: $--box-shadow-border;
 		}
 
 		@include when(icon) {

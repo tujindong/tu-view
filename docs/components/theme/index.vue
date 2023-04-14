@@ -31,19 +31,19 @@ export default {
 .theme-container {
   height: 100vh;
   main {
-    width: 1200px;
-    min-width: 1200px;
+    width: 1240px;
+    min-width: 1240px;
     height: 100%;
     margin: 0 auto;
     aside {
       position: fixed;
       top: 5vh;
-      width: 180px;
+      width: 160px;
       height: 90vh;
       border: 1px solid rgba(255, 255, 255, 0.3);
     }
     section {
-      margin-left: 220px;
+      margin-left: 200px;
       padding: 5vh 16px;
     }
   }

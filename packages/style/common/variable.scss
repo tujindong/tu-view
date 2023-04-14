@@ -87,9 +87,9 @@ $--font-size-base: 14px;
 $--font-size-small: 12px;
 $--font-size-extra-small: 10px;
 
-$--font-weight-bold: 600;
-$--font-weight-primary: 500;
-$--font-weight-secondary: 400;
+$--font-weight-bold: 500;
+$--font-weight-primary: 400;
+$--font-weight-secondary: 300;
 
 $--font-line-height-primary: 24px;
 $--font-line-height-secondary: 16px;
@@ -106,6 +106,7 @@ $--border-radius-zero: 0;
 -------------------------- */
 $--box-shadow-concave: inset 2px 2px 5px $--box-shadow-color, inset -2px -2px 5px $--color-white; //凹
 $--box-shadow-convex: 3px 3px 6px $--box-shadow-color, -2px -2px 5px $--color-white; //凸
+$--box-shadow-border: $--box-shadow-concave, $--box-shadow-convex;
 $--box-shadow-light: 0 2px 12px 0 $--box-shadow-color;
 $--box-shadow-white: 0 2px 12px 0 $--color-white;
 

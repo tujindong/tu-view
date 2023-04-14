@@ -67,6 +67,7 @@
 			left: 50%;
 			transform: translateX(-50%);
 			transition: background-color 0.3s;
+			border: 1px solid transparent;
 		}
 
 		&.next-month,
@@ -82,7 +83,7 @@
 			}
 			&.start-date span,
 			&.end-date span {
-				color: $--color-white;
+				color: $--color-primary;
 			}
 		}
 
@@ -99,8 +100,9 @@
 			display: inline-flex;
 			align-items: center;
 			justify-content: center;
-			background: $--color-primary;
-			color: $--color-white;
+			border: 1px solid $--color-primary;
+			color: $--color-primary;
+			box-shadow: $--box-shadow-border;
 			border-radius: 2px;
 		}
 		&.start-date div,
@@ -110,7 +112,9 @@
 
 		&.start-date span,
 		&.end-date span {
-			background-color: $--color-primary;
+			border: 1px solid $--color-primary;
+			color: $--color-primary;
+			box-shadow: $--box-shadow-border;
 			border-radius: 2px;
 		}
 
@@ -129,16 +133,14 @@
 		}
 
 		&.selected span {
-			background-color: $--color-primary;
+			border: 1px solid $--color-primary;
+			color: $--color-primary;
+			box-shadow: $--box-shadow-border;
+			border-radius: 2px;
 			transition: all 0.3s;
 			&:hover {
-				background-color: $--color-primary;
+				color: $--color-primary;
 			}
-		}
-
-		&.selected span {
-			background-color: $--color-primary;
-			color: $--color-white;
 		}
 
 		&.week {

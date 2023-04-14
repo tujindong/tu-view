@@ -124,11 +124,11 @@
 	}
 
 	@include e(content) {
+		align-items: center;
 		line-height: 40px;
 		position: relative;
 		font-size: 14px;
 		@include utils-clearfix;
-
 		.tu-input-group {
 			vertical-align: top;
 		}
@@ -167,10 +167,6 @@
 		.tu-input__inner,
 		.tu-textarea__inner {
 			position: relative;
-			// &,
-			// &:focus {
-			// 	box-shadow: inset 2px 2px 5px mix($--color-greyLight-2, $--color-danger, 50%), inset -2px -2px 5px $--color-white;
-			// }
 		}
 	}
 

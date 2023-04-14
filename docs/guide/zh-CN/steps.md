@@ -21,8 +21,8 @@
 		</tu-steps>
 
 		<div class="btn-wrapper">
-			<tu-button @click="next">下一步</tu-button>
 			<tu-button @click="previous">上一步</tu-button>
+			<tu-button @click="next">下一步</tu-button>
 		</div>
 	</div>
 </template>
