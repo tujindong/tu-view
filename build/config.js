@@ -22,8 +22,6 @@ transitionList.forEach(function (file) {
 	externals[`tu-view/packages/src/transitions/${file}`] = `tu-view/lib/transitions/${file}`;
 });
 
-console.log("externals", externals);
-
 externals = [
 	Object.assign(
 		{

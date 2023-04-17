@@ -1,5 +1,8 @@
 <template>
-  <div><Theme /></div>
+  <div>
+    <!-- <Theme /> -->
+    <tu-calendar> </tu-calendar>
+  </div>
 </template>
 
 <script>

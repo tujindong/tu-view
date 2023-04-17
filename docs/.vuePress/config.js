@@ -21,6 +21,7 @@ module.exports = {
 		sidebar: {
 			"/guide/zh-CN/": [
 				["", "快速开始"],
+				["../zh-CN/locale.md", "国际化"],
 				{
 					title: "基础组件",
 					collapsable: false,
