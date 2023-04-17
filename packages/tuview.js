@@ -190,6 +190,8 @@ const install = function (Vue, opts = {}) {
 	Vue.prototype.$prompt = MessageBox.prompt;
 	Vue.prototype.$notify = Notification;
 	Vue.prototype.$message = Message;
+
+	Vue.config.productionTip = false;
 };
 
 if (typeof window !== "undefined" && window.Vue) {
