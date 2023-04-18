@@ -27,12 +27,12 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .theme-container {
   height: 100vh;
   main {
-    width: 1240px;
-    min-width: 1240px;
+    width: 1280px;
+    min-width: 1280px;
     height: 100%;
     margin: 0 auto;
     aside {

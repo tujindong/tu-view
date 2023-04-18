@@ -176,6 +176,7 @@
 
         <tu-card style="margin-top: 30px">
           <tu-transfer
+            style="width: 100%"
             v-model="transferValue"
             :titles="['Source', 'Target']"
             :data="transferData"
