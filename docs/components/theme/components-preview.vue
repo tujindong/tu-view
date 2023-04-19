@@ -97,6 +97,14 @@
         </tu-card>
 
         <tu-card style="margin-top: 30px">
+          <tu-tabs v-model="tabValue" type="card">
+            <tu-tab-pane label="Tab1" name="1">Tab1</tu-tab-pane>
+            <tu-tab-pane label="Tab2" name="2">Tab2</tu-tab-pane>
+            <tu-tab-pane label="Tab3" name="3">Tab3</tu-tab-pane>
+          </tu-tabs>
+        </tu-card>
+
+        <tu-card style="margin-top: 30px">
           <tu-progress :percentage="70"></tu-progress>
           <tu-progress :percentage="100" status="success"></tu-progress>
           <tu-progress :percentage="80" status="warning"></tu-progress>
@@ -240,7 +248,7 @@
     </tu-row>
 
     <tu-modal title="Title" :visible.sync="modalVisible" width="30%">
-      <span>This is this content of the modal</span>
+      <span>This is content of the modal</span>
       <span slot="footer" class="modal-footer">
         <tu-button style="margin-right: 10px" @click="modalVisible = false"
           >Cancel</tu-button
@@ -252,7 +260,7 @@
     </tu-modal>
 
     <tu-drawer title="Title" :visible.sync="drawerVisible">
-      <span>This is this content of the drawer</span>
+      <span>This is content of the drawer</span>
     </tu-drawer>
   </div>
 </template>
@@ -409,6 +417,7 @@ export default {
       },
       rateValue: 2,
       sliderValue: 60,
+      tabValue: "1",
       modalVisible: false,
       drawerVisible: false,
     };

@@ -1,7 +1,8 @@
 import Vue from "vue";
 import App from "./App.vue";
-import tuview from "../lib/tuview";
-import "../lib/tuview.css";
+import tuview from "../packages/tuview";
+import "./theme-dark.scss";
+
 Vue.use(tuview.install);
 
 Vue.config.productionTip = false;

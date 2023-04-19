@@ -329,5 +329,9 @@ module.exports = {
 			name: "tree-select",
 			author: "tujindong",
 		},
+		{
+			name: "clock",
+			author: "tujindong",
+		},
 	],
 };

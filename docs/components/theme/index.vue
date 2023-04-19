@@ -31,8 +31,8 @@ export default {
 .theme-container {
   height: 100vh;
   main {
-    width: 1280px;
-    min-width: 1280px;
+    width: 1240px;
+    min-width: 1240px;
     height: 100%;
     margin: 0 auto;
     aside {

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <!-- <Theme /> -->
-    <tu-calendar> </tu-calendar>
+    <Theme />
+    <!-- <tu-clock> </tu-clock> -->
   </div>
 </template>
 

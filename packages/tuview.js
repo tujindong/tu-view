@@ -78,7 +78,9 @@ import Menu from "./components/menu";
 import Submenu from "./components/submenu";
 import MenuItem from "./components/menu-item";
 import MenuItemGroup from "./components/menu-item-group";
-import locale from "./src/locale";
+import Clock from "./components/clock";
+
+import Locale from "./src/locale";
 
 const componentsList = [
 	Button,
@@ -160,14 +162,15 @@ const componentsList = [
 	Submenu,
 	MenuItem,
 	MenuItemGroup,
-	// locale,
+	Clock,
+	// Locale,
 ];
 
 const install = function (Vue, opts = {}) {
 	if (install.installed) return;
 
-	locale.use(opts.locale);
-	locale.i18n(opts.i18n);
+	Locale.use(opts.locale);
+	Locale.i18n(opts.i18n);
 
 	componentsList.map(component => {
 		Vue.component(component.name, component);
@@ -199,8 +202,8 @@ if (typeof window !== "undefined" && window.Vue) {
 }
 
 export default {
-	locale: locale.use,
-	i18n: locale.i18n,
+	locale: Locale.use,
+	i18n: Locale.i18n,
 	install,
 	...componentsList,
 };

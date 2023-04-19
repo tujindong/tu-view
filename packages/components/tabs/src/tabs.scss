@@ -4,6 +4,7 @@
 	@include e(header) {
 		padding: 0;
 		position: relative;
+		border-radius: 4px;
 
 		@include e(nav-wrap) {
 			overflow: hidden;
@@ -165,7 +166,7 @@
 				transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 				list-style: none;
 				box-shadow: $--box-shadow-concave;
-				border-radius: 6px;
+				border-radius: 4px;
 			}
 		}
 	}
@@ -183,7 +184,7 @@
 				transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 				list-style: none;
 				box-shadow: $--box-shadow-concave;
-				border-radius: 6px;
+				border-radius: 4px;
 			}
 		}
 
