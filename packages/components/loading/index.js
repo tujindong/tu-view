@@ -1,6 +1,6 @@
 import directive from "./src/directive";
 import service from "./src/index";
-import "./src/loading.scss";
+// import "./src/loading.scss";
 
 export default {
 	install(Vue) {

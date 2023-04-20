@@ -1,5 +1,5 @@
-@import "~@packages/style/common/mixin.scss";
-@import "~@packages/style/common/utils.scss";
+@import "../common/mixin.scss";
+@import "../common/utils.scss";
 
 @include b(picker-panel) {
 	border-radius: $--border-radius-base;

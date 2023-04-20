@@ -23,8 +23,8 @@ module.exports = merge(webpackCommonConfig, {
 						},
 					},
 					// {
-					//     loader: 'postcss-loader'
-					// }
+					// 	loader: "postcss-loader",
+					// },
 				],
 			},
 		],

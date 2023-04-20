@@ -1,8 +1,8 @@
-import Progress from './src/progress.vue';
-import './src/progress.scss';
+import Progress from "./src/progress.vue";
+// import './src/progress.scss';
 
 Progress.install = function (Vue) {
-    Vue.component(Progress.name, Progress);
+	Vue.component(Progress.name, Progress);
 };
 
 export default Progress;

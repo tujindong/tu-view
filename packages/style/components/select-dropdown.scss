@@ -1,5 +1,5 @@
-@import "~@packages/style/common/mixin.scss";
-@import "~@packages/style/common/popper.scss";
+@import "../common/mixin.scss";
+@import "../common/popper.scss";
 
 @include b(select-dropdown) {
 	position: absolute;

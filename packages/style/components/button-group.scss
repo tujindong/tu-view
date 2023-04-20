@@ -1,4 +1,4 @@
-@import "~@packages/style/common/mixin.scss";
+@import "../common/mixin.scss";
 
 @mixin buttonGroupFilled($color-light, $color-normal, $color-dark) {
 	transition: 0.1s ease;

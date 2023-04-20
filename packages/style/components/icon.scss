@@ -1,10 +1,10 @@
-@import "~@packages/style/common/animation.scss";
+@import "../common/animation.scss";
 @font-face {
 	font-family: "tu-icons";
 	src:
-        /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/ url("~@packages/style/fonts/iconfont.woff")
+        /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/ url("./fonts/iconfont.woff")
 			format("truetype"),
-		/* chrome, firefox */ url("~@packages/style/fonts/iconfont.ttf") format("woff");
+		/* chrome, firefox */ url("./fonts/iconfont.ttf") format("woff");
 	font-weight: normal;
 	font-style: normal;
 }

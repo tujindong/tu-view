@@ -1,5 +1,5 @@
 import Popover from "./src/popover.vue";
-import "./src/popover.scss";
+// import "./src/popover.scss";
 import directive from "./src/directive";
 import Vue from "vue";
 

@@ -1,4 +1,4 @@
-@import "~@packages/style/common/mixin.scss";
+@import "../common/mixin.scss";
 
 @include b(message) {
 	min-width: $--message-min-width;

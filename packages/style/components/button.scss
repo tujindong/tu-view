@@ -1,5 +1,5 @@
-@import "~@packages/style/common/mixin.scss";
-@import "~@packages/style/common/animation.scss";
+@import "../common/mixin.scss";
+@import "../common/animation.scss";
 
 @mixin buttonFilled($color-light, $color-normal, $color-dark) {
 	transition: 0.1s ease;
