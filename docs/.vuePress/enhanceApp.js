@@ -3,8 +3,8 @@
 // import "tu-view/lib/tuview.css";
 // import TuView from "tu-view";
 //开发环境使用
-import "../../lib/styles/tuview.css";
 import TuView from "../../lib/tuview.js";
+import "../../lib/styles/tuview.css";
 /************************* 部署用end ***********************/
 import "../guide-style/index.scss";
 import icon from "./icon.json";

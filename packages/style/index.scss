@@ -9,6 +9,8 @@
 @import "./components/card.scss";
 @import "./components/carousel.scss";
 @import "./components/carousel-item.scss";
+@import "./components/cascader.scss";
+@import "./components/cascader-panel.scss";
 @import "./components/checkbox.scss";
 @import "./components/col.scss";
 @import "./components/collapse.scss";
@@ -31,6 +33,7 @@
 @import "./components/message.scss";
 @import "./components/message-box.scss";
 @import "./components/modal.scss";
+@import "./components/month-table.scss";
 @import "./components/notification.scss";
 @import "./components/pagination.scss";
 @import "./components/popconfirm.scss";
@@ -68,7 +71,9 @@
 @import "./components/tag.scss";
 @import "./components/textarea.scss";
 @import "./components/time-picker.scss";
+@import "./components/time-range-picker.scss";
 @import "./components/time-select.scss";
+@import "./components/time-spinner.scss";
 @import "./components/timeline.scss";
 @import "./components/tooltip.scss";
 @import "./components/transfer.scss";
@@ -76,3 +81,4 @@
 @import "./components/tree-select.scss";
 @import "./components/tree-select-dropdown.scss";
 @import "./components/upload.scss";
+@import "./components/year-table.scss";
