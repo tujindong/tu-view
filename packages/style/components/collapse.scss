@@ -1,0 +1,73 @@
+@import "~@packages/style/common/mixin.scss";
+
+@include b(collapse) {
+	border-top: 1px solid $--collapse-border-color;
+	border-bottom: 1px solid $--collapse-border-color;
+
+	@include when(bordered) {
+		box-shadow: $--box-shadow-concave;
+	}
+}
+
+@include b(collapse-item) {
+	@include when(disabled) {
+		.tu-collapse-item__header {
+			color: $--color-text-secondary;
+			cursor: not-allowed;
+		}
+	}
+	@include e(header) {
+		display: flex;
+		align-items: center;
+		padding: 0 12px;
+		height: $--collapse-header-height;
+		line-height: $--collapse-header-height;
+		color: $--collapse-header-font-color;
+		cursor: pointer;
+		border-bottom: 1px solid $--collapse-border-color;
+		font-size: $--collapse-header-font-size;
+		font-weight: 500;
+		transition: border-bottom-color 0.3s;
+		outline: none;
+		@include e(arrow) {
+			transition: transform 0.3s;
+			font-weight: 300;
+			margin-right: 10px;
+			@include when(active) {
+				transform: rotate(90deg);
+			}
+		}
+		@include e(extra) {
+			margin-left: auto;
+		}
+		&.focusing:focus:not(:hover) {
+			color: $--color-primary;
+		}
+		&:hover {
+			.tu-collapse-item__arrow {
+				color: $--color-primary;
+			}
+		}
+		@include when(active) {
+			border-bottom-color: transparent;
+		}
+	}
+
+	@include e(wrap) {
+		will-change: height;
+		overflow: hidden;
+		box-sizing: border-box;
+		border-bottom: 1px solid $--collapse-border-color;
+	}
+
+	@include e(content) {
+		padding: 0 12px 6px;
+		font-size: $--collapse-content-font-size;
+		color: $--collapse-content-font-color;
+		line-height: 1.769230769230769;
+	}
+
+	&:last-child {
+		margin-bottom: -1px;
+	}
+}

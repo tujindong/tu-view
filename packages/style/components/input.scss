@@ -1,0 +1,203 @@
+@import "~@packages/style/common/mixin.scss";
+@import "~@packages/style/common/utils.scss";
+
+@mixin sizeMixin($input-height, $input-font-size, $input-padding-horizontal) {
+	@include e(inner) {
+		line-height: $input-height;
+		height: $input-height;
+		font-size: $input-font-size;
+		padding: 0 $input-padding-horizontal;
+	}
+
+	@include e(suffix) {
+		font-size: $input-font-size;
+	}
+}
+
+@include b(input) {
+	position: relative;
+	display: inline-flex;
+	width: 100%;
+
+	@include when(disabled) {
+		cursor: not-allowed;
+
+		@include e(inner) {
+			cursor: not-allowed;
+
+			&::-moz-placeholder {
+				color: $--input-placeholder-disabled-font-color;
+			}
+
+			&:-ms-input-placeholder {
+				color: $--input-placeholder-disabled-font-color;
+			}
+
+			&::placeholder {
+				color: $--input-placeholder-disabled-font-color;
+			}
+		}
+
+		&::after {
+			content: "";
+			display: block;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			right: 0;
+			cursor: not-allowed;
+		}
+	}
+
+	@include when(exceed) {
+	}
+
+	@include e(inner) {
+		-webkit-appearance: none;
+		background-color: transparent;
+		background-image: none;
+		border-radius: $--input-border-radius;
+		border: none;
+		box-sizing: border-box;
+		display: block;
+		padding: 0 $--input-padding-horizontal;
+		font-size: $--font-size-base;
+		line-height: $--input-height;
+		height: $--input-height;
+		outline: none;
+		width: 100%;
+		color: $--input-font-color;
+		box-shadow: $--box-shadow-concave;
+		transition: 0.3s ease;
+
+		&::-moz-placeholder {
+			color: $--input-placeholder-font-color;
+		}
+
+		&:-ms-input-placeholder {
+			color: $--input-placeholder-font-color;
+		}
+
+		&::placeholder {
+			color: $--input-placeholder-font-color;
+		}
+
+		&::-ms-reveal {
+			display: none;
+		}
+
+		&:focus {
+			outline: none;
+			box-shadow: $--box-shadow-convex;
+		}
+	}
+
+	@include e(prefix) {
+		position: absolute;
+		height: 100%;
+		left: 5px;
+		top: 0;
+		text-align: center;
+		color: $--input-placeholder-font-color;
+		transition: all 0.3s;
+		pointer-events: none;
+		line-height: 1;
+
+		@include e(prefix-inner) {
+			height: 100%;
+			display: inline-flex;
+			align-items: center;
+			transition: all 0.3s;
+
+			@include e(icon) {
+				width: 25px;
+				text-align: center;
+				transition: 0.3s ease;
+			}
+
+			@include e(icon-slot) {
+				width: 25px;
+			}
+		}
+	}
+
+	@include e(suffix) {
+		position: absolute;
+		height: 100%;
+		right: 5px;
+		top: 0;
+		text-align: center;
+		color: $--input-placeholder-font-color;
+		transition: 0.3s ease;
+		pointer-events: none;
+		font-size: $--input-font-size;
+		line-height: 1;
+
+		@include e(suffix-inner) {
+			display: inline-flex;
+			align-items: center;
+			pointer-events: all;
+			height: 100%;
+
+			@include e(icon) {
+				width: 25px;
+				text-align: center;
+				transition: 0.3s ease;
+			}
+
+			@include e(hover) {
+				cursor: pointer;
+
+				&:hover {
+					color: $--input-font-color;
+				}
+			}
+
+			@include e(icon-slot) {
+				width: 25px;
+				line-height: 1;
+			}
+
+			@include e(count) {
+				font-size: $--font-size-extra-small;
+			}
+		}
+	}
+
+	@include m(mini) {
+		@include sizeMixin(
+			$--input-mini-height,
+			$--input-mini-font-size,
+			$--input-mini-padding-horizontal
+		);
+	}
+
+	@include m(small) {
+		@include sizeMixin(
+			$--input-small-height,
+			$--input-small-font-size,
+			$--input-small-padding-horizontal
+		);
+	}
+
+	@include m(large) {
+		@include sizeMixin(
+			$--input-large-height,
+			$--input-large-font-size,
+			$--input-large-padding-horizontal
+		);
+	}
+
+	@include m(prefix) {
+		@include e(inner) {
+			padding-left: 30px;
+		}
+	}
+
+	@include m(suffix) {
+		@include e(inner) {
+			padding-right: 30px;
+		}
+	}
+}

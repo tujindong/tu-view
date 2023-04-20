@@ -1,0 +1,88 @@
+@import "~@packages/style/common/mixin.scss";
+@import "~@packages/style/common/utils.scss";
+
+@include b(date-editor) {
+	position: relative;
+	display: inline-block;
+	text-align: left;
+
+	&.tu-input,
+	&.tu-input__inner {
+		::selection {
+			transition: all 0.3s ease;
+			color: $--color-primary;
+		}
+	}
+
+	@include m(dates) {
+		.tu-input__inner {
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
+
+	&.is-focus {
+		box-shadow: $--box-shadow-convex;
+	}
+
+	.tu-input__icon--suffix {
+		cursor: pointer;
+		transition: all 0.3s;
+		&:hover {
+			color: $--color-text-primary;
+		}
+	}
+
+	.tu-range__icon {
+		font-size: 14px;
+		margin-left: -5px;
+		color: $--color-greyLight-3;
+		float: left;
+		line-height: 32px;
+	}
+
+	.tu-range-input {
+		appearance: none;
+		border: none;
+		outline: none;
+		display: inline-block;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		width: 39%;
+		text-align: center;
+		font-size: $--font-size-base;
+		color: $--color-text-primary;
+		background: transparent;
+
+		&::placeholder {
+			color: $--color-greyLight-3;
+		}
+	}
+
+	.tu-range-separator {
+		display: inline-block;
+		height: 100%;
+		padding: 0 5px;
+		margin: 0;
+		text-align: center;
+		line-height: 32px;
+		font-size: 14px;
+		width: 5%;
+		color: $--color-greyLight-3;
+	}
+
+	.tu-range__close-icon {
+		font-size: 14px;
+		color: $--color-greyLight-3;
+		width: 25px;
+		display: inline-block;
+		float: right;
+		line-height: 32px;
+		cursor: pointer;
+
+		&:hover {
+			color: $--color-text-primary;
+		}
+	}
+}

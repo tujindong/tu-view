@@ -1,0 +1,167 @@
+@import "~@packages/style/common/mixin.scss";
+
+@include b(dropdown) {
+	display: inline-block;
+	position: relative;
+	color: $--color-text-primary;
+	font-size: $--font-size-base;
+
+	& .tu-dropdown__caret-button {
+		padding-left: 5px;
+		padding-right: 5px;
+		position: relative;
+		border-left: none;
+
+		&::before {
+			$gap: 5px;
+
+			content: "";
+			position: absolute;
+			display: block;
+			width: 1px;
+			top: $gap;
+			bottom: $gap;
+			left: 0;
+		}
+
+		&:hover {
+			&:not(.is-disabled)::before {
+				top: 0;
+				bottom: 0;
+			}
+		}
+
+		& .tu-dropdown__icon {
+			padding-left: 0;
+		}
+	}
+
+	@include e(icon) {
+		margin: 0 3px;
+	}
+
+	.tu-dropdown-selfdefine {
+		&:focus:active,
+		&:focus:not(.focusing) {
+			outline-width: 0;
+		}
+	}
+
+	[disabled] {
+		cursor: not-allowed;
+		color: $--color-greyLight-3;
+	}
+}
+
+@include b(dropdown-menu) {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	padding: 10px 0;
+	margin: 5px 0;
+	border-radius: $--border-radius-base;
+	box-shadow: $--box-shadow-convex;
+	background-color: $--color-background;
+
+	@include e(item) {
+		list-style: none;
+		line-height: 36px;
+		padding: 0 20px;
+		margin: 0;
+		font-size: $--font-size-base;
+		color: $--color-text-primary;
+		cursor: pointer;
+		outline: none;
+		transition: all 0.3s;
+		&:not(.is-disabled):hover,
+		&:focus {
+			background-color: rgba($--color-greyLight-2, 0.38);
+			color: $--color-primary;
+		}
+
+		i {
+			margin-right: 5px;
+		}
+
+		@include m(divided) {
+			position: relative;
+			margin-top: 6px;
+
+			&::after {
+				content: "";
+				display: block;
+				position: absolute;
+				left: 0;
+				top: -6px;
+				width: 100%;
+				border-top: 1px solid rgba($--color-text-primary, 0.25);
+			}
+		}
+
+		@include when(disabled) {
+			cursor: not-allowed;
+			color: $--color-greyLight-3;
+		}
+	}
+
+	@include m(medium) {
+		padding: 6px 0;
+
+		@include e(item) {
+			line-height: 30px;
+			padding: 0 17px;
+			font-size: 14px;
+
+			&.tu-dropdown-menu__item--divided {
+				$divided-offset: 6px;
+				margin-top: $divided-offset;
+
+				&:before {
+					height: $divided-offset;
+					margin: 0 -17px;
+				}
+			}
+		}
+	}
+
+	@include m(small) {
+		padding: 6px 0;
+
+		@include e(item) {
+			line-height: 27px;
+			padding: 0 15px;
+			font-size: 13px;
+
+			&.tu-dropdown-menu__item--divided {
+				$divided-offset: 4px;
+				margin-top: $divided-offset;
+
+				&:before {
+					height: $divided-offset;
+					margin: 0 -15px;
+				}
+			}
+		}
+	}
+
+	@include m(mini) {
+		padding: 3px 0;
+
+		@include e(item) {
+			line-height: 24px;
+			padding: 0 10px;
+			font-size: 12px;
+
+			&.tu-dropdown-menu__item--divided {
+				$divided-offset: 3px;
+				margin-top: $divided-offset;
+
+				&:before {
+					height: $divided-offset;
+					margin: 0 -10px;
+				}
+			}
+		}
+	}
+}

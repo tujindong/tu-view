@@ -1,0 +1,160 @@
+@import "~@packages/style/common/mixin.scss";
+@import "~@packages/style/common/utils.scss";
+
+@include b(date-table) {
+	user-select: none;
+	font-size: 14px;
+	display: table;
+
+	@include when(week-mode) {
+		.tu-date-table__row {
+			div {
+				transition: all 0.3s;
+			}
+			&:hover {
+				div {
+					background-color: rgba($--color-greyLight-2, 0.38);
+				}
+				td.available:hover {
+					color: $--color-text-primary;
+				}
+				td:first-child div {
+					margin-left: 5px;
+				}
+				td:last-child div {
+					margin-right: 5px;
+				}
+			}
+
+			&.current div {
+				background-color: rgba($--color-greyLight-2, 0.3);
+			}
+		}
+	}
+
+	th,
+	th td,
+	tr,
+	tr:nth-child(2n) {
+		border: none;
+		background: transparent;
+	}
+
+	td {
+		width: 26px;
+		height: 26px;
+		padding: 6px 0;
+		box-sizing: border-box;
+		text-align: center;
+		cursor: pointer;
+		position: relative;
+		color: $--color-text-primary;
+		transition: all 0.3s;
+		border: none;
+
+		& div {
+			height: 32px;
+			padding: 4px 0;
+			box-sizing: border-box;
+			margin: 0 5px;
+			transition: background-color 0.3s;
+		}
+
+		& span {
+			width: 24px;
+			height: 24px;
+			display: block;
+			margin: 0 auto;
+			line-height: 24px;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			transition: background-color 0.3s;
+			border: 1px solid transparent;
+		}
+
+		&.next-month,
+		&.prev-month {
+			color: $--color-greyLight-3;
+		}
+
+		&.today {
+			position: relative;
+			span {
+				color: $--color-primary;
+				font-weight: bold;
+			}
+			&.start-date span,
+			&.end-date span {
+				color: $--color-primary;
+			}
+		}
+
+		&.available:hover {
+			color: $--color-primary;
+		}
+
+		&.in-range div {
+			background-color: rgba($--color-greyLight-2, 0.38);
+		}
+
+		&.current:not(.disabled) span {
+			transition: all 0.3s;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			border: 1px solid $--color-primary;
+			color: $--color-primary;
+			box-shadow: $--box-shadow-border;
+			border-radius: 2px;
+		}
+		&.start-date div,
+		&.end-date div {
+			color: $--color-white;
+		}
+
+		&.start-date span,
+		&.end-date span {
+			border: 1px solid $--color-primary;
+			color: $--color-primary;
+			box-shadow: $--box-shadow-border;
+			border-radius: 2px;
+		}
+
+		&.start-date div {
+			margin-left: 5px;
+		}
+
+		&.end-date div {
+			margin-right: 5px;
+		}
+
+		&.disabled div {
+			background-color: rgba($--color-greyLight-2, 0.3);
+			opacity: 1;
+			cursor: not-allowed;
+		}
+
+		&.selected span {
+			border: 1px solid $--color-primary;
+			color: $--color-primary;
+			box-shadow: $--box-shadow-border;
+			border-radius: 2px;
+			transition: all 0.3s;
+			&:hover {
+				color: $--color-primary;
+			}
+		}
+
+		&.week {
+			font-size: 80%;
+		}
+	}
+
+	th {
+		padding: 5px;
+		color: $--color-text-primary;
+		font-weight: 400;
+		border-bottom: solid 1px rgba($--color-greyLight-3, 0.38);
+	}
+}

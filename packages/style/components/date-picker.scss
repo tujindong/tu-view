@@ -1,0 +1,96 @@
+@import "~@packages/style/common/mixin.scss";
+@import "~@packages/style/common/utils.scss";
+
+@include b(date-picker) {
+	width: 322px;
+	box-shadow: $--box-shadow-convex;
+	background-color: $--color-background;
+	&.has-sidebar.has-time {
+		width: 414px;
+	}
+
+	&.has-sidebar {
+		width: 402px;
+	}
+
+	&.has-time .tu-picker-panel__body-wrapper {
+		position: relative;
+	}
+
+	.tu-picker-panel__content {
+		width: 292px;
+	}
+
+	table {
+		table-layout: fixed;
+		width: 100%;
+	}
+
+	@include e(editor-wrap) {
+		position: relative;
+		display: table-cell;
+		padding: 0 5px;
+	}
+
+	@include e(time-header) {
+		position: relative;
+		font-size: 12px;
+		padding: 8px 5px 5px 5px;
+		display: table;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	@include e(header) {
+		margin: 12px;
+		text-align: center;
+
+		@include m(bordered) {
+			margin-bottom: 0;
+			padding-bottom: 12px;
+
+			& + .tu-picker-panel__content {
+				margin-top: 0;
+			}
+		}
+	}
+
+	@include e(header-label) {
+		font-size: 16px;
+		font-weight: 500;
+		padding: 0 5px;
+		line-height: 22px;
+		text-align: center;
+		cursor: pointer;
+		color: $--color-text-primary;
+		transition: all 0.3s;
+
+		&:hover {
+			color: $--color-primary;
+		}
+
+		&.active {
+			color: $--color-primary;
+		}
+	}
+
+	@include e(prev-btn) {
+		float: left;
+	}
+
+	@include e(next-btn) {
+		float: right;
+	}
+
+	@include e(time-wrap) {
+		padding: 10px;
+		text-align: center;
+	}
+
+	@include e(time-label) {
+		float: left;
+		cursor: pointer;
+		line-height: 30px;
+		margin-left: 10px;
+	}
+}

@@ -1,0 +1,97 @@
+@import "~@packages/style/common/mixin.scss";
+
+@include b(tag) {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	box-sizing: border-box;
+	white-space: nowrap;
+	color: $--tag-font-color;
+	padding: $--tag-padding-vertical $--tag-padding-horizontal;
+	font-size: $--tag-font-size;
+	line-height: 1;
+	margin-right: 8px;
+	margin-bottom: 8px;
+	border-radius: $--tag-border-radius;
+
+	@include when(hit) {
+		font-weight: bold;
+	}
+
+	@include m(light) {
+		border: 1px solid $--color-greyDark;
+	}
+
+	@include m(dark) {
+		background: $--tag-color-fill;
+		color: $--color-white;
+		border: 1px solid $--tag-color-fill;
+	}
+
+	@include m(plain) {
+		color: $--tag-color-fill;
+		border: 1px solid $--tag-color-fill;
+
+		.tu-tag__close {
+			position: relative;
+			color: var(--color);
+			z-index: 100;
+		}
+
+		&::after {
+			content: " ";
+			position: absolute;
+			z-index: 10;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			mix-blend-mode: soft-light;
+			background-color: var(--color);
+		}
+	}
+
+	@include m(shadow) {
+		padding: calc(#{$--tag-padding-vertical} + 1px) calc(#{$--tag-padding-horizontal} + 1px);
+		box-shadow: $--box-shadow-convex;
+	}
+
+	@include m(mini) {
+		font-size: $--tag-mini-font-size;
+		padding: $--tag-small-padding-vertical $--tag-mini-padding-horizontal;
+		border-radius: $--tag-mini-border-radius;
+		transform: scale(0.9);
+	}
+
+	@include m(small) {
+		font-size: $--tag-small-font-size;
+		padding: $--tag-small-padding-vertical $--tag-small-padding-horizontal;
+		border-radius: $--tag-small-border-radius;
+	}
+
+	@include m(large) {
+		font-size: $--tag-large-font-size;
+		padding: $--tag-large-padding-vertical $--tag-large-padding-horizontal;
+		border-radius: $--tag-large-border-radius;
+	}
+
+	.tu-tag__close {
+		cursor: pointer;
+		transition: all 0.3s ease;
+		margin-left: 3px;
+		transform: translateY(1px);
+
+		&:hover {
+			color: $--color-primary;
+		}
+
+		&::after {
+			height: $--tag-font-size;
+		}
+	}
+
+	&:last-child {
+		margin-right: 0;
+		margin-bottom: 0;
+	}
+}

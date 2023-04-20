@@ -1,0 +1,25 @@
+@import "~@packages/style/common/mixin.scss";
+
+@include b(backtop) {
+	position: fixed;
+	min-width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	font-size: 22px;
+	cursor: pointer;
+	z-index: 5;
+	background-color: $--color-background;
+
+	@include e(inner) {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		color: $--color-text-primary;
+		transition: color 0.3s;
+		.tu-button {
+			padding: 9px;
+		}
+	}
+}

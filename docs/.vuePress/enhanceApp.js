@@ -4,6 +4,7 @@
 // import TuView from "tu-view";
 //开发环境使用
 import "../../lib/tuview.css";
+// import "../../packages/style/index.scss";
 import TuView from "../../lib/tuview.js";
 /************************* 部署用end ***********************/
 import "../guide-style/index.scss";
