@@ -1,0 +1,57 @@
+@import "../common/mixin.scss";
+@import "../common/utils.scss";
+
+@include b(year-table) {
+	margin: -1px;
+	border-collapse: collapse;
+	display: table;
+
+	tr,
+	tr:nth-child(2n),
+	td {
+		padding: 0;
+		border: none;
+		background: transparent;
+	}
+
+	td {
+		text-align: center;
+		padding: 20px 3px;
+		cursor: pointer;
+
+		&.today {
+			.cell {
+				color: $--color-primary;
+				font-weight: bold;
+			}
+		}
+
+		&.disabled .cell {
+			background-color: rgba($--color-greyLight-2, 0.3);
+			cursor: not-allowed;
+		}
+
+		.cell {
+			width: 48px;
+			height: 24px;
+			display: block;
+			line-height: 24px;
+			margin: 0 auto;
+			transition: all 0.3s;
+			color: $--color-text-primary;
+			border: 1px solid transparent;
+			font-weight: $--font-weight-secondary;
+
+			&:hover {
+				color: $--color-primary;
+			}
+		}
+
+		&.current:not(.disabled) .cell {
+			border-radius: 2px;
+			border: 1px solid $--color-primary;
+			color: $--color-primary;
+			box-shadow: $--box-shadow-border;
+		}
+	}
+}

@@ -1,0 +1,36 @@
+@import "../common/mixin.scss";
+@import "../common/utils.scss";
+@import "./picker.scss";
+@import "./date-picker.scss";
+
+.time-select {
+	margin: 5px 0;
+	min-width: 0;
+}
+
+.time-select .tu-picker-panel__content {
+	margin: 0;
+	max-height: 198px;
+}
+
+.time-select-item {
+	padding: 8px 10px;
+	font-size: 14px;
+	line-height: 20px;
+	transition: all 0.3s ease;
+	color: $--color-text-primary;
+}
+
+.time-select-item.selected:not(.disabled) {
+	color: $--color-primary;
+}
+
+.time-select-item:hover:not(.disabled) {
+	background: rgba($--color-text-primary, 0.25);
+	cursor: pointer;
+}
+
+.time-select-item.disabled {
+	color: $--color-greyLight-3;
+	cursor: not-allowed;
+}
