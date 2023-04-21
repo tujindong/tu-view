@@ -38,7 +38,7 @@ export default {
     aside {
       position: fixed;
       top: 5vh;
-      width: 160px;
+      width: 180px;
       height: 90vh;
     }
     section {

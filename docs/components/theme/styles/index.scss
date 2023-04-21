@@ -1,4 +1,8 @@
-$--color-background: #e4ebf5 !important;
+// $--color-background: #e4ebf5 !important;
+$--color-background: #282c34 !important;
+$--box-shadow-concave: inset 2px 2px 5px #0c0d0f, inset -2px -2px 5px #4e4e4e; //凹
+$--box-shadow-convex: 3px 3px 6px #1f2124, -2px -2px 5px #5a5a5a; //凸
 
 $--font-path: "~tu-view/packages/style/components/fonts/";
-@import "~tu-view/packages/style/index";
+// @import "~tu-view/packages/style/index";
+@import "../../../../packages/style/index.scss";

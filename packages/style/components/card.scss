@@ -8,8 +8,7 @@
 	box-shadow: $--box-shadow-convex;
 
 	&:hover {
-		box-shadow: 3px 3px 6px $--color-greyLight-2, -2px -2px 5px $--color-white,
-			inset 3px 3px 6px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+		box-shadow: $--box-shadow-border;
 	}
 
 	@include e(header) {

@@ -112,7 +112,7 @@
 
 	@include when(checked) {
 		@include e(inner) {
-			box-shadow: inset 2px 2px 4px $--color-greyLight-2, inset -2px -2px 5px $--color-white;
+			box-shadow: $--box-shadow-concave;
 
 			&::after {
 				background: $--color-primary;

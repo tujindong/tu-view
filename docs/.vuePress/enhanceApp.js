@@ -1,9 +1,9 @@
 //prod
 import TuView from "tu-view";
-import "../components/theme/styles/index.scss";
 //dev
 // import TuView from "../../lib/tuview.js";
-// import "../../lib/styles/tuview.css";
+
+import "../components/theme/styles/index.scss";
 import "../guide-style/index.scss";
 import icon from "./icon.json";
 
