@@ -20,7 +20,7 @@ function compile() {
 
 // 拷贝字体文件
 function copyfont() {
-	return gulp.src("../packages/style/fonts/**").pipe(gulp.dest("../lib/styles/fonts"));
+	return gulp.src("../packages/style/components/fonts/**").pipe(gulp.dest("../lib/styles/fonts"));
 }
 
 gulp.task("default", gulp.series(compile, copyfont));

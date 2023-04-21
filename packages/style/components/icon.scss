@@ -1,10 +1,9 @@
 @import "../common/animation.scss";
 @font-face {
 	font-family: "tu-icons";
-	src:
-        /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/ url("#{$--font-path}/iconfont.woff")
-			format("truetype"),
-		/* chrome, firefox */ url("#{$--font-path}/iconfont.ttf") format("woff");
+	src: url("#{$--font-path}/iconfont.woff") format("truetype"),
+		url("#{$--font-path}/iconfont.ttf") format("woff");
+
 	font-weight: normal;
 	font-style: normal;
 }

@@ -1,7 +1,6 @@
 <template>
   <transition-group
     tag="div"
-    name="tu-cascader-menu"
     :class="['tu-cascader-panel', border && 'is-bordered']"
     @keydown="handleKeyDown"
   >

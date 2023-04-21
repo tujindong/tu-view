@@ -1,4 +1,4 @@
-import { addClass, removeClass } from "@packages/src/utils/dom";
+import { addClass, removeClass } from "../utils/dom";
 
 const Transition = {
 	beforeEnter(el) {

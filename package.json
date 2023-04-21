@@ -1,6 +1,6 @@
 {
   "name": "tu-view",
-  "version": "0.1.19",
+  "version": "0.1.21",
   "description": "一款有触觉的UI组件",
   "main": "lib/tuview.js",
   "scripts": {
@@ -28,6 +28,10 @@
     "ui",
     "vue",
     "components"
+  ],
+  "files": [
+    "lib",
+    "packages"
   ],
   "author": "tuu",
   "license": "MIT",
@@ -64,7 +68,7 @@
     "postcss-pxtorem": "^4.0.1",
     "sass-loader": "^5.0.1",
     "style-loader": "^1.0.1",
-    "tu-view": "^0.1.19",
+    "tu-view": "^0.1.21",
     "url-loader": "^3.0.0",
     "vue-loader": "^15.7.2",
     "vue-template-compiler": "^2.6.10",

@@ -1,6 +1,6 @@
 <template>
   <div class="panel-container">
-    <tu-card title="Built-in Themes">
+    <tu-card title="Themes">
       <tu-row :gutter="10">
         <tu-col :span="12">
           <span>Default</span>
@@ -10,12 +10,15 @@
         </tu-col>
       </tu-row>
     </tu-card>
-    <tu-card style="margin-top: 30px" title="Custom Theme"></tu-card>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style lang="scss" scoped>

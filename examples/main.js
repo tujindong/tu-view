@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import tuview from "../packages/tuview";
-import "./theme-dark.scss";
+import "./cus-theme.scss";
 
 Vue.use(tuview.install);
 

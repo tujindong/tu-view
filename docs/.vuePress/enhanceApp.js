@@ -1,11 +1,9 @@
-/************************* 部署用start ***********************/
-//线上部署打开以下内容
-// import "tu-view/lib/tuview.css";
-// import TuView from "tu-view";
-//开发环境使用
-import TuView from "../../lib/tuview.js";
-import "../../lib/styles/tuview.css";
-/************************* 部署用end ***********************/
+//prod
+import TuView from "tu-view";
+import "../components/theme/styles/index.scss";
+//dev
+// import TuView from "../../lib/tuview.js";
+// import "../../lib/styles/tuview.css";
 import "../guide-style/index.scss";
 import icon from "./icon.json";
 

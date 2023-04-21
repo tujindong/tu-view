@@ -22,6 +22,7 @@ module.exports = {
 			"/guide/zh-CN/": [
 				["", "快速开始"],
 				["../zh-CN/locale.md", "国际化"],
+				["../zh-CN/theme.md", "自定义主题"],
 				{
 					title: "基础组件",
 					collapsable: false,

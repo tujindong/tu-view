@@ -1,5 +1,5 @@
 import Vue from "vue";
-import { isString, isObject } from "@packages/src/utils/types";
+import { isString, isObject } from "./types";
 
 const hasOwnProperty = Object.prototype.hasOwnProperty;
 

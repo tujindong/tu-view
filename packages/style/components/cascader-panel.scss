@@ -13,6 +13,7 @@
 @include b(cascader-menu) {
 	width: 100%;
 	min-width: 180px;
+	height: 100%;
 	box-sizing: border-box;
 	color: $--cascader-menu-font-color;
 	border-right: solid 1px rgba($--color-greyLight-3, 0.38);
@@ -27,7 +28,6 @@
 	@include e(wrap) {
 		min-height: 56px;
 		max-height: 212px;
-		height: calc(100% + 17px);
 	}
 
 	@include e(list) {

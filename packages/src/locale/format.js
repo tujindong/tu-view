@@ -1,4 +1,4 @@
-import { hasOwn } from '@packages/src/utils/util';
+import { hasOwn } from "../utils/util";
 
 const RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g;
 /**
@@ -7,40 +7,38 @@ const RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g;
  *    https://github.com/Matt-Esch/string-template/index.js
  */
 export default function (Vue) {
+	/**
+	 * template
+	 *
+	 * @param {String} string
+	 * @param {Array} ...args
+	 * @return {String}
+	 */
 
-    /**
-     * template
-     *
-     * @param {String} string
-     * @param {Array} ...args
-     * @return {String}
-     */
+	function template(string, ...args) {
+		if (args.length === 1 && typeof args[0] === "object") {
+			args = args[0];
+		}
 
-    function template(string, ...args) {
-        if (args.length === 1 && typeof args[0] === 'object') {
-            args = args[0];
-        }
+		if (!args || !args.hasOwnProperty) {
+			args = {};
+		}
 
-        if (!args || !args.hasOwnProperty) {
-            args = {};
-        }
+		return string.replace(RE_NARGS, (match, prefix, i, index) => {
+			let result;
 
-        return string.replace(RE_NARGS, (match, prefix, i, index) => {
-            let result;
+			if (string[index - 1] === "{" && string[index + match.length] === "}") {
+				return i;
+			} else {
+				result = hasOwn(args, i) ? args[i] : null;
+				if (result === null || result === undefined) {
+					return "";
+				}
 
-            if (string[index - 1] === '{' &&
-                string[index + match.length] === '}') {
-                return i;
-            } else {
-                result = hasOwn(args, i) ? args[i] : null;
-                if (result === null || result === undefined) {
-                    return '';
-                }
+				return result;
+			}
+		});
+	}
 
-                return result;
-            }
-        });
-    }
-
-    return template;
+	return template;
 }
