@@ -49,7 +49,7 @@
 
 	[disabled] {
 		cursor: not-allowed;
-		color: $--color-greyLight-3;
+		color: $--color-text-disabled;
 	}
 }
 
@@ -101,7 +101,7 @@
 
 		@include when(disabled) {
 			cursor: not-allowed;
-			color: $--color-greyLight-3;
+			color: $--color-text-disabled;
 		}
 	}
 

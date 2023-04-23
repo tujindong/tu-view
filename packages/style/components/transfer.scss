@@ -16,10 +16,10 @@
 		color: $--color-text-primary;
 
 		@include when(disabled) {
-			color: $--color-greyLight-3;
+			color: $--color-text-disabled;
 
 			&:hover {
-				color: $--color-greyLight-3;
+				color: $--color-text-disabled;
 			}
 		}
 
@@ -120,7 +120,7 @@
 		line-height: $--transfer-panel-header-height;
 		margin: 0;
 		padding-left: 15px;
-		border-bottom: 1px solid rgba($--color-greyLight-3, 0.38);
+		border-bottom: 1px solid rgba($--color-text-disabled, 0.38);
 		box-sizing: border-box;
 		color: $--color-black;
 
@@ -129,7 +129,7 @@
 				span {
 					position: absolute;
 					right: 15px;
-					color: $--color-greyLight-3;
+					color: $--color-text-disabled;
 					font-size: 12px;
 					font-weight: normal;
 				}
@@ -141,7 +141,7 @@
 		height: $--transfer-panel-footer-height;
 		margin: 0;
 		padding: 0;
-		border-top: 1px solid rgba($--color-greyLight-3, 0.38);
+		border-top: 1px solid rgba($--color-text-disabled, 0.38);
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -155,7 +155,7 @@
 		height: $--transfer-item-height;
 		line-height: $--transfer-item-height;
 		padding: 6px 15px 0;
-		color: $--color-greyLight-3;
+		color: $--color-text-disabled;
 		text-align: center;
 	}
 }

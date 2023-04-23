@@ -15,7 +15,7 @@
 	@include e(tip) {
 		font-size: 12px;
 		margin-top: 7px;
-		color: $--color-text-regular;
+		color: $--color-text-primary;
 	}
 
 	iframe {
@@ -243,7 +243,7 @@
 		right: 10px;
 		top: 0;
 		font-size: 12px;
-		color: $--color-text-regular;
+		color: $--color-text-primary;
 		display: none;
 
 		&:hover {
@@ -464,7 +464,7 @@
 				height: 18px;
 				font-size: 18px;
 				line-height: 18px;
-				color: $--color-text-regular;
+				color: $--color-text-primary;
 			}
 		}
 

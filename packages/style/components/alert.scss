@@ -16,7 +16,7 @@
 
 	@include when(light) {
 		.tu-alert__closebtn {
-			color: $--color-text-regular;
+			color: $--color-text-primary;
 		}
 	}
 
@@ -43,10 +43,10 @@
 		}
 
 		&.is-dark {
-			color: $--color-text-regular;
+			color: $--color-text-primary;
 
 			.tu-alert__closebtn {
-				color: $--color-text-regular;
+				color: $--color-text-primary;
 			}
 		}
 	}

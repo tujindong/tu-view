@@ -50,7 +50,7 @@
 		padding: 16px;
 
 		@include when(left) {
-			border-right: 1px solid rgba($--color-greyLight-3, 0.38);
+			border-right: 1px solid rgba($--color-text-disabled, 0.38);
 		}
 		.tu-date-range-picker__header {
 			div {

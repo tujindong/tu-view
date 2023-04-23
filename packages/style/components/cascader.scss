@@ -30,7 +30,7 @@
 		}
 
 		.tu-icon-close-circle-fill:hover {
-			color: $--color-text-primary;
+			color: $--color-primary;
 		}
 
 		@include when(focus) {
@@ -43,7 +43,7 @@
 	@include when(disabled) {
 		.tu-cascader__label {
 			z-index: #{$--index-normal + 1};
-			color: $--color-greyLight-3;
+			color: $--color-text-disabled;
 		}
 	}
 
@@ -97,7 +97,7 @@
 
 		&:hover,
 		&:focus {
-			background-color: rgba($--color-greyLight-2, 0.38);
+			background-color: $--color-hover-background;
 		}
 
 		&.is-checked {
@@ -129,7 +129,7 @@
 		font-size: $--font-size-base;
 
 		&::placeholder {
-			color: $--color-greyLight-3;
+			color: $--color-text-disabled;
 		}
 	}
 }

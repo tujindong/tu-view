@@ -92,13 +92,13 @@
 			&:focus,
 			&:active {
 				&::after {
-					background: $--color-greyLight-3;
+					background: $--color-text-disabled;
 				}
 			}
 		}
 
 		@include e(label) {
-			color: $--color-greyLight-3;
+			color: $--color-text-disabled;
 		}
 
 		@include when(checked) {

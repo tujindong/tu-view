@@ -31,7 +31,7 @@
 		width: $--input-height;
 		height: 100%;
 		background: transparent;
-		color: $--color-text-primary;
+		color: $--color-text-placeholder;
 		cursor: pointer;
 		font-size: 13px;
 		transition: all 0.3s ease;
@@ -42,7 +42,7 @@
 		}
 
 		@include when(disabled) {
-			color: $--color-greyLight-3;
+			color: $--color-text-disabled;
 			cursor: not-allowed;
 		}
 	}
@@ -57,10 +57,10 @@
 
 	@include when(disabled) {
 		@include e((increase, decrease)) {
-			color: $--color-greyLight-3;
+			color: $--color-text-disabled;
 
 			&:hover {
-				color: $--color-greyLight-3;
+				color: $--color-text-disabled;
 				cursor: not-allowed;
 			}
 		}

@@ -62,7 +62,7 @@
 			}
 
 			&::after {
-				background-color: $--color-greyLight-3;
+				background-color: $--color-text-disabled;
 			}
 		}
 	}
@@ -148,7 +148,7 @@
 			&::after {
 				left: 100%;
 				margin-left: -$--switch-button-size - $--switch-button-padding;
-				background: $--color-greyLight-1;
+				background: $--color-white;
 				box-shadow: 1px 1px 3px $--color-primary-dark, -2px -2px 4px $--color-primary;
 			}
 		}

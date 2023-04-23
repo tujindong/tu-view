@@ -468,7 +468,7 @@
 			transition: border-color 0.3s;
 
 			&:hover {
-				border-bottom-color: $--color-text-regular;
+				border-bottom-color: $--color-text-primary;
 			}
 		}
 
@@ -478,7 +478,7 @@
 			transition: border-color 0.3s;
 
 			&:hover {
-				border-top-color: $--color-text-regular;
+				border-top-color: $--color-text-primary;
 			}
 		}
 	}
@@ -553,7 +553,7 @@
 		margin-left: 2px;
 
 		& i {
-			color: $--color-text-regular;
+			color: $--color-text-primary;
 			font-size: 12px;
 			transition: color 0.3s;
 

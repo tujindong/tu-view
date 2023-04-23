@@ -27,7 +27,7 @@
 				background: linear-gradient(
 					-1deg,
 					$--color-greyDark 0%,
-					$--color-greyLight-3 50%,
+					$--color-text-disabled 50%,
 					$--color-greyLight-2 100%
 				);
 			}
@@ -133,7 +133,7 @@
 		border-radius: 50%;
 		transition: 0.2s;
 		user-select: none;
-		box-shadow: 0 1px 3px 0px $--color-greyLight-2;
+		box-shadow: 0 1px 3px 0px $--color-box-shadow-dark;
 
 		&::after {
 			content: "";
@@ -141,7 +141,7 @@
 			width: 8px;
 			height: 8px;
 			border-radius: 50%;
-			box-shadow: inset 1px 1px 4px $--color-greyLight-1, inset -2px -2px 5px $--color-white;
+			box-shadow: $--box-shadow-concave;
 			margin: auto;
 			top: 50%;
 			left: 50%;

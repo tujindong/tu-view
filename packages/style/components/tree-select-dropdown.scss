@@ -22,7 +22,7 @@
 		.tu-tree-node {
 			&:focus {
 				> .tu-tree-node__content:not(.is-disabled) {
-					background: rgba($--color-greyDark, 0.25);
+					background: $--color-hover-background;
 				}
 			}
 			.tu-tree-node__content {
@@ -33,7 +33,7 @@
 				}
 				&:hover:not(.is-disabled),
 				&:focus:not(.is-disabled) {
-					background: rgba($--color-greyDark, 0.25);
+					background: $--color-hover-background;
 					color: $--color-text-primary;
 				}
 				&.is-disabled {

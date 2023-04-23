@@ -23,7 +23,7 @@
 	}
 
 	@include e(footer) {
-		border-top: 1px solid rgba($--color-greyLight-3, 0.38);
+		border-top: 1px solid rgba($--color-text-disabled, 0.38);
 		text-align: right;
 		padding: 4px;
 		text-align: right;
@@ -104,7 +104,7 @@
 	top: 0;
 	bottom: 0;
 	width: 80px;
-	border-right: 1px solid rgba($--color-greyLight-3, 0.38);
+	border-right: 1px solid rgba($--color-text-disabled, 0.38);
 	box-sizing: border-box;
 	padding-top: 6px;
 	overflow: auto;

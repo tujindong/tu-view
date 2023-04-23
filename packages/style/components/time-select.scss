@@ -26,11 +26,11 @@
 }
 
 .time-select-item:hover:not(.disabled) {
-	background: rgba($--color-text-primary, 0.25);
+	background: $--color-hover-background;
 	cursor: pointer;
 }
 
 .time-select-item.disabled {
-	color: $--color-greyLight-3;
+	color: $--color-text-disabled;
 	cursor: not-allowed;
 }

@@ -19,7 +19,7 @@
 			color: $--select-option-selected-font-color;
 
 			&.hover {
-				background: rgba($--color-greyDark, 0.25);
+				background: $--color-hover-background;
 			}
 
 			&::after {

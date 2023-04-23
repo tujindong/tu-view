@@ -49,6 +49,10 @@
 		margin: 0;
 		color: $--pagination-button-color;
 
+		&:hover:not(:disabled) .tu-icon {
+			color: $--color-primary;
+		}
+
 		.tu-icon {
 			position: relative;
 		}
@@ -200,7 +204,7 @@
 			border-radius: 2px;
 			box-shadow: $--box-shadow-convex;
 			&.disabled {
-				color: $--color-greyLight-3;
+				color: $--color-text-disabled;
 			}
 		}
 
@@ -209,7 +213,7 @@
 			padding: 0;
 
 			&:disabled {
-				color: $--color-greyLight-3;
+				color: $--color-text-disabled;
 			}
 		}
 

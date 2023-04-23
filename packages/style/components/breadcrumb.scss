@@ -21,7 +21,7 @@
 		float: left;
 
 		@include e(inner) {
-			color: $--color-text-regular;
+			color: $--color-text-primary;
 
 			&.is-link,
 			& a {
@@ -43,7 +43,7 @@
 				&,
 				&:hover {
 					font-weight: normal;
-					color: $--color-text-regular;
+					color: $--color-text-primary;
 					cursor: text;
 				}
 			}

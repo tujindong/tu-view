@@ -29,7 +29,7 @@
 			}
 
 			.tu-time-spinner__item:hover:not(.disabled):not(.active) {
-				background: rgba($--color-greyLight-3, 0.38);
+				background: $--color-hover-background;
 				cursor: default;
 			}
 		}
@@ -44,7 +44,7 @@
 		text-align: center;
 		height: 30px;
 		line-height: 30px;
-		color: $--color-greyLight-3;
+		color: $--color-text-disabled;
 		cursor: pointer;
 		transition: all 0.3s;
 
@@ -95,7 +95,7 @@
 		transition: all 0.3s;
 
 		&:hover:not(.disabled):not(.active) {
-			background: rgba($--color-greyLight-3, 0.38);
+			background: $--color-hover-background;
 			cursor: pointer;
 		}
 
@@ -104,7 +104,7 @@
 		}
 
 		&.disabled {
-			color: $--color-greyLight-3;
+			color: $--color-text-disabled;
 			cursor: not-allowed;
 		}
 	}

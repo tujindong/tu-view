@@ -16,7 +16,7 @@
 				line-height: 40px;
 				height: 100%;
 				font-size: 12px;
-				color: $--color-greyLight-3;
+				color: $--color-text-disabled;
 				z-index: #{$--index-normal + 2};
 
 				&:hover {
@@ -64,7 +64,7 @@
 							text-align: center;
 							transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 							margin-left: 5px;
-							color: $--color-greyLight-3;
+							color: $--color-text-disabled;
 							font-size: 12px;
 
 							&:hover {
@@ -98,7 +98,7 @@
 			font-size: 16px;
 			cursor: pointer;
 			transition: all 0.15s;
-			color: $--color-greyLight-3;
+			color: $--color-text-disabled;
 			margin: 12px;
 
 			&:hover {
@@ -119,11 +119,11 @@
 		@include e(header) {
 			@include e(nav-wrap) {
 				@include e(nav-next) {
-					box-shadow: -6px -1px 6px -3px $--color-greyLight-3;
+					box-shadow: -6px -1px 6px -3px $--color-text-disabled;
 				}
 
 				@include e(nav-prev) {
-					box-shadow: 6px -1px 6px -3px $--color-greyLight-3;
+					box-shadow: 6px -1px 6px -3px $--color-text-disabled;
 				}
 
 				&::after {

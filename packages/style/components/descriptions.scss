@@ -18,7 +18,7 @@
 	}
 
 	@include e(body) {
-		color: $--color-text-regular;
+		color: $--color-text-primary;
 
 		tr,
 		th,
@@ -130,7 +130,7 @@
 	}
 
 	@include e(label) {
-		color: $--color-text-regular;
+		color: $--color-text-primary;
 		&.has-colon {
 			&::after {
 				content: ":";

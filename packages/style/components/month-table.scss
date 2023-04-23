@@ -57,7 +57,9 @@
 		}
 
 		&.in-range div {
-			background-color: rgba($--color-greyLight-2, 0.38);
+			> a {
+				box-shadow: $--box-shadow-border;
+			}
 		}
 
 		&.start-date div .cell,

@@ -7,8 +7,6 @@
             class="theme-item"
             :style="{
               backgroundColor: theme.backgroundColor,
-              borderColor: theme.borderColor,
-              boxShadow: theme.shadow,
             }"
           >
             <span class="name">{{ theme.name }}</span>
@@ -30,14 +28,12 @@ export default {
           backgroundColor: "#e4ebf5",
           primaryColor: "#6d5dfc",
           textColor: "#8394be",
-          borderColor: "#c8d0e7",
         },
         {
           name: "Dark",
           backgroundColor: "#282c34",
           primaryColor: "#6d5dfc",
           textColor: "#8394be",
-          borderColor: "#0c0d0f",
         },
       ],
     };
@@ -53,7 +49,6 @@ export default {
     line-height: 28px;
     padding-left: 18px;
     border-radius: 4px;
-    border: 1px solid;
     cursor: pointer;
     > i {
       position: absolute;

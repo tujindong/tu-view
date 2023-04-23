@@ -250,7 +250,7 @@
 		&.is-disabled:focus {
 			cursor: not-allowed;
 			border-color: transparent;
-			color: $--color-greyLight-3;
+			color: $--color-text-disabled;
 		}
 	}
 

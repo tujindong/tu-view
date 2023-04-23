@@ -60,7 +60,7 @@
 	}
 
 	&::-webkit-scrollbar-thumb {
-		background-color: $--color-greyLight-2;
+		background-color: $--color-scrollbar-color;
 		background-clip: padding-box;
 		-webkit-border-radius: 4px;
 		-moz-border-radius: 4px;
@@ -69,12 +69,12 @@
 		z-index: 100;
 
 		&:hover {
-			background-color: $--color-greyLight-3;
+			background-color: $--color-scrollbar-color-hover;
 			cursor: pointer;
 		}
 	}
 
 	//firfox
 	scrollbar-width: thin; // 默认值
-	scrollbar-color: $--color-greyLight-2 transparent;
+	scrollbar-color: $--color-scrollbar-color transparent;
 }
