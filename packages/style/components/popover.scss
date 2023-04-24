@@ -39,4 +39,9 @@
 	&:focus {
 		outline-width: 0;
 	}
+
+	div,
+	p {
+		color: $--color-text-primary;
+	}
 }

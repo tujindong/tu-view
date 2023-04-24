@@ -7,7 +7,9 @@
             class="theme-item"
             :style="{
               backgroundColor: theme.backgroundColor,
+              borderColor: theme.primaryColor,
             }"
+            @click="handleThemeChange(theme)"
           >
             <span class="name">{{ theme.name }}</span>
             <i :style="{ backgroundColor: theme.primaryColor }"></i>
@@ -32,11 +34,23 @@ export default {
         {
           name: "Dark",
           backgroundColor: "#282c34",
-          primaryColor: "#6d5dfc",
-          textColor: "#8394be",
+          primaryColor: "#9a5dfc",
+          textColor: "#d8d8d8",
         },
       ],
     };
+  },
+
+  methods: {
+    handleThemeChange(theme) {
+      console.log("theme", theme);
+      const head = document.getElementsByTagName("head")[0];
+      const link = document.createElement("link");
+      link.type = "text/css";
+      link.rel = "stylesheet";
+      link.href = "";
+      head.appendChild(link);
+    },
   },
 };
 </script>
@@ -47,17 +61,10 @@ export default {
     position: relative;
     height: 28px;
     line-height: 28px;
-    padding-left: 18px;
+    padding: 0 8px;
     border-radius: 4px;
+    border: 1px solid;
     cursor: pointer;
-    > i {
-      position: absolute;
-      left: 6px;
-      top: 10px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-    }
   }
 }
 </style>

@@ -1,8 +1,10 @@
 module.exports = {
 	title: "Tu-view",
 	description: "一款有触觉的UI组件库",
-	base: "/tu-view/", //打包时候打开
+	base: "/tu-view/",
 	themeConfig: {
+		background: `#e4ebf5`,
+		github: "tujindong",
 		search: true,
 		nav: [
 			{ text: "指南", link: "/guide/zh-CN/" },

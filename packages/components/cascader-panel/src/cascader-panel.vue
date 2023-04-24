@@ -3,6 +3,7 @@
     tag="div"
     :class="['tu-cascader-panel', border && 'is-bordered']"
     @keydown="handleKeyDown"
+    name="tu-cascader-menu"
   >
     <cascader-menu
       ref="menu"

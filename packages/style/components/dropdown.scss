@@ -76,7 +76,7 @@
 		transition: all 0.3s;
 		&:not(.is-disabled):hover,
 		&:focus {
-			background-color: rgba($--color-greyLight-2, 0.38);
+			background-color: $--color-hover-background;
 			color: $--color-primary;
 		}
 

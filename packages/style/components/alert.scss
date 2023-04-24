@@ -17,12 +17,18 @@
 	@include when(light) {
 		.tu-alert__closebtn {
 			color: $--color-text-primary;
+			&:hover {
+				color: $--color-primary;
+			}
 		}
 	}
 
 	@include when(dark) {
 		.tu-alert__closebtn {
 			color: $--color-white;
+			&:hover {
+				color: $--color-primary;
+			}
 		}
 		.tu-alert__description {
 			color: $--color-white;
@@ -146,15 +152,14 @@
 
 	@include e(closebtn) {
 		font-size: $--alert-close-font-size;
-		opacity: 1;
 		position: absolute;
 		top: 12px;
 		right: 15px;
 		cursor: pointer;
-		transition: opacity 0.3s;
+		transition: color 0.3s;
 
 		&:hover {
-			opacity: 0.8;
+			color: $--color-primary;
 		}
 
 		@include when(customed) {

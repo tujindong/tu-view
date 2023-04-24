@@ -1,6 +1,8 @@
 $--font-path: "~tu-view/packages/style/components/fonts/";
 $--color-background: #e4ebf5 !important;
-// @import "./dark.scss";
 
 // @import "~tu-view/packages/style/index";
+
+// @import "./Dark.scss";
+@import "./Positive.scss";
 @import "../../../../packages/style/index.scss";

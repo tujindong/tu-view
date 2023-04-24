@@ -35,13 +35,13 @@ export default {
     min-width: 1240px;
     height: 100%;
     margin: 0 auto;
-    aside {
+    > aside {
       position: fixed;
       top: 5vh;
-      width: 160px;
+      width: 180px;
       height: 90vh;
     }
-    section {
+    > section {
       margin-left: 200px;
       padding: 5vh 16px;
     }
