@@ -2,7 +2,7 @@
   <div class="theme-container">
     <main>
       <aside>
-        <config-panel></config-panel>
+        <config-panel @themeChange="handleThemeChange"></config-panel>
       </aside>
       <section>
         <components-preview></components-preview>
@@ -17,19 +17,42 @@ import ComponentsPreview from "./components-preview";
 export default {
   name: "theme",
 
-  components: { ConfigPanel, ComponentsPreview },
+  components: {
+    ConfigPanel,
+    ComponentsPreview,
+  },
 
   props: {},
 
   data() {
-    return {};
+    return {
+      themeName: "default",
+    };
+  },
+
+  computed: {},
+
+  mounted() {},
+
+  methods: {
+    handleThemeChange(theme) {
+      Object.keys(theme.style).forEach((key) => {
+        document
+          .getElementsByTagName("body")[0]
+          .style.setProperty(key.replace(/\$/g, ""), theme.style[key]);
+      });
+    },
   },
 };
 </script>
 
 <style lang="scss">
+@import "./styles/index.scss";
+body {
+  height: auto;
+  transition: all 0.2s;
+}
 .theme-container {
-  height: 100vh;
   main {
     width: 1240px;
     min-width: 1240px;

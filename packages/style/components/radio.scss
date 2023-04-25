@@ -104,7 +104,7 @@
 		@include when(checked) {
 			@include e(inner) {
 				&::after {
-					background: mix($--color-primary, $--color-white, 60%);
+					background: $--color-primary-light;
 				}
 			}
 		}

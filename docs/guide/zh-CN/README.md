@@ -13,11 +13,11 @@ npm i tu-view
 ```javascript
 // 全部引入
 import TuView from "tu-view";
-import "tu-view/lib/tuview.css";
+import "tu-view/lib/styles/tuview.css";
 Vue.use(TuView);
 
 // 按需引入
 import Button from "tu-view/lib/packages/button";
-import "tu-view/lib/packages/button/style.css";
+import "tu-view/lib/styles/tuview.css";
 Vue.use(Button);
 ```

@@ -113,7 +113,7 @@
 		@include when(checked) {
 			@include e(inner) {
 				&::after {
-					border-color: mix($--color-primary, $--color-white, 60%);
+					border-color: $--color-primary-light;
 				}
 			}
 		}

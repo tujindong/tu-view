@@ -3,7 +3,7 @@ import TuView from "tu-view";
 //dev
 // import TuView from "../../lib/tuview.js";
 
-import "../components/theme/styles/index.scss";
+import "tu-view/lib/styles/tuview.css";
 import "../guide-style/index.scss";
 import icon from "./icon.json";
 

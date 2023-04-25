@@ -2,17 +2,16 @@
   <div class="panel-container">
     <tu-card title="Themes">
       <tu-row :gutter="10">
-        <tu-col :span="12" v-for="(theme, tIndex) in themes" :key="tIndex">
+        <tu-col :span="12" v-for="(theme, tIndex) in themeList" :key="tIndex">
           <div
             class="theme-item"
             :style="{
-              backgroundColor: theme.backgroundColor,
-              borderColor: theme.primaryColor,
+              backgroundColor: theme.style['$--color-background'],
+              borderColor: theme.style['$--color-primary'],
             }"
             @click="handleThemeChange(theme)"
           >
             <span class="name">{{ theme.name }}</span>
-            <i :style="{ backgroundColor: theme.primaryColor }"></i>
           </div>
         </tu-col>
       </tu-row>
@@ -21,35 +20,27 @@
 </template>
 
 <script>
+import { themes } from "./styles/theme-config";
 export default {
   data() {
-    return {
-      themes: [
-        {
-          name: "Default",
-          backgroundColor: "#e4ebf5",
-          primaryColor: "#6d5dfc",
-          textColor: "#8394be",
-        },
-        {
-          name: "Dark",
-          backgroundColor: "#282c34",
-          primaryColor: "#9a5dfc",
-          textColor: "#d8d8d8",
-        },
-      ],
-    };
+    return {};
+  },
+
+  computed: {
+    themeList() {
+      const themeList = Object.keys(themes).map((val) => {
+        return {
+          name: val,
+          style: themes[val],
+        };
+      });
+      return themeList;
+    },
   },
 
   methods: {
     handleThemeChange(theme) {
-      console.log("theme", theme);
-      const head = document.getElementsByTagName("head")[0];
-      const link = document.createElement("link");
-      link.type = "text/css";
-      link.rel = "stylesheet";
-      link.href = "";
-      head.appendChild(link);
+      this.$emit("themeChange", theme);
     },
   },
 };

@@ -58,7 +58,7 @@
 			cursor: not-allowed;
 
 			&::before {
-				background: mix($--color-primary, $--color-white, 80%);
+				background: $--color-primary-light;
 			}
 
 			&::after {

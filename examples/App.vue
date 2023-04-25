@@ -1,9 +1,23 @@
 <template>
   <div>
-    <Theme />
-    <!-- <tu-clock> </tu-clock> -->
-    <tu-cascader v-model="value" :options="options"></tu-cascader>
-
+    <!-- <Theme /> -->
+    <h2>css变量</h2>
+    <div class="box"></div>
+    <button @click="changeTheme('dark')">Dark</button>
+    <button @click="changeTheme('pink')">Pink</button>
+    <br />
+    <br />
+    <h2>Scss变量</h2>
+    <div class="header" @click="changeThemeScss">
+      <div class="header-left">
+        <slot name="left">左边</slot>
+      </div>
+      <slot name="center" class="">中间</slot>
+      <div class="header-right">
+        <slot name="right">右边</slot>
+      </div>
+    </div>
+    测试自定义主题
     <div style="height: 500px"></div>
   </div>
 </template>
@@ -16,143 +30,26 @@ export default {
   },
 
   data() {
-    return {
-      value: [],
-      options: [
-        {
-          value: "1",
-          label: "上海",
-          children: [
-            {
-              value: "1-1",
-              label: "普陀区",
-            },
-            {
-              value: "1-2",
-              label: "黄埔区",
-            },
-            {
-              value: "1-3",
-              label: "徐汇区",
-            },
-          ],
-        },
-        {
-          value: "2",
-          label: "江苏",
-          children: [
-            {
-              value: "2-1",
-              label: "南京",
-              children: [
-                {
-                  value: "2-1-1",
-                  label: "玄武区",
-                },
-                {
-                  value: "2-1-2",
-                  label: "秦淮区",
-                },
-                {
-                  value: "2-1-3",
-                  label: "建邺区",
-                },
-                {
-                  value: "2-1-4",
-                  label: "鼓楼区",
-                },
-                {
-                  value: "2-1-5",
-                  label: "浦口区",
-                },
-                {
-                  value: "2-1-6",
-                  label: "栖霞区",
-                },
-                {
-                  value: "2-1-7",
-                  label: "雨花台区",
-                },
-                {
-                  value: "2-1-8",
-                  label: "江宁区",
-                },
-                {
-                  value: "2-1-9",
-                  label: "六合区",
-                },
-              ],
-            },
-            {
-              value: "2-2",
-              label: "苏州",
-              children: [
-                {
-                  value: "2-2-1",
-                  label: "姑苏区",
-                },
-                {
-                  value: "2-2-2",
-                  label: "相城区",
-                },
-              ],
-            },
-            {
-              value: "2-3",
-              label: "扬州",
-              children: [
-                {
-                  value: "2-3-1",
-                  label: "江都区",
-                },
-              ],
-            },
-          ],
-        },
-        {
-          value: "3",
-          label: "浙江",
-          children: [
-            {
-              value: "3-1",
-              label: "杭州",
-              children: [
-                {
-                  value: "3-1-1",
-                  label: "西湖区",
-                },
-                {
-                  value: "3-1-2",
-                  label: "上城区",
-                },
-                {
-                  value: "3-1-3",
-                  label: "余杭区",
-                },
-                {
-                  value: "3-1-4",
-                  label: "拱墅区",
-                },
-                {
-                  value: "3-1-5",
-                  label: "滨江区",
-                },
-              ],
-            },
-            {
-              value: "3-2",
-              label: "宁波",
-              children: [
-                {
-                  value: "3-2-1",
-                  label: "海曙区",
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    };
+    return {};
+  },
+
+  methods: {
+    changeTheme(theme) {
+      document.body.className = theme;
+    },
+    changeThemeScss() {
+      document.documentElement.setAttribute("data-theme", "theme1");
+    },
   },
 };
 </script>
+
+<style scoped lang="scss">
+@import "./style.scss";
+.header {
+  width: 100%;
+  height: 100px;
+  font-size: $font_medium;
+  @include bg_color();
+}
+</style>

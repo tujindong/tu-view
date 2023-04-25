@@ -42,7 +42,9 @@ export default {
   },
 
   methods: {
-    handleThemeChange(theme) {},
+    handleThemeChange(theme) {
+      console.log("主题", theme);
+    },
   },
 };
 </script>

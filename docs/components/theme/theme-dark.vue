@@ -1,3 +1,5 @@
+<template></template>
+<style lang="scss">
 $--color-background: #282c34 !important;
 $--color-primary: #9a5dfc;
 $--color-primary-light: #b78aff;
@@ -10,3 +12,5 @@ $--color-text-disabled: #818181;
 $--color-hover-background: rgba(0, 0, 0, 0.18);
 $--color-scrollbar-color: rgba(0, 0, 0, 0.38);
 $--color-scrollbar-color-hover: rgba(0, 0, 0, 0.28);
+@import "./styles/index.scss";
+</style>

@@ -234,13 +234,13 @@
 
 		&:hover,
 		&:focus {
-			color: mix($--color-white, $--color-primary, 20%);
+			color: $--color-primary;
 			border-color: transparent;
 			background-color: transparent;
 		}
 
 		&:active {
-			color: mix($--color-black, $--color-primary, 10%);
+			color: $--color-primary;
 			border-color: transparent;
 			background-color: transparent;
 		}
