@@ -84,7 +84,7 @@
 		}
 
 		@include when(disabled) {
-			color: $--color-greyLight-2;
+			color: $--color-text-disabled;
 
 			&:hover {
 				cursor: not-allowed;

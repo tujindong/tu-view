@@ -12,8 +12,8 @@
 				transition: all 0.3s;
 			}
 			&:hover {
-				div {
-					background-color: rgba($--color-greyLight-2, 0.38);
+				div > span {
+					box-shadow: $--box-shadow-border;
 				}
 				td.available:hover {
 					color: $--color-text-primary;
@@ -26,8 +26,8 @@
 				}
 			}
 
-			&.current div {
-				background-color: rgba($--color-greyLight-2, 0.3);
+			&.current div > span {
+				box-shadow: $--box-shadow-border;
 			}
 		}
 	}
@@ -131,8 +131,8 @@
 			margin-right: 5px;
 		}
 
-		&.disabled div {
-			background-color: rgba($--color-greyLight-2, 0.3);
+		&.disabled div > span {
+			background-color: $--color-hover-background;
 			opacity: 1;
 			cursor: not-allowed;
 		}
@@ -157,6 +157,6 @@
 		padding: 5px;
 		color: $--color-text-primary;
 		font-weight: 400;
-		border-bottom: solid 1px rgba($--color-text-disabled, 0.38);
+		border-bottom: solid 1px $--color-border;
 	}
 }

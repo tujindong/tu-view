@@ -41,7 +41,7 @@
 
 		i {
 			font-size: 28px;
-			color: $--color-greyLight-2;
+			color: $--color-text-placeholder;
 		}
 
 		&:hover {
@@ -140,13 +140,12 @@
 			top: 9px;
 			right: 5px;
 			cursor: pointer;
-			opacity: 0.75;
-			color: $--color-text-primary;
-			transition: all 0.3s;
+			color: $--color-text-placeholder;
+			transition: color 0.3s;
 			z-index: 100;
 
 			&:hover {
-				opacity: 1;
+				color: $--color-primary;
 			}
 		}
 
@@ -457,7 +456,7 @@
 			top: 10px;
 			width: 60px;
 			height: 60px;
-			background: $--background-color-hover;
+			background: $--color-text-placeholder;
 
 			i {
 				width: 18px;

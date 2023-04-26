@@ -1,20 +1,27 @@
 <template>
   <div class="panel-container">
     <tu-card title="Themes">
-      <tu-row :gutter="10">
-        <tu-col :span="12" v-for="(theme, tIndex) in themeList" :key="tIndex">
-          <div
-            class="theme-item"
-            :style="{
-              backgroundColor: theme.style['$--color-background'],
-              borderColor: theme.style['$--color-primary'],
-            }"
-            @click="handleThemeChange(theme)"
-          >
-            <span class="name">{{ theme.name }}</span>
-          </div>
-        </tu-col>
-      </tu-row>
+      <div
+        v-for="(theme, tIndex) in themeList"
+        class="theme-item"
+        @click="handleThemeChange(theme)"
+      >
+        <span
+          class="icon"
+          :style="{ backgroundColor: theme.style['$--color-background'] }"
+        ></span>
+        <span class="name">{{ theme.name }}</span>
+      </div>
+      <div class="theme-config">
+        <div class="config-item" v-for="(style, index) in configStyles">
+          <span class="config-key">{{ style.key }}: </span>
+          <span class="config-value">
+            <i :style="{ color: currentTheme['$--color-primary'] }">
+              {{ style.value }};
+            </i>
+          </span>
+        </div>
+      </div>
     </tu-card>
   </div>
 </template>
@@ -23,23 +30,34 @@
 import { themes } from "./styles/theme-config";
 export default {
   data() {
-    return {};
+    return {
+      currentTheme: themes.default,
+    };
   },
 
   computed: {
     themeList() {
-      const themeList = Object.keys(themes).map((val) => {
+      const themeList = Object.keys(themes).map((key) => {
         return {
-          name: val,
-          style: themes[val],
+          name: key,
+          style: themes[key],
         };
       });
       return themeList;
+    },
+    configStyles() {
+      return Object.keys(this.currentTheme).map((key) => {
+        return {
+          key: key,
+          value: this.currentTheme[key],
+        };
+      });
     },
   },
 
   methods: {
     handleThemeChange(theme) {
+      this.currentTheme = theme.style;
       this.$emit("themeChange", theme);
     },
   },
@@ -49,13 +67,41 @@ export default {
 <style lang="scss" scoped>
 .panel-container {
   .theme-item {
+    display: flex;
+    align-items: center;
     position: relative;
     height: 28px;
     line-height: 28px;
     padding: 0 8px;
     border-radius: 4px;
-    border: 1px solid;
+    margin-bottom: 10px;
     cursor: pointer;
+    .icon {
+      display: inline-block;
+      margin-right: 8px;
+      width: 16px;
+      height: 16px;
+      border-radius: 2px;
+      border: 1px solid;
+    }
+    .name {
+      transition: opacity 0.3s;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  .theme-config {
+    font-size: 13px;
+    margin-top: 20;
+    .config-item {
+      margin-bottom: 10px;
+      .config-value {
+        i {
+          font-style: normal;
+        }
+      }
+    }
   }
 }
 </style>

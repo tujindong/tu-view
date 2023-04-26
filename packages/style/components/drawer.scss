@@ -138,7 +138,7 @@ $directions: rtl, ltr, ttb, btt;
 		font-weight: $--font-weight-bold;
 		display: flex;
 		line-height: 22px;
-		border-bottom: 1px solid $--border-color-base;
+		border-bottom: 1px solid $--color-border;
 		& > :first-child {
 			flex: 1;
 		}

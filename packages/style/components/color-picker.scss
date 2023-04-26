@@ -362,7 +362,7 @@
 
 	@include e(empty) {
 		font-size: 12px;
-		color: $--color-greyLight-2;
+		color: $--color-text-placeholder;
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -386,7 +386,7 @@
 		z-index: 10;
 		padding: 10px;
 		box-sizing: content-box;
-		border: 1px solid $--border-color-lighter;
+		border: 1px solid $--color-border;
 		border-radius: $--border-radius-base;
 	}
 }

@@ -27,7 +27,7 @@
 		}
 
 		&.disabled .cell {
-			background-color: rgba($--color-greyLight-2, 0.3);
+			background-color: $--color-hover-background;
 			cursor: not-allowed;
 		}
 

@@ -32,7 +32,7 @@
 		padding: $--modal-padding-vertical $--modal-padding-horizontal;
 		font-size: $--font-size-base;
 		line-height: 22px;
-		border-bottom: 1px solid $--border-color-base;
+		border-bottom: 1px solid $--color-border;
 		vertical-align: middle;
 	}
 
@@ -83,7 +83,7 @@
 		padding: $--modal-padding-vertical $--modal-padding-horizontal;
 		text-align: right;
 		box-sizing: border-box;
-		border-top: 1px solid $--border-color-base;
+		border-top: 1px solid $--color-border;
 	}
 
 	// 内容居中布局

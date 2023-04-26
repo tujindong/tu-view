@@ -126,23 +126,6 @@
 
       <tu-col :span="12">
         <tu-card>
-          <tu-table :data="tableData" style="width: 100%">
-            <tu-table-column prop="date" label="Date" width="100">
-            </tu-table-column>
-            <tu-table-column prop="name" label="Name" width="96">
-            </tu-table-column>
-            <tu-table-column prop="address" label="Address"> </tu-table-column>
-          </tu-table>
-          <tu-pagination
-            style="margin-top: 20px"
-            button
-            layout="prev, pager, next"
-            :total="1000"
-          >
-          </tu-pagination>
-        </tu-card>
-
-        <tu-card style="margin-top: 30px">
           <tu-row type="flex" justify="space-between">
             <tu-button size="small">Default</tu-button>
             <tu-button size="small" type="primary">Primary</tu-button>
@@ -176,6 +159,23 @@
               </tu-button-group>
             </tu-col>
           </tu-row>
+        </tu-card>
+
+        <tu-card style="margin-top: 30px">
+          <tu-table :data="tableData" style="width: 100%">
+            <tu-table-column prop="date" label="Date" width="100">
+            </tu-table-column>
+            <tu-table-column prop="name" label="Name" width="96">
+            </tu-table-column>
+            <tu-table-column prop="address" label="Address"> </tu-table-column>
+          </tu-table>
+          <tu-pagination
+            style="margin-top: 20px"
+            button
+            layout="prev, pager, next"
+            :total="1000"
+          >
+          </tu-pagination>
         </tu-card>
 
         <tu-card style="margin-top: 30px">

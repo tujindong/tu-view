@@ -15,32 +15,17 @@ $--color-transition-base: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) !defau
 -------------------------- */
 $--color-white: #ffffff !default;
 $--color-black: #000000 !default;
-$--color-greyLight-1: #e4ebf5 !default;
-$--color-greyLight-2: #c8d0e7 !default;
-$--color-greyDark: #9baacf !default;
 $--color-text-primary: #8394be !default;
 $--color-text-secondary: #e4ebf5 !default;
 $--color-text-placeholder: #bec8e4 !default;
 $--color-text-disabled: #c8d0e7 !default;
 $--color-box-shadow-dark: #c8d0e7 !default;
 $--color-box-shadow-light: #ffffff !default;
-$--color-border: #bec8e4 !default;
 $--color-scrollbar-color: #c8d0e7 !default;
 $--color-scrollbar-color-hover: #9baacf !default;
-$--color-hover-background: rgba($--color-text-primary, 0.18) !default;
-
-$--border-color-white: rgba($--color-white, 0.78) !default;
-$--border-color-base: rgba($--color-text-placeholder, 0.38) !default;
-$--border-color-light: rgba($--color-text-placeholder, 0.28) !default;
-$--border-color-lighter: rgba($--color-text-placeholder, 0.18) !default;
-$--border-color-extra-light: rgba($--color-text-placeholder, 0.1) !default;
-
-/* background
--------------------------- */
+$--color-border: rgba(200, 208, 231, 0.3) !default;
+$--color-hover-background: rgba(131, 148, 190, 0.18) !default;
 $--color-background: #e4ebf5 !default;
-$--background-color-hover: rgba($--color-text-placeholder, 0.25) !default;
-$--background-color-hover-light: rgba($--color-text-placeholder, 0.15) !default;
-$--background-color-hover-white: rgba($--color-white, 0.15) !default;
 
 /*primary color*/
 $--color-primary: #6d5dfc !default;
@@ -300,7 +285,7 @@ $--card-large-body-padding-horizontal: 20px !default;
 -------------------------- */
 $--popover-background-color: $--color-white !default;
 $--popover-font-size: $--font-size-base !default;
-$--popover-border-color: $--border-color-light !default;
+$--popover-border-color: $--color-border !default;
 $--popover-arrow-size: 6px !default;
 $--popover-padding: 12px !default;
 $--popover-padding-large: 18px 20px !default;
@@ -483,7 +468,7 @@ $--cascader-color-empty: $--color-text-placeholder !default;
 /* Slider
 -------------------------- */
 $--slider-main-background-color: $--color-primary !default;
-$--slider-runway-background-color: $--border-color-light !default;
+$--slider-runway-background-color: $--color-border !default;
 $--slider-stop-background-color: $--color-white !default;
 $--slider-disable-color: $--color-text-placeholder !default;
 $--slider-margin: 16px 0 !default;
@@ -506,7 +491,7 @@ $--rate-icon-color: $--color-text-placeholder !default;
 
 /* Transfer
 --------------------------*/
-$--transfer-border-color: $--border-color-lighter !default;
+$--transfer-border-color: $--color-border !default;
 $--transfer-border-radius: $--border-radius-base !default;
 $--transfer-panel-width: 200px !default;
 $--transfer-panel-header-height: 40px !default;
@@ -518,7 +503,7 @@ $--transfer-filter-height: 28px !default;
 
 /* Tree
 -------------------------- */
-$--tree-node-hover-background-color: rgba($--color-greyDark, 0.15) !default;
+$--tree-node-hover-background-color: $--color-hover-background !default;
 $--tree-font-color: $--color-text-primary !default;
 $--tree-expand-icon-color: $--color-text-primary !default;
 
@@ -543,10 +528,10 @@ $--modal-padding-vertical: 12px !default;
 
 /* Table
 -------------------------- */
-$--table-border: 1px solid $--border-color-base !default;
+$--table-border: 1px solid $--color-border !default;
 $--table-font-color: $--color-text-primary !default;
 $--table-header-font-color: $--color-text-primary !default;
-$--table-row-hover-background-color: $--color-hover-background;
+$--table-row-hover-background-color: $--color-hover-background !default;
 $--table-current-row-background-color: $--color-white !default;
 $--table-header-background-color: $--color-white !default;
 $--table-fixed-box-shadow: 0 0 10px rgba(0, 0, 0, 0.12) !default;
@@ -555,7 +540,7 @@ $--table-fixed-box-shadow: 0 0 10px rgba(0, 0, 0, 0.12) !default;
 -------------------------- */
 $--popover-background-color: $--color-white !default;
 $--popover-font-size: $--font-size-base !default;
-$--popover-border-color: $--border-color-lighter !default;
+$--popover-border-color: $--color-border !default;
 $--popover-arrow-size: 6px !default;
 $--popover-padding: 12px !default;
 $--popover-padding-large: 18px 20px !default;
@@ -567,7 +552,7 @@ $--popover-title-font-color: $--color-text-primary !default;
 $--timeline-node-size-normal: 12px !default;
 $--timeline-node-size-large: 14px !default;
 $--timeline-node-color: $--color-text-placeholder !default;
-$--timeline-border-color: $--border-color-base !default;
+$--timeline-border-color: $--color-border !default;
 
 /* MessageBox
 -------------------------- */
@@ -582,7 +567,7 @@ $--messagebox-padding-primary: 16px !default;
 $--messagebox-padding-horizontal: 18px !default;
 $--messagebox-padding-vertical: 12px !default;
 $--messagebox-success-color: $--color-success !default;
-$--messagebox-info-color: $--color-greyDark !default;
+$--messagebox-info-color: $--color-text-primary !default;
 $--messagebox-warning-color: $--color-warning !default;
 $--messagebox-danger-color: $--color-danger !default;
 
@@ -600,7 +585,6 @@ $--avatar-small-size: 28px !default;
 /* Calendar
 --------------------------*/
 $--calendar-border: $--table-border !default;
-$--calendar-hover-background-color: $--background-color-hover-white !default;
 $--calendar-cell-width: 85px !default;
 
 /* Alert
@@ -624,7 +608,7 @@ $--notification-width: 330px !default;
 $--notification-padding: 14px 26px 14px 13px !default;
 $--notification-radius: 2px !default;
 $--notification-shadow: $--box-shadow-light !default;
-$--notification-border-color: $--border-color-lighter !default;
+$--notification-border-color: $--color-border !default;
 $--notification-icon-size: 24px !default;
 $--notification-close-font-size: $--message-close-size !default;
 $--notification-group-margin-left: 13px !default;
@@ -633,7 +617,7 @@ $--notification-content-font-size: $--font-size-base !default;
 $--notification-content-color: $--color-text-primary !default;
 $--notification-title-font-size: $--font-size-base !default;
 $--notification-title-color: $--color-text-primary !default;
-$--notification-close-color: $--color-text-secondary !default;
+$--notification-close-color: $--color-text-placeholder !default;
 $--notification-close-hover-color: $--color-primary !default;
 $--notification-success-icon-color: $--color-success !default;
 $--notification-info-icon-color: $--color-info !default;
@@ -644,17 +628,17 @@ $--notification-danger-icon-color: $--color-danger !default;
 -------------------------- */
 $--descriptions-header-margin-bottom: 12px !default;
 $--descriptions-title-font-size: 14px !default;
-$--descriptions-table-border: 1px solid $--border-color-base !default;
+$--descriptions-table-border: 1px solid $--color-border !default;
 $--descriptions-item-bordered-label-background: rgba($--color-white, 0.25) !default;
 
 /* Skeleton 
 --------------------------*/
-$--skeleton-color: $--background-color-hover !default;
-$--skeleton-to-color: $--background-color-hover-light !default;
+$--skeleton-color: rgba($--color-text-primary, 0.25) !default;
+$--skeleton-to-color: rgba($--color-text-primary, 0.15) !default;
 
 /* Collapse
 --------------------------*/
-$--collapse-border-color: $--border-color-lighter !default;
+$--collapse-border-color: $--color-border !default;
 $--collapse-header-height: 48px !default;
 $--collapse-header-background-color: $--color-white !default;
 $--collapse-header-font-color: $--color-text-primary !default;

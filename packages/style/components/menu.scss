@@ -32,14 +32,14 @@
 }
 
 @include b(menu) {
-	border-right: solid 1px $--border-color-base;
+	border-right: solid 1px $--color-border;
 	list-style: none;
 	position: relative;
 	margin: 0;
 	padding-left: 0;
 	@include utils-clearfix;
 	&.tu-menu--horizontal {
-		border-bottom: solid 1px $--border-color-base;
+		border-bottom: solid 1px $--color-border;
 	}
 
 	@include m(horizontal) {
@@ -160,7 +160,7 @@
 				top: 0;
 				left: 100%;
 				z-index: 10;
-				border: 1px solid $--border-color-light;
+				border: 1px solid $--color-border;
 				border-radius: $--border-radius-small;
 				box-shadow: $--box-shadow-light;
 			}

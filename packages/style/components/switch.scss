@@ -59,10 +59,17 @@
 
 			&::before {
 				background: $--color-primary-light;
+				box-shadow: inset 2px 2px 4px $--color-primary, inset -2px -2px 4px $--color-primary-light;
 			}
 
 			&::after {
 				background-color: $--color-text-disabled;
+			}
+		}
+
+		&.is-checked {
+			.tu-switch-core::after {
+				box-shadow: 1px 1px 3px $--color-primary, -2px -2px 4px $--color-primary-light;
 			}
 		}
 	}
@@ -106,7 +113,7 @@
 				transition: all 0.4s ease;
 				width: $--switch-button-size;
 				height: $--switch-button-size;
-				background-color: $--color-greyDark;
+				background-color: $--color-text-primary;
 			}
 		}
 

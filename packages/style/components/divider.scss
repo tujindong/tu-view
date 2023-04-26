@@ -1,7 +1,7 @@
 @import "../common/mixin.scss";
 
 @include b(divider) {
-	background-color: $--border-color-base;
+	background-color: $--color-border;
 	position: relative;
 
 	@include m(horizontal) {
@@ -31,7 +31,7 @@
 			top: 50%;
 			display: table-cell;
 			width: 50%;
-			border-top: 1px solid $--border-color-base;
+			border-top: 1px solid $--color-border;
 			transform: translateY(50%);
 			content: "";
 		}
@@ -40,7 +40,7 @@
 			top: 50%;
 			display: table-cell;
 			width: 50%;
-			border-top: 1px solid $--border-color-base;
+			border-top: 1px solid $--color-border;
 			transform: translateY(50%);
 			content: "";
 		}

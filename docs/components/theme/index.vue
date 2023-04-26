@@ -50,7 +50,7 @@ export default {
 @import "./styles/index.scss";
 body {
   height: auto;
-  transition: all 0.2s;
+  transition: all 0.25s;
 }
 .theme-container {
   main {
@@ -61,11 +61,11 @@ body {
     > aside {
       position: fixed;
       top: 5vh;
-      width: 180px;
+      width: 220px;
       height: 90vh;
     }
     > section {
-      margin-left: 200px;
+      margin-left: 240px;
       padding: 5vh 16px;
     }
   }

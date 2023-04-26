@@ -19,7 +19,7 @@
 	}
 
 	@include m(light) {
-		border: 1px solid $--color-greyDark;
+		border: 1px solid $--color-text-primary;
 	}
 
 	@include m(dark) {

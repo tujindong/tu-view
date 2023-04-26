@@ -133,7 +133,7 @@
 					bottom: 2px;
 					width: 100%;
 					height: 1px;
-					background-color: rgba($--color-greyLight-2, 0.65);
+					background-color: $--color-border;
 					z-index: $--index-normal;
 				}
 			}
@@ -189,7 +189,7 @@
 		}
 
 		@include e(content) {
-			margin-top: 1px solid $--border-color-base;
+			margin-top: 1px solid $--color-border;
 		}
 	}
 
