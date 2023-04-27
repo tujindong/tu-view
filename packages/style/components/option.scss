@@ -1,3 +1,6 @@
+@import "../common/mixin.scss";
+@import "../common/utils.scss";
+
 @include b(select-dropdown) {
 	@include e(item) {
 		font-size: $--select-font-size;

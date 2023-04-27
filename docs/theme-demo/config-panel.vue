@@ -15,19 +15,18 @@
       <div class="theme-config">
         <div class="config-item" v-for="(style, index) in configStyles">
           <span class="config-key">{{ style.key }}: </span>
-          <span class="config-value">
-            <i :style="{ color: currentTheme['$--color-primary'] }">
-              {{ style.value }};
-            </i>
-          </span>
+          <span class="config-value"> {{ style.value }}; </span>
         </div>
       </div>
+      <tu-button class="theme-btn" size="small" @click="copyStyles"
+        >Copy</tu-button
+      >
     </tu-card>
   </div>
 </template>
 
 <script>
-import { themes } from "./styles/theme-config";
+import { themes } from "./theme-config";
 export default {
   data() {
     return {
@@ -59,6 +58,19 @@ export default {
     handleThemeChange(theme) {
       this.currentTheme = theme.style;
       this.$emit("themeChange", theme);
+    },
+
+    copyStyles() {
+      let inputEl = document.createElement("textarea");
+      document.body.appendChild(inputEl);
+      inputEl.value = this.configStyles.reduce(
+        (prev, cur) => `${prev}${cur.key}:${cur.value};\n`,
+        ""
+      );
+      inputEl.select();
+      document.execCommand("copy", false);
+      inputEl.remove();
+      this.$message.success("Copy Success!");
     },
   },
 };
@@ -92,16 +104,16 @@ export default {
     }
   }
   .theme-config {
-    font-size: 13px;
-    margin-top: 20;
+    font-size: 12px;
+    margin-top: 20px;
     .config-item {
+      line-height: 20px;
       margin-bottom: 10px;
-      .config-value {
-        i {
-          font-style: normal;
-        }
-      }
     }
+  }
+  .theme-btn {
+    width: 100%;
+    margin-top: 10px;
   }
 }
 </style>

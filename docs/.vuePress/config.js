@@ -8,7 +8,7 @@ module.exports = {
 		search: true,
 		nav: [
 			{ text: "指南", link: "/guide/zh-CN/" },
-			{ text: "主题", link: "/components/theme/", target: "_blank" },
+			{ text: "主题", link: "/theme-demo/test.md", target: "_blank" },
 			{
 				text: "了解更多",
 				items: [

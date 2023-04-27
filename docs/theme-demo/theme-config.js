@@ -29,7 +29,7 @@ export const themes = {
 		"$--color-scrollbar-color": "rgba(0, 0, 0, 0.38)",
 		"$--color-scrollbar-color-hover": "rgba(0, 0, 0, 0.28)",
 	},
-	green: {
+	olive: {
 		"$--color-background": "#88a58e",
 		"$--color-primary": "#ddae29",
 		"$--color-primary-light": "#ffd666",
@@ -44,7 +44,7 @@ export const themes = {
 		"$--color-scrollbar-color": "rgba(63, 92, 68, 0.38)",
 		"$--color-scrollbar-color-hover": "rgba(63, 92, 68, 0.28)",
 	},
-	pink: {
+	rose: {
 		"$--color-background": "#f5e4e4",
 		"$--color-primary": "#9a5dfc",
 		"$--color-primary-light": "#b78aff",

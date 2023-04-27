@@ -175,7 +175,6 @@ export default {
         this.menus = [this.store.getNodes()];
         this.syncMenuState();
       }
-      console.log("menus~~", this.menus);
     },
     syncCheckedValue() {
       const { value, checkedValue } = this;

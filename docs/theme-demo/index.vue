@@ -47,15 +47,14 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./styles/index.scss";
 body {
   height: auto;
   transition: all 0.25s;
 }
 .theme-container {
   main {
-    width: 1240px;
-    min-width: 1240px;
+    width: 1280px;
+    min-width: 1280px;
     height: 100%;
     margin: 0 auto;
     > aside {
