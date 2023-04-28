@@ -114,6 +114,7 @@ module.exports = {
 						["../zh-CN/divider.md", "Divider 分割线"],
 						["../zh-CN/calendar.md", "Calendar 日历"],
 						["../zh-CN/image.md", "Image 图片"],
+						["../zh-CN/clock.md", "Clock 时钟"],
 						["../zh-CN/scrollbar.md", "Scrollbar 区域滚动"],
 						["../zh-CN/backtop.md", "Backtop 回到顶部"],
 						["../zh-CN/infinite-scroll.md", "InfiniteScroll 无限滚动"],

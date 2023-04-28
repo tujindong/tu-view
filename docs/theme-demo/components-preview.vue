@@ -244,6 +244,12 @@
             </tu-popconfirm>
           </div>
         </tu-card>
+
+        <tu-card style="margin-top: 30px">
+          <div style="width: 140px; height: 140px; margin: 0 auto">
+            <tu-clock></tu-clock>
+          </div>
+        </tu-card>
       </tu-col>
     </tu-row>
 
