@@ -1,7 +1,8 @@
 <template>
   <div class="tu-clock">
-    表
-    </div>
+    <div class="tu-clock--hour"></div>
+    <div class="tu-clock--min"></div>
+    <div class="tu-clock--sec"></div>
   </div>
 </template>
 

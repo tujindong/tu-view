@@ -1,6 +1,7 @@
 <template>
   <div class="panel-container">
     <tu-card title="Themes">
+      <tu-button slot="extra" size="mini" @click="handleBack">Back</tu-button>
       <div
         v-for="(theme, tIndex) in themeList"
         class="theme-item"
@@ -54,6 +55,17 @@ export default {
     },
   },
 
+  watch: {},
+
+  beforeDestroy() {
+    const defaultTheme = themes.default;
+    Object.keys(defaultTheme).forEach((key) => {
+      document
+        .getElementsByTagName("body")[0]
+        .style.setProperty(key.replace(/\$/g, ""), defaultTheme[key]);
+    });
+  },
+
   methods: {
     handleThemeChange(theme) {
       this.currentTheme = theme.style;
@@ -71,6 +83,10 @@ export default {
       document.execCommand("copy", false);
       inputEl.remove();
       this.$message.success("Copy Success!");
+    },
+
+    handleBack() {
+      this.$router.back();
     },
   },
 };

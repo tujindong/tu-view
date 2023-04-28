@@ -65,7 +65,8 @@
 		text-align: left;
 		box-sizing: border-box;
 
-		.tu-tag {
+		.tu-tag,
+		.tu-tag:last-child {
 			margin: 4px 0 4px 6px;
 			text-overflow: ellipsis;
 		}

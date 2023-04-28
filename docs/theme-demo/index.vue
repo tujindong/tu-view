@@ -30,9 +30,7 @@ export default {
     };
   },
 
-  computed: {},
-
-  mounted() {},
+  watch: {},
 
   methods: {
     handleThemeChange(theme) {
@@ -52,6 +50,8 @@ body {
   transition: all 0.25s;
 }
 .theme-container {
+  position: relative;
+
   main {
     width: 1280px;
     min-width: 1280px;
