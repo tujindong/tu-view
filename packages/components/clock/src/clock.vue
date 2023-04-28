@@ -48,8 +48,9 @@ export default {
   created() {},
 
   mounted() {
+    this.showTime();
     if (this.timer) clearInterval(this.timer);
-    if (!this.timer) {
+    if (!this.timer && !this.time) {
       this.timer = setInterval((_) => this.showTime(), 1000);
     }
   },
