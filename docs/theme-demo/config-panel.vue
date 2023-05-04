@@ -2,17 +2,20 @@
   <div class="panel-container">
     <tu-card title="Themes">
       <tu-button slot="extra" size="mini" @click="handleBack">Back</tu-button>
-      <div
-        v-for="(theme, tIndex) in themeList"
-        class="theme-item"
-        @click="handleThemeChange(theme)"
-      >
-        <span
-          class="icon"
-          :style="{ backgroundColor: theme.style['$--color-background'] }"
-        ></span>
-        <span class="name">{{ theme.name }}</span>
+      <div class="theme-list">
+        <tu-row :gutter="12">
+          <tu-col :span="12" v-for="(theme, tIndex) in themeList">
+            <div class="theme-item" @click="handleThemeChange(theme)">
+              <span
+                class="icon"
+                :style="{ backgroundColor: theme.style['$--color-background'] }"
+              ></span>
+              <span class="name">{{ theme.name }}</span>
+            </div>
+          </tu-col>
+        </tu-row>
       </div>
+
       <div class="theme-config">
         <div class="config-item" v-for="(style, index) in configStyles">
           <span class="config-key">{{ style.key }}: </span>
@@ -94,31 +97,36 @@ export default {
 
 <style lang="scss" scoped>
 .panel-container {
-  .theme-item {
+  .theme-list {
     display: flex;
-    align-items: center;
-    position: relative;
-    height: 28px;
-    line-height: 28px;
-    padding: 0 8px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    .icon {
-      display: inline-block;
-      margin-right: 8px;
-      width: 16px;
-      height: 16px;
-      border-radius: 2px;
-      border: 1px solid;
-    }
-    .name {
-      transition: opacity 0.3s;
-      &:hover {
-        opacity: 0.8;
+    flex-wrap: wrap;
+    .theme-item {
+      display: flex;
+      align-items: center;
+      position: relative;
+      height: 28px;
+      line-height: 28px;
+      padding: 0 8px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      .icon {
+        display: inline-block;
+        margin-right: 8px;
+        width: 16px;
+        height: 16px;
+        border-radius: 2px;
+        border: 1px solid;
+      }
+      .name {
+        transition: opacity 0.3s;
+        &:hover {
+          opacity: 0.8;
+        }
       }
     }
   }
+
   .theme-config {
     font-size: 12px;
     margin-top: 20px;

@@ -105,6 +105,15 @@
         </tu-card>
 
         <tu-card style="margin-top: 30px">
+          <tu-row>
+            <tu-tag effect="shadow" color="#67c23a">Green</tu-tag>
+            <tu-tag effect="shadow" color="#409eff">Blue</tu-tag>
+            <tu-tag effect="shadow" color="#f56c6c">Red</tu-tag>
+            <tu-tag effect="shadow" color="#e6a23c">Orange</tu-tag>
+          </tu-row>
+        </tu-card>
+
+        <tu-card style="margin-top: 30px">
           <tu-progress :percentage="70"></tu-progress>
           <tu-progress :percentage="100" status="success"></tu-progress>
           <tu-progress :percentage="80" status="warning"></tu-progress>
@@ -437,6 +446,10 @@ export default {
 .preview-container {
   .tu-progress {
     margin-bottom: 12px;
+  }
+  .tu-tag {
+    margin-left: 6px;
+    margin-top: 6px;
   }
   .action-btn {
     .tu-button {

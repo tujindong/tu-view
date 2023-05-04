@@ -16,7 +16,7 @@ $--color-transition-base: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) !defau
 $--color-white: #ffffff !default;
 $--color-black: #000000 !default;
 $--color-text-primary: #8394be !default;
-$--color-text-secondary: #e4ebf5 !default;
+$--color-text-secondary: #a1aac0 !default;
 $--color-text-placeholder: #bec8e4 !default;
 $--color-text-disabled: #c8d0e7 !default;
 $--color-box-shadow-dark: #c8d0e7 !default;
@@ -104,7 +104,7 @@ $--box-shadow-white: 0 2px 12px 0 $--color-box-shadow-light !default;
 /* Button
 -------------------------- */
 $--button-disabled-font-color: $--color-text-primary !default;
-$--button-font-color: $--color-text-secondary !default;
+$--button-font-color: #f0f0f0 !default;
 /*迷你 mini*/
 $--button-mini-font-size: $--font-size-small !default;
 $--button-mini-font-weight: $--font-weight-primary !default;
@@ -633,8 +633,8 @@ $--descriptions-item-bordered-label-background: rgba($--color-white, 0.25) !defa
 
 /* Skeleton 
 --------------------------*/
-$--skeleton-color: rgba($--color-text-primary, 0.25) !default;
-$--skeleton-to-color: rgba($--color-text-primary, 0.15) !default;
+$--skeleton-color: $--color-hover-background !default;
+$--skeleton-to-color: rgba(131, 148, 190, 0.1) !default;
 
 /* Collapse
 --------------------------*/

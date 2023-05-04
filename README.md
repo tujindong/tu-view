@@ -27,3 +27,15 @@ import Button from "tu-view/lib/packages/button";
 import "tu-view/lib/styles/tuview.css";
 Vue.use(Button);
 ```
+
+### 文档
+
+参考 [Tu-View](https://tujindong.github.io/tu-view).
+
+### 组件
+
+<img alt="logo" src="./public/static/themes.jpg"  style="margin-bottom: 10px;">
+
+### 许可
+
+[MIT](https://opensource.org/licenses/MIT)
