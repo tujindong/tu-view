@@ -14,5 +14,8 @@
   "devDependencies": {
     "vitepress": "1.0.0-alpha.76",
     "vue": "^3.2.36"
+  },
+  "dependencies": {
+    "tu-view": "workspace:^3.0.1"
   }
 }

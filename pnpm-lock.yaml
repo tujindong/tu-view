@@ -63,8 +63,11 @@ importers:
 
   site:
     specifiers:
+      tu-view: workspace:^3.0.1
       vitepress: 1.0.0-alpha.76
       vue: ^3.2.36
+    dependencies:
+      tu-view: link:../packages/tu-view
     devDependencies:
       vitepress: 1.0.0-alpha.76
       vue: 3.2.36
