@@ -1,0 +1,17 @@
+$--font-path: "~tu-view/packages/style/components/fonts/";
+
+$--color-background: var(--color-background, #e4ebf5) !important; //#1890ff;
+$--color-primary: var(--color-primary, #6d5dfc);
+$--color-primary-light: var(--color-primary-light, #8abdff);
+$--color-primary-dark: var(--color-primary-dark, #510ccf);
+$--color-box-shadow-dark: var(--color-box-shadow-dark, #c8d0e7);
+$--color-box-shadow-light: var(--color-box-shadow-light, #ffffff);
+$--color-text-primary: var(--color-text-primary, #8394be);
+$--color-text-placeholder: var(--color-text-placeholder, #bec8e4);
+$--color-text-disabled: var(--color-text-disabled, #c8d0e7);
+$--color-hover-background: var(--color-hover-background, rgba(131, 148, 190, 0.18));
+$--color-scrollbar-color: var(--color-scrollbar-color, #c8d0e7);
+$--color-scrollbar-color-hover: var(--color-scrollbar-color-hover, #9baacf);
+$--color-border: var(--color-border, rgba(200, 208, 231, 0.3));
+
+@import "~tu-view/packages/style/index.scss";

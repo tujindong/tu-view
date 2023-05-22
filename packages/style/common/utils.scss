@@ -1,0 +1,80 @@
+@import "./variable.scss";
+
+@mixin utils-user-select($value) {
+	-moz-user-select: $value;
+	-webkit-user-select: $value;
+	-ms-user-select: $value;
+}
+
+@mixin utils-clearfix {
+	$selector: &;
+
+	@at-root {
+		#{$selector}::before,
+		#{$selector}::after {
+			display: table;
+			content: "";
+		}
+
+		#{$selector}::after {
+			clear: both;
+		}
+	}
+}
+
+@mixin utils-vertical-center {
+	$selector: &;
+
+	@at-root {
+		#{$selector}::after {
+			display: inline-block;
+			content: "";
+			height: 100%;
+			vertical-align: middle;
+		}
+	}
+}
+
+@mixin utils-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@mixin utils-scroll {
+	// chrome
+	&::-webkit-scrollbar-track-piece {
+		background-color: transparent;
+		border-radius: 4px;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+	}
+
+	&::-webkit-scrollbar-corner {
+		background-color: transparent;
+	}
+
+	&::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: $--color-scrollbar-color;
+		background-clip: padding-box;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		transition: 0.3s ease;
+		z-index: 100;
+
+		&:hover {
+			background-color: $--color-scrollbar-color-hover;
+			cursor: pointer;
+		}
+	}
+
+	//firfox
+	scrollbar-width: thin; // 默认值
+	scrollbar-color: $--color-scrollbar-color transparent;
+}

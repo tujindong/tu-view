@@ -1,0 +1,150 @@
+@import "../common/mixin.scss";
+
+$angle: 30deg;
+
+@include b(clock) {
+	grid-column: 2/3;
+	grid-row: 1/3;
+	width: 100%;
+	height: 100%;
+	min-width: 100px;
+	min-height: 100px;
+	justify-self: center;
+	box-shadow: 3px 3px 6px $--color-box-shadow-dark, -2px -2px 5px $--color-box-shadow-light;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+
+	@include e(inner) {
+		width: 95%;
+		height: 95%;
+		border-radius: 50%;
+		position: relative;
+		box-shadow: inset 2px 2px 5px $--color-box-shadow-dark,
+			inset -2px -2px 5px $--color-box-shadow-light;
+
+		&::before {
+			content: "";
+			display: block;
+			position: absolute;
+			left: 50%;
+			bottom: 50%;
+			width: 10px;
+			height: 10px;
+			margin-left: -5px;
+			margin-bottom: -5px;
+			background-color: $--color-primary;
+			box-shadow: 0 0 3px $--color-primary-light;
+			border-radius: 50%;
+			z-index: 1000;
+		}
+		&::after {
+			content: "";
+			width: 60%;
+			height: 60%;
+			position: absolute;
+			box-shadow: inset 1px 1px 1px $--color-box-shadow-dark,
+				inset -1px -1px 1px $--color-box-shadow-light;
+			border-radius: 50%;
+			top: 20%;
+			left: 20%;
+			filter: blur(1px);
+		}
+
+		@include m(marker) {
+			display: inline-block;
+			position: absolute;
+			top: 0px;
+			left: 50%;
+			display: block;
+			width: 20px;
+			height: 50%;
+			margin-left: -10px;
+			padding-top: 4%;
+			font-weight: 400;
+			transform-origin: bottom;
+			user-select: none;
+			box-sizing: border-box;
+
+			&:nth-child(3n + 1) > span > i {
+				font-size: 15px;
+				color: $--color-text-primary;
+				transform: scale(1);
+			}
+			> span {
+				display: block;
+				text-align: center;
+				> i {
+					display: block;
+					color: $--color-text-placeholder;
+					font-size: 11px;
+					transform: scale(0.8);
+				}
+			}
+		}
+
+		@for $i from 2 through 12 {
+			.tu-clock__inner--marker:nth-of-type(#{$i}) {
+				transform: rotatez(#{$angle * ($i - 1)});
+				> span {
+					transform: rotatez(#{-$angle * ($i - 1)});
+				}
+			}
+		}
+	}
+
+	@include e(hand) {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		border-radius: 50%;
+		z-index: 200;
+
+		@include when(hours) {
+			&::after {
+				display: block;
+				content: "";
+				position: absolute;
+				bottom: 46%;
+				left: 50%;
+				margin-left: -2px;
+				width: 4px;
+				height: 24%;
+				border-radius: 2px;
+				background: $--color-text-placeholder;
+			}
+		}
+		@include when(minutes) {
+			&::after {
+				display: block;
+				content: "";
+				position: absolute;
+				bottom: 46%;
+				left: 50%;
+				margin-left: -2px;
+				width: 4px;
+				height: 30%;
+				border-radius: 2px;
+				background: $--color-text-primary;
+			}
+		}
+		@include when(seconds) {
+			&::after {
+				display: block;
+				content: "";
+				position: absolute;
+				bottom: 43%;
+				left: 50%;
+				margin-left: -1px;
+				width: 2px;
+				height: 50%;
+				border-radius: 1px;
+				background: $--color-primary;
+			}
+		}
+	}
+}

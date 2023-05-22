@@ -1,0 +1,161 @@
+@import "~@packages/style/common/mixin.scss";
+@import "~@packages/style/common/utils.scss";
+
+@include b(transfer) {
+	font-size: $--font-size-base;
+
+	@include e(buttons) {
+		display: inline-block;
+		vertical-align: middle;
+		padding: 0 10px;
+	}
+
+	@include e(button) {
+		display: block;
+		margin: 0 auto;
+		color: $--color-text-primary;
+
+		@include when(disabled) {
+			color: $--color-greyLight-3;
+
+			&:hover {
+				color: $--color-greyLight-3;
+			}
+		}
+
+		&:first-child {
+			margin-bottom: 10px;
+		}
+
+		&:nth-child(2) {
+			margin: 0;
+		}
+
+		i,
+		span {
+			font-size: 14px;
+		}
+
+		& [class*="tu-icon-"] + span {
+			margin-left: 0;
+		}
+	}
+}
+
+@include b(transfer-panel) {
+	border-radius: $--transfer-border-radius;
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: middle;
+	width: $--transfer-panel-width;
+	max-height: 100%;
+	box-sizing: border-box;
+	position: relative;
+	box-shadow: $--box-shadow-concave;
+	transition: 0.3s ease;
+
+	@include e(wrapper) {
+		height: $--transfer-panel-body-height;
+		overflow: auto;
+		@include utils-scroll;
+	}
+
+	@include e(body) {
+		@include when(with-footer) {
+			padding-bottom: $--transfer-panel-footer-height;
+		}
+	}
+
+	@include e(list) {
+		margin: 0;
+		padding: 6px 0;
+		list-style: none;
+		box-sizing: border-box;
+
+		@include when(filterable) {
+			height: #{$--transfer-panel-body-height - $--transfer-filter-height - 20px};
+			padding-top: 0;
+		}
+	}
+
+	@include e(item) {
+		height: $--transfer-item-height;
+		line-height: $--transfer-item-height;
+		padding-left: 15px;
+		display: block !important;
+		transition: all 0.3s;
+
+		& + .tu-transfer-panel__item {
+			margin-left: 0;
+		}
+
+		&:hover {
+			color: $--color-primary;
+		}
+	}
+
+	@include e(filter) {
+		text-align: center;
+		margin: 15px;
+		box-sizing: border-box;
+		display: block;
+		width: auto;
+
+		.tu-input__inner {
+			width: 100%;
+			font-size: 12px;
+			display: inline-block;
+			box-sizing: border-box;
+			padding-right: 10px;
+			padding-left: 30px;
+		}
+
+		.tu-icon-circle-close {
+			cursor: pointer;
+		}
+	}
+
+	.tu-transfer-panel__header {
+		height: $--transfer-panel-header-height;
+		line-height: $--transfer-panel-header-height;
+		margin: 0;
+		padding-left: 15px;
+		border-bottom: 1px solid rgba($--color-greyLight-3, 0.38);
+		box-sizing: border-box;
+		color: $--color-black;
+
+		.tu-checkbox {
+			.tu-checkbox__label {
+				span {
+					position: absolute;
+					right: 15px;
+					color: $--color-greyLight-3;
+					font-size: 12px;
+					font-weight: normal;
+				}
+			}
+		}
+	}
+
+	.tu-transfer-panel__footer {
+		height: $--transfer-panel-footer-height;
+		margin: 0;
+		padding: 0;
+		border-top: 1px solid rgba($--color-greyLight-3, 0.38);
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		z-index: $--index-normal;
+		@include utils-vertical-center;
+	}
+
+	.tu-transfer-panel__empty {
+		margin: 0;
+		height: $--transfer-item-height;
+		line-height: $--transfer-item-height;
+		padding: 6px 15px 0;
+		color: $--color-greyLight-3;
+		text-align: center;
+	}
+}

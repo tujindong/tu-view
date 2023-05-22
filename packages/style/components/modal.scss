@@ -1,0 +1,132 @@
+@import "../common/mixin.scss";
+@import "../common/popup.scss";
+
+@include b(modal) {
+	position: relative;
+	margin: 0 auto 50px;
+	border-radius: $--border-radius-small;
+	box-sizing: border-box;
+	color: $--color-text-primary;
+	width: 50%;
+	background-color: $--color-background;
+
+	@include when(fullscreen) {
+		width: 100%;
+		margin-top: 0;
+		margin-bottom: 0;
+		height: 100%;
+		overflow: auto;
+	}
+
+	@include e(wrapper) {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		overflow: auto;
+		margin: 0;
+	}
+
+	@include e(header) {
+		padding: $--modal-padding-vertical $--modal-padding-horizontal;
+		font-size: $--font-size-base;
+		line-height: 22px;
+		border-bottom: 1px solid $--color-border;
+		vertical-align: middle;
+	}
+
+	@include e(headerbtn) {
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 49px;
+		width: 49px;
+		text-align: center;
+		line-height: 49px;
+		background: transparent;
+		border: none;
+		outline: none;
+		margin: 0;
+		padding: 0;
+		cursor: pointer;
+		font-size: $--message-close-size;
+
+		.tu-modal__close {
+			color: $--color-text-primary;
+			transition: color 0.3s;
+		}
+
+		&:focus,
+		&:hover {
+			.tu-modal__close {
+				color: $--color-primary;
+			}
+		}
+	}
+
+	@include e(title) {
+		line-height: $--modal-font-line-height;
+		font-size: $--modal-title-font-size;
+		color: $--color-text-primary;
+		font-weight: $--font-weight-bold;
+	}
+
+	@include e(body) {
+		padding: ($--modal-padding-vertical + 12px) $--modal-padding-horizontal;
+		color: $--color-text-primary;
+		font-size: $--modal-content-font-size;
+		word-break: break-all;
+	}
+
+	@include e(footer) {
+		padding: $--modal-padding-vertical $--modal-padding-horizontal;
+		text-align: right;
+		box-sizing: border-box;
+		border-top: 1px solid $--color-border;
+	}
+
+	// 内容居中布局
+	@include m(center) {
+		text-align: center;
+
+		@include e(body) {
+			text-align: initial;
+			padding: $--modal-padding-vertical $--modal-padding-horizontal;
+		}
+
+		@include e(footer) {
+			text-align: inherit;
+		}
+	}
+}
+
+.modal-fade-enter-active {
+	animation: modal-fade-in 0.3s;
+}
+
+.modal-fade-leave-active {
+	animation: modal-fade-out 0.3s;
+}
+
+@keyframes modal-fade-in {
+	0% {
+		transform: translate3d(0, -20px, 0);
+		opacity: 0;
+	}
+	100% {
+		transform: translate3d(0, 0, 0);
+		opacity: 1;
+	}
+}
+
+@keyframes modal-fade-out {
+	0% {
+		transform: translate3d(0, 0, 0);
+		opacity: 1;
+	}
+	100% {
+		transform: translate3d(0, -20px, 0);
+		opacity: 0;
+	}
+}

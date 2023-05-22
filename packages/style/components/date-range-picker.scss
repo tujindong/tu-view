@@ -1,0 +1,99 @@
+@import "../common/mixin.scss";
+@import "../common/utils.scss";
+
+@include b(date-range-picker) {
+	width: 646px;
+	box-shadow: $--box-shadow-convex;
+	background-color: $--color-background;
+	&.has-sidebar {
+		width: 756px;
+	}
+
+	table {
+		table-layout: fixed;
+		width: 100%;
+	}
+
+	.tu-picker-panel__body {
+		min-width: 513px;
+	}
+
+	.tu-picker-panel__content {
+		margin: 0;
+	}
+
+	@include e(header) {
+		position: relative;
+		text-align: center;
+		height: 28px;
+
+		[class*="left"] {
+			float: left;
+		}
+
+		[class*="right"] {
+			float: right;
+		}
+
+		div {
+			font-size: 16px;
+			font-weight: 500;
+			margin-right: 50px;
+		}
+	}
+
+	@include e(content) {
+		float: left;
+		width: 50%;
+		box-sizing: border-box;
+		margin: 0;
+		padding: 16px;
+
+		@include when(left) {
+			border-right: 1px solid rgba($--color-text-disabled, 0.38);
+		}
+		.tu-date-range-picker__header {
+			div {
+				margin-left: 50px;
+				margin-right: 50px;
+			}
+		}
+	}
+
+	@include e(editors-wrap) {
+		box-sizing: border-box;
+		display: table-cell;
+
+		@include when(right) {
+			text-align: right;
+		}
+	}
+
+	@include e(time-header) {
+		position: relative;
+		font-size: 12px;
+		padding: 8px 5px 5px 5px;
+		display: table;
+		width: 100%;
+		box-sizing: border-box;
+
+		> .tu-icon-right {
+			font-size: 20px;
+			vertical-align: middle;
+			display: table-cell;
+		}
+	}
+
+	@include e(time-picker-wrap) {
+		position: relative;
+		display: table-cell;
+		padding: 0 5px;
+
+		.tu-picker-panel {
+			position: absolute;
+			top: 13px;
+			right: 0;
+			z-index: 1;
+		}
+	}
+}
